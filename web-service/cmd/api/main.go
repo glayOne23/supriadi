@@ -33,6 +33,7 @@ func main() {
 
 	locationRepo := mysql.NewMysqlLocationRepository(dbConn)
 	userRepo := mysql.NewMysqlUserRepository(dbConn)
+	suicidalRepo := mysql.NewMysqlSuicidalRepository(dbConn)
 
 	twitterSvc := twitter.NewTwitterService(cfg.TwitterConsumerKey, cfg.TwitterConsumerSecret)
 	cryptoSvc := crypto.NewCryptoService()
@@ -41,8 +42,9 @@ func main() {
 	ctxTimeout := time.Duration(cfg.ContextTimeout) * time.Second
 	locationSvc := service.NewLocationService(locationRepo, twitterSvc, ctxTimeout)
 	authSvc := service.NewAuthService(userRepo, locationRepo, cryptoSvc, jwtSvc, ctxTimeout)
+	suicidalSvc := service.NewSuicidalService(suicidalRepo, userRepo, ctxTimeout)
 
-	appMidd := appMiddleware.NewMiddleware(cfg.AdminToken)
+	appMidd := appMiddleware.NewMiddleware(cfg.AdminToken, jwtSvc, userRepo)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -52,6 +54,7 @@ func main() {
 
 	httpDelivery.NewLocationHandler(e, appMidd, locationSvc)
 	httpDelivery.NewAuthHandler(e, appMidd, authSvc)
+	httpDelivery.NewSuicidalHandler(e, appMidd, suicidalSvc)
 
 	address := fmt.Sprintf(":%v", cfg.Port)
 	e.Logger.Fatal(e.Start(address))
