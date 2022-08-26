@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"supriadi/delivery/middleware"
 	"supriadi/entity"
 	"supriadi/exception"
 	"supriadi/service"
@@ -13,13 +14,14 @@ type locationHandler struct {
 	locationSvc service.LocationService
 }
 
-func NewLocationHandler(e *echo.Echo, locationSvc service.LocationService) {
+func NewLocationHandler(e *echo.Echo, middleware *middleware.Middleware, locationSvc service.LocationService) {
 	handler := &locationHandler{
 		locationSvc: locationSvc,
 	}
 
 	apiV1 := e.Group("/api/v1")
-	apiV1.POST("/locations", handler.CreateLocation)
+	apiV1.POST("/locations", handler.CreateLocation, middleware.AdminAuth())
+	apiV1.GET("/locations", handler.FetchLocation)
 }
 
 func (h *locationHandler) CreateLocation(c echo.Context) error {
@@ -34,8 +36,7 @@ func (h *locationHandler) CreateLocation(c echo.Context) error {
 		)
 	}
 
-	err = location.Validate()
-	if err != nil {
+	if err = location.Validate(); err != nil {
 		return c.JSON(
 			http.StatusBadRequest,
 			exception.NewBadRequestError("invalid input data"),
@@ -48,5 +49,15 @@ func (h *locationHandler) CreateLocation(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, location)
+}
 
+func (h *locationHandler) FetchLocation(c echo.Context) error {
+	ctx := c.Request().Context()
+
+	locations, err := h.locationSvc.Fetch(ctx)
+	if err != nil {
+		return c.JSON(exception.ParseHttpError(err))
+	}
+
+	return c.JSON(http.StatusOK, locations)
 }

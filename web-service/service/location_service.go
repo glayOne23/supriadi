@@ -12,6 +12,7 @@ import (
 
 type LocationService interface {
 	Create(ctx context.Context, location *entity.Location) (err error)
+	Fetch(ctx context.Context) (locations []entity.Location, err error)
 }
 
 type locationService struct {
@@ -40,5 +41,13 @@ func (s *locationService) Create(c context.Context, location *entity.Location) (
 
 	location.RuleID = r.Data[0].Id
 	err = s.locationRepo.Create(ctx, location)
+	return
+}
+
+func (s *locationService) Fetch(c context.Context) (locations []entity.Location, err error) {
+	ctx, cancel := context.WithTimeout(c, s.contextTimeout)
+	defer cancel()
+
+	locations, err = s.locationRepo.Fetch(ctx)
 	return
 }

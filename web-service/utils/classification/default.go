@@ -14,7 +14,7 @@ type classificationService struct {
 	apiKey  string
 }
 
-func NewClassificationService(httpClient *http.Client, baseURL, apiKey string) Service {
+func NewClassificationService(baseURL, apiKey string) Service {
 	return &classificationService{
 		baseURL: baseURL,
 		apiKey:  apiKey,
