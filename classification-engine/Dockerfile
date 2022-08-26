@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-COPY /home/ubuntu/model_bkp /app/suicide_engine/ai_resources/model
+# COPY /home/ubuntu/model_bkp /app/suicide_engine/ai_resources/model
 
 RUN apt update -y && apt install make -y && apt install gunicorn -y
 
