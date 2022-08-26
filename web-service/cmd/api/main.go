@@ -13,7 +13,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	httpDeliv "supriadi/delivery/http"
+	httpDelivery "supriadi/delivery/http"
 )
 
 func main() {
@@ -41,7 +41,7 @@ func main() {
 	e.Use(middleware.CORS())
 	e.Use(middleware.Recover())
 
-	httpDeliv.NewLocationHandler(e, locationSvc)
+	httpDelivery.NewLocationHandler(e, locationSvc)
 
 	address := fmt.Sprintf(":%v", cfg.Port)
 	e.Logger.Fatal(e.Start(address))
