@@ -11,6 +11,7 @@ import (
 	"supriadi/repository/mysql"
 	"supriadi/utils/classification"
 	"supriadi/utils/pushnotif"
+	"supriadi/utils/translator"
 	"supriadi/utils/twitter"
 )
 
@@ -39,6 +40,7 @@ func main() {
 	twitterSvc := twitter.NewTwitterService(cfg.TwitterConsumerKey, cfg.TwitterConsumerSecret)
 	classificationSvc := classification.NewClassificationService(cfg.ClassificationBaseURL, cfg.ClassificationApiKey)
 	pnSvc := pushnotif.NewNotificationService(userRepo, pnRepo)
+	translatorSvc := translator.NewTranslatorService()
 
 	api := twitterSvc.FetchTweets(ctx)
 	for tweet := range api.GetMessages() {
@@ -51,7 +53,13 @@ func main() {
 		result := tweet.Data.(twitter.StreamResponse)
 
 		go func() {
-			cls, err := classificationSvc.PredictSuicideTweet(ctx, result.Data.Text)
+			translatedTweet, err := translatorSvc.Translate(ctx, result.Data.Text, "id", "en")
+			if err != nil {
+				fmt.Println(err.Error())
+				return
+			}
+
+			cls, err := classificationSvc.PredictSuicideTweet(ctx, translatedTweet)
 			if err != nil {
 				fmt.Println(err.Error())
 				return
