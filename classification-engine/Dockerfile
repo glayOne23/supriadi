@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY . .
 
-
-## set timezone to asia jakarta
-RUN apt update -y && apt install make -y && apt install gunicorn -y && apt install locales -y
+RUN apt update -y && apt install make -y && apt install gunicorn -y
 
 RUN export LC_ALL=C
+
+RUN pip install --upgrade pip
 
 RUN make install
 
