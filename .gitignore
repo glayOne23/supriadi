@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+
+# Rope project settings
+.ropeproject
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Code Editors
+.idea/
+.vscode/
+
+# Added
+*.log
+*.csv
+tmp/
+.DS_STORE
+
+# models
+classification-engine/suicide_engine/ai_resources/model/variables/
+
+classification-engine/.pytest_cache/
