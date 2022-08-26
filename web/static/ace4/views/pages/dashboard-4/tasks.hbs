@@ -1,0 +1,19 @@
+<div class="card border-0 h-100">
+    <div class="card-header bg-transparent border-0 pl-0">
+        <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+            <i class="far fa-calendar-check text-default mr-1 text-105"></i>
+            Task Board
+            <span class="text-80 text-grey-m1">
+                (sortable)
+            </span>
+        </h5>
+    </div>
+
+    <div class="card-body bg-white py-0 px-3 px-sm-0">
+        <div class="row">
+            {{#each (get "tasks")}}
+             {{> page/task-column}}
+            {{/each}}
+        </div>
+    </div><!-- /.card-body -->
+</div>

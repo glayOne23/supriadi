@@ -1,0 +1,63 @@
+<div class="d-flex flex-column flex-md-row pb-35 pt-2">
+
+    <div class="order-last order-md-first pl-1 pl-md-3 d-flex align-items-center">
+        <label class="mb-0 ">
+            <input id="select-all" type="checkbox" class="border-2 brc-secondary-m1 brc-h-orange-m1" />
+        </label>
+
+        <div class="dropdown ml-2 mr-3">
+            <button type="button" class="btn btn-outline-lightgrey btn-h-light-lightgrey btn-a-light-lightgrey btn-brc-tp btn-xs px-1 py-2px dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-chevron-down text-85"></i>
+            </button>
+
+            <div class="dropdown-menu dropdown-center">
+                <a class="dropdown-item m-1px px-4 py-1" href="#">
+                    All
+                </a>
+
+                <a class="dropdown-item m-1px px-4 py-1" href="#">
+                    Unread
+                </a>
+
+                <a class="dropdown-item m-1px px-4 py-1" href="#">
+                    Read
+                </a>
+
+                <a class="dropdown-item m-1px px-4 py-1" href="#">
+                    Starred
+                </a>
+            </div>
+        </div>
+
+        <div id="inbox-header" class="pb-1px">
+            <h3 class="text-xl text-dark-m3 mb-0 d-inline-block">
+                Inbox
+            </h3>
+
+            <span class="text-grey-m1 text-md ml-2">(4 unread messages)</span>
+        </div>
+
+        <div id="inbox-actions" class="d-none">
+            {{> page/action-buttons}}
+        </div>
+    </div>
+
+
+
+    <div class="order-first order-md-last ml-md-auto mb-4 mb-md-0">
+        <div class="input-group">
+            <div class="input-group-prepend d-md-none" style="z-index: 222;">
+                <button type="button" class="mr-n5 btn btn-brc-tp btn-outline-dark btn-a-green btn-h-green radius-l-1 px-25 btn-sm static" data-toggle="modal" data-target="#aside-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            
+            <input type="text" class="form-control radius-1 px-5 pl-md-3 brc-primary-tp2 brc-on-focus" placeholder="Search messages ...">
+            <div class="input-group-append" style="z-index: 222;">
+                <button class="btn btn-outline-blue radius-r-1 btn-tp px-25 btn-sm ml-n475 static" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

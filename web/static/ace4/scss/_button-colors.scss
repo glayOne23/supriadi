@@ -1,0 +1,528 @@
+$btn-exclude-from-contrast: (
+  'orange': 1,
+  'warning': 1,
+  'yellow': 1,
+  'light': 1,
+  'white': 1,
+);
+$btn-exclude-from-contrast-outline: (
+  'warning': 0,
+  'yellow': 0,
+  'light': 0,
+  'white': 0,
+  'lightgrey': 4.15,
+  'secondary': 5
+);
+$btn-exclude-from-contrast2: (
+  'yellow': 1,
+  'light': 1,
+  'lightgrey': 1,
+);
+
+$saturate: true;
+$btn-exclude-from-saturate: (
+  'primary': 1,
+  'grey': 1,
+  'lightgrey': 1,
+  'light': 1,
+  'white': 1,
+  'dark': 1,
+  'black': 1
+);
+$btn-exclude-from-saturate2: (
+  'grey': 1,
+  'lightgrey': 1,
+  'light': 1,
+  'white': 1,
+  'dark': 1,
+  'black': 1
+);
+
+$btn-bg-contrast: 3.9;
+$btn-outline-text-contrast: 4.9;
+
+$btn-light-text-contrast: 4.9;
+$btn-light-border-contrast: 1.4;
+
+$btn-lighter-text-contrast: 4.9;
+$btn-lighter-border-contrast: 1.4;
+
+
+//cache so that can be re-used later faster
+$cached-button-colors: ();
+
+
+
+@function get-btn-text($name) {
+  $text: map-get($button-text-colors, $name);
+  @if $text == null {
+    $text: #fff;
+  }
+
+  @return $text;
+}
+
+// btn bg
+@function get-btn-bg($name) {
+  $bg: map-get($cached-button-colors, 'bg:' + $name);
+  @if $bg != null {
+    @return $bg
+  }
+
+  $bg: map-get($button-colors, $name);
+  $text: get-btn-text($name);
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate, $name) == null {
+    $bg: saturate($bg, 4%);
+  }
+
+
+  @if $add-contrast == true and map-get($btn-exclude-from-contrast, $name) == null {
+    // make sure text and background contrast ratio is at least $btn-bg-contrast
+    @while color-contrast($text, $bg) < $btn-bg-contrast {
+      $bg: darken($bg, 0.4%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('bg:' + $name: $bg), $cached-button-colors) !global;
+
+  @return $bg;
+}
+
+
+// button border color
+@function get-btn-border($name) {
+  $border: map-get($button-border-colors, $name);
+  @if $border == null {
+    $border: get-btn-bg($name);
+  }
+  @return $border;
+}
+
+// btn hover bg
+@function get-btn-hover-bg($name) {
+  $hover-bg: map-get($button-hover-bgs, $name);
+
+  @if $hover-bg == null {
+    $hover-bg: shade(get-btn-bg($name), 10%);
+  }
+
+  @return $hover-bg;
+}
+
+// btn hover text
+@function get-btn-hover-text($name) {
+  $hover-text: map-get($button-hover-text-colors, $name);
+
+  @if $hover-text == null {
+    $hover-text: get-btn-text($name);
+  }
+
+  @return $hover-text;
+}
+
+// btn hover border
+@function get-btn-hover-border($name) {
+  $hover-border: map-get($button-hover-border-colors, $name);
+
+  @if $hover-border == null {
+    $hover-border: shade(get-btn-border($name), 12%);
+  }
+
+  @return $hover-border;
+}
+
+// btn active bg
+@function get-btn-active-bg($name) {
+  $color: map-get($button-colors, $name);
+  $active-bg: map-get($button-active-bgs, $name);
+
+  @if $active-bg == null {
+    $active-bg: shade(get-btn-bg($name), 15%);
+  }
+
+  @return $active-bg;
+}
+
+// btn active text
+@function get-btn-active-text($name) {
+  $active-text: map-get($button-active-text-colors, $name);
+
+  @if $active-text == null {
+    $active-text: get-btn-text($name);
+  }
+
+  @return $active-text;
+}
+
+// btn active border
+@function get-btn-active-border($name) {
+  $active-border: map-get($button-active-border-colors, $name);
+
+  @if $active-border == null {
+    $active-border: shade(get-btn-active-bg($name), 8%);
+  }
+
+  @return $active-border;
+}
+
+
+
+
+//outline buttons
+@function get-outline-text($name) {
+  $outline-text: map-get($cached-button-colors, 'ot:' + $name);
+  @if $outline-text != null {
+    @return $outline-text
+  }
+
+  $outline-text: map-get($button-outline-text-colors, $name);
+
+  @if $outline-text == null {
+    $outline-text: get-btn-bg($name);
+  }
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate2, $name) == null {
+    $outline-text: saturate($outline-text, 10%);
+  }
+
+  $target-contrast: $btn-outline-text-contrast;
+
+  $excluded-contrast: map-get($btn-exclude-from-contrast-outline, $name);
+  @if $excluded-contrast != null {
+    @if $excluded-contrast > 1 {
+      $target-contrast: $excluded-contrast;
+    }
+    @else {
+      $target-contrast: -1;
+    }
+  }
+
+
+  @if $add-contrast == true and $target-contrast > 1 {
+    // make sure text and background contrast ratio is at least $btn-outline-text-contrast
+    @while color-contrast($outline-text, #fff) < $target-contrast {
+      $outline-text: darken($outline-text, 0.5%);
+    }
+  }
+
+
+  $cached-button-colors: map-merge(('ot:' + $name: $outline-text), $cached-button-colors) !global;
+
+  @return $outline-text;
+}
+
+
+@function get-outline-border($name, $tint: 32%) {
+  $outline-border: map-get($cached-button-colors, 'ob:' + $name + ':' + $tint);
+  @if $outline-border != null {
+    @return $outline-border
+  }
+
+  $outline-border: map-get($button-outline-border-colors, $name);
+  @if $outline-border == null {
+    $outline-border: tint(get-outline-text($name), $tint);
+  }
+
+  $cached-button-colors: map-merge(('ob:' + $name + ':' + $tint: $outline-border), $cached-button-colors) !global;
+
+  @return $outline-border;
+}
+
+
+@function get-outline-hover-text($name) {
+  $outline-text: map-get($button-outline-text-hover-colors, $name);
+
+  @if $outline-text == null {
+    $outline-text: get-btn-text($name);
+  }
+
+  @return $outline-text;
+}
+@function get-outline-hover-border($name) {
+  $outline-border: map-get($button-outline-border-hover-colors, $name);
+
+  @if $outline-border == null {
+    $outline-border: get-btn-border($name);
+  }
+
+  @return $outline-border;
+}
+@function get-outline-active-text($name) {
+  $outline-text: map-get($button-outline-text-active-colors, $name);
+
+  @if $outline-text == null {
+    $outline-text: get-btn-text($name);
+  }
+
+  @return $outline-text;
+}
+@function get-outline-active-border($name) {
+  $outline-border: map-get($button-outline-border-active-colors, $name);
+
+  @if $outline-border == null {
+    $outline-border: get-btn-border($name);
+  }
+
+  @return $outline-border;
+}
+
+
+
+
+// Get light button colors
+// Get light button colors
+@function get-light-bg($name) {
+  @return mix(bgc-color($name, 'l2') , bgc-color($name, 'l3'));
+}
+
+@function get-light-text($name) {
+  $light-text: map-get($cached-button-colors, 'lt:' + $name);
+  @if $light-text != null {
+    @return $light-text
+  }
+
+  $light-text: bgc-color($name, 'd4');
+  $light-bg: get-light-bg($name);
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate2, $name) == null {
+    $light-text: saturate($light-text, 10%);
+  }
+
+  @if $add-contrast == true {
+    // make sure text and background contrast ratio is at least $btn-light-text-contrast
+    @while color-contrast($light-text, $light-bg) < $btn-light-text-contrast {
+      $light-text: darken($light-text, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lt:' + $name: $light-text), $cached-button-colors) !global;
+
+  @return $light-text;
+}
+
+@function get-light-border($name) {
+  $light-border: map-get($cached-button-colors, 'lb:' + $name);
+  @if $light-border != null {
+    @return $light-border
+  }
+
+  $light-border: bgc-color($name, 'm4');
+  $light-bg: get-light-bg($name);
+
+  @if $add-contrast == true {
+    @while color-contrast($light-border, $light-bg) < $btn-light-border-contrast {
+      $light-border: darken($light-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lb:' + $name: $light-border), $cached-button-colors) !global;
+
+  @return $light-border;
+}
+
+
+// light hover colors
+@function get-light-hover-bg($name) {
+  @return mix(bgc-color($name, 'l1') , bgc-color($name, 'l2'));
+}
+
+@function get-light-hover-text($name) {
+  $light-text: map-get($cached-button-colors, 'lht:' + $name);
+  @if $light-text != null {
+    @return $light-text
+  }
+
+  $light-text: bgc-color($name, 'd4');
+  $light-bg: get-light-hover-bg($name);
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate2, $name) == null {
+    $light-text: saturate($light-text, 10%);
+  }
+
+  @if $add-contrast == true {
+    // make sure text and background contrast ratio is at least $btn-light-text-contrast
+    @while color-contrast($light-text, $light-bg) < $btn-light-text-contrast {
+      $light-text: darken($light-text, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lht:' + $name: $light-text), $cached-button-colors) !global;
+
+  @return $light-text;
+}
+
+@function get-light-hover-border($name) {
+  $light-hover-border: map-get($cached-button-colors, 'lhb:' + $name);
+  @if $light-hover-border != null {
+    @return $light-hover-border;
+  }
+
+  $light-hover-border: bgc-color($name, 'm3');
+  $light-hover-bg: get-light-hover-bg($name);
+
+  @if $add-contrast == true {
+    @while color-contrast($light-hover-border, $light-hover-bg) < $btn-light-border-contrast {
+      $light-hover-border: darken($light-hover-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lhb:' + $name: $light-hover-border), $cached-button-colors) !global;
+
+  @return $light-hover-border;
+}
+
+// light active colors
+@function get-light-active-bg($name) {
+  @return mix(bgc-color($name, 'm4') , bgc-color($name, 'l1'));
+}
+
+@function get-light-active-text($name) {
+  $light-text: map-get($cached-button-colors, 'lat:' + $name);
+  @if $light-text != null {
+    @return $light-text
+  }
+
+  $light-text: bgc-color($name, 'd4');
+  $light-bg: get-light-active-bg($name);
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate2, $name) == null {
+    $light-text: saturate($light-text, 10%);
+  }
+
+  @if $add-contrast == true {
+    // make sure text and background contrast ratio is at least $btn-light-text-contrast
+    @while color-contrast($light-text, $light-bg) < $btn-light-text-contrast {
+      $light-text: darken($light-text, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lat:' + $name: $light-text), $cached-button-colors) !global;
+
+  @return $light-text;
+}
+
+@function get-light-active-border($name) {
+  $light-active-border: map-get($cached-button-colors, 'lab:' + $name);
+  @if $light-active-border != null {
+    @return $light-active-border;
+  }
+
+  $light-active-border: mix(bgc-color($name, 'm2') , bgc-color($name, 'm3'));
+  $light-active-bg: get-light-active-bg($name);
+
+  @if $add-contrast == true {
+    @while color-contrast($light-active-border, $light-active-bg) < $btn-light-border-contrast {
+      $light-active-border: darken($light-active-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('lab:' + $name: $light-active-border), $cached-button-colors) !global;
+
+  @return $light-active-border;
+}
+
+
+// Get lighter button colors
+@function get-lighter-bg($name) {
+  @return bgc-color($name, 'l4');
+}
+
+@function get-lighter-text($name) {
+  $lighter-text: map-get($cached-button-colors, 'llt:' + $name);
+  @if $lighter-text != null {
+    @return $lighter-text
+  }
+
+  $lighter-text: bgc-color($name, 'd4');
+  $lighter-bg: get-lighter-bg($name);
+
+  @if $saturate == true and map-get($btn-exclude-from-saturate2, $name) == null {
+    $lighter-text: saturate($lighter-text, 10%);
+  }
+
+  @if $add-contrast == true {
+    // make sure text and background contrast ratio is at least $btn-lighter-text-contrast
+    @while color-contrast($lighter-text, $lighter-bg) < $btn-lighter-text-contrast {
+      $lighter-text: darken($lighter-text, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('llt:' + $name: $lighter-text), $cached-button-colors) !global;
+
+  @return $lighter-text;
+}
+
+@function get-lighter-border($name) {
+  $lighter-border: map-get($cached-button-colors, 'llb:' + $name);
+  @if $lighter-border != null {
+    @return $lighter-border
+  }
+
+  $lighter-border: bgc-color($name, 'm4');
+
+  @if $add-contrast == true {
+    @while color-contrast($lighter-border, #fff) < $btn-lighter-border-contrast {
+      $lighter-border: darken($lighter-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('llb:' + $name: $lighter-border), $cached-button-colors) !global;
+
+  @return $lighter-border;
+}
+
+
+// lighter hover colors
+@function get-lighter-hover-bg($name) {
+  @return bgc-color($name, 'l3');
+}
+@function get-lighter-hover-text($name) {
+  @return shade(get-lighter-text($name), 5%);
+}
+@function get-lighter-hover-border($name) {
+  $lighter-hover-border: map-get($cached-button-colors, 'llhb:' + $name);
+  @if $lighter-hover-border != null {
+    @return $lighter-hover-border;
+  }
+
+  $lighter-hover-border: bgc-color($name, 'm3');
+
+  @if $add-contrast == true {
+    @while color-contrast($lighter-hover-border, #fff) < 1.5 {
+      $lighter-hover-border: darken($lighter-hover-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('llhb:' + $name: $lighter-hover-border), $cached-button-colors) !global;
+
+  @return $lighter-hover-border;
+}
+
+// lighter active colors
+@function get-lighter-active-bg($name) {
+  @return mix(bgc-color($name, 'l2') , bgc-color($name, 'l3'));
+}
+@function get-lighter-active-text($name) {
+  @return shade(get-lighter-text($name), 10%);
+}
+@function get-lighter-active-border($name) {
+  $lighter-active-border: map-get($cached-button-colors, 'llab:' + $name);
+  @if $lighter-active-border != null {
+    @return $lighter-active-border;
+  }
+
+  $lighter-active-border: mix(bgc-color($name, 'm2') , bgc-color($name, 'm3'));
+
+  @if $add-contrast == true {
+    @while color-contrast($lighter-active-border, #fff) < 1.55 {
+      $lighter-active-border: darken($lighter-active-border, 0.5%);
+    }
+  }
+
+  $cached-button-colors: map-merge(('llab:' + $name: $lighter-active-border), $cached-button-colors) !global;
+
+  @return $lighter-active-border;
+}
+
+

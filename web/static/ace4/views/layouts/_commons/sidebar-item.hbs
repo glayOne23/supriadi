@@ -1,0 +1,61 @@
+{{#if type}} {{! if it's a divider or caption }}
+
+<li class="nav-item-{{type}}">
+	{{#if title}}
+		<span class="fadeable pl-3">{{title}}</span>
+		<span class="fadeinable mt-n2 text-125">&hellip;</span>
+		<!--
+			OR something like the following (with `.hideable` text)
+		-->
+		<!--
+			<div class="hideable">
+				<span class="pl-3">{{title}}</span>
+			</div>
+			<span class="fadeinable mt-n2 text-125">&hellip;</span>
+		-->
+	{{/if}}
+</li>
+
+{{else}}
+
+<li class="nav-item{{#if className}} {{className}}{{/if}}">{{! className is "open" or "active" }}
+
+  <a href="{{getPageLink link}}" class="nav-link{{#if children}} dropdown-toggle{{#unless submenuClassName}} collapsed{{submenuClassName}}{{/unless}}{{/if}}">
+	 {{#if icon}}<i class="nav-icon {{icon}}"></i>{{/if}}
+	 <span class="nav-text{{#if toplevel}} fadeable{{/if}}">
+	  <span>{{title}}</span>
+	  {{#if badge}}
+		  <span class="badge {{badge-class}} {{tooltip-class}}"{{#if tooltip}} title="{{{tooltip}}}"{{/if}}>{{{badge}}}</span>
+	  {{/if}}
+	 </span>
+
+	 {{#if children}}
+	 	<b class="caret fa fa-angle-left rt-n90"></b>
+	 {{/if}}
+
+	 {{#if children}}
+	 <!-- or you can use custom icons. first add `d-style` to 'A' -->
+	 <!--
+	 	<b class="caret d-n-collapsed fa fa-minus text-80"></b>
+	 	<b class="caret d-collapsed fa fa-plus text-80"></b>
+	 -->
+	 {{/if}}
+  </a>
+
+  {{#if children}}
+	<div class="{{#if toplevel}}hideable{{/if}} submenu collapse{{#if submenuClassName}} {{submenuClassName}}{{/if}}">
+		<ul class="submenu-inner">
+		{{#each children}}
+			{{> layout/_commons/sidebar-item}}
+		{{/each}}
+		</ul>
+	</div>
+    
+	<b class="sub-arrow"></b>
+  {{else if toplevel}}
+  	<b class="sub-arrow"></b>
+  {{/if}}
+
+</li>
+
+{{/if}}

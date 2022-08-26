@@ -1,0 +1,25 @@
+[
+    {
+       "title": "Software update",
+       "percent": "60",
+       "color": "bgc-info"
+    },
+   
+    {
+        "title": "Hardware upgrade",
+        "percent": "40",
+        "color": "bgc-warning"
+    },
+   
+    {
+        "title": "Customer support",
+        "percent": "30",
+        "color": "bgc-danger"
+    },
+   
+    {
+        "title": "Fixing bugs",
+        "percent": "85",
+        "color": "bgc-success progress-bar-striped progress-bar-animated"
+    }
+]

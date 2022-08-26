@@ -1,0 +1,886 @@
+<h3 class="mt-3 mb-4 text-130 text-dark-m1">
+    Custom tab styles
+</h3>
+
+
+<div class="row">
+    <div class="col-12 col-md-6">
+
+        <!-- ** First example -->
+        <div class="dcard">
+            <ul class="nav nav-tabs bgc-secondary-l3 border-y-1 brc-secondary-l3" role="tablist">
+                <li class="nav-item mr-2px">
+                    <a id="home1-tab-btn" class="d-style active btn btn-tp btn-light-secondary btn-h-white btn-a-text-dark btn-a-white text-95 px-3 px-sm-4 py-25 radius-0 border-0" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true">
+                        <span class="v-active position-tl w-100 border-t-3 brc-blue mt-n2px"></span>
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-2px">
+                    <a id="profile1-tab-btn" class="d-style btn btn-tp btn-light-secondary btn-h-white btn-a-text-dark btn-a-white text-95 px-3 px-sm-4 py-25 radius-0 border-0" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false">
+                        <span class="v-active position-tl w-100 border-t-3 brc-blue mt-n2px"></span>
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="more1-tab-btn" class="d-style btn btn-tp btn-light-secondary btn-h-white btn-a-text-dark btn-a-white text-95 px-3 px-sm-4 py-25 radius-0 border-0" data-toggle="tab" href="#more1" role="tab" aria-controls="more1" aria-selected="false">
+                        <span class="v-active position-tl w-100 border-t-3 brc-blue mt-n2px"></span>
+                        More
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content bgc-white p-35 border-0">
+                <div class="tab-pane fade show active text-95" id="home1" role="tabpanel" aria-labelledby="home1-tab-btn">
+                    <div class="alert bgc-default-l3 text-dark-m2 border-0 text-110 mb-0 p-3">
+                        You can have custom tab styles by using existing HTML elements and CSS classes!
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile1" role="tabpanel" aria-labelledby="profile1-tab-btn">
+                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                </div>
+
+                <div class="tab-pane fade text-95" id="more1" role="tabpanel" aria-labelledby="more1-tab-btn">
+                    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                </div>
+            </div>
+        </div><!-- /.bcard -->
+
+
+
+
+        <!-- ** Blue (info) nav-tabs background -->
+        <div class="mt-45 radius-">
+            <ul class="nav nav-tabs nav-tabs-faded bgc-info-m3 pt-2 pl-2 radius-t-1" role="tablist">
+                <li class="nav-item mr-3px">
+                    <a class="active btn btn-brc-tp btn-info btn-h-red btn-a-white btn-a-text-info text-95 px-3 px-lg-4 py-2 border-0 radius-b-0" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true">
+                        Main
+                    </a>
+                </li>
+
+                <li class="nav-item mr-3px">
+                    <a class="btn btn-brc-tp btn-info btn-h-red btn-a-white btn-a-text-info text-95 px-3 px-lg-4 py-2 border-0 radius-b-0" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2" aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown mr-3px d-style">
+                    <a class="dropdown-toggle btn btn-brc-tp btn-info btn-h-red btn-a-white btn-a-text-info text-95 px-2 px-lg-4 py-2 border-0 radius-b-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                        <i class="d-n-show fa fa-caret-down ml-15"></i>
+                        <i class="d-show fa fa-caret-up ml-15"></i>
+                    </a>
+
+                    <div class="dropdown-menu radius-b-1 shadow-sm border-t-0 ml-n1px brc-secondary-l1 p-1">
+                        <a class="dropdown-item btn-a-bold mb-2px text-95" data-toggle="tab" href="#more2-tab1">
+                            Tab 1
+                        </a>
+                        <a class="dropdown-item btn-a-bold text-95" data-toggle="tab" href="#more2-tab2">
+                            Tab 2
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="tab-content bgc-white p-35 border-1 border-t-0 brc-default-l2 radius-b-1">
+                <div class="tab-pane fade show active text-95" id="home2" role="tabpanel">
+                    Main Tab
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile2" role="tabpanel">
+                    Profile Tab
+                </div>
+
+                <div class="tab-pane fade text-95" id="more2-tab1" role="tabpanel">
+                    Dropdown Tab 1
+                </div>
+
+                <div class="tab-pane fade text-95" id="more2-tab2" role="tabpanel">
+                    Dropdown Tab 2
+                </div>
+            </div>
+        </div><!-- /.bcard -->
+
+
+
+
+        <!-- ** Yellow tab buttons -->
+        <div class="mt-45">
+            <ul class="nav nav-justified nav-tabs nav-tabs-static nav-tabs-faded radius-t-1 overflow-hidden" role="tablist">
+                <li class="nav-item mr-1px">
+                    <a class="active btn btn-light-lightgrey btn-h-yellow btn-h-text-black btn-a-yellow py-2 border-0 radius-0 btn-bold" id="home3-tab-btn" data-toggle="tab" href="#home3" role="tab" aria-controls="home3" aria-selected="true">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1px">
+                    <a class="btn btn-light-lightgrey btn-h-light-green btn-h-text-black btn-a-green py-2 border-0 radius-0 btn-bold" id="profile3-tab-btn" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile3" aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-light-lightgrey btn-h-yellow btn-a-yellow py-2 border-0 radius-0 btn-bold" id="more3-tab-btn" data-toggle="tab" href="#more3" role="tab" aria-controls="more3" aria-selected="false">
+                        More
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content bgc-white p-4 border-1 border-t-0 radius-b-1 brc-dark-l3">
+                <div class="tab-pane fade show active text-95" id="home3" role="tabpanel" aria-labelledby="home3-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        1. Home
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile3" role="tabpanel" aria-labelledby="profile3-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        2. Profile
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="more3" role="tabpanel" aria-labelledby="more3-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        3. More
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.bcard -->
+
+
+
+    
+        <!-- ** Green nav-tabs background -->
+        <div class="mt-45">
+            <div class="card-body p-0">
+                <ul class="w-100 nav nav-tabs nav-tabs-simple bgc-green-d2 radius-t-1 pt-2 pl-2" role="tablist">
+                    <li class="nav-item mr-3px">
+                        <a class="active btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0" id="home4-tab-btn" data-toggle="tab" href="#home4" role="tab" aria-controls="home4" aria-selected="true">
+                            Main
+                        </a>
+                    </li>
+
+                    <li class="nav-item mr-3px">
+                        <a class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0" id="profile4-tab-btn" data-toggle="tab" href="#profile4" role="tab" aria-controls="profile4" aria-selected="false">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item mr-3px">
+                        <a class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0" id="more4-tab-btn" data-toggle="tab" href="#more4" role="tab" aria-controls="more4" aria-selected="false">
+                            More
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown ml-auto mr-1 align-self-center">
+                        <a class="dropdown-toggle btn btn-outline-white px-2 radius-round border-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h mx-1px"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right radius-1 shadow-sm mt-2px brc-secondary-l1 p-1">
+                            <a class="dropdown-item btn-a-bold mb-2px text-95" data-toggle="tab" href="#more4-tab1">
+                                Tab 1
+                            </a>
+                            <a class="dropdown-item btn-a-bold text-95" data-toggle="tab" href="#more4-tab2">
+                                Tab 2
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <div class="tab-content tab-sliding px-1 px-md-3 text-grey-d3 border-1 border-t-0 radius-b-1 brc-secondary-l2">
+                    <div class="tab-pane show active p-2" id="home4" role="tabpanel" aria-labelledby="home4-tab-btn">
+                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua.
+                    </div>
+
+                    <div class="tab-pane p-2" id="profile4" role="tabpanel" aria-labelledby="profile4-tab-btn">
+                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    </div>
+
+                    <div class="tab-pane p-2" id="more4" role="tabpanel" aria-labelledby="more4-tab-btn">
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                    </div>
+
+                    <div class="tab-pane p-2" id="more4-tab1" role="tabpanel">
+                        More Tab 1
+                    </div>
+
+                    <div class="tab-pane p-2" id="more4-tab2" role="tabpanel">
+                        More Tab 2
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.bcard -->
+
+
+
+
+
+        <!-- ** Different colors for different tabs ** -->
+        <div class="mt-45 bcard">
+            <ul class="nav nav-justified nav-tabs nav-tabs-simple" role="tablist">
+                <li class="nav-item mr-1px">
+                    <a class="d-style active btn btn-outline-light btn-a-text-dark btn-a-outline-lightgrey bgc-white radius-0 py-2 text-95" id="home5-tab-btn" data-toggle="tab" href="#home5" role="tab" aria-controls="home5" aria-selected="true">
+                        <span class="v-active position-tl w-102 border-t-3 brc-orange mt-n3px ml-n1px"></span><!-- show this when active -->
+                        <span class="v-n-active v-hover position-tl w-102 border-t-3 brc-orange-tp3 mt-n2px ml-n1px"></span><!-- show this when hovered & NOT active -->
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1px">
+                    <a class="d-style btn btn-outline-light btn-a-text-dark btn-a-outline-lightgrey bgc-white radius-0 py-2 text-95" id="profile5-tab-btn" data-toggle="tab" href="#profile5" role="tab" aria-controls="profile5" aria-selected="false">
+                        <span class="v-active position-tl w-102 border-t-3 brc-blue mt-n3px ml-n1px"></span>
+                        <span class="v-n-active v-hover position-tl w-102 border-t-3 brc-blue-tp3 mt-n2px ml-n1px"></span>
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="d-style btn btn-outline-light btn-a-text-dark btn-a-outline-lightgrey bgc-white radius-0 py-2 text-95" id="more5-tab-btn" data-toggle="tab" href="#more5" role="tab" aria-controls="more5" aria-selected="false">
+                        <span class="v-active position-tl w-102 border-t-3 brc-purple mt-n3px ml-n1px"></span>
+                        <span class="v-n-active v-hover position-tl w-102 border-t-3 brc-purple-tp3 mt-n2px ml-n1px"></span>
+                        More
+                    </a>
+                </li>
+            </ul>
+
+
+            <div class="tab-content bgc-white p-35 border-1 brc-grey-l1">
+                <div class="tab-pane fade show active text-95" id="home5" role="tabpanel" aria-labelledby="home5-tab-btn">
+                    ** Different colors for different tabs **
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile5" role="tabpanel" aria-labelledby="profile5-tab-btn">
+                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                </div>
+
+                <div class="tab-pane fade text-95" id="more5" role="tabpanel" aria-labelledby="more5-tab-btn">
+                    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                </div>
+            </div>
+        </div><!-- /.bcard -->
+
+
+
+
+        <!--  ** Simple Tabs **  -->
+        <div class="mt-45 bcard bgc-transparent shadow-none">
+            <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                <li class="nav-item mr-1px">
+                    <a class="active btn btn-brc-tp border-t-1 btn-outline-light btn-h-white btn-a-text-dark btn-a-outline-light btn-a-bgc-white text-600 radius-b-0 radius-t-1 py-2 px-4 text-95" id="home6-tab-btn" data-toggle="tab" href="#home6" role="tab" aria-controls="home6" aria-selected="true">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1px">
+                    <a class="btn btn-brc-tp border-t-1 btn-outline-light btn-h-white btn-a-text-dark btn-a-outline-light btn-a-bgc-white text-600 radius-b-0 radius-t-1 py-2 px-4 text-95" id="profile6-tab-btn" data-toggle="tab" href="#profile6" role="tab" aria-controls="profile6" aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-brc-tp border-t-1 btn-outline-light btn-h-white btn-a-text-dark btn-a-outline-light btn-a-bgc-white text-600 radius-b-0 radius-t-1 py-2 px-4 text-95" id="more6-tab-btn" data-toggle="tab" href="#more6" role="tab" aria-controls="more6" aria-selected="false">
+                        More
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content bgc-white p-35 border-1 brc-grey-l1 radius-2px">
+                <div class="tab-pane fade show active text-95" id="home6" role="tabpanel" aria-labelledby="home6-tab-btn">
+                    ** Simple Tabs **
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile6" role="tabpanel" aria-labelledby="profile6-tab-btn">
+                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                </div>
+
+                <div class="tab-pane fade text-95" id="more6" role="tabpanel" aria-labelledby="more6-tab-btn">
+                    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                </div>
+            </div>
+        </div><!-- /.bcard -->
+    </div><!-- /.col -->
+
+
+
+
+
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+
+        <div class="ccard bgc-white pt-2 pb-4 px-0">
+
+            <!-- Articles, Profile, etc Tabs -->
+            <ul class="nav nav-tabs nav-justified nav-tabs-simple nav-tabs-scroll border-b-1 brc-dark-l3 mx-md-0 px-1 px-lg-3" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active px-3 bgc-h-blue-l4 radius-t-1" id="home7-tab-btn" data-toggle="tab" href="#home7" role="tab" aria-selected="true">
+                        <i class="far fa-file-alt opacity-4 d-block text-150 my-15"></i>
+                        Articles
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-style brc-purple-tp2 px-3 bgc-h-purple-l4 radius-t-1" id="profile7-tab-btn" data-toggle="tab" href="#profile7" role="tab" aria-selected="false">
+                        <span class="d-n-active">
+                            <i class="far fa-user opacity-3 d-block text-150 my-15"></i>
+                            Profile
+                        </span>
+
+                        <span class="d-active text-purple-d3">
+                            <i class="far fa-user opacity-1 d-block text-150 my-15"></i>
+                            Profile
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item mr-0 pr-0">
+                    <a class="nav-link px-3 bgc-h-blue-l4 radius-t-1" id="contact7-tab-btn" data-toggle="tab" href="#contact7" role="tab" aria-selected="false">
+                        <i class="far fa-envelope opacity-3 d-block text-150 my-15"></i>
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item mr-0 pr-0">
+                    <a class="nav-link px-3 bgc-h-blue-l4 radius-t-1" id="more7-tab-btn" data-toggle="tab" href="#more7" role="tab" aria-selected="false">
+                        <i class="far fa-paper-plane opacity-3 d-block text-150 my-15"></i>
+                        More
+                    </a>
+                </li>
+            </ul>
+  
+
+
+            <div class="px-1 px-md-4">
+                <ul class="mt-4 mw-100 text-center bgc-primary-d3 p-1px nav nav-fill nav-tabs d-md-inline-flex nav-tabs-faded nav-tabs-simple nav-tabs-scroll is-scrollable radius-t-1" role="tablist">
+                    <li class="nav-item">
+                        <a class="active nav-link text-white brc-white px-4 px-md-5 py-2 bgc-h-white-tp9 radius-0" id="home8-tab-btn" data-toggle="tab" href="#home8" role="tab" aria-selected="false">
+                            <i class="fa fa-home d-block my-15 text-125"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white brc-white px-4 px-md-5 py-2 bgc-h-white-tp9 radius-0" id="profile8-tab-btn" data-toggle="tab" href="#profile8" role="tab" aria-selected="false">
+                            <i class="far fa-user d-block my-15 text-125"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white brc-white px-4 px-md-5 py-2 bgc-h-white-tp9 radius-0" id="more8-tab-btn" data-toggle="tab" href="#more8" role="tab" aria-selected="false">
+                            <i class="fa fa-cog d-block my-15 text-125"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+
+
+
+                <ul class="mt-4 mw-100 bgc-black px-2px py-1px nav nav-fill nav-tabs d-md-inline-flex nav-tabs-faded nav-tabs-simple nav-tabs-scroll is-scrollable radius-1 shadow" role="tablist">
+                    <li class="nav-item">
+                        <a class="active nav-link text-white brc-orange-m3 px-4 px-md-5 py-25 bgc-h-white-tp10 radius-0" id="home9-tab-btn" data-toggle="tab" href="#home9" role="tab" aria-selected="false">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class=" nav-link text-white brc-orange-m3 px-4 px-md-5 py-25 bgc-h-white-tp10 radius-0" id="profile9-tab-btn" data-toggle="tab" href="#profile9" role="tab" aria-selected="false">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white brc-orange-m3 px-4 px-md-5 py-25 bgc-h-white-tp10 radius-0" id="more9-tab-btn" data-toggle="tab" href="#more9" role="tab" aria-selected="false">
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+
+
+                <!-- Bike, Train, etc nav tabs -->
+                <ul class="mt-45 nav nav-justified flex-nowrap nav-tabs nav-tabs-simple nav-tabs-faded nav-tabs-detached radius-0 border-1 bgc-grey-l1 brc-grey-l1 pb-0 shadow-sm" role="tablist">
+                    <li class="nav-item mr-1px">
+                        <a class="btn bgc-white btn-lighter-grey btn-h-outline-success btn-a-outline-success btn-a-text-grey py-2 btn-brc-tp border-none border-t-3 radius-0 letter-spacing" id="home10-tab-btn" data-toggle="tab" href="#home10" role="tab" aria-selected="true">
+                            <i class="fa fa-bicycle text-180 d-block my-1"></i>
+                            <span class="text-90">
+                                Bike
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item mr-1px">
+                        <a class="btn bgc-white btn-lighter-grey btn-h-outline-blue btn-a-outline-blue py-2 btn-brc-tp border-none border-t-3 radius-0 letter-spacing" id="profile10-tab-btn" data-toggle="tab" href="#profile10" role="tab" aria-selected="false">
+                            <i class="fa fa-train text-180 d-block my-1"></i>
+                            <span class="text-90">
+                                Train
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mr-1px">
+                        <a class="pos-rel d-style btn btn-lighter-grey btn-bgc-white btn-h-outline-brown btn-h-bgc-white btn-a-brown py-2 btn-brc-tp border-none border-t-3 radius-0 letter-spacing" id="more10-tab-btn" data-toggle="tab" href="#more10" role="tab" aria-selected="false">
+                            <span class="v-active position-tl mt-n3px w-100 border-t-4 brc-black-tp8"></span>
+                            <i class="fa fa-car text-180 d-block my-1"></i>
+                            <span class="text-90">
+                                Car
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mr-1px">
+                        <a class="btn bgc-white btn-lighter-grey btn-h-outline-purple btn-a-outline-purple py-2 btn-brc-tp border-none border-t-3 radius-0 letter-spacing" id="contact10-tab-btn" data-toggle="tab" href="#contact10" role="tab" aria-selected="false">
+                            <i class="fa fa-ship text-180 d-block my-1"></i>
+                            <span class="text-90">
+                                Ship
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn bgc-white btn-lighter-grey btn-h-outline-red btn-a-outline-red py-2 btn-brc-tp border-none border-t-3 radius-0 letter-spacing" id="extra10-tab-btn" data-toggle="tab" href="#extra10" role="tab" aria-selected="false">
+                            <i class="fa fa-plane text-180 d-block my-1"></i>
+                            <span class="text-90">
+                                Plane
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div><!-- /.bcard -->
+
+
+
+
+        <div class="mt-45">
+            <ul class="nav nav-justified nav-tabs nav-tabs-simple nav-tabs-static nav-tabs-faded flex-nowrap radius-0 px-2 pt-2 nav-tabs-scroll is-scrollable border-b-2 brc-purple-d2" role="tablist">
+                <li class="nav-item mr-1">
+                    <a class="active btn btn-light-lightgrey btn-h-light-purple btn-h-text-black btn-a-purple py-2 border-1 border-b-0 radius-b-0 radius-t-2" id="home11-tab-btn" data-toggle="tab" href="#home11" role="tab" aria-controls="home11" aria-selected="true">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1">
+                    <a class=" btn btn-light-lightgrey btn-h-light-purple btn-h-text-black btn-a-purple py-2 border-1 border-b-0 radius-b-0 radius-t-2" id="profile11-tab-btn" data-toggle="tab" href="#profile11" role="tab" aria-controls="profile11" aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1">
+                    <a class=" btn btn-light-lightgrey btn-h-light-purple btn-h-text-black btn-a-purple py-2 border-1 border-b-0 radius-b-0 radius-t-2" id="contact11-tab-btn" data-toggle="tab" href="#contact11" role="tab" aria-controls="contact11" aria-selected="false">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class=" btn btn-light-lightgrey btn-h-light-purple btn-h-text-black btn-a-purple py-2 border-1 border-b-0 radius-b-0 radius-t-2" id="more11-tab-btn" data-toggle="tab" href="#more11" role="tab" aria-controls="more11" aria-selected="false">
+                        More
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content bgc-white p-4 border-1 border-t-0 brc-purple-l2 radius-b-1">
+                <div class="tab-pane fade show active text-95" id="home11" role="tabpanel" aria-labelledby="home11-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        1. Home
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="profile11" role="tabpanel" aria-labelledby="profile11-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        2. Profile
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="contact11" role="tabpanel" aria-labelledby="contact11-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        3. Contact
+                    </div>
+                </div>
+
+                <div class="tab-pane fade text-95" id="more11" role="tabpanel" aria-labelledby="more11-tab-btn">
+                    <div class="alert mb-0 bgc-secondary-l3 border-0 text-110">
+                        4. More
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="mt-45 card acard">
+            <div class="card-header p-25 m-0 brc-dark-l3">
+                <ul class="w-100 nav nav-fill nav-tabs nav-tabs-simple nav-tabs-static nav-tabs-scroll border-0 px-1 px-md-0" role="tablist">
+                    <li class="nav-item mr-1px mb-0">
+                        <a data-toggle="tab" href="#home12" id="home12-tab-btn" class="active border-1 btn btn-outline-light btn-h-light-blue btn-a-blue" role="tab" aria-selected="true">
+                            <i class="fa fa-home text-105 mr-3px"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item mx-1px mb-0">
+                        <a data-toggle="tab" href="#profile12" id="profile12-tab-btn" class="border-1 btn btn-outline-light btn-h-light-purple btn-a-purple" role="tab" aria-selected="false">
+                            <i class="fa fa-user text-105 mr-3px"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item mx-1px mb-0">
+                        <a data-toggle="tab" href="#more12" id="more12-tab-btn" class="border-1 btn btn-outline-light btn-h-light-success btn-a-success" role="tab" aria-selected="false">
+                            <i class="fa fa-plus mr-3px"></i>
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body p-0">
+                <div class="tab-content tab-sliding px-0 text-grey-d3 border-0">
+                    <div class="tab-pane show active px-25" id="home12" role="tabpanel" aria-labelledby="home12-tab-btn">
+                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua.
+                    </div>
+
+                    <div class="tab-pane px-25" id="profile12" role="tabpanel" aria-labelledby="profile12-tab-btn">
+                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    </div>
+
+                    <div class="tab-pane px-25" id="more12" role="tabpanel" aria-labelledby="more12-tab-btn">
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.card -->
+
+
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+
+
+
+
+<div class="row mt-5">
+    <div class="col-12 col-md-6">
+        
+        <!-- Default Tabs -->
+        <div class="card bcard bgc-transparent shadow-none">
+            <div class="card-body p-0">
+                <ul class="nav nav-tabs nav-justified nav-tabs-shadow" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active text-left" id="home13-tab-btn" data-toggle="tab" href="#home13" role="tab" aria-controls="home13" aria-selected="true">
+                            1. Basic
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-left" id="profile13-tab-btn" data-toggle="tab" href="#profile13" role="tab" aria-controls="profile13" aria-selected="false">
+                            2. Profile
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item brc-success-d1">
+                        <a class="nav-link text-left" id="more13-tab-btn" data-toggle="tab" href="#more13" role="tab" aria-controls="more13" aria-selected="false">
+                            3. More
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="bgc-white shadow-sm tab-content p-35 border-1 brc-grey-l1">
+                    <div class="tab-pane fade show active text-95" id="home13" role="tabpanel" aria-labelledby="home13-tab-btn">
+                        <div class="font-bolder mb-1 text-primary-d1 text-120">
+                            Basic Default Tabs
+                        </div>
+
+                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                    </div>
+
+                    <div class="tab-pane fade text-95" id="profile13" role="tabpanel" aria-labelledby="profile13-tab-btn">
+                        <div class="font-bolder mb-1 text-primary-d1 text-120">
+                            Profile
+                        </div>
+
+                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    </div>
+
+                    <div class="tab-pane fade text-95" id="more13" role="tabpanel" aria-labelledby="more13-tab-btn">
+                        <div class="font-bolder mb-1 text-success-d1 text-120">
+                            More
+                        </div>
+
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.card -->
+
+
+
+
+
+        <!-- Tabs on left -->
+        <div class="mt-3 card bcard bgc-transparent shadow-none">
+            <div class="card-body tabs-left p-0">
+                <ul class="nav nav-tabs align-self-start" role="tablist">
+                    <li class="nav-item brc-success shadow-sm">
+                        <a class="nav-link active text-left py-3" id="home14-tab-btn" data-toggle="tab" href="#home14" role="tab" aria-controls="home14" aria-selected="true">
+                            Step 1
+                        </a>
+                    </li>
+
+                    <li class="nav-item brc-success shadow-sm">
+                        <a class="nav-link text-nowrap py-3" id="profile14-tab-btn" data-toggle="tab" href="#profile14" role="tab" aria-controls="profile14" aria-selected="false">
+                            Step 2
+                        </a>
+                    </li>
+
+                    <li class="nav-item shadow-sm">
+                        <a class="nav-link text-nowrap py-3" id="more14-tab-btn" data-toggle="tab" href="#more14" role="tab" aria-controls="more14" aria-selected="false">
+                            Step 3
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content p-35 border-1 brc-grey-l1 shadow-sm bgc-white">
+                    <div class="tab-pane fade show active text-95" id="home14" role="tabpanel" aria-labelledby="home14-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Tabs on Left
+                        </div>     
+               
+                        <a class="btn btn-white px-3 radius-round shadow-sm" href="#profile14" data-toggle="next">
+                            Go to step 2
+                            <i class="ml-2 far fa-hand-point-down"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="tab-pane fade text-95" id="profile14" role="tabpanel" aria-labelledby="profile14-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Step 2
+                        </div>
+
+                        <a class="btn btn-white px-3 radius-round shadow-sm" href="#more14" data-toggle="next">
+                            Go to step 3
+                            <i class="ml-2 far fa-hand-point-down"></i>
+                        </a>
+                    </div>
+
+                    <div class="tab-pane fade text-95" id="more14" role="tabpanel" aria-labelledby="more14-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Step 3
+                        </div>
+
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.card -->
+
+
+
+
+        <!-- Tabs on right -->
+        <div class="mt-3 card bcard bgc-transparent shadow-none">
+            <div class="card-body tabs-right p-0">
+                <ul class="nav nav-tabs bgc-grey-l2 align-self-start pb-1px" role="tablist">
+                    <li class="nav-item brc-red mb-2px">
+                        <a class="nav-link active text-left py-35 border-b-0" id="home15-tab-btn" data-toggle="tab" href="#home15" role="tab" aria-controls="home15" aria-selected="true">
+                            Step 1
+                        </a>
+                    </li>
+
+                    <li class="nav-item brc-red mb-2px">
+                        <a class="nav-link text-nowrap py-35 border-y-0" id="profile15-tab-btn" data-toggle="tab" href="#profile15" role="tab" aria-controls="profile15" aria-selected="false">
+                            Step 2
+                        </a>
+                    </li>
+
+                    <li class="nav-item brc-blue">
+                        <a class="nav-link text-nowrap py-35 border-y-0" id="more15-tab-btn" data-toggle="tab" href="#more15" role="tab" aria-controls="more15" aria-selected="false">
+                            Step 3  
+                        </a>
+                    </li>
+                </ul>
+
+
+                <div class="tab-content p-35 border-1 brc-grey-l2 bgc-white">
+                    <div class="tab-pane fade show active text-95" id="home15" role="tabpanel" aria-labelledby="home15-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Tabs on Right
+                        </div>
+
+                        <a class="btn btn-white px-3 radius-round shadow-sm" href="#profile15" data-toggle="next">
+                            Go to step 2
+                            <i class="ml-2 far fa-hand-point-down"></i>
+                        </a>
+                    </div>
+
+                    <div class="tab-pane fade text-95" id="profile15" role="tabpanel" aria-labelledby="profile15-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Step 2
+                        </div>
+
+                        <a class="btn btn-white px-3 radius-round shadow-sm" href="#more15" data-toggle="next">
+                            Go to step 3
+                            <i class="ml-2 far fa-hand-point-down"></i>
+                        </a>
+                    </div>
+
+                    <div class="tab-pane fade text-95" id="more15" role="tabpanel" aria-labelledby="more15-tab-btn">
+                        <div class="text-primary-d3 text-120 mb-2">
+                            Step 3
+                        </div>
+
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.card -->
+
+    </div><!-- /.col -->
+
+
+
+
+    <!-- Simple Sliding Tabs -->
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+        <div class="card ccard">
+            <ul class="nav nav-tabs nav-tabs-simple nav-tabs-scroll border-b-1 brc-dark-l3 mx-0 mx-md-0 px-3 px-md-1 pt-2px" role="tablist">
+                <li class="nav-item mr-1">
+                    <a class="nav-link active p-3 bgc-h-primary-l4 radius-0" id="home16-tab-btn" data-toggle="tab" href="#home16" role="tab" aria-controls="home16" aria-selected="true">
+                        <i class="fa fa-home text-success mr-3px"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mr-1">
+                    <a class="nav-link brc-purple-m1 d-style p-3 bgc-h-purple-l4 radius-0" id="profile16-tab-btn" data-toggle="tab" href="#profile16" role="tab" aria-controls="profile16" aria-selected="false">
+                        <i class="fa fa-user text-purple mr-3px"></i>
+
+                        <span class="d-n-active">
+                            Profile
+                        </span>
+                        <span class="d-active text-purple-d1">
+                            Profile
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link p-3 bgc-h-primary-l4 radius-0" id="more16-tab-btn" data-toggle="tab" href="#more16" role="tab" aria-controls="more16" aria-selected="false">
+                        <i class="fa fa-plus text-blue mr-3px"></i>
+                        More
+                    </a>
+                </li>
+            </ul>
+
+            <div class="card-body px-0 py-2">
+                <div class="tab-content tab-sliding border-0 px-0">
+                    <div class="tab-pane show active text-95 px-25" id="home16" role="tabpanel" aria-labelledby="home16-tab-btn">
+                        <p class="text-600 bgc-orange-l3 text-orange-d4 text-120 px-3 py-15 radius-1">
+                            Sliding simple tabs
+                        </p>
+                        <p class="mb-2 text-secondary-d4 text-600">
+                            With swiping enabled on touch devices
+                        </p>
+                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua.
+                    </div>
+
+                    <div class="tab-pane text-95 px-25" id="profile16" role="tabpanel" aria-labelledby="profile16-tab-btn">
+                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    </div>
+
+                    <div class="tab-pane text-95 px-25" id="more16" role="tabpanel" aria-labelledby="more16-tab-btn">
+                        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.card -->
+
+
+
+
+        <div class="mt-45 card bcard border-0">
+             <ul class="nav nav-tabs bgc-default-l5 nav-tabs-simple nav-tabs-scroll is-scrollable nav-tabs-static nav-tabs-faded border-1 brc-default-l1 mx-n3 mx-md-0 px-3 pb-2px" role="tablist">
+                <li class="nav-item mr-3">
+                    <a class="active btn btn-outline-secondary bgc-transparent btn-brc-tp btn-bold btn-h-outline-secondary btn-a-outline-primary btn-a-text-dark py-25 px-15 border-none border-b-3 radius-0" data-toggle="tab" href="#home17" role="tab" aria-selected="true">
+                        Revenue
+                    </a>
+                </li>
+
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-secondary bgc-transparent btn-brc-tp btn-bold btn-h-outline-secondary btn-a-outline-primary btn-a-text-dark py-25 px-15 border-none border-b-3 radius-0" data-toggle="tab" href="#profile17" role="tab" aria-selected="false">
+                        Expense
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-secondary bgc-transparent btn-brc-tp btn-bold btn-h-outline-secondary btn-a-outline-primary btn-a-text-dark py-25 px-15 border-none border-b-3 radius-0"  data-toggle="tab" href="#more17" role="tab" aria-selected="false">
+                        Reports
+                    </a>
+                </li>
+
+                <li class="nav-item ml-auto align-self-center">
+                    <a href="#" class="mx-2 btn btn-sm btn-light-default radius-1 h-auto border-2 px-25 btn-brc-tp text-600 text-dark-tp2">
+                        <i class="far fa-calendar-alt opacity-2 mr-1"></i>
+                        Last week
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /.card -->
+
+
+
+
+
+        <div class="mt-45 card bcard border-1 brc-secondary-l2">
+            <ul class="nav nav-tabs nav-tabs-simple nav-tabs-scroll is-scrollable nav-tabs-static border-b-1 brc-default-l2 pt-2px" role="tablist">
+                <li class="nav-item mx-3">
+                    <a class="active btn btn-light-lightgrey bgc-white btn-brc-tp btn-h-light-dark btn-a-outline-green btn-a-text-dark py-25 px-15 border-none border-b-4" id="home18-tab-btn" data-toggle="tab" href="#home18" role="tab" aria-controls="home18" aria-selected="true">
+                        Revenue
+                    </a>
+                </li>
+
+                <li class="nav-item mr-3">
+                    <a class="btn btn-light-lightgrey bgc-white btn-brc-tp btn-h-light-dark btn-a-outline-green btn-a-text-dark py-25 px-15 border-none border-b-4" id="profile18-tab-btn" data-toggle="tab" href="#profile18" role="tab" aria-controls="profile18" aria-selected="false">
+                        Expense
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-light-lightgrey bgc-white btn-brc-tp btn-h-light-dark btn-a-outline-green btn-a-text-dark py-25 px-15 border-none border-b-4" id="more18-tab-btn" data-toggle="tab" href="#more18" role="tab" aria-controls="more18" aria-selected="false">
+                        Reports
+                    </a>
+                </li>
+
+                <li class="nav-item ml-auto mr-3 align-self-center">
+                    <a href="#" class="ml-3 mr-2 btn btn-sm btn-light-green radius-1 h-auto border-2 px-25 btn-brc-tp text-600">
+                        <i class="far fa-calendar-alt opacity-2 mr-1"></i>
+                        Last week
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content tab-sliding py-2 px-0 mx-md-0">
+                <div class="tab-pane show active text-95 px-3" id="home18" role="tabpanel" aria-labelledby="home18-tab-btn">
+                    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+                </div>
+
+                <div class="tab-pane text-95 px-3" id="profile18" role="tabpanel" aria-labelledby="profile18-tab-btn">
+                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                </div>
+
+                <div class="tab-pane text-95 px-3" id="more18" role="tabpanel" aria-labelledby="more18-tab-btn">
+                    Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua.
+                </div>
+            </div>
+        </div><!-- /.card -->
+
+    </div><!-- /.col -->
+</div><!-- /.row -->

@@ -1,0 +1,476 @@
+<!-- buttons to toggle asides -->
+<div class="row mt-2">
+ <div class="col-12 col-lg-6">
+  <div class="card acard">
+    <div class="card-header border-0">
+      <h3 class="card-title">
+        Asides
+        <span class="text-80 text-dark-m3">
+          based on Modals
+        </span>
+      </h3>
+    </div>
+
+    <div class="card-body">
+      <p>
+        <button type="button" class="btn btn-light-secondary px-4 mb-2" data-toggle="modal" data-target="#aside-1">
+          Right + Dismissible
+        </button>
+
+        <button type="button" class="btn btn-light-default px-4 mb-2" data-toggle="modal" data-target="#aside-2">
+          Inside Container Below Navbar
+        </button>
+      </p>
+
+      <p>
+        <button type="button" class="btn btn-light-grey px-4 mb-2" data-toggle="modal" data-target="#aside-top-1">
+          Top
+        </button>
+
+        <button type="button" class="btn btn-light-purple px-4 mb-2" data-toggle="modal" data-target="#aside-top-full">
+          Fullscreen
+        </button>
+
+        <button type="button" class="btn btn-white px-4 mb-2" data-toggle="modal" data-target="#aside-top-2">
+          Below Navbar
+        </button>
+      </p>
+
+      <p>
+        <button type="button" class="btn btn-light-pink px-4 mb-2" data-toggle="modal" data-target="#aside-bottom-1">
+          Draggable + Resizable
+        </button>
+
+        <button type="button" class="btn btn-yellow px-4 mb-2" data-toggle="modal" data-target="#aside-bottom-2">
+          Bottom Right + Blocking
+        </button>
+      </p>
+      
+      <p>
+        <button type="button" class="btn btn-outline-brown px-4 mb-2" data-toggle="modal" data-target="#aside-cookie">
+          Cookie Dialog
+        </button>
+
+        <button type="button" class="btn btn-warning px-4 mb-2" data-toggle="modal" data-target="#id-ace-settings-modal">
+          Settings Dialog
+        </button>
+      </p>
+
+      <p>
+        <button type="button" class="btn btn-light-success px-4 mb-2" data-toggle="modal" data-target="#aside-support">
+          Customer Support Dialog
+        </button>
+      </p>
+
+      <hr class="border-dotted" />
+
+      <div class="alert text-white bgc-purple-d1 radius-0 border-0 text-105 py-3 pos-rel">
+        <div class="position-tl h-100 w-100 bgc-green-tp3 opacity-3 border-none border-l-4 brc-black-tp7"></div>
+        <div class="pos-rel">
+          <i class="fa fa-exclamation-circle text-125 mr-2"></i>
+
+          The shortcuts menu on the right is expanded when
+          <span class="border-none border-b-3 border-double brc-white">
+            mouse is over it
+          </span>
+
+          <i class="far fa-hand-point-right text-130 ml-2 d-none d-lg-inline-block"></i>
+          <i class="far fa-hand-point-right text-130 ml-2 d-lg-none rotate-n45"></i>
+        </div>
+      </div><!-- .alert -->
+  
+    </div><!-- .card-body -->
+  </div><!-- .card -->
+
+ </div>
+</div>
+
+
+
+
+<!-- Asides are here -->
+
+
+<!-- Right+Dismissible (activity list) -->
+<div class="modal" id="aside-1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content shadow border-0 radius-0">
+
+      <div class="modal-header p-0 radius-0 border-none border-t-3 brc-primary-m1 shadow-sm">
+        <h5 class="flex-grow-1 text-blue-d1 text-120 py-3 ml-3 mb-0">
+          <i class="fas fa-history text-secondary-m1"></i>
+          Latest Activity
+          <span class="badge badge-info badge-pill float-right mr-3">3 New</span>
+        </h5>
+
+        <a href="#" class="close m-0 border-l-1 brc-grey-m4" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+
+      <div class="modal-body" data-ace-scroll='{"smooth": true}'>
+        {{> page/activity}}
+      </div>
+
+      <div class="modal-footer bgc-secondary-l4 brc-secondary-l2 justify-content-center">
+        <button type="button" class="btn btn-lighter-blue btn-text-dark btn-a-blue btn-h-blue px-4 border-2 btn-bgc-white" data-dismiss="modal">
+          See All Activities
+        </button>
+      </div>
+
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->
+
+
+
+
+<!-- Inside Container Below Navbar -->
+<!-- this is suitable when we have boxed layout -->
+<div class="container container-plus modal ace-aside modal-nb aside-right aside-below-nav" id="aside-2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content radius-0 shadow">
+
+      <div class="modal-header p-0 radius-0">
+        <div class="btn-group h-100">
+          <button type="button" class="m-0 btn btn-lighter-default btn-h-light-green border-0 brc-white-tp2 radius-0">
+            <i class="fa fa-arrow-left"></i>
+          </button>
+
+          <button type="button" class="m-0 btn btn-lighter-default btn-h-light-green border-y-0 brc-white-tp2 radius-0">
+            <i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <h5 class="modal-title flex-grow-1 text-blue-d2 py-3 ml-3">Sample Slider</h5>
+
+        <button type="button" class="close po1sition-tr m-0" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div><!-- /.modal-header -->
+      
+      <div class="modal-body">
+        <div class="alert bgc-secondary-l3 border-none border-l-4 brc-blue-m2 text-dark-m1 radius-0">
+          This slider is suitable for
+          <span class="border-none border-b-3 border-double brc-grey-m2">
+            boxed layout
+          </span>
+          and will be shown inside the boxed area.
+          <span class="d-xl-none text-danger-d1">(In desktop mode only)</span>
+        </div>
+
+        <a href="#" id="id-change-to-boxed" class="btn btn-block btn-outline-pink btn-bold mt-3 d-none d-xl-block">
+          <i class="far fa-hand-point-right mr-1 text-125"></i>
+          Change layout to boxed layout
+        </a>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light radius-0 m-0" data-dismiss="modal">Continue</button>
+        <button type="button" class="btn btn-danger radius-0 m-0">Undo changes</button>
+      </div>
+
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->
+
+
+
+
+<!-- Slides in from Top -->
+<div class="modal d-style  modal-nb ace-aside aside-top aside-offset aside-above-nav-max" id="aside-top-1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content border-0 bgc-black-tp2 radius-0">
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-md-6 align-self-center text-white text-center">
+              <h4>
+                Bootstrap Grid &amp; Elements
+              </h4>
+          </div>
+
+          <div class="col-12 col-md-6 text-center">
+              <button type="button" class="btn btn-sm btn-app btn-default radius-1 mb-1">
+                <i class="fa fa-cog fa-2x d-block"></i>
+                Settings
+              </button>
+
+              <button type="button" class="btn btn-sm btn-app btn-primary radius-1 mb-1">
+                <i class="fa fa-edit fa-2x d-block"></i>
+                Edit
+              </button>
+
+              <button type="button" class="btn btn-sm btn-app btn-grey radius-1 mb-1">
+                <i class="fa fa-print fa-2x d-block"></i>
+                Print
+              </button>
+          </div>   
+        </div>
+      </div><!-- .modal-body -->
+     
+    </div><!-- .modal-content -->
+
+    <!-- aside-header contains the button to toggle modal -->
+    <div class="aside-header">
+      <button type="button" class="static btn py-3 px-4 mw-auto btn-app btn-xs btn-dark radius-t-0" data-toggle="modal" data-target="#aside-top-1">
+          <i class="fa fa-angle-double-down d-n-show"></i>
+          <i class="fa fa-angle-double-up d-show"></i>
+      </button>
+    </div>
+
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->
+
+
+
+
+<!-- Slides in from Top and fullscreen -->
+<div class="modal aside-fs ace-aside aside-top aside-above-nav fade" data-backdrop="false" id="aside-top-full" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content border-0 bgc-black-tp1 radius-0 overflow-hidden">
+      <div class="modal-body pt-4 pt-lg-5 h-auto flex-grow-0">
+
+        <div class="row text-center pt-5">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
+            <div class="d-flex align-items-center mx-4 mx-lg-0">
+              <i class="fa fa-search mr-n35 text-white"></i>
+              <input type="text" placeholder="Search ..." class="pl-45 text-white form-control form-control-lg bgc-transparent brc-yellow-tp3 brc-on-focus border-none border-b-1 radius-0 shadow-none" />
+            </div>
+
+            <ul class="mt-4 mt-lg-5 pt-3 mx-auto d-inline-block list-unstyled">
+              <li class="mb-3 d-style dh-zoom-2">
+                <a href="#" class="text-white f-n-hover-3 text-200 no-underline">
+                  Home
+                </a>
+              </li>
+
+              <li class="mb-3 d-style dh-zoom-2">
+                <a href="#" class="text-white f-n-hover-3 text-200 no-underline">
+                  About Us
+                </a>
+              </li>
+
+              <li class="mb-3 d-style dh-zoom-2">
+                <a href="#" class="text-white f-n-hover-3 text-200 no-underline">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+
+      </div><!-- .modal-body -->
+
+      <!-- Close button -->
+      <a href="#" class="px-3 py-0 no-underline bgc-transparent bgc-h-white-tp8 text-white position-tr mr-2 mt-1 mr-lg-5 mt-lg-3 radius-1" data-dismiss="modal" aria-label="Close">
+        <span class="fa-3x h-1">&times;</span>
+      </a>
+     
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->
+
+
+
+
+<!-- slides in from below navbar -->
+<div class="modal container modal-nb ace-aside aside-top aside-c aside-below-nav modal-dismiss" id="aside-top-2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content border-0 shadow bgc-white-tp1 radius-t-0">
+
+      <div class="modal-body">
+        <div>
+          <div class="text-center">
+              <h4 class="text-secondary-d3 text-130">
+                Custom Elements
+              </h4>
+          </div>
+
+          <div class="mt-3 text-center">
+              <button type="button" class="btn btn-xs btn-app btn-orange radius-1 border-2 px-35 text-center mb-2">
+                <i class="fa fa-cog fa-2x d-block mb-3"></i>
+                <span class="mt-2 text-600">
+                  Settings
+                </span>
+              </button>
+
+              <button type="button" class="btn btn-xs btn-app btn-blue radius-1 border-2 px-45 text-center mb-2">
+                <i class="fa fa-edit fa-2x d-block mb-3"></i>
+                <span class="mt-2 text-600">
+                  Edit
+                </span>
+              </button>
+
+              <button type="button" class="btn btn-xs btn-app btn-green radius-1 border-2 px-45 text-center mb-2">
+                <i class="fa fa-print fa-2x d-block mb-3"></i>
+                <span class="mt-2 text-600">
+                  Print
+                </span>
+              </button>
+          </div>   
+        </div>
+      </div>
+
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->
+
+
+
+
+<!-- the draggable and resizable one -->
+<div class="modal container margin-3 modal-nb ace-aside aside-bottom aside-c aside-fade" id="aside-bottom-1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div id="draggable-1" class="modal-content border-1 border-y-3 brc-success-m2 shadow bgc-white-tp1">
+      <div class="modal-header p-0 border-0">
+         <a href="#" class="position-tr mr-n3 mt-n3 btn btn-sm btn-text-danger btn-light-warning border-2 brc-warning-tp2 radius-round px-2" data-dismiss="modal">
+           <i class="fa fa-times text-115 mx-1px"></i>
+         </a>
+      </div>
+
+      <div class="modal-body d-flex align-items-center justify-content-center">        
+        <div class="row">
+          <div class="col-12">
+              <div class="text-center font-bolder text-120">
+                  <span class="text-blue">Draggable</span>
+                  +
+                  <span class="text-purple">Resizable</span>
+              </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+ 
+  </div>
+</div>
+
+
+
+
+<!-- the blocking dialog -->
+<div class="modal d-style fade container container-plus ace-aside aside-bottom aside-r aside-offset align-items-end" id="aside-bottom-2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content border-0 bg-transparent">
+      <div class="modal-body border-2 brc-warning-m3 shadow bgc-white-tp2 radius-t-1">
+        <div class="row">
+          <div class="col-12">
+              <div style="height: 100px;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="aside-header align-self-center d-flex align-items-end">
+        <button type="button" class="v-n-show shadow btn px-3 py-2 btn-success radius-b-0" data-toggle="modal" data-target="#aside-bottom-2">
+            <i class="fas fa-chevron-up w-2"></i>
+        </button>
+        <button type="button" class="position-bl v-show shadow-sm btn px-3 py-2 btn-warning radius-b-0" data-toggle="modal" data-target="#aside-bottom-2">
+            <i class="fa fa-times w-2"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- the cookie dialog -->
+<div class="modal modal-nb ace-aside aside-bottom aside-c" id="aside-cookie" tabindex="-1" role="dialog" aria-hidden="false">
+
+  <div class="modal-dialog" style="width: 480px;" role="document">
+    <div class="modal-content mb-3 shadow bgc-white-tp1 radius-2px border-1 border-t-3 brc-primary-m2">
+      <div class="modal-body text-center">
+        <i class="fas fa-cookie-bite fa-3x text-brown-m1"></i>
+        <div class="text-secondary-d2 mt-3 text-110">
+            Sample dialog for "We use cookies on this site".
+        </div>
+      </div>
+
+      <div class="modal-footer bgc-secondary-l4">
+          <button type="button" class="btn btn-white btn-bold" data-dismiss="modal">
+              Settings
+          </button>
+          <button type="button" class="btn btn-primary btn-bold px-35" data-dismiss="modal">
+              Accept &amp; Continue
+          </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- the conversations / Customer support dialog -->
+<div class="modal modal-nb ace-aside aside-bottom aside-r aside-fade aside-offset aside-shown-above-nav" id="aside-support" tabindex="-1" role="dialog" aria-hidden="false">
+  
+  <div class="modal-dialog mr-2" style="width: 480px;" role="document">
+    <div class="modal-content border-0 bgc-transparent mb-4 radius-1 shadow">
+      <div class="modal-body bg-transparent p-0">
+        {{> page/conversation}}
+      </div>
+    </div>
+
+    <!-- the button that toggle modal -->
+    <div class="aside-header fade position-br mb-5 d-flex align-items-center">
+        <div  style="cursor:pointer;" class="animation-appear d-none d-md-block shadow py-2 pl-3 pr-4 radius-round bg-white border-2 brc-info-tp1"  data-toggle="modal" data-target="#aside-support">
+         <div style="max-width: 220px;" class="text-95 pt-1 text-secondary-d3">
+            <img src="assets/image/user.jpg" class="mr-2 float-left radius-round border-1 shadow-sm brc-primary-tp2" alt="User avatar" />
+             Hey there, if you want to talk, I'm available
+             <span class="fa-stack w-auto mt-n2px ">
+                <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                <i class="fas fa-smile-wink text-warning-m2 text-125 fa-stack-1x"></i>
+             </span>
+         </div>                 
+        </div>
+
+        <button type="button" class="shadow ml-2 btn btn-info radius-round mw-auto p-3"  data-toggle="modal" data-target="#aside-support">
+           <i class="fas fa-headset text-150 px-2px"></i>
+        </button> 
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- the hoverable 4 button menu on right -->
+<div class="modal modal-nb ace-aside aside-right aside-offset aside-m aside-hover" id="aside-tools" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 240px;">
+     <div class="modal-content visible radius-l-2 radius-r-0 bgc-white-tp2 overflow-hidden border-0 shadow bgc-whitep-tp1 h-auto">
+       <div class="modal-body pl-2 pr-1 py-2">
+
+          <div class="btn-group btn-group-vertical w-100" >
+            <button class="btn btn-outline-lightgrey btn-h-lighter-green btn-a-light-green border-0 text-left radius-1 mb-2 shadow-none">
+              <i class="fas fa-sliders-h text-green text-120 w-4"></i>
+              <span class="text-95 font-bolder">Open Settings</span>
+            </button>
+
+            <button class="btn btn-outline-lightgrey btn-h-lighter-purple btn-a-light-purple border-0 text-left radius-1 mb-2 shadow-none">
+              <i class="fa fa-paper-plane text-purple text-120 w-4"></i>
+              <span class="text-95 font-bolder">Add New Post</span>
+            </button>
+
+            <button class="btn btn-outline-lightgrey btn-h-lighter-blue btn-a-light-blue border-0 text-left radius-1 mb-2 shadow-none">
+              <i class="fa fa-search text-blue text-120 w-4"></i>
+              <span class="text-95 font-bolder">Advanced Search</span>
+            </button>
+
+            <button class="btn btn-outline-lightgrey btn-h-lighter-orange btn-a-light-orange border-0 mr-0 text-left radius-1 mb-0 shadow-none">
+              <i class="fa fa-bell icon-animated-vertical text-orange-d2 text-120 w-4"></i>
+              <span class="text-95 font-bolder">Notifications</span>
+              <span class="text-danger-m2 text-90 font-bolder float-right">+3</span>
+            </button>
+          </div>
+
+      </div>
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div><!-- .ace-aside -->

@@ -1,0 +1,300 @@
+$jqgrid-title-margin: 0.75rem;
+
+$jqgrid-cell-padding: $table-cell-padding;
+
+$jqgrid-separator-color: bgc-color('secondary', 'm1');
+$jqgrid-searchtoolbar-border: bgc-color('grey', 'l1');
+
+$jqgrid-th-sort-bg: bgc-color('yellow', 'm3');
+$jqgrid-th-sort-color: rgba(0, 0, 0, 0.73);
+
+$jqgrid-group-text: text-color('blue', 'd1');;
+$jqgrid-group-border: bgc-color('blue', 'm2');
+
+$jqdialog-row-border: bgc-color('secondary', 'l1');
+
+
+@if $plugin-jqgrid == true {
+
+ .ui-jqgrid {
+	table { 
+		border-collapse: collapse;
+	}
+	
+	.ui-jqgrid-view,
+	.ui-paging-info,
+	.ui-pg-table,
+	.ui-pg-selbox {
+		font-size: $jqgrid-font-size;
+	}
+
+	.ui-jqgrid-view .btn,
+	.ui-jqgrid-pager .btn {
+		font-size: $jqgrid-btn-font-size;
+	}
+
+	.ui-jqgrid-title , .ui-jqgrid-title-rtl {
+		margin: 0 $jqgrid-title-margin;
+	}
+
+	.disabled {
+		opacity : 0.35;
+	}
+
+	///
+	.jqgfirstrow td {
+		padding: 0 !important;
+	}
+
+	///
+	.ui-jqgrid-bdiv tr > td:last-child {
+		border-right-width: 0;	
+	}
+
+	@include media-breakpoint-down(xs) {
+		.ui-pg-selbox {
+			display: block;
+		}
+	}
+ }
+
+
+ .ui-jqgrid {
+	.ui-jqgrid-titlebar,
+	.ui-jqgrid-errorbar {
+		font-size: $jqgrid-title-font-size;
+	}
+ }
+
+
+ .ui-jqgrid-btable {
+	input:not([type=checkbox]), textarea, select {
+		width: auto;
+		max-width: 100%;
+
+		border: 1px solid $input-border;
+		border-radius: $input-radius;
+		
+		&:hover {
+			border-color: $input-hover-border;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgba($input-focus-border, 0.2);
+			color: $input-focus-color;
+			border-color: $input-focus-border;
+			background-color: $input-focus-bg;
+		}
+	}
+ }
+
+
+ .ui-jqgrid {
+	tr.ui-row-ltr td,
+	tr.ui-row-rtl td {
+		padding: $jqgrid-cell-padding;
+	}
+
+	.ui-pg-button .ui-separator {
+		margin-left: 0.25rem;
+		margin-right: 0.25rem;
+		border-color: $jqgrid-separator-color;
+	}
+ }
+
+
+  //sorting
+ .ui-jqgrid {
+	.ui-jqgrid-sortable {
+		padding: 0.75rem 0;
+	}
+
+	th[aria-selected=true] {
+		background-color: $jqgrid-th-sort-bg !important;
+		color: $jqgrid-th-sort-color !important;
+	}
+
+	.s-ico {
+		position: absolute;
+		width: auto;
+		height: auto;
+		margin: 0;
+	
+		right: 0.125rem;
+
+		> .ui-grid-ico-sort {
+			height: 0.45rem;	
+			line-height: 0.5;
+			font-size: 1rem;
+		}
+	}	
+ }
+
+
+
+ // table scrollbar
+ .ui-jqgrid .ui-jqgrid-bdiv {	
+	box-shadow: 1px 0 0 0 rgba(0,0,0,0.075) , -1px 0 0 0 rgba(0,0,0,0.075);
+
+	overflow: auto;	
+
+	scrollbar-width: thin;
+	scrollbar-color: $scrollbar-grey-thumb $scrollbar-grey-track;
+	
+	overflow: overlay;//chrome
+	-ms-overflow-style: -ms-autohiding-scrollbar;//IE
+
+	@media (hover: hover) {
+		&::-webkit-scrollbar {
+			width: 7px;
+		}
+		&::-webkit-scrollbar-track {
+			background-color: $scrollbar-grey-track;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $scrollbar-grey-thumb;
+		}
+	}
+ }
+
+
+ // dialogs
+ .ui-jqdialog {
+	.ui-jqdialog-titlebar {
+		font-size: $jqgrid-title-font-size;
+	}
+
+	.FormData {
+		border-bottom: 1px dotted $jqdialog-row-border;
+		&:nth-last-child(2) {
+			border-bottom: none;
+		}		
+	}
+
+	pre {
+		font-size: 1rem;
+	}
+
+	&[id*="alertcnt_"]{
+		padding: 0.5rem 0.75rem;
+	}
+
+	.ui-resizable-handle {
+		bottom: 1px;
+		right: 3px;
+	}
+
+	//search dialog
+	.searchFilter {
+		td {
+			padding: 0.375rem 0;
+		}
+	
+		.queryresult {
+			margin-bottom: 0.75rem;
+	
+			td.query {
+				padding: 0.5rem 0.75rem;
+				border-bottom: 2px solid bgc-color('grey', 'l1');
+				background-color:#f3f3f3;
+	
+				&:empty {
+					display:none;
+				}
+			}
+		}
+	}
+ }
+
+
+ @include media-breakpoint-down(sm) {
+	.ui-jqdialog {
+		max-width: 90vw !important;
+		max-height: 90vh !important;
+		position: fixed;
+		top: 50% !important;
+		left: 50% !important;
+		transform: translate(-50%, -50%);
+	}
+ }
+
+
+
+
+ //nav & pagination
+ .ui-pg-table.navtable {
+	float: none !important;
+ }
+
+ .ui-pager-control > .ui-pg-table > tbody > tr > td {
+	width: auto !important;
+
+	@include media-breakpoint-down(md) {
+		display: block;
+		text-align: center;
+
+		margin: 0.5rem;
+		min-height: 1.75rem;
+
+		scrollbar-width: none;
+		overflow-y: auto;
+	}
+ }
+
+
+
+ // subgrid
+ .ui-subgrid {
+	.ui-jqgrid-htable .ui-jqgrid-labels {
+		background-color: transparent;
+	}
+
+	.ui-jqgrid-bdiv {
+		max-height: 10rem;
+	} 
+
+	.subgrid-data .ui-jqgrid {
+		background-color: white;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	}
+ }
+
+
+ //search & filter toolbar
+ .ui-jqgrid .ui-jqgrid-hdiv .ui-search-toolbar {
+	border-top: 1px solid $jqgrid-searchtoolbar-border;
+
+	.ui-th-column {
+		border-top-width: 0
+	}
+
+	.ui-search-input .form-control:not([size]):not([multiple]) {
+		min-height: 1.75rem;
+	}
+ }
+
+ .fm-button.btn-default .fm-button-text , .fm-button.btn-secondary .fm-button-text {
+	color: #fff;
+ }
+ .fm-button:only-of-type {
+	margin: 0 0.25rem;
+ }
+
+
+ // grouping
+ .ui-jqgrid .ui-jqgrid-bdiv .jqgroup {
+	background-color: #fff !important;
+ }
+ .ui-jqgrid .ui-jqgrid-bdiv .jqgroup > td {
+	color: $jqgrid-group-text;
+	border-left: 3px solid $jqgrid-group-border !important;
+ }
+
+ //IE fix
+ *::-ms-backdrop,
+ .ui-jqgrid .jqgrow > td > .cbox {
+	width: auto;
+	height: auto;
+ }
+
+}//@if plugin

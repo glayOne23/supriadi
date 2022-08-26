@@ -1,0 +1,25 @@
+<div class="sidebar-inner align-items-xl-end border-b-1 brc-grey-l2 border-r-0 shadow-none">
+  
+  <div class="sidebar-section d-none d-xl-block align-self-center">
+    <button type="button" class="d-style btn align-self-center ml-2 btn-outline-grey collapsed" data-toggle="sidebar" data-toggle-class="collapsed-h" data-target="#sidebar2" aria-controls="sidebar2" aria-expanded="false" aria-label="Toggle sidebar">
+      <i class="fa fa-minus d-n-collapsed"></i>
+      <i class="fa fa-plus d-collapsed"></i>
+    </button><!-- desktop sidebar toggler button -->
+  </div>
+
+
+  <div class="d-xl-none text-right position-tr" style="z-index: 5;">
+    <button type="button" class="btn collapsed btn-light-red radius-0" data-toggle-mobile="sidebar" data-target="#sidebar2" aria-controls="sidebar2" aria-expanded="false" aria-label="Toggle sidebar">
+      <i class="fa fa-times"></i>
+    </button><!-- mobile sidebar toggler button -->
+  </div>
+
+
+  <nav aria-label="Main" class="ml-xl-3 flex-grow-1 flex-xl-grow-0 d-xl-flex flex-xl-row ace-scroll" data-ace-scroll="{}">
+      <ul class="nav w-auto has-active-border active-on-right active-on-top">
+      {{#each sidebarItems}}
+        {{> layout/_commons/sidebar-item}}
+      {{/each}}
+      </ul>
+  </nav>
+</div>

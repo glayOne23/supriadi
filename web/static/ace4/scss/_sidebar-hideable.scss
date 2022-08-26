@@ -1,0 +1,40 @@
+@if $hideable == true {
+
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+    //hideable sidebar ... sidebar is hidden instead of minimized
+    .sidebar.hideable {
+        transition-duration: $hideable-transition-duration;
+
+        .sidebar-inner {
+            @include transition(width $hideable-transition-duration, visibility $hideable-transition-duration);
+        }
+
+        &:not(.collapsed):not(.toggling) {
+            .ace-scroll,
+            .sidebar-section,
+            .sidebar-section-item,
+            nav, .nav
+            {
+                width: inherit;
+            }
+        }
+        
+        &.collapsed { 
+            width: 0;    
+            overflow: hidden;
+
+            .sidebar-inner {
+                visibility: hidden;
+                width: 0;
+                overflow: hidden;
+
+                transition-delay: 0ms, $hideable-transition-duration;
+                transition-duration: $hideable-transition-duration, 0ms; 
+            }
+        }
+    }
+   
+ }//media query
+
+
+}//@if $hideable == true

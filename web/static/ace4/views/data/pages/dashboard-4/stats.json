@@ -1,0 +1,32 @@
+[
+ {
+  "color" : "success",
+  "textColor": "success",
+  "icon" : "fas fa-chart-line",
+  "number" : "~$450k",
+  "content" : ["monthly profit"]
+ } ,
+ {
+  "color" : "blue",
+  "textColor": "blue",
+  "icon" : "fab fa-twitter",
+  "number" : "640",
+  "content" : ["new followers"],
+  "stat-success" : "12%"
+ } ,
+ {
+  "color" : "purple",
+  "textColor": "purple",
+  "icon" : "far fa-user",
+  "number" : "433",
+  "content" : ["new members"],
+  "stat-important" : "4%"
+ } ,
+ {
+  "color" : "danger",
+  "textColor": "danger",
+  "icon" : "far fa-calendar-check",
+  "number" : "16",
+  "content" : ["events"]
+ }
+]

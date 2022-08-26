@@ -1,0 +1,690 @@
+$dropdown-caret-size: 0.5rem;
+
+.dropdown-toggle::after,
+.dropup .dropdown-toggle::after,
+.dropleft .dropdown-toggle::before,
+.dropright .dropdown-toggle::after {
+    display: none;//hide bootstrap's caret
+}
+
+
+.dropdown-item {
+    width: auto;
+    line-height: 2rem;
+    font-size: $dropdown-font-size;
+    margin: 0.125rem;
+
+    &:not(.btn) {
+        color: $dropdown-text;
+
+        &:hover, &:focus {        
+            background-color: $dropdown-hover-bg;
+            color: $dropdown-hover-text;
+        }
+        &:active, &.active {
+            background-color: $dropdown-active-bg;
+            color: $dropdown-active-text;
+        }
+    }
+
+    &.btn {//.btn class used in dropdown-items
+        padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+        width: auto;
+        margin: 1px;
+
+        font-size: $dropdown-btn-font-size;
+    }
+}
+.dropdown-menu[class*="bgc-"]:not([class*="-m"]):not([class*="-l"]):not([class*="bgc-yellow"]):not([class*="bgc-light"]) .dropdown-item:not(:hover) {
+    color: #fff;
+}
+
+.dropdown-item > a {
+    color: inherit;
+    text-decoration: none;
+    
+    display: block;
+    width: 100%;
+
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+}
+li.dropdown-item {
+    padding: 0 !important;
+}
+
+
+//.dropdown-hover
+.page-content .dropdown-hover {
+    position: relative;
+
+    > .dropdown-menu {
+        display: block;
+
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-0.5rem);
+
+        @include transition(opacity $dropdown-hover-transition $dropdown-hover-delay, transform $dropdown-hover-transition $dropdown-hover-delay, visibility 0ms $dropdown-hover-delay + $dropdown-hover-transition);
+    }
+   
+    > .dropdown-menu {
+        top: 100%;
+        left: 0;
+    }
+
+    &.dropright > .dropdown-menu {
+        left: 100%;
+        top: 0;
+    }
+    &.dropup > .dropdown-menu {
+        bottom: 100%;
+        top: auto;
+    }
+    &.dropleft > .dropdown-menu {
+        left: auto;
+        right: 100%;
+        transform: translateX(0.5rem);
+    }
+
+    &:hover > .dropdown-menu , .dropdown-menu.show {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+
+        transition-delay: 0ms;
+    }
+}
+//when mouse over another menu item, hide previous one faster
+.page-content .dropdown-menu:hover > .dropdown-hover:not(:hover) > .dropdown-menu {
+    transition-delay: 50ms, 50ms, 50ms + $dropdown-hover-transition;
+}
+
+@include media-breakpoint-down(xs) {
+    .dropdown-item.dropdown-hover > .dropdown-menu {
+        left: 0 !important;
+        right: auto !important;
+        top: 100% !important;
+        bottom: auto !important;
+    }
+}
+
+
+//.dropdown-hover inside navbar should only work in desktop view
+@include media-breakpoint-up($navbar-desktop-min-width) {
+    .navbar .dropdown-hover {
+        position: relative;
+        
+        > .dropdown-menu {
+            display: block;
+    
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-0.5rem);
+    
+            @include transition(opacity $dropdown-hover-transition $dropdown-hover-delay, transform $dropdown-hover-transition $dropdown-hover-delay, visibility 0ms $dropdown-hover-delay + $dropdown-hover-transition);
+        }
+
+        &.dropup > .dropdown-menu {
+            bottom: 100%;
+            top: auto;
+        }
+        
+        &:hover > .dropdown-menu , .dropdown-menu.show {
+            visibility: visible;
+            opacity: 1;
+            transform: none;
+
+            transition-delay: 0ms;
+        }
+    }
+}
+
+
+
+
+.dropdown-menu {
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.125rem;
+
+    border-radius: 0.25rem;
+    border-color: bgc-color('secondary', 'l1');
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    &.dropdown-caret {
+        &::before, &::after {
+            display: block;
+            content: "";
+            position: absolute;
+
+            top: -$dropdown-caret-size;
+            left: 12px;
+
+            width: 0;
+            height: 0;
+     
+            border-bottom: $dropdown-caret-size solid rgba(0,0,0,0.3);
+            border-right: $dropdown-caret-size solid transparent;
+            border-top: 0;
+            border-left: $dropdown-caret-size solid transparent;
+        }
+        &::after {
+            border-bottom-color: #fff;
+        }
+        &::before {
+            margin-top: -1px;
+            border-bottom-color: inherit;
+        }
+
+        &.dropdown-menu-right {
+            &::before, &::after {
+                left: auto;
+                right: 12px;
+            }
+        }
+
+        &.dropdown-caret-center {
+            &::before, &::after {
+                left: calc(50% - #{$dropdown-caret-size});
+            }
+        }
+    }
+}
+.dropdown-menu[x-placement^="top"] {
+    &.dropdown-caret {
+        &::before, &::after {
+            top: auto;
+            bottom: -$dropdown-caret-size;
+
+            border-top: $dropdown-caret-size solid rgba(0,0,0,0.3);
+            border-bottom: 0;
+        }
+        &::after {
+            border-top-color: #fff;
+        }
+        &::before {
+            margin-bottom: -1px;
+            margin-top: 0;
+            border-top-color: inherit;
+        }
+    }
+}
+
+.dropdown-menu[x-placement^="right"] {
+    &.dropdown-caret {
+        &::before, &::after {
+            top: 12px;
+            left: -$dropdown-caret-size;
+
+            border-right: $dropdown-caret-size solid rgba(0,0,0,0.3);
+            border-top: $dropdown-caret-size solid transparent;
+            border-left: 0;
+            border-bottom: $dropdown-caret-size solid transparent;
+        }
+        &::after {
+            border-right-color: #fff;
+        }
+        &::before {
+            margin-left: -1px;
+            margin-top: 0;
+            border-right-color: inherit;
+        }
+    }
+}
+.dropdown-menu[x-placement^="left"] {
+    &.dropdown-caret {
+        &::before, &::after {
+            top: 12px;
+            right: -$dropdown-caret-size;
+            left: auto;
+
+            border-left: $dropdown-caret-size solid rgba(0,0,0,0.3);
+            border-top: $dropdown-caret-size solid transparent;
+            border-right: 0;
+            border-bottom: $dropdown-caret-size solid transparent;
+        }
+        &::after {
+            border-left-color: #fff;
+        }
+        &::before {
+            margin-right: -1px;
+            margin-top: 0;
+            border-left-color: inherit;
+        }
+    }
+}
+
+
+
+
+
+//animated dropdowns
+.dropdown-animated:not([ngbdropdownmenu]) {
+    display: block;
+    visibility: hidden;
+    opacity: 0;    
+    
+    // will-change: transform;   
+
+    transform-origin: top center;
+
+    @include transition(opacity $dropdown-transition, transform $dropdown-transition, visibility 0s);
+    transition-delay: 0s, 0s, $dropdown-transition !important;
+
+    &[x-placement^="bottom"] {
+        top: 100% !important;
+        bottom: auto !important;
+    }
+    &[x-placement^="top"] {
+        bottom: 100% !important;
+        top: auto !important;
+        transform-origin: bottom center;
+    }
+
+    &.dropdown-menu-right {
+        left: auto !important;
+        right: 0 !important;
+    }
+
+    &:not(.show) {
+        transform: scaleY(0) !important;//use !important to override BS's inline styles
+        pointer-events: none;
+    }
+   
+    &.animated-1 {//another type of animation
+        transform: translateY(0) scale(0.6);// !important;
+    }
+    &.animated-2 {//another type of animation       
+        @include transition(opacity $dropdown-transition, margin-top $dropdown-transition, visibility 0s);
+
+        &:not(.show) {//not xplacement top?
+           margin-top: -1rem !important;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        transform: none !important;
+    
+        transition-delay: 0ms, 0ms, 0ms !important;
+    }
+}
+
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+  .dropdown.dropdown-hover:hover > .dropdown-menu.dropdown-animated {
+    opacity: 1;
+    visibility: visible;
+    transform: none !important;
+
+    transition-delay: 0ms, 0ms, 0ms !important;
+
+    pointer-events: all;
+  }
+}
+
+
+
+// Ng Bootstrap somehow omits/ignores the transition, so we use an animation instead
+@keyframes dropdownAnimated {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes dropdownAnimated1 {
+    from {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes dropdownAnimated2 {
+    from {
+        margin-top: -1rem;
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {        
+        margin-top: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes dropdownAnimated3 {
+    from {
+        margin-top: -1rem;
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {        
+        margin-top: 0.25rem;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.dropdown-animated[ngbdropdownmenu] {
+    @include transition(none !important);
+    transform: scaleY(0);
+    opacity: 0;
+    visibility: hidden;
+
+    transform-origin: top center;
+
+    &[x-placement^="bottom"] {
+        top: 100% !important;
+        bottom: auto !important;
+    }
+    &[x-placement^="top"] {
+        bottom: 100% !important;
+        top: auto !important;
+        transform-origin: bottom center;
+    }
+    &.dropdown-menu-right {
+        left: auto !important;
+        right: 0 !important;
+    }
+
+
+    &:not(.show) {
+        pointer-events: none;
+    }
+    &.show {
+        animation: dropdownAnimated $dropdown-transition;
+        animation-fill-mode: forwards;
+    }
+
+    &.animated-1.show {
+        animation: dropdownAnimated1 $dropdown-transition;
+        animation-fill-mode: forwards;
+    }
+
+    &.animated-2.show {
+        transform: none !important;// override inline styles
+        animation: dropdownAnimated2 $dropdown-transition;
+        animation-fill-mode: forwards;
+    }
+    &.animated-3.show {
+        transform: none !important;// override inline styles
+        animation: dropdownAnimated3 $dropdown-transition;
+        animation-fill-mode: forwards;
+    }
+}
+
+
+
+
+
+@if $mobile-dropdowns == true {
+
+ @keyframes dropdownSlideUp {
+    from {
+        transform: translate(0, 100%);
+        display: none;
+    }
+    to {
+        transform: translate(0, 0);
+        display: block;
+    }
+ }
+
+ @keyframes dropdownSlideCenter {
+    from {
+        transform: translate(0, 200%);
+        display: none;
+    }
+    to {
+        transform: translate(0, -50%);
+        display: block;
+    }
+ }
+
+ @keyframes dropdownAppearCenter {
+    from {
+        transform: translate(0, -50%) scale(0.5);
+        display: none;
+    }
+    to {
+        transform: translate(0, -50%);
+        display: block;
+    }
+ }
+
+
+
+ .dropdown-inner {
+    background-color: inherit;
+    padding: inherit;
+
+    
+    max-height: calc(100% - 2rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    overscroll-behavior: none;
+ }
+
+ .dropdown-menu.dd-slide-up {
+    > .dropdown-inner {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%; //for IE
+
+        margin: 0 auto;
+        visibility: hidden;
+    }
+    
+
+    &.show > .dropdown-inner {
+        animation-name: dropdownSlideUp;
+        animation-duration: $dropdown-transition;
+        animation-fill-mode: forwards;
+
+        visibility: visible;
+    }
+ }
+
+ .dropdown-menu.dd-appear-center {
+    > .dropdown-inner {
+        position: fixed;
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        max-width: calc(100% - 1rem);
+
+
+        margin: 0 auto;
+
+        width: 240px;//or use classes like w-50
+
+
+        visibility: hidden;
+    }
+
+    &.show > .dropdown-inner {
+        animation-name: dropdownAppearCenter;
+        animation-duration: $dropdown-transition * 0.6;
+        animation-fill-mode: forwards;
+
+        visibility: visible;
+    }
+ }
+
+
+ .dropdown-menu.dd-slide-center {
+    > .dropdown-inner {
+        position: fixed;
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        max-width: calc(100% - 1rem);
+
+
+        margin: 0 auto;
+
+        width: 240px;//or use classes like w-50
+
+
+        visibility: hidden;
+    }
+
+    &.show > .dropdown-inner {
+        animation-name: dropdownSlideCenter;
+        animation-duration: $dropdown-transition * 0.6;
+        animation-fill-mode: forwards;
+
+        visibility: visible;
+    }
+ }
+
+ @if $enable-prefers-reduced-motion-media-query {
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-menu.dd-slide-up.show > .dropdown-inner,
+    .dropdown-menu.dd-appear-center.show > .dropdown-inner,
+    .dropdown-menu.dd-slide-center.show > .dropdown-inner {
+        animation-duration: 0ms;
+    }
+  }
+ }
+
+
+ //dd-backdrop
+ .dd-backdrop {
+    &::before {
+        content: "";
+        display: block;
+
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        background-color: rgba(0, 0, 0, $backdrop-opacity);
+        z-index: $zindex-modal-backdrop;
+    
+        visibility: hidden;
+        opacity: 0;
+    
+        @include transition(opacity $dropdown-transition, visibility 0s);
+        transition-delay: 0s, $dropdown-transition;
+    }
+
+    &.show::before {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+    }
+    &.show > .dropdown-toggle {
+        position: relative;
+    }
+    &.show .dropdown-menu {
+        z-index: $zindex-modal;
+    }
+ }
+
+ /////////////////////////////////   
+ .dropdown-menu[class*="dd-slide-"]:not([class*="dd-slide-none-"]) {
+    transform: none !important;
+    will-change: unset !important;
+    visibility: hidden;
+
+    &.show > .dropdown-inner {
+        visibility: visible;
+    }
+
+    &.dropdown-caret {
+        &::before, &::after {
+            display: none !important;
+        }
+    }
+ }
+
+
+ @each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu.dd-slide-none#{$infix} {
+        &.show {
+            z-index: $zindex-dropdown;
+        }
+        > .dropdown-inner {
+            // we can simply use just `display:contents`, but browser support is not the best
+            display: contents;
+
+            position: static;
+            animation: none !important;
+
+            width: auto;
+            max-width: none;
+            max-height: none;
+            margin: auto;
+
+            overflow: visible;
+
+
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0;
+
+            visibility: inherit;
+        }
+    }
+    
+
+    .dd-backdrop-none#{$infix}::before {
+        display: none;
+    }
+
+  }//@media
+ }//@each
+
+
+ @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-down($breakpoint) {
+        $infix: breakpoint-infix( breakpoint-next($breakpoint), $grid-breakpoints);
+
+        .dropdown-menu.dd-slide-none#{$infix} {
+            will-change: unset !important;
+            visibility: hidden !important;
+
+            &.show, &:not(.show) {//to add CSS selector's weight to override (:not([ngbdropdownmenu]) && [ngbdropdownmenu]] selectors)
+                transform: none !important;// for :not([ngbdropdownmenu]
+                animation: none !important; //for ngbdropdownmenu
+
+                opacity: 1 !important;
+            }
+
+            &.dropdown-caret {
+                &::before, &::after {
+                    display: none !important;
+                }
+            }
+        }
+    }//@media
+ }//@each
+
+
+}//@if mobile-dropdowns

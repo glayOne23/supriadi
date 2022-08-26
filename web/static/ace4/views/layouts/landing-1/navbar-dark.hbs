@@ -1,0 +1,138 @@
+<nav class="navbar navbar-expand-lg navbar-darkblue" id="navbar-dark">
+ <div class="navbar-inner">
+  <div class="container">
+
+
+    <button type="button" class="navbar-toggler btn btn-burger burger-times static collapsed d-flex d-lg-none ml-2" data-toggle="collapse" data-target="#navbarMenu1-dark" aria-controls="navbarMenu1-dark" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="bars text-white"></span>
+    </button><!-- mobile navbar toggler button -->
+
+
+    <div class="navbar-intro justify-content-xl-between bgc-transparent">
+        <a class="navbar-brand text-white text-180" href="#">
+            <i class="fa fa-leaf text-105 text-green-l5 mr-1"></i>
+            <span>ACE</span>
+            <span class="text-70">Application</span>            
+        </a><!-- /.navbar-brand -->  
+    </div><!-- /.navbar-intro -->
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop " id="navbarMenu1-dark">
+      
+      <div class="navbar-nav">
+        <ul class="nav nav-compact-3">
+
+            <li class="nav-item pos-rel dropdown dropdown-mega dropdown-hover">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-list-alt mr-2 d-lg-none"></i>
+                    Mega
+                    <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="p-0 dropdown-menu dropdown-center dropdown-lg border-0 shadow radius-2 mt-1 mt-lg-3">
+                    {{> layout/landing-1/megamenu}}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-magic mr-15"></i>
+                    Features
+                </a>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="nav-link" href="#">
+                    Contact
+                </a>
+            </li>
+
+            <li class="nav-item ml-xl-2">
+                <a class="d-none d-lg-block nav-link h-auto py-15 mt-1 bgc-black-tp8 bgc-h-black-tp7 text-white radius-1" href="#">
+                    Special Offer
+                </a>
+                
+                <a class="d-lg-none nav-link" href="#">
+                    ** Special Offer **
+                </a>
+            </li>
+        </ul><!-- /.navbar-nav menu -->
+      </div><!-- /.navbar-nav -->
+
+    </div><!-- /.navbar-menu.navbar-collapse -->
+
+
+    <button type="button" class="d-style btn btn-burger static collapsed mr-2 px-4 navbar-toggler d-flex d-lg-none" data-toggle="collapse" data-target="#navbarMenu2-dark" aria-controls="navbarMenu2-dark" aria-expanded="false" aria-label="Toggle navbar menu">
+        <i class="fa fa-caret-down d-collapsed text-80"></i>
+        <i class="fa fa-caret-up d-n-collapsed text-80"></i>
+
+        <i class="fa fa-user ml-2"></i>        
+    </button><!-- mobile navbar toggler button -->
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu2-dark">
+      <div class="navbar-nav">
+        <ul class="nav nav-compact">
+
+            <li class="nav-item dropdown px-lg-2 d-lg-flex flex-column justify-content-center">
+                <a class="d-none d-lg-block h-auto btn btn-outline-white btn-bold radius-round border-2 dropdown-toggle px-2 px-xl-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    Login
+                </a>
+
+                <a class="d-lg-none nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-caret-right bgc-white text-blue radius-round py-2 px-3 mr-2"></i>
+                    Login
+                </a>
+                
+                <div style="width: 20rem;" data-display="static" class="dropdown-menu dropdown-menu-right overflow-hidden dropdown-animated animated-2 shadow radius-1 p-2 p-lg-0 border-0 mt-lg-n1 mr-lg-n2">
+                 {{> layout/landing-1/navbar-login}}
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-lg-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="text-140 fa fa-search"></i>
+                    <span class="d-lg-none ml-2">
+                        Open Search
+                    </span>
+                </a>
+                <div style="width: 20rem;" data-display="static" class="dropdown-menu dropdown-menu-right dropdown-animated animated-2 dropdown-caret radius-1 p-2 p-lg-0 border-0 mt-lg-n1 mr-lg-n2 shadow">
+                   {{> layout/landing-1/navbar-search}}
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="text-140 far fa-heart text-yellow-l3"></i>
+                    <span class="d-lg-none ml-2 text-yellow-l3">
+                        Bookmark
+                    </span>
+                </a>
+            </li>
+
+
+            <li class="nav-item px-3 py-3">
+                <span class="text-white p-2 border-b-3 brc-white-tp5 bgc-h-white-tp9 radius-t-1">
+                    <i class="fa fa-phone fa-flip-horizontal text-125 text-green-l4 mr-1"></i>
+
+                    <span class="text-90 ml-1 ml-lg-0 d-lg-none d-xl-inline-block">
+                        CALL NOW
+                    </span>
+
+                    <span class="ml-1 text-600 letter-spacing-1 d-lg-none d-xl-inline-block">
+                        11-22-33
+                    </span>
+                </span>
+            </li>
+
+        </ul>
+      </div>
+    </div><!-- .navbar-menu -->
+
+
+
+  </div><!-- /.container -->
+ </div><!-- /.navbar-inner -->
+</nav>

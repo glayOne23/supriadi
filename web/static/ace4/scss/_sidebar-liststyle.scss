@@ -1,0 +1,476 @@
+.sidebar {
+    .nav {
+        flex-direction: column;
+    }
+    
+    .nav-item, .nav-link {
+        position: relative;
+    }
+    .nav-link:focus {
+        outline: none;
+    }
+
+    //navigation links
+    .nav > .nav-item > .nav-link {
+        display: flex;
+        align-items: center;
+
+        min-height: map-get($sidebar-common, 'link-height');
+        @include iefix(height, map-get($sidebar-common, 'link-height'));
+        padding: map-get($sidebar-common, 'link-padding');
+      
+        text-shadow: none;
+        text-decoration: none;
+        
+        white-space: nowrap;
+
+        @include transition(background-color $sidebar-link-transition, color $sidebar-link-transition);
+
+        //the border on left displayed on hover
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+
+            left: 1px;
+            top: 0;
+            bottom: 0;
+
+            border: 0px solid transparent;
+            border-width: 0 0 0 $sidebar-active-border-width;
+            @include transition(border-color $sidebar-link-transition);
+        }
+    }
+    .nav.active-on-right > .nav-item > .nav-link::before {
+        left: auto !important;
+        right: 1px;
+    }
+
+
+    //first level icon
+    .nav > .nav-item > .nav-link > .nav-icon {
+        width: 1.25rem;
+        margin-right: 0.75rem;
+        margin-left: 0.25rem;
+
+        &:not(.fadeinable) {
+            @include transition(color $sidebar-link-transition);
+        }
+
+        &.nav-icon-round {
+            width: 2.125rem;
+            height: 2.125rem;
+            margin-left: 0;
+            
+            border-radius: 2rem;
+            
+            color: #fff !important;
+            font-size: 1rem;
+
+            text-align: center;
+            line-height: 2;
+            padding-left: 1px;
+
+            //display: inline-flex;
+            //align-items: center;
+            //justify-content: center;
+        }
+    }
+
+    
+
+    .nav-text {        
+        flex-grow: 1;
+        white-space: normal;//otherwise it'll inherit 'nowrap' and long texts will go out of sidebar and get clipped
+        word-break: break-all;
+
+        margin-right: 3px;//0.25rem;//a little distance from .caret
+
+        display: flex;
+        align-items: center;
+        .badge {
+            margin-left: auto;
+        }
+    }
+
+
+    //first level submenu
+    .nav > .nav-item > .submenu {
+        position: relative;
+
+        > .submenu-inner {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+
+            > .nav-item:not(:last-child) {
+                margin-bottom: 1px;
+            }
+        }
+    }
+
+    .submenu-inner {
+        list-style-type: none;
+        
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+        overflow-y: hidden;//needed to fix weiredness of .nav-link (margin-top: 1px) & (margin-bottom: 1px) when collapsing/expanding!?!
+    }
+
+    //submenu level links
+    .submenu {
+        &.collapsing {
+            transition: $transition-collapse !important;
+            @if $enable-prefers-reduced-motion-media-query {
+                @media (prefers-reduced-motion: reduce) {
+                    transition: none !important; 
+                }
+            }
+        }
+        .nav-link {
+            min-height: map-get($sidebar-common, 'submenu-link-height');
+        }
+        .submenu .nav-link {
+           margin-top: 1px;
+           margin-bottom: 1px;
+        }
+        .nav-link {
+            padding: 0.625rem 0 0.75rem 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon {
+            margin-right: 0.25rem;
+            vertical-align: baseline;
+    
+            opacity: 0.85;
+        }
+
+        .nav-link:hover > .nav-icon,
+        .nav-item.active > .nav-link > .nav-icon {
+            opacity: 1;
+        }
+    }
+
+
+    // the submenu caret
+    .caret {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+    .nav-item > .nav-link > .caret {
+        @include transition(transform $subarrow-transition-duration, color $subarrow-transition-duration);
+    }
+    .nav-item.open > .nav-link > .caret {
+        transform: scaleX(-1);
+
+        &.rt-90, &[class*="-right"] {
+            transform: rotate(90deg);
+        }
+        &.rt-n90, &[class*="-left"] {
+            transform: rotate(-90deg);
+        }
+    }
+
+    // use .d-style and .d-n-collapsed/.d-collapsed instead
+    // caret can be optional icons toggled
+    //.nav-item:not(.open) > .nav-link > .caret.caret-hidden,
+    //.nav-item.open > .nav-link > .caret.caret-shown {
+        //transform: none;
+        //display: inline-block;
+    //}
+    //.nav-item.open > .nav-link > .caret.caret-hidden,
+    //.nav-item:not(.open) > .nav-link > .caret.caret-shown {
+        //transform: none;
+        //display: none;
+    //}
+
+    .submenu .caret {
+        margin-right: 1.5rem;
+    }
+
+    .nav > .nav-item.is-toggling:not(.open):not(.active):not(:hover) > .nav-link {
+        transition: none;
+    }
+
+}
+
+
+/////////////////
+
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+
+ @if $hoverable == true {
+  .sidebar.hoverable.collapsed {
+    .nav-item .nav-item > .nav-link {
+        padding-left: map-get($sidebar-light-base, 'hoverable-submenu-link-padding');
+        > .nav-text::before {
+            margin-left: 2px;
+        }
+    }
+
+    .nav > .nav-item > .nav-link > .caret {
+        display: none;
+    }
+
+    // hide the tree dotted lines
+    .nav > .nav-item > .submenu::before,
+    .nav-item .nav-item::before {
+        display: none;
+    }
+
+    // the first level .nav-text styling
+    .nav > .nav-item > .nav-link > .nav-text {
+        padding: 0 0.75rem;
+
+        color: map-get($sidebar-light-base, 'hoverable-nav-text-color');
+        background-color: map-get($sidebar-light-base, 'hoverable-nav-text-background');
+        
+        font-size: map-get($sidebar-light-base, 'hoverable-nav-text-font-size');
+        font-weight: $font-semibold;
+    }
+    .nav > .nav-item > .nav-link.dropdown-toggle > .nav-text {
+        cursor: default;
+    }
+
+    @if $sidebar-spaced == true {
+        &.sidebar-spaced:not(.toggling) {
+            .nav > .nav-item {
+                width: auto;
+                overflow: visible;
+                //margin-right: 0.75rem;
+
+                > .nav-link {
+                    border-radius: inherit;
+                    padding: 0;
+                    justify-content: center;
+
+                    > .nav-icon {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    .submenu {
+        background-color: map-get($sidebar-light-base, 'hoverable-submenu-background');
+    }
+  }
+ }//@if $hoverable == true
+
+
+
+
+ // the arrow connecting .nav-link to .submenu in (.sidebar-h, .sidebar-hover, .hoverable)
+ $arrow-size: map-get($sidebar-common, 'arrow-size');
+ .sub-arrow {
+    position: absolute;
+    visibility: hidden;
+
+    top: calc(50% - #{$arrow-size});
+    margin-top: -1px;
+
+    box-shadow: none;
+    border: none;
+
+    &::after, &::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+
+        height: 0;
+        width: 0;
+
+        border: $arrow-size solid transparent;
+    }
+    &::after {
+        border-right-color: map-get($sidebar-light-base, 'hoverable-nav-text-background');
+        right: -2px;
+    }
+    &::before {
+        border-right-color: map-get($sidebar-light-base, 'hoverable-submenu-border');
+        right: -1px;
+    }
+ }
+
+ .nav-item .nav-item .sub-arrow {
+    &::after {
+        border-right-color: map-get($sidebar-light-base, 'hoverable-submenu-background');
+    }
+ }
+ //when first level submenu is pulled up, the arrow isn't moved up, so the color should match ".submenu" instead of "nav-text"
+ .submenu-pullup .sub-arrow {
+    &::after {
+        border-right-color: map-get($sidebar-light-base, 'hoverable-submenu-background');
+    }
+ }
+
+ .sidebar.expandable:not(.sidebar-hover) , .sidebar.collapsed:not(.hoverable) {
+    .sub-arrow {
+        display: none !important;
+    }
+ }
+
+}//@media 
+
+
+
+
+
+// sidebar captions and dividers
+.sidebar {
+    //hide the bootstrap caret we use a .caret element with optional icon instead
+    .nav-link.dropdown-toggle::after {
+        display: none;
+    }
+
+    .nav-item-caption {
+        //text-transform: uppercase;
+        
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        padding: map-get($sidebar-common, 'caption-padding');
+        margin: map-get($sidebar-common, 'caption-margin');
+    }
+
+    .nav-item + .nav-item-caption {
+        margin-top: map-get($sidebar-common, 'caption-top-margin');
+    }
+
+
+    .nav-item-divider {
+        margin: map-get($sidebar-common, 'divider-margin');
+    }    
+    //second level divider
+    .submenu .nav-item-divider {
+        margin: 0.25rem 0.75rem 0.25rem 3rem;
+    }
+    //third level
+    .submenu .submenu .nav-item-divider {
+        margin-left: 4rem;
+    }
+
+
+    //no margin top or bottom for caption and dividers when collapsed
+    @if ($expandable == true or $hoverable == true) and $collapsed-sidebar-caption-no-margin == true {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            &.collapsed .sidebar-inner:not(.is-hover) .nav {
+                > .nav-item-caption, > .nav-item-divider {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+  
+}
+
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+  .sidebar.collapsed .sidebar-inner:not(.is-hover) {
+        .nav-item-divider.hideable {
+            margin: 0;
+            visibility: hidden;
+        }
+        .nav-item-caption {
+            margin: map-get($sidebar-common, 'caption-margin-collapsed');
+        }
+        .nav-item + .nav-item-caption.hideable {
+            margin-top: 0;
+        }
+   }
+
+  .sidebar.collapsed {
+    &.hoverable {
+        .submenu .nav-item-divider {
+            margin: 0.5rem 1rem;
+        }
+    }
+  }
+}//media desktop
+
+
+
+
+////////////////
+// sidebar header & footer
+
+.sidebar-section-item {
+    min-height: map-get($sidebar-common, 'section-height');
+
+    display: flex;
+    align-items: center;
+    justify-content: center;//IE
+
+    position: relative;
+
+    flex: 0 0 auto;// important
+}
+
+
+.sidebar-shortcuts-mini {
+    .btn {
+        display: inline-block;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 1rem;
+        padding: 0;
+        margin: 0 1px;
+    }
+}
+
+
+.sidebar-search-input {
+    width: map-get($sidebar-common, 'width') - 4rem;
+    width: calc(var(--sidebar-width) - 4rem);
+    
+    height: 2rem;
+    line-height: 2;
+    
+
+    background-color: transparent;
+    border-width: 0;
+    border-bottom: 1px solid transparent;
+    
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        font-size: 0.925rem;
+        line-height: 2;
+    }
+}
+
+
+
+//some browsers have this strange issue that when in collapsed mode we continue typing in the (invisible) text input, sidebar begins scrolling horizontally
+//Chrome seems to have fixed it in recent updates (i.e. it removes focus from input when it's invisible)
+//anyway, let's have a workaround for this issue
+
+//! we don't need this anymore, because we keep sidebar expanded when input receives focus!
+/**
+@if $sidebar-focus-expand != true and $expandable == true {
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        .sidebar.expandable {
+            .sidebar-inner:not(.has-focus) .sidebar-search-input:focus {
+                @include transition(font-size 0ms 0ms);
+            }
+            &.collapsed:not(:hover) .sidebar-inner:not(.has-focus) .sidebar-search-input:focus {
+                font-size: 0;//don't remove, it's important
+                transition-delay: $expandable-hide-delay;
+            }
+
+            &.collapsed:hover .sidebar-inner:not(.has-focus) .sidebar-search-input:focus {
+                transition-delay: $expandable-hide-delay / 2;
+            }
+        }
+    }
+}
+*/

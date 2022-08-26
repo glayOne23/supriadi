@@ -1,0 +1,122 @@
+<div class="row mt-45">
+
+    <div class="col-12 col-lg-3">
+        <div class="d-lg-none my-2">
+            <!-- the button to toggle filters modal in small devices -->
+            <button type="button" class="btn btn-block btn-outline-blue btn-sm text-600 shadow-sm py-1 py-md-2" data-toggle="modal" data-target="#search-filters">
+                <span class="position-tl h-101 px-25 text-center bgc-blue-d1 pt-1 text-white">
+                    <i class="fas fa-filter text-110"></i>
+                </span>
+                Filter results
+            </button>
+        </div>
+
+        {{> page/filters-menu}}
+    </div><!-- /.col -->
+
+
+    <!-- results -->
+    <div class="col-12 col-lg-9 pb-3">
+
+        <!-- sponsored results -->
+        <div class="bgc-secondary-l4 brc-dark-l3 border-1 px-35 pb-3 pt-25 radius-1">
+            <div class="text-95 text-600 mb-2 text-secondary-d3">
+                Sponsored
+            </div>
+            {{> page/results-sponsored}}
+        </div>
+
+
+        <!-- other results -->
+        <div class="bgc-default-l4 radius-1 p-25 border-1 brc-default-l3 mt-4 pt-lg-3 mb-1">
+            <div class="d-flex flex-column flex-sm-row">
+                <h3 class="text-dark-tp3 text-125 mb-0 ml-sm-2">
+                    <span class="text-primary-d4 text-115">356</span> results found
+                </h3>
+
+                <div class="ml-auto mt-2 mt-sm-0">
+                    <label class="mb-0 d-inline-block text-sm">
+                        Sort by:
+                    </label>
+                    <div class="ml-2 d-inline-block">
+                        <select class="ace-select brc-blue-m4 brc-h-blue-m1 pr-5 text-90 h-auto border-1">
+                            <option>
+                                Relevance
+                            </option>
+
+                            <option>
+                                Date
+                            </option>
+
+                            <option>
+                                Price
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="h-1">
+        <!-- add some space -->
+        </div>
+
+        {{> page/results}}
+
+        <!-- pagination -->
+        <div class="text-center">
+            <nav class="mt-3 d-sm-inline-block shadow-sm border-1 brc-secondary-l2 radius-1 bgc-secondary-l5 px-2" aria-label="Search results navigation">
+                <ul class="pagination d-flex nav-tabs-scroll is-scrollable p-0 my-1">
+                    <li class="page-item mr-1">
+                        <a class="page-link btn btn-sm btn-bgc-tp p-25 radius-3px btn-light-secondary border-0" href="#">                            
+                            <i class="fa fa-arrow-left text-110 mr-1"></i>
+                            Prev
+                        </a>
+                    </li>
+
+                    <li class="page-item mr-15">
+                        <a class="w-5 page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">
+                            1
+                        </a>
+                    </li>
+
+                    <li class="page-item mr-15">
+                        <a class="w-5 active page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">2</a>
+                    </li>
+
+                    <li class="page-item mr-0">
+                        <a class="w-5 page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">3</a>
+                    </li>
+
+                    <li class="page-item disabled mr-0">
+                        <a class="page-link border-0 px-2 bgc-transparent" href="#">&hellip;</a>
+                    </li>
+
+                    <li class="page-item mr-15">
+                        <a class="w-5 page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">12</a>
+                    </li>
+
+                    <li class="page-item mr-15">
+                        <a class="w-5 page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">13</a>
+                    </li>
+
+                    <li class="page-item mr-1">
+                        <a class="w-5 page-link btn p-25 btn-sm border-0 btn-bgc-tp radius-3px text-600 btn-light-black btn-h-primary btn-a-primary" href="#">14</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link btn btn-sm btn-bgc-tp p-25 radius-3px btn-light-secondary border-0" href="#">
+                            Next
+                            <i class="fa fa-arrow-right text-110 ml-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </div><!-- /.col -->
+
+</div><!-- /.row -->

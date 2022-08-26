@@ -1,0 +1,521 @@
+<div class="row">
+  <div class="col-12 col-lg-6">
+
+    <div class="card acard">
+      <div class="card-header border-0">
+        <h3 class="card-title">
+          Bootstrap Modals
+        </h3>
+      </div>
+
+      <div class="card-body">
+        <!-- buttons to toggle modals -->
+        <p>
+          <button type="button" class="btn px-4 btn-default mb-1" data-toggle="modal" data-target="#exampleModal">
+            Default Modal
+          </button>
+
+          <button type="button" class="btn px-4 btn-outline-danger mb-1" data-toggle="modal" data-target="#dangerModal">
+            White Backdrop
+          </button>
+
+          <button type="button" class="btn px-4 btn-outline-grey mb-1" data-toggle="modal" data-target="#exampleModal2">
+            Blurred Background
+          </button>
+        </p>
+
+        <p>        
+          <button type="button" class="btn px-4 btn-outline-warning mb-1" data-toggle="modal" data-target="#warningModal">
+            Center
+          </button>
+
+          <button type="button" class="btn px-4 btn-purple mb-1" data-toggle="modal" data-target="#feedbackModal">
+            Feedback
+          </button>
+
+          <button type="button" class="btn px-4 btn-red mb-1" data-toggle="modal" data-target="#loginModal">
+            Login Modal
+          </button>
+        </p>
+
+        <p>
+          <button type="button" class="btn px-4 btn-primary mb-1" data-toggle="modal" data-target="#modalWithScroll1">
+            With Scrollbars
+          </button>
+
+          <button type="button" class="btn px-4 btn-success mb-1" data-toggle="modal" data-target="#modalWithScroll2">
+            Scrollbars Inside
+          </button>
+
+          <button type="button" class="btn px-4 btn-info mb-1" data-toggle="modal" data-target="#modalFullscreen">
+            Fullscreen
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <div class="d-none d-lg-block">
+      <a id="toggleBodyScrollbars" href="#" role="button" class="btn text-105 p-3 btn-light-secondary btn-h-green btn-a-green radius-0 border-2 brc-green" role="alert">
+        Try with Body Scrollbars
+      </a>
+      <div id="bodyScrollbars" class="d-none" style="height: 110vh; width: 100%;"></div>
+    </div>
+  
+  </div><!-- /.col -->
+
+
+  <div class="col-12 col-lg-6">
+    <!-- buttons to toggle bootbox -->
+    <div class="card acard">
+      <div class="card-header border-0">
+        <h3 class="card-title">
+          Bootbox.js
+        </h3>
+      </div>
+
+      <div class="card-body">
+        <p>
+          <!-- Bootbox -->
+          <button type="button" class="btn px-4 btn-default my-1" id="id-bootbox-alert">
+            Alert
+          </button>
+
+          <button type="button" class="btn px-4 btn-secondary my-1" id="id-bootbox-confirm">
+            Confirm
+          </button>
+
+          <button type="button" class="btn px-4 btn-success my-1" id="id-bootbox-prompt">
+            Prompt
+          </button>
+
+          <button type="button" class="btn px-4 btn-info my-1" id="id-bootbox-custom">
+            Custom Buttons
+          </button>
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+
+
+
+
+<!-- Modals are here -->
+
+<!-- default example -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary-d3" id="exampleModalLabel">
+          Modal title
+        </h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        ...
+        <br />
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">
+          Close
+        </button>
+
+        <button type="button" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- with white backdrop -->
+<div class="modal fade" data-backdrop-bg="bgc-white" id="dangerModal" tabindex="-1" role="dialog" aria-labelledby="dangerModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content bgc-transparent brc-danger-m2 shadow">
+      <div class="modal-header py-2 bgc-danger-tp1 border-0  radius-t-1">
+        <h5 class="modal-title text-white-tp1 text-110 pl-2 font-bolder" id="dangerModalLabel">
+          WARNING!
+        </h5>
+
+        <button type="button" class="position-tr btn btn-xs btn-outline-white btn-h-yellow btn-a-yellow mt-1px mr-1px btn-brc-tp" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="text-150">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body bgc-white-tp2 p-md-4 pl-md-5">
+        <div class="d-flex align-items-top mr-2 mr-md-5">
+          <i class="fas fa-exclamation-triangle fa-2x text-orange-d2 float-rigt mr-4 mt-1"></i>
+          <div class="text-secondary-d2 text-105">
+            Are you sure you want to perform this extremely dangerous action?
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer bgc-white-tp2 border-0">
+          <button type="button" class="btn px-4 btn-light-grey" data-dismiss="modal">
+            No
+          </button>
+
+          <button type="button" class="btn px-4 btn-danger" id="id-danger-yes-btn"  data-dismiss="modal">
+            Yes
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Blurred background/backdrop -->
+<div class="modal fade" id="exampleModal2" data-backdrop-bg="bgc-grey-tp4" data-blur="true" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content border-0 shadow radius-1">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary-d2" id="exampleModal2Label">
+          Modal title
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body modal-scroll">
+        <strong>Note:</strong>
+        Applying <span class="bgc-yellow-m2">blur</span> effect may interfere with positioning of some elements such as `position: fixed` elements, etc!
+      </div>
+
+      <div class="modal-footer bgc-default-l5">
+        <button type="button" class="btn btn-primary">
+          Save changes
+        </button>
+
+        <button type="button" class="btn btn-lighter-grey px-4" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Centered modal -->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border-none radius-0 border-t-4 brc-warning-m1 px-3">
+      <div class="modal-header py-2">
+        <i class="bgc-white fas fa-exclamation-circle mb-n4 mx-auto fa-3x text-orange-m2"></i>
+      </div>
+
+      <div class="modal-body text-center">
+        <p class="text-orange-d3 text-130 mt-3">
+          Something went wrong!
+        </p>
+
+        <p class="text-secondary-d1 text-105">
+          What shall we do now?
+        </p>
+      </div>
+
+      <div class="modal-footer flex-nowrap bgc-white justify-content-between px-0 py-3">
+          <button type="button" class="btn px-4 px-2 px-md-4 btn-light-secondary btn-h-light-warning btn-a-light-danger" data-dismiss="modal">
+            <i class="fas fa-undo-alt mr-1 text-danger"></i>
+            Rollback
+          </button>
+
+          <button type="button" class="btn px-4 px-2 px-md-4 btn-light-secondary btn-h-light-success btn-a-light-success" data-dismiss="modal">
+            Keep Trying
+            <i class="fa fa-arrow-right ml-1 text-success-d1"></i>
+          </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Feedback modal -->
+<div class="modal fade" id="feedbackModal" data-backdrop-bg="bgc-white" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border-1 border-t-3 brc-primary-m2 shadow">
+      
+      <div class="modal-header py-2 border-0">
+        <img alt="User avatar" src="assets/image/avatar/avatar3.jpg" class="border-3 p-1px bgc-white brc-primary-tp2 radius-round mt-n5 mx-auto shadow-sm" />
+      </div>
+
+      <div class="modal-body text-center pt-0 px-3">
+        <p class="text-secondary-d3 text-125 mt-2" id="feedbackModalLabel">
+          How was Alexa's support?!
+        </p>
+
+        <div class="text-105">
+          <form autocomplete="off" class="btn-group btn-group-toggle w-100"  data-toggle="buttons">
+
+            <div role="button" class="d-style w-100 my-1 px-3 btn btn-brc-tp btn-white btn-h-lighter-orange btn-a-lighter-orange btn-a-bold">
+              <input type="radio" name="feedback" id="feedback1" />
+
+              <span class="fa-stack w-auto text-200 d-zoom-2">
+                <i class="fas fa-circle text-dark fa-stack-1x text-110"></i>
+                <i class="d-n-active d-n-hover fas fa-frown text-grey-l4 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-hover d-n-active fas fa-frown text-orange-m2 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-active fas fa-frown text-orange-m1 text-125 fa-stack-1x pos-rel"></i>
+              </span>
+
+              <span class="d-block">
+                Poor
+              </span>
+            </div>
+
+
+            <div role="button" class="d-style w-100 my-1 px-3 btn btn-brc-tp btn-white btn-h-lighter-green btn-a-lighter-green btn-a-bold">
+              <input type="radio" name="feedback" id="feedback2" />
+
+              <span class="fa-stack w-auto text-200 d-zoom-2">
+                <i class="fas fa-circle text-dark fa-stack-1x text-110"></i>
+                <i class="d-n-active d-n-hover fas fa-smile text-grey-l4 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-hover d-n-active fas fa-smile text-green-l1 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-active fas fa-smile text-green-m3 text-125 fa-stack-1x pos-rel"></i>
+              </span>
+
+              <span class="d-block">
+                Good
+              </span>
+            </div>
+
+
+            <div role="button" class="d-style w-100 my-1 px-3 btn btn-brc-tp btn-white btn-h-lighter-success btn-a-lighter-success btn-a-bold">
+              <input type="radio" name="feedback" id="feedback3" />
+
+              <span class="fa-stack w-auto text-200 d-zoom-2">
+                <i class="fas fa-circle text-dark fa-stack-1x text-110"></i>
+                <i class="d-n-active d-n-hover fas fa-grin-beam text-grey-l4 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-hover d-n-active fas fa-grin-beam text-success-m3 text-125 fa-stack-1x pos-rel"></i>
+                <i class="d-active fas fa-grin-beam text-success-m1 text-125 fa-stack-1x pos-rel"></i>
+              </span>
+
+              <span class="d-block">
+                Excellent
+              </span>
+            </div>
+          </form>
+
+        </div>
+      </div><!-- /.modal-body -->
+    
+
+      <div class="modal-footer justify-content-start flex-nowrap bgc-grey-l4 py-25">
+          <div>
+            <label class="mb-0">
+              <input type="checkbox" class="align-sub" id="id-feedback-dont-show" />
+            </label>
+            
+            <label for="id-feedback-dont-show">
+              Don't show this again
+            </label>
+          </div>
+
+          <button type="button" class="btn py-15 px-35 text-95 btn-blue ml-auto" data-dismiss="modal">
+            Submit
+          </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Login modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 360px;">
+    <div class="modal-content shadow border-none radius-2 px-3">
+      
+      <div class="modal-header mt-n1 border-0 justify-content-center pos-rel">
+        <h3 class="modal-title text-white mt-n5 text-115" id="loginModalLabel">
+          Login to continue
+        </h3>
+
+        <button type="button" class="close position-br mb-n4" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body text-center py-0">
+        <h2 class="text-grey-d1 text-160">
+          <i class="fa fa-leaf text-success-m2 text-120 mr-1"></i>
+          ACE App
+        </h2>
+
+        <form autocomplete="off" class="form-row mt-45">
+            <div class="form-group col-12 mb-3">
+                <div class="d-flex align-items-center input-floating-label text-blue-m1 brc-blue-m2">
+                    <input placeholder="Username" type="text" class="form-control pr-4 shadow-none radius-1" id="id-login-username" />
+                    <i class="fa fa-user text-grey-m2 ml-n4"></i>
+                    <label class="floating-label text-grey-l1 text-95 ml-n3" for="id-login-username">Username</label>
+                </div>
+            </div>
+        
+            <div class="form-group col-12">
+                <div class="d-flex align-items-center input-floating-label text-blue-m1 brc-blue-m2">
+                    <input placeholder="Password" type="password" class="form-control pr-4 shadow-none radius-1" id="id-login-password" />
+                    <i class="fa fa-key text-grey-m2 ml-n4"></i>
+                    <label class="floating-label text-grey-l1 text-95 ml-n3" for="id-login-password">Password</label>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <button type="button" class="btn btn-sm btn-primary btn-block px-4 text-600 radius-1 disabled">
+                    Log In
+                </button>
+            </div>
+
+            <div class="form-group col-12">
+                <a href="#" class="btn btn-link text-orange-d3 text-95" data-dismiss="modal">
+                    Forgot password?!
+                </a>
+            </div>
+        </form>
+      </div><!-- /.modal-body -->
+
+      <div class="modal-footer bg-white justify-content-between py-3">
+          <div class="mx-auto text-grey-m1" data-dismiss="modal">
+            Not a member?
+            <a href="#" class="text-blue">
+              Sign up
+            </a>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- With scrollbars -->
+<div class="modal fade" id="modalWithScroll1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title text-blue-d2">Long Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        2<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        3<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        4
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- With scrollbars inside -->
+<div class="modal fade" id="modalWithScroll2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title text-blue-d2">
+          Long Content
+        </h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body ace-scrollbar">
+        1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        2<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        3<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        4
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+
+        <button type="button" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Fullscreen modal -->
+<div class="modal fade modal-fs" id="modalFullscreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">
+          Modal title
+        </h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        2<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        3<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+        4
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+
+        <button type="button" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

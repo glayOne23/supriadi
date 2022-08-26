@@ -1,0 +1,6 @@
+name,avatar,color,role,location,status,stars
+"Emma Green","avatar4.jpg","","Customer","Dubai","approved",1
+"Bob Doe","avatar1.jpg","","Moderator","London","approved",3
+"John Smith",,"JS","Customer","Istanbul","pending",0
+"Jim Jackson","avatar6.jpg","","Tester","Unknown","banned",0
+"Susan Wise","avatar5.jpg","","Customer","Los Angeles","approved",2

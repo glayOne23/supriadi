@@ -1,0 +1,103 @@
+[
+ {
+   "day" : "Today",
+   "color": "primary",
+   "items": [
+      {
+        "title" : "Alex bookmarked your post.",
+        "time": "9:25 am",
+        "icon": "far fa-star",
+        "color": "orange",
+        "textColor": "orange-d3",
+        "action": "Check out",
+        "actionColor": "green"
+      },
+      {
+        "title" : "Bob uploaded a new file.",
+        "time": "6:10 pm",
+        "icon": "fas fa-file-upload",
+        "color": "blue",
+        "textColor": "blue",
+        "action": "Open",
+        "actionColor": "primary"
+      },
+      {
+        "title" : "Susan posted a comment.",
+        "time": "8:15 pm",
+        "icon": "far fa-comment-dots",
+        "color": "green",
+        "textColor": "green",
+        "action": "Reply",
+        "actionColor": "primary"
+      }
+   ]
+ },
+
+ {
+  "day" : "Yesterday",
+  "color": "secondary",
+  "items": [
+     {
+       "title" : "Fred purchased a new book.",
+       "time": "3:44 am",
+       "icon": "fas fa-cart-plus",
+       "color": "purple",
+       "textColor": "purple",
+       "action": "Read",
+       "actionColor": "primary"
+     },
+     {
+       "title" : "Ben updated his profile photo.",
+       "time": "7:20 am",
+       "icon": "fas fa-camera",
+       "color": "pink",
+       "textColor": "pink-m1",
+       "action": "See",
+       "actionColor": "green"
+     },
+     {
+       "title" : "Nick booked a nice hotel.",
+       "time": "4:05 pm",
+       "icon": "fas fa-bed",
+       "color": "info",
+       "textColor": "info-m1",
+       "action": "Check",
+       "actionColor": "primary"
+     }
+  ]
+ },
+
+ {
+  "day" : "2 days ago",
+  "color": "secondary",
+  "items": [
+     {
+       "title" : "Alex bookmarked your post.",
+       "time": "9:25 am",
+       "icon": "far fa-star",
+       "color": "orange",
+       "textColor": "orange-d3",
+       "action": "Check out",
+       "actionColor": "green"
+     },
+     {
+       "title" : "Bob uploaded a new file.",
+       "time": "6:10 pm",
+       "icon": "fas fa-file-upload",
+       "color": "blue",
+       "textColor": "blue",
+       "action": "Open",
+       "actionColor": "primary"
+     },
+     {
+       "title" : "Susan posted a comment.",
+       "time": "8:15 pm",
+       "icon": "far fa-comment-dots",
+       "color": "green",
+       "textColor": "green",
+       "action": "Reply",
+       "actionColor": "primary"
+     }
+  ]
+ }
+]

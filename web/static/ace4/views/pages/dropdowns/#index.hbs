@@ -1,0 +1,649 @@
+<div class="row">
+  <div class="col-12 col-lg-6">
+    <div class="card acard">
+        <div class="card-header">
+            <h5 class="card-title">
+                Custom dropdowns
+            </h5>
+        </div>
+
+        <div class="card-body">
+            
+            <!-- the *Save as* dropdown -->
+            <div class="dropdown d-inline-block">
+                <a class="d-style btn btn-lighter-success btn-bgc-tp shadow-sm text-600 letter-spacing px-4 dropdown-toggle mb-1" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-arrow-down mr-2 f-n-hover"></i>
+                    Save as
+                </a>
+
+                <div style="min-width: 240px;" class="dropdown-menu dropdown-caret px-1px py-2px border-1 brc-default-l1 shadow radius-1 dropdown-animated animated-2">
+                    <a href="#" class="active dropdown-item btn btn-outline-lightgrey border-l-3 btn-brc-tp btn-h-lighter-grey btn-h-brc-tp btn-a-outline-primary btn-a-text-dark btn-a-bold m-0 radius-l-0 py-2 px-3">
+                        <i class="far fa-file w-3 text-green text-110"></i>
+                        HTML document
+                    </a>
+
+                    <div class="dropdown-divider my-0"></div>
+
+                    <a href="#" class="dropdown-item btn btn-outline-lightgrey border-l-3 btn-brc-tp btn-h-lighter-grey btn-h-brc-tp btn-a-outline-primary btn-a-text-dark btn-a-bold m-0 radius-l-0 py-2 px-3">
+                        <i class="far fa-file-pdf w-3 text-danger text-110"></i>
+                        PDF document
+                    </a>
+
+                    <div class="dropdown-divider my-0"></div>
+
+                    <a href="#" class="dropdown-item btn btn-outline-lightgrey border-l-3 btn-brc-tp btn-h-lighter-grey btn-h-brc-tp btn-a-outline-primary btn-a-text-dark btn-a-bold m-0 radius-l-0 py-2 px-3">
+                        <i class="far fa-file-word w-3 text-blue text-110"></i>
+                        Word document
+                    </a>
+
+                    <div class="dropdown-divider my-0"></div>
+                    
+                    <a href="#" class="dropdown-item btn btn-outline-lightgrey border-l-3 btn-brc-tp btn-h-lighter-grey btn-h-brc-tp btn-a-outline-primary btn-a-text-dark btn-a-bold m-0 radius-l-0 py-2 px-3">
+                        <i class="far fa-image w-3 text-purple text-110"></i>
+                        JPG image
+                    </a>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <!-- the *Settings* dropdown -->
+            <div class="dropdown dd-backdrop dd-backdrop-none-lg d-inline-block ml-3">
+                <a class="d-style btn btn-lighter-orange btn-bgc-tp btn-text-grey text-600 letter-spacing px-4 dropdown-toggle mb-1" href="#" role="button" id="dropdownMenuLink10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-cog mr-2 f-n-hover"></i>
+                    Settings dropdown
+                </a>
+
+                <div id="settings-dropdown" class="dropdown-menu dropdown-animated animated-2 dd-appear-center dd-slide-none-lg dropdown-caret px-1px py-2px border-1 brc-default-l1 shadow radius-1">
+                    <div class="dropdown-inner" style="min-width: 300px;">
+                        <form autocomplete="off" class="dropdown-clickable text-grey-d2">
+                            <div class="dropdown-body py-3">
+                                <div class="form-group row justify-content-between align-items-center mx-1">
+                                    <div class="col-6 col-form-label text-secondary">
+                                        <label for="id-notifications" class="mb-0">Notifications</label>
+                                    </div>
+
+                                    <div class="col-6 text-right">
+                                        <input type="checkbox" class="ace-switch text-grey-l1 bgc-red-d1 ace-switch-check radius-2px" id="id-notifications" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row pt-3 justify-content-between align-items-center border-t-1 brc-secondary-l3 mx-1">
+                                    <div class="col-6 col-form-label text-secondary">
+                                        <label class="mb-0">Time Format</label>
+                                    </div>
+
+                                    <div class="col-6 text-right">
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <div role="button" class="btn btn-sm px-2 btn-outline-lightgrey btn-h-outline-warning btn-a-warning btn-a-bold border-2 active">
+                                                <input type="radio" name="options" checked="" />
+                                                24h
+                                            </div>
+                                            <div role="button" class="btn btn-sm px-2 btn-outline-lightgrey btn-h-outline-warning btn-a-warning btn-a-bold border-2">
+                                                <input type="radio" name="options" />
+                                                12h
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0 pt-2 justify-content-between align-items-center border-t-1 brc-secondary-l3 mx-1">
+                                    <div class="col-4 col-form-label text-secondary">
+                                        <label class="mb-0">Opacity</label>
+                                    </div>
+
+                                    <div class="col-8 text-right">                                        
+                                        <div id="id-slider" class="noUi-toggle-tooltip mt-2 slider-thin"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-footer py-25 bgc-white text-center pos-rel border-t-2 brc-secondary-l3">
+                                <button type="button" class="btn px-3 py-15 text-95 text-600 btn-primary btn-raised radius-1" data-dismiss="dropdown">
+                                    Save settings
+                                </button>
+                                <button type="reset" class="btn px-25 py-15 text-95 btn-raised btn-outline-secondary radius-1" data-dismiss="dropdown">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- .dropdown-inner -->
+                </div>
+            </div><!-- /.dropdown -->
+
+
+            <!-- The *Share with* dropdown/dialog -->
+            <div class="dropdown d-inline-block dd-backdrop ml-3">
+                <a class="d-style btn btn-white btn-h-lighter-pink btn-a-pink shadow-sm radius-round text-600 letter-spacing px-4 dropdown-toggle mb-1" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-share-alt mr-2 f-n-hover"></i>
+                    Share
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dd-slide-up radius-2 px-2 py-1 border-0 shadow">
+                 <div class="dropdown-inner w-95 radius-1 mb-2 mb-lg-n2" style="max-width: 420px;">
+                    <div class="dropdown-header text-center text-primary-d1 text-130">
+                        Share with:
+                    </div>
+                    <!-- list of users to share with -->
+                    <div class="dropdown-header border-b-1 brc-secondary-l2 pb-2 dropdown-clickable text-center">
+                        <div class="btn-group btn-group-toggle flex-wrap justify-content-center" data-toggle="buttons">
+                            <div role="button" class="mx-1 active d-style btn btn-light-blue btn-h-outline-blue btn-a-outline-blue p-2px bgc-white radius-round border-2">
+                                <input type="checkbox" name="recipient" value="1" checked />
+                                <img alt="User avatar" src="assets/image/avatar/avatar3.jpg" class="radius-round" height="48" />
+                                <!-- the blue check mark -->
+                                <span class="v-active position-br h-3 w-3 bgc-blue text-white radius-round text-60 text-center mb-n2px mr-n2px">
+                                    <i class="fa fa-check pt-15 mt-1px"></i>
+                                </span>
+                            </div>
+
+                            <div role="button" class="mx-1 d-style btn btn-light-blue btn-h-outline-blue btn-a-outline-blue p-2px bgc-white radius-round border-2">
+                                <input type="checkbox" name="recipient" value="2" />
+                                <img alt="User avatar" src="assets/image/avatar/avatar4.jpg" class="radius-round" height="48" />
+                                <!-- the blue check mark -->
+                                <span class="v-active position-br h-3 w-3 bgc-blue text-white radius-round text-60 text-center mb-n2px mr-n2px">
+                                    <i class="fa fa-check pt-15 mt-1px"></i>
+                                </span>
+                            </div>
+
+                            <div role="button" class="mx-1 d-style btn btn-light-blue btn-h-outline-blue btn-a-outline-blue p-2px bgc-white radius-round border-2">
+                                <input type="checkbox" name="recipient" value="3" />
+                                <img alt="User avatar" src="assets/image/avatar/avatar1.jpg" class="radius-round" height="48" />
+                                <!-- the blue check mark -->
+                                <span class="v-active position-br h-3 w-3 bgc-blue text-white radius-round text-60 text-center mb-n2px mr-n2px">
+                                    <i class="fa fa-check pt-15 mt-1px"></i>
+                                </span>
+                            </div>
+
+                            <div role="button" class="mx-1 d-style btn btn-light-blue btn-h-outline-blue btn-a-outline-blue p-2px bgc-white radius-round border-2">
+                                <input type="checkbox" name="recipient" value="4" />
+                                <img alt="User avatar" src="assets/image/avatar/avatar2.jpg" class="radius-round" height="48" />
+                                <!-- the blue check mark -->
+                                <span class="v-active position-br h-3 w-3 bgc-blue text-white radius-round text-60 text-center mb-n2px mr-n2px">
+                                    <i class="fa fa-check pt-15 mt-1px"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- list of social media and platforms -->
+                    <div class="row justify-content-center m-1 pb-2">
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-blue-m1 text-white">
+                                    <i class="fab fa-twitter text-170 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Twitter
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-primary text-white">
+                                    <i class="fab fa-facebook-f text-170 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Facebook
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-pink text-white">
+                                    <i class="fa fa-envelope text-160 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Email
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-success text-white">
+                                    <i class="fab fa-whatsapp text-170 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Whatsapp
+                                </span>
+                            </a>
+                        </div>
+                
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-info text-white">
+                                    <i class="fab fa-bluetooth-b text-170 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Bluetooth
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 text-yellow bgc-current pos-rel">
+                                    <i class="fab fa-snapchat-ghost text-dark text-180 ml-1px position-center"></i>
+                                    <i class="fab fa-snapchat-ghost text-dark text-180 ml-2px position-center"></i>
+                                    <i class="fab fa-snapchat-ghost text-white text-170 mt-2 w-3 pos-rel"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Snapchat
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-orange-d1 text-white">
+                                    <i class="fa fa-sms text-160 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Messages
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-brown text-white">
+                                    <i class="far fa-copy text-170 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Clipboard
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="col-4 px-0">
+                            <a class="dropdown-item btn btn-lighter-secondary btn-bgc-white btn-a-bold my-2px radius-0 pt-3 px-3 text-center w-100" href="#">
+                                <span class="d-inline-block text-center radius-round shadow-sm border-2 brc-white px-25 py-1 bgc-purple-d1 text-white">
+                                    <i class="fab fa-instagram text-160 mt-2 w-3"></i>
+                                </span>
+                                <span class="d-block text-secondary-d3 text-95">
+                                    Instagram
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <!-- the small `Share` dropdown -->
+            <div class="dropdown d-inline-block dd-backdrop dd-backdrop-none-md mt-3">
+                <a class="d-style btn btn-white btn-h-lighter-yellow btn-a-yellow shadow-sm radius-1 text-600 letter-spacing px-4 dropdown-toggle" href="#" role="button" id="dropdownMenuLink7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-share mr-2 f-n-hover"></i>
+                    Share!
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right radius-1 shadow py-1" style="width: 320px;">
+                    <div class="row justify-content-center mx-1">
+                        <div class="col-3 col-sm-3 px-0">
+                            <a class="d-style text-center w-100 dropdown-item btn btn-outline-light btn-h-outline-blue btn-bgc-white btn-a-outline-blue px-1 py-2 border-r-1 brc-secondary-l3" href="#">
+                                <i class="fab fa-twitter text-170 mt-2 w-3 f-hover"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="col-3 col-sm-3 px-0">
+                            <a class="d-style text-center w-100 dropdown-item btn btn-outline-light btn-h-outline-primary btn-bgc-white btn-a-outline-primary px-1 py-2 border-r-1 brc-secondary-l3" href="#">
+                               <i class="fab fa-facebook-f text-170 mt-2 w-3"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="col-3 col-sm-3 px-0">
+                            <a class="d-style text-center w-100 dropdown-item btn btn-outline-light btn-h-outline-purple btn-bgc-white btn-a-outline-purple px-1 py-2 border-r-1 brc-secondary-l3" href="#">
+                               <i class="fab fa-instagram text-170 mt-2 w-3 f-hover"></i>
+                            </a>
+                        </div>
+
+                        <div class="col-3 col-sm-3 px-0">
+                            <a class="d-style text-center w-100 dropdown-item btn btn-outline-light btn-h-outline-green btn-bgc-white btn-a-outline-green px-1 py-2" href="#">
+                               <i class="fab fa-whatsapp text-170 mt-2 w-3 f-hover"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+            <!-- the *Bookmark* dropdown/dialog -->
+            <div class="dropdown d-inline-block dd-backdrop mt-3">
+                <a class="d-style btn btn-outline-default shadow-sm radius-2px text-600 letter-spacing px-4 dropdown-toggle" href="#" role="button" id="dropdownMenuLink8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-heart mr-2 f-n-hover"></i>
+                    Bookmark
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dd-slide-up radius-2 px-2 py-45 border-0 shadow">
+                  <div class="dropdown-inner w-95 radius-1 mb-2 mb-lg-n2" style="max-width: 450px;">
+                    <div class="dropdown-header border-0 dropdown-clickable text-center">
+                        <span class="border-3 brc-green-m4 bgc-white radius-round pt-3 px-2 d-inline-block">
+                            <i class="fa fa-2x fa-leaf text-green-d1 w-6 h-6"></i>
+                        </span>
+
+                        <div>
+                            <h4 class="text-200 mt-25 mb-0 text-dark-tp4">ACE App</h4>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mx-2 pb-4 dropdown-clickable">
+                        <div class="col-12 text-center text-grey-m1 mb-45">
+                            Log in to continue
+                        </div>
+
+                        <div class="col-12 col-md-9">
+                            <a href='#' class='btn py-2 btn-block btn-blue radius-1' data-dismiss="dropdown">Log In</a>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <a href='#' class='mt-2 btn py-2 btn-block btn-outline-lightgrey btn-text-dark radius-1' data-dismiss="dropdown">Sign Up</a>
+                        </div>
+                    </div>
+                  </div><!-- /.dropdown-inner -->
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <hr class="border-dotted" />
+
+
+            <!-- Misc custom dropdowns -->
+            <div class="dropdown-menu d-block position-static radius-1 brc-primary-m4 shadow-sm p-1 m-2">
+                <span class="dropdown-item-text text-grey-m1 my-1 text-95">
+                    Dropdown item text
+                </span>
+                <a class="dropdown-item btn btn-outline-primary btn-h-light-primary btn-a-primary my-1 radius-1" href="#">
+                    Action
+                </a>
+                <a class="dropdown-item btn btn-outline-primary btn-h-light-primary btn-a-primary my-1 radius-1" href="#">
+                    Another action
+                </a>
+                <a class="dropdown-item btn btn-outline-orange btn-h-light-orange btn-a-orange my-1 radius-1" href="#">
+                    Something else here
+                </a>
+            </div>
+
+    
+            <div class="dropdown-menu d-block position-static radius-1 bgc-info-l5 p-1 m-2 border-2 brc-info-m4">
+                <a class="dropdown-item btn btn-outline-dark btn-h-info btn-a-info my-1 radius-2px" href="#">
+                    Action
+                </a>
+                <a class="dropdown-item btn btn-outline-dark btn-h-info btn-a-info my-1 radius-2px" href="#">
+                    Another action
+                </a>
+                <a class="dropdown-item btn btn-outline-dark btn-h-info btn-a-info my-1 radius-2px" href="#">
+                    More actions
+                </a>
+                <a class="dropdown-item btn btn-outline-dark btn-h-info btn-a-info my-1 radius-2px" href="#">
+                    Something else here
+                </a>
+            </div>
+
+
+            <div class="dropdown-menu d-block position-static radius-2 px-2px py-1 brc-secondary-l2 shadow mx-2">
+                <a class="active dropdown-item btn btn-outline-dark border-l-4 btn-brc-tp btn-h-outline-info btn-a-outline-info btn-a-bold my-2px radius-l-0 py-2 pl-3 pr-2" href="#">
+                    Profile
+                </a>
+                <a class="dropdown-item btn btn-outline-dark border-l-4 btn-brc-tp btn-h-outline-info btn-a-outline-info my-2px radius-l-0 py-2 pl-3 pr-2" href="#">
+                    Notifications
+                    <span class="float-right badge badge-danger ml-4 mt-15 badge-pill">11</span>
+                </a>
+                <a class="dropdown-item btn btn-outline-dark border-l-4 btn-brc-tp btn-h-outline-info btn-a-outline-info my-2px radius-l-0 py-2 pl-3 pr-2" href="#">
+                    Settings
+                </a>
+                <a class="dropdown-item btn btn-outline-dark border-l-4 btn-brc-tp btn-h-outline-info btn-a-outline-info my-2px radius-l-0 py-2 pl-3 pr-2" href="#">
+                    Logout
+                </a>
+            </div>
+
+
+            <div>
+                <ul class="dropdown-menu shadow-sm d-block position-static mx-2 px-2px radius-1 mt-3">
+                    <li class="dropdown-hover dropdown-item btn btn-outline-warning btn-h-warning btn-a-warning dropright">
+                        <a class="d-flex align-items-center justify-content-between" href="#">
+                            <span>Hover Submenu</span>
+                            <i class="fa fa-caret-right"></i>
+                        </a>
+                        <div class="dropdown-menu mt-n1 ml-1px radius-1 shadow-sm">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another Action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
+                    <li class="my-1 dropdown-hover dropright dropdown-item btn btn-outline-info btn-h-info btn-a-info">
+                        <a class="d-flex align-items-center justify-content-between" href="#">
+                            <span>Another Action</span>
+                            <i class="fa fa-caret-right"></i>
+                        </a>
+                        <div class="dropdown-menu mb-n1 mr-1px radius-1 shadow-sm">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another Action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="dropdown-menu d-block position-static radius-1 brc-grey-l1 brc-h-success-m2 shadow-sm border-t-2 p-1 m-2">        
+                <a class="dropdown-item btn btn-outline-lightgrey btn-h-light-success btn-a-light-success my-1 text-90 btn-bold" href="#">
+                    <i class="fas fa-tools text-orange-d2 text-140 w-3 mr-2px"></i>
+                    Action
+                </a>
+
+                <div class="dropdown-divider m-1 brc-grey-l3"></div>
+
+                <a class="dropdown-item btn btn-outline-lightgrey btn-h-light-blue btn-a-light-blue my-1 text-90 btn-bold" href="#">                        
+                    <i class="far fa-address-book text-blue text-140 w-3 mr-2px"></i>
+                    Another action
+                </a>
+
+                <div class="dropdown-divider m-1 brc-grey-l3"></div>
+
+                <a class="dropdown-item btn btn-outline-lightgrey btn-h-light-success btn-a-light-success my-1 text-90 btn-bold" href="#">
+                    <i class="fas fa-bug text-success-m1 text-140 w-3 mr-2px"></i>
+                    More actions
+                </a>
+
+                <div class="dropdown-divider m-1 brc-grey-l3"></div>
+
+                <a class="dropdown-item btn btn-outline-lightgrey btn-h-light-blue btn-a-light-blue my-1 text-90 btn-bold" href="#">
+                    <i class="far fa-calendar-check text-blue text-140 w-3 mr-2px"></i>
+                    Something else here
+                </a>
+            </div>
+
+        </div><!-- /.card-body -->
+    </div><!-- /.card -->
+  </div><!-- /.col -->
+
+
+
+
+
+  <!-- mobile friendly dropdowns -->
+  <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+    <div class="card acard">
+        <div class="card-header">
+            <h5 class="card-title text-purple-d2">
+                Mobile friendly with backdrop
+            </h5>
+        </div>
+
+        <div class="card-body pt-4">
+
+            <div class="dropdown dd-backdrop d-inline-block">
+                <a class="btn btn-primary px-4 dropdown-toggle mb-1" href="#" role="button" id="dropdownMenuLink9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Backdrop only
+                </a>
+
+                <div class="dropdown-menu dropdown-caret radius-2 border-0 shadow" aria-labelledby="dropdownMenuLink9">
+                    <h6 class="dropdown-header">
+                        Dropdown header
+                    </h6>
+                    <a class="dropdown-item active" href="#">This Week</a>
+                    <a class="dropdown-item" href="#">Last Week</a>
+                    
+                    <a class="dropdown-item" href="#">This Month</a>
+                    <a class="dropdown-item" href="#">Last Month</a>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+            <div class="dropdown dd-backdrop d-inline-block">
+                <a class="btn btn-primary px-4 dropdown-toggle mb-1" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Slide in from bottom
+                </a>
+
+                <div class="dropdown-menu dd-slide-up" aria-labelledby="dropdownMenuLink2">
+                <div class="dropdown-inner">
+                    <h6 class="dropdown-header">Dropdown header</h6>
+                    <a class="dropdown-item active" href="#">This Week</a>
+                    <a class="dropdown-item" href="#">Last Week</a>
+                    
+                    <a class="dropdown-item" href="#">This Month</a>
+                    <a class="dropdown-item" href="#">Last Month</a>
+                </div>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <div></div>
+            <div class="dropdown d-inline-block dd-backdrop dd-backdrop-none-md mt-3">
+                <a class="btn btn-light-primary px-4 text-600 dropdown-toggle text-wrap" href="#" role="button" id="dropdownMenuLink6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sliding and backdrop only on small device
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md radius-1" aria-labelledby="dropdownMenuLink6">
+                    <div class="dropdown-inner">
+                        <a class="dropdown-item" href="#">This Week</a>
+                        <a class="dropdown-item" href="#">Last Week</a>
+                        
+                        <a class="dropdown-item" href="#">This Month</a>
+                        <a class="dropdown-item" href="#">Last Month</a>
+                    </div>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <div></div>
+            <div class="dropdown d-inline-block dd-backdrop dd-backdrop-none-md mt-3">
+                <a class="btn btn-primary px-4 dropdown-toggle text-wrap" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Appear into center (only on small device)
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dd-appear-center dd-slide-none-md dropdown-animated animated-2" aria-labelledby="dropdownMenuLink4">
+                <div class="dropdown-inner">
+                    <a class="dropdown-item" href="#">This Week</a>
+                    <a class="dropdown-item" href="#">Last Week</a>
+                    
+                    <a class="dropdown-item" href="#">This Month</a>
+                    <a class="dropdown-item" href="#">Last Month</a>
+                </div>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <div></div>
+            <div class="dropdown d-inline-block dd-backdrop dd-backdrop-none-sm mt-3">
+                <a class="btn btn-info btn-sm text-600 px-3 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Backdrop only on smaller devices
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dd-slide-up dd-slide-none-sm mx-2 mx-sm-4 mx-md-0 radius-1">
+                    <div class="dropdown-inner">
+                        <a class="dropdown-item" href="#">This Week</a>
+                        <a class="dropdown-item" href="#">Last Week</a>
+                        
+                        <a class="dropdown-item" href="#">This Month</a>
+                        <a class="dropdown-item" href="#">Last Month</a>
+                    </div>
+                </div>
+            </div><!-- /.dropdown -->
+
+
+
+            <hr class="my-4 border-dotted" />
+            
+            <!-- filtered search -->
+            <div class="d-inline-flex dropdown dd-backdrop dd-backdrop-none-lg" data-display="static">        
+                <input type="text" class="form-control mr-n3 pr-5" placeholder="Filtered search dropdown" />
+
+                <a data-display="static" href="#" class="align-self-center btn border-0 btn-outline-default py-1 px-2 btn-h-light-primary btn-a-light-primary radius-1 ml-n35" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-filter"></i>
+                </a>
+
+                <div style="width: 24rem; max-width: 90vw;" data-display="static" class="shadow radius-1 p-0 dropdown-menu dropdown-animated animated-2 dd-slide-up dd-slide-none-lg dropdown-menu-right brc-primary-m3 mt-lg-1 mr-lg-n2 dropdown-caret">
+                  <div class="dropdown-inner">
+                    <h5 class="bgc-secondary-l3 text-secondary-d3 d-md-none text-center mb-2 py-25">
+                        Search Filters
+                    </h5>
+
+                    <form class="dropdown-clickable text-grey-d2">
+                        <div class="dropdown-body my-25 px-3">
+                            <div class="px-2 px-md-3">
+                                <input type="text" class="form-control" placeholder="Enter Keywords ..." />
+                            </div>
+
+                            <hr class="brc-default-l3" />
+
+                            <div class="d-flex align-items-center px-2 px-md-3">
+                                <div class="mr-4">Size:</div>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-sm px-425 btn-lighter-default btn-a-blue border-2 radius-round mr-1">
+                                        <input type="radio" name="size"> S
+                                    </label>
+                                    <label class="btn btn-sm px-425 btn-lighter-default btn-a-blue border-2 radius-round mr-1">
+                                        <input type="radio" name="size"> M
+                                    </label>
+                                    <label class="btn btn-sm px-425 btn-lighter-default btn-a-blue border-2 radius-round">
+                                        <input type="radio" name="size"> L
+                                    </label>
+                                </div>
+                            </div>
+
+                            <hr class="brc-default-l3" />
+
+                            <div class="d-flex align-items-center px-2 px-md-3">
+                                <div class="mr-4">Type:</div>
+                                <select class="ace-select text-secondary-d2 no-border brc-h-blue-m3">
+                                    <option> ------ </option>
+                                    <option value="1">Type 1</option>
+                                    <option value="2">Type 2</option>
+                                    <option value="3">Type 3</option>
+                                    <option value="4">Type 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-footer py-2 bgc-secondary-l4 text-center position-relative border-t-1 brc-secondary-l2">
+                            <button type="button" class="btn px-4 py-15 text-95 btn-default" data-dismiss="dropdown">
+                                Apply filters
+                            </button>
+                            <button type="reset" class="btn px-25 py-15 text-95 btn-outline-default">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                  </div><!-- .dropdown-inner -->
+                </div><!-- .dropdown-menu -->
+            </div><!-- .dropdown -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+  </div><!-- .col -->
+</div><!-- .row -->

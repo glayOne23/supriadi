@@ -1,0 +1,143 @@
+<div class="bcard card h-100 pt-1 pt-lg-2">
+
+    <div class="card-header border-0">
+        <h5 class="card-title text-dark-m2 pl-1 text-110">
+            Recent Orders
+        </h5>
+
+        <div class="card-toolbar align-self-center no-border">
+            <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a class="btn btn-light-green text-600 btn-xs mr-1" href="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    Export
+                    <i class="fa fa-download ml-1 text-90"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md mw-auto">
+                    <div class="dropdown-inner">
+                        <div class="d-md-none dropdown-header border-b-1 brc-secondary-l1 text-600 text-110">
+                            Export to:
+                        </div>
+                        <a class="dropdown-item btn btn-bold btn-outline-lightgrey btn-h-light-default btn-a-light-default mx-1" href="#">PDF</a>
+                        <a class="dropdown-item btn btn-bold btn-outline-lightgrey btn-h-light-default btn-a-light-default mx-1" href="#">Excel</a>
+                        <a class="dropdown-item btn btn-bold btn-outline-lightgrey btn-h-light-default btn-a-light-default mx-1" href="#">CSV</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="reload" class="card-toolbar-btn text-blue text-105">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="card-body p-0">
+        <div class="table-responsive-md">
+            <table class="table table-border-x brc-secondary-l3 mb-0">
+                <thead>
+                    <tr class="text-80 text-default-d3 bgc-default-l4">
+                        <th class="pl-2 pl-lg-4">
+                            ID
+                        </th>
+
+                        <th>
+                            User
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Address
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {{#each (get "order")}}
+                    <tr class="bgc-h-secondary-l4">
+                        <td class="pl-2 pl-lg-4">
+                            <a href="#" class="text-95 text-primary text-600">
+                                #{{id}}
+                            </a>
+                        </td>
+
+                        <td class="text-dark-m2 text-85">
+                            {{name}}
+                        </td>
+
+                        <td class=" text-dark-m2 text-85">
+                            {{date}}
+                        </td>
+
+                        <td class=" text-dark-m2 text-85">
+                            {{address}}
+                        </td>
+
+                        <td class="font-bolder text-75 text-dark-m2 pr-2 pr-lg-3">
+                            {{#if processed}}
+                            <span class="d-inline-block bgc-green radius-2px p-1 align-middle mr-1"></span>
+                            <span>Processed</span>
+                            {{/if}}
+
+                            {{#if delivered}}
+                            <span class="d-inline-block bgc-blue radius-2px p-1 align-middle mr-1"></span>
+                            <span>Delivered</span>
+                            {{/if}}
+
+                            {{#if unpaid}}
+                            <span class="d-inline-block bgc-warning radius-2px p-1 align-middle mr-1"></span>
+                            <span>Unpaid</span>
+                            {{/if}}
+
+                            {{#if cancelled}}
+                            <span class="d-inline-block bgc-red radius-2px p-1 align-middle mr-1"></span>
+                            <span>Cancelled</span>
+                            {{/if}}
+                        </td>
+
+                        <td class="text-secondary-d3 text-95">
+                            {{total}}
+                            <div class="float-right dropdown dd-backdrop dd-backdrop-none-md">
+                                <button type="button" class="btn btn-text-pale btn-bgc-tp btn-light-lightgrey btn-h-default btn-a-default border-0 px-25 dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v text-95"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-appear-center dd-slide-none-md mw-auto">
+                                    <div class="dropdown-inner">
+                                        <div class="d-md-none dropdown-header border-b-1 brc-secondary-l1 text-600 text-110 text-center">
+                                            Order #{{id}}
+                                        </div>
+
+                                        <a class="dropdown-item px-3" href="#">
+                                            <i class="fa fa-arrow-right mr-2px text-success w-2"></i>
+                                            Proceed
+                                        </a>
+
+                                        <a class="dropdown-item px-3" href="#">
+                                            <i class="fa fa-undo text-danger mr-2px w-2"></i>
+                                            Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive-md -->
+
+    </div><!-- /.card-body -->
+</div>

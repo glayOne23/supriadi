@@ -1,0 +1,102 @@
+$fullcalendar-border: bgc-color('default', 'l2');
+
+@if $plugin-fullcalendar == true {
+    //calendar
+    .fc-theme-bootstrap {
+        --fc-list-event-hover-bg-color: rgba(0,0,0,0.08);
+        --fc-today-bg-color: #{rgba(bgc-color('yellow', 'l1'), 0.5)};
+        --fc-event-border-color: #fff;
+        --fc-highlight-color: #{rgba(bgc-color('primary', 'l1'), 0.4)};
+
+        th, td, hr, thead, tbody, .fc-popover {
+            border-color: $fullcalendar-border;
+        }
+
+        .fc-event {
+            border-width: 0;
+            border-radius: 0.125rem;
+        }
+    
+
+        .fc-event[class*="text-"] .fc-event-main {
+            color: inherit;
+        }
+
+        .fc-event[class*="brc-"] {
+            .fc-daygrid-event-dot,
+            .fc-list-event-dot,
+            .fc-list-event-graphic {
+                border-color: inherit;
+            }
+        }
+
+
+        //for IE
+        .fc-list-event:hover td {
+            background-color: rgba(0,0,0,0.08);
+        }
+        .fc-list-event-dot {
+            border-color: #fff;
+        }
+
+
+        // from @fullcalendar/bootstrap/main.css
+        a {
+            text-decoration: none;
+            &[data-goto]:hover {
+                text-decoration: underline;
+            }
+        }
+
+        hr.fc-timegrid-divider {
+            border-color: inherit;
+        }
+
+        a.fc-event:not([href]):not([tabindex]) {
+            color: #fff;
+        }
+
+        //.fc-popover.card {
+        //	position: absolute;
+        //}
+
+        //.fc-popover .card-body {
+        //	padding: 0;
+        //}
+
+        //.fc-time-grid .fc-slats table {
+        //	/* some themes have background color. see through to slats */
+        //	background: none;
+        //}
+    }
+
+    .fc-scroller {
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            width: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        .fc-toolbar  {
+            flex-direction: column;
+            > .fc-toolbar-chunk:nth-child(2) {
+                margin-top: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            > .fc-toolbar-chunk:first-child {
+                align-self: flex-end;
+                order: 10;
+            }
+
+            > .fc-toolbar-chunk:last-child {
+                align-self: flex-start;
+                order: -1;
+            }
+        }
+    }
+
+}

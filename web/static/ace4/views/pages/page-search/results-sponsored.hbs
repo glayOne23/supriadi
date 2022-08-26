@@ -1,0 +1,40 @@
+<div class="row">
+    {{#each (get "result1")}}
+    <div class="col-12 col-lg-3 pr-2 {{#unless @last}}mb-3 mb-lg-0{{/unless}}">
+        <div class="dcard brc-transparent p-3 brc-h-warning-m3">
+            <img data-src="holder.js/256x128?theme=gray&text=Product" class="radius-1 w-100" alt="Product Image" />
+            <div class="my-3 text-90 text-warning-m2">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                {{#if star3_5}}
+                 <i class="fa fa-star-half-alt"></i>
+                 <i class="far fa-star"></i>
+                {{/if}}
+
+                {{#if star4}}
+                 <i class="fa fa-star"></i>
+                 <i class="far fa-star"></i>                 
+                {{/if}}
+
+                {{#if star5}}
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>                 
+                {{/if}}
+                
+                <span class="text-grey-m1 ml-1">
+                    ({{rating}} ratings)
+                </span>
+            </div>
+
+            <h3 class="text-primary text-130">
+                Thumbnail label
+            </h3>
+
+            <div>
+                Cras justo odio ...
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -1,0 +1,37 @@
+<div class="px-3 text-grey-m1 text-95">
+{{#each (get "timeline")}}
+
+    <div class="mt-4 mb-2">
+        <span class="badge badge-{{color}} ml-n1">{{title}}</span>
+    </div>
+
+    <div class="mt-1 pl-1 pos-rel">
+        <div class="position-tl h-90 border-l-2 brc-secondary-l1 ml-2 ml-lg-25 mt-2"></div>
+    
+        {{#each items}}
+            <div class="row pos-rel{{#unless @first}} my-3{{/unless}}">
+                <div class="position-tl mt-1 ml-25 w-2 h-2 bgc-white radius-round border-3 brc-{{color}}-m1"></div>
+
+                <div class="col-4 ml-4 col-lg-3 ml-lg-0 text-90 text-grey-m2 text-left text-lg-center">{{time}}</div>
+                <div class="col-12 ml-4 col-lg-9 ml-lg-n4 pb-2 border-b-1 brc-grey-l4">
+                    <i class="{{icon}} w-2 text-center mr-1"></i>
+                    <a href="#" class="text-primary-d1 text-600">
+                        {{name}}
+                    </a>
+
+                    <span class="text-dark-m3">
+                        {{description}}
+                    </span>
+
+                    {{#if action}}
+                        <a href="#" class="text-blue-d2">
+                            {{action}}
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+    
+    </div>
+{{/each}}
+</div>

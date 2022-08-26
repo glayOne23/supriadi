@@ -1,0 +1,48 @@
+.page-link {
+    color: $pagination-color;
+    background-color: $pagination-bg;
+    border-color: $pagination-border-color;
+
+    border-radius: 0;
+    height: 100%;
+
+    &:hover {
+        color: $pagination-hover-color;
+        background-color: $pagination-hover-bg;
+        border-color: $pagination-hover-border-color;
+        text-decoration: none;
+    }
+
+    &.active {
+      z-index: 3;
+    }
+
+    &:focus {
+      box-shadow: none;
+      color: mix($pagination-hover-color, $pagination-color);
+      background-color: mix($pagination-hover-bg, $pagination-bg);
+      border-color: $pagination-hover-border-color;
+    }
+    
+    &:active {
+        color: $pagination-hover-color;
+        background-color: $pagination-hover-bg;
+        border-color: $pagination-hover-border-color;
+    }
+}
+
+
+.page-item {
+  &.active .page-link {
+    z-index: 3;
+    color: $pagination-active-color;
+    background-color: $pagination-active-bg;
+    border-color: $pagination-active-border-color;
+  }
+  &.disabled .page-link {
+    color: $pagination-disabled-color;
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border-color;
+  }
+}
+

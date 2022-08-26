@@ -1,0 +1,96 @@
+{{#each (get "conversation")}}
+    {{#if left}}<!-- if conversation item is on left -->
+        <div class="px-3 conversation {{#if avatar}}mt-425{{else}}mt-1{{/if}}">
+            <div class="d-flex align-items-start col px-0">
+                {{#if avatar}}
+                <div class="mr-3 mt-2px">
+                    <div class="pos-rel">
+                        <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round w-4 h-4" />
+                        <span class="position-tr bgc-{{status}}-d1 brc-white border-2 p-1 mt-n1 radius-round"></span>
+                    </div>
+                    <div class="text-600 text-90 ml-1">
+                        <a href="#" class="font-bolder btn-text-dark btn-h-text-primary">
+                        {{name}}
+                        </a>
+                    </div>
+                </div>
+                {{/if}}
+
+                <div class="col px-0">
+                    {{#each messages}}
+                    <div class="d-flex mb-15 pos-rel">
+                        {{#if @first}}
+                            <!-- the triangle -->
+                            <span class="position-tl ml-n15 mt-15 w-3 h-3 bgc-grey-l3 rotate-n45"></span>
+                        {{/if}}
+
+                        {{#if unstyled}}
+                        <div class="mt-2px pos-rel">
+                            {{{content}}}
+                        </div>
+                        {{else}}
+                        <div class="py-2 px-3 radius-1 bgc-grey-l3 text-dark-m1 pos-rel">
+                            <div class="text-90" style="max-width: 480px;">
+                                {{{content}}}
+                            </div>
+                        </div>
+
+                        <div class="text-80 text-grey-m2 ml-2 mt-2">
+                            {{time}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+
+
+    {{#if right}}<!-- if conversation item is on left -->
+        <div class="px-3 conversation text-right {{#if avatar}}mt-425{{else}}mt-1{{/if}}">
+            <div class="d-flex flex-row-reverse align-items-start col px-0">
+                {{#if avatar}}
+                <div class="ml-3 mt-2px">
+                    <div class="pos-rel">
+                        <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round w-4 h-4" />
+                        <span class="position-tr bgc-{{status}}-d1 brc-white border-2 p-1 mt-n1 radius-round"></span>
+                    </div>
+                    <div class="text-600 text-90 ml-1">
+                        <a href="#" class="font-bolder btn-text-dark btn-h-text-primary">
+                        {{name}}
+                        </a>
+                    </div>
+                </div>
+                {{/if}}
+
+                <div class="col px-0">
+                    {{#each messages}}
+                    <div class="d-flex flex-row-reverse mb-15 pos-rel">
+                        {{#if @first}}
+                            <!-- the triangle -->
+                            <span class="position-tr mr-n15 mt-15 w-3 h-3 bgc-primary-l3 rotate-n45"></span>
+                        {{/if}}
+
+                        {{#if unstyled}}
+                        <div class="mt-2px pos-rel">
+                            {{{content}}}
+                        </div>
+                        {{else}}
+                        <div class="py-2 px-3 radius-1 bgc-primary-l3 text-dark-m1 pos-rel">
+                            <div class="text-90" style="max-width: 480px;">
+                                {{{content}}}
+                            </div>
+                        </div>
+                        
+                        <div class="text-80 text-grey-m2 mr-2 mt-2">
+                            {{time}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+{{/each}}

@@ -1,0 +1,67 @@
+{{#each (get "conversation")}}
+
+ {{#if left}}<!-- if conversation item is on left -->
+ <div class="d-flex px-3 mb-1">
+    <div>
+        {{#if avatar}}
+        <div class="mb-1 mt-4">
+            <span class="pos-rel">
+                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round w-4 h-4" />
+                <span class="radius-round position-tr bgc-{{status}}-d1 brc-white border-2 p-1 mt-n1"></span><!-- the small green dot -->
+            </span>
+
+            <span class="text-600 text-90 ml-1">
+                <a href="#" class="btn-text-dark btn-h-text-primary">
+                {{name}}
+                </a>
+            </span>
+
+            <span class="text-80 text-grey-m2 ml-1">
+                {{time}}
+            </span>
+        </div>
+        {{/if}}
+
+        <div class="py-2 px-3 radius-1 bgc-grey-l4 text-dark-m1 border-1 brc-grey-l2">
+            <div class="text-90">
+                {{{message}}}
+            </div>
+        </div>
+    </div>
+ </div>
+ {{/if}}
+
+ {{#if right}}<!-- if conversation item is on left -->
+ <div class="d-flex flex-row-reverse px-3 text-right mb-1">
+    <div>
+        {{#if avatar}}
+        <div class="mb-1 mt-4">
+            <span class="pos-rel">
+                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round w-4 h-4" />
+                <span class="radius-round position-tr bgc-{{status}}-d1 brc-white border-2 p-1 mt-n1"></span><!-- the small orange dot -->
+            </span>
+
+            <span class="text-600 text-90 ml-1">
+                <a href="#" class="btn-text-dark btn-h-text-primary">
+                {{name}}
+                </a>
+            </span>
+
+            <span class="text-80 text-grey-m2 ml-1">
+                {{time}}
+            </span>
+        </div>
+        {{/if}}
+
+        <div class="py-2 px-3 radius-1 bgc-green-d3 border-1 brc-black-tp11 text-white pos-rel">
+            <!-- add this dark layer for a darker background -->
+            <!-- <div class="position-tl w-100 h-100 bgc-black-tp10 radius-1"></div> -->
+            <div class="text-90 pos-rel">
+                {{{message}}}
+            </div>
+        </div>
+    </div>
+ </div>
+ {{/if}}
+
+{{/each}}

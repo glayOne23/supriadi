@@ -1,0 +1,37 @@
+[
+    {
+        "avatar": "avatar5.jpg",
+        "name": "Amy",
+        "summary": "changed her profile photo. <a href='#' class='text-blue'>Take a look</a>",
+        "time": "4 min ago",
+        "color": "blue-m1"
+    },
+    {
+        "avatar": "avatar3.png",
+        "name": "Susan",
+        "summary": "is now friends with Amy",
+        "time": "20 min ago",
+        "color": "success-m1"
+    },
+    {
+        "avatar": "avatar5.jpg",
+        "name": "Amy",
+        "summary": "upgraded her membership plan",
+        "time": "1 hour ago",
+        "color": "warning"
+    },
+    {
+        "avatar": "avatar4.png",
+        "name": "David",
+        "summary": "left a comment on Amy's product review",
+        "time": "1 hour ago",
+        "color": "pink-m1"
+    },
+    {
+        "avatar": "avatar5.jpg",
+        "name": "Amy",
+        "summary": "logged in to her account",
+        "time": "2 hours ago",
+        "color": "purple-m1"
+    }
+]

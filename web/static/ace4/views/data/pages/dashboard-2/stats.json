@@ -1,0 +1,43 @@
+[
+ {
+    "icon": "fa fa-dollar-sign",
+    "icon-bg": "green-d1",
+    "icon-border": "green-l2",
+
+    "number": "85k",
+    "dollar-sign": true,
+
+    "stats-up": "8%",
+    "text": "today's earnings"
+ },
+
+ {
+    "icon": "fa fa-shopping-cart",
+    "icon-bg": "warning-d1",
+    "icon-border": "warning-l2",
+
+    "number": "369",
+
+    "stats-down": "2%",
+    "text": "new orders"
+ },
+
+ {
+    "icon": "fas fa-chart-line",
+    "icon-bg": "primary",
+    "icon-border": "primary-l2",
+
+    "number": "520k",
+
+    "stats-up": "3%",
+    "text": "page views",
+
+    "linechart": "[1000,800,1800,400,1500,1000,1050,1300,2100,1400,1500,1350]"
+ },
+
+ {
+    "piechart": 71,
+    "title": "Task Progress",
+    "text": "3 remaining"
+ }
+]

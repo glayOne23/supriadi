@@ -1,0 +1,101 @@
+<!-- page header -->
+<div class="d-lg-none page-header py-0">
+    <h1 class="text-dark-m3 pb-0 mb-0 text-125">
+        Dashboard
+    </h1>
+
+    <!-- page tools -->
+    <div class="page-tools d-none">
+        <div class="action-buttons text-nowrap">
+            <a class="btn bgc-white btn-light-secondary mx-0" href="#" data-toggle="tooltip" title="Details">
+              <i class="fa fa-search-plus text-blue"></i>
+            </a>
+            <a class="btn bgc-white btn-light-secondary mx-0" href="#" data-toggle="tooltip" title="Print">
+                <i class="fa fa-print text-purple"></i>
+            </a>
+            <a class="btn bgc-white btn-light-secondary mx-0" href="#" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-trash-alt text-danger"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row px-2 mt-3">
+ {{> page/infobox}}
+</div>
+
+
+
+
+
+<div class="row mt-3 mt-lg-4">
+    <!-- sale stats chart -->
+    <div class="col-12 col-lg-7">
+        {{> page/sales-stats-card}}
+    </div>
+
+    <!-- revenue/expense bar chart -->
+    <div class="col-12 col-lg-5 mt-3 mt-lg-0 pl-lg-2">
+        {{> page/revenue-expense-card}}
+    </div>
+</div>
+
+
+
+
+
+<div class="row mt-3 mt-lg-4">
+    <!-- products table -->
+    <div class="col-12 col-lg-5 mt-2 mt-lg-0 pr-lg-2">
+        {{> page/products}}
+    </div>
+
+    <!-- members table -->
+    <div class="col-12 col-lg-7 mt-3 mt-lg-0">
+        {{> page/members}}
+    </div>
+</div>
+
+
+
+
+
+<div class="row mt-4">
+    {{> page/traffic-charts}}
+</div><!-- /.row -->
+
+
+
+
+
+<div class="row mt-4">
+    <!-- orders table -->
+    <div class="col-12 col-lg-9">
+        {{> page/orders}}
+    </div>
+
+    <div class="col-12 col-lg-3 mt-2 mt-lg-0 pl-lg-2">
+        {{> page/order-summary}}
+    </div>
+</div>
+
+
+
+
+<div class="row mt-4 pt-1">
+    <div class="col-12 col-lg-4 mt-lg-0 pr-lg-2">
+        {{> page/activity}}
+    </div>
+
+    <div class="col-12 col-lg-4 mt-3 mt-lg-0 pr-lg-2">
+        {{> page/task}}
+    </div>
+
+    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+        {{> page/conversation}}
+    </div>
+</div>

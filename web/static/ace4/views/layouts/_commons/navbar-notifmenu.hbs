@@ -1,0 +1,66 @@
+<ul class="nav nav-tabs nav-tabs-simple w-100 nav-justified dropdown-clickable border-b-1 brc-secondary-l2" role="tablist">
+    <li class="nav-item">
+        <a class="d-style px-0 mx-0 py-3 nav-link active text-600 brc-blue-m1 text-dark-tp5 bgc-h-blue-l4" data-toggle="tab" href="#navbar-notif-tab-1" role="tab">
+            <span class="d-active text-blue-d1 text-105">Notifications</span>
+            <span class="d-n-active">Notifications</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="d-style px-0 mx-0 py-3 nav-link text-600 brc-purple-m1 text-dark-tp5 bgc-h-purple-l4" data-toggle="tab" href="#navbar-notif-tab-2" role="tab">                    
+            <span class="d-active text-purple-d1 text-105">Messages</span>
+            <span class="d-n-active">Messages</span>
+        </a>
+    </li>
+</ul><!-- .nav-tabs -->
+
+
+<div class="tab-content tab-sliding p-0">
+
+    <div class="tab-pane mh-none show active px-md-1 pt-1" id="navbar-notif-tab-1" role="tabpanel">
+
+        {{#each (get "layout/navbar-notif")}}
+            <a href="#" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
+                <i class="{{icon}} {{icon-color}} text-white text-110 mr-15 p-2 radius-1"></i>
+                <span class="text-muted">{{title}}</span>
+                {{#if badge}}
+                <span class="float-right badge {{badge-color}} radius-round text-80">{{badge}}</span>
+                {{/if}}
+            </a>
+        {{/each}}
+
+        <hr class="mt-1 mb-1px brc-secondary-l2" />
+        <a href="#" class="mb-0 py-3 border-0 list-group-item text-blue text-uppercase text-center text-85 font-bolder">
+            See All Notifications
+            <i class="ml-2 fa fa-arrow-right text-muted"></i>
+        </a>
+
+    </div><!-- .tab-pane : notifications -->
+
+
+    <div class="tab-pane mh-none pl-md-2" id="navbar-notif-tab-2" role="tabpanel">
+        <div data-ace-scroll='{"ignore": "mobile", "height": 300, "smooth":true}'>
+            {{#each (get "layout/navbar-message")}}
+            <a href="#" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
+                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{img}}" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
+                <div>
+                    <span class="text-primary-m1 font-bolder">{{name}}:</span>
+                    <span class="text-grey text-90">{{summary}}</span>
+                    <br />
+                    <span class="text-grey-m1 text-85">
+                        <i class="far fa-clock"></i>
+                        {{time}}
+                    </span>
+                </div>
+            </a>
+            {{#unless @last}} <hr class="my-1px brc-grey-l3" />{{/unless}}
+            {{/each}}            
+        </div><!-- ace-scroll -->
+
+        <hr class="my-1px brc-secondary-l2 border-double" />
+        <a href="{{getPageLink 'page-inbox'}}" class="mb-0 py-3 border-0 list-group-item text-purple text-uppercase text-center text-85 font-bolder">
+            See All Messages
+            <i class="ml-2 fa fa-arrow-right text-muted"></i>
+        </a>
+    </div><!-- .tab-pane : messages -->
+
+</div>

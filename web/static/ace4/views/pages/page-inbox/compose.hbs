@@ -1,0 +1,112 @@
+<div class="modal modal-nb ace-aside aside-bottom aside-r aside-fade aside-offset aside-shown-above-nav" id="aside-compose" tabindex="-1" role="dialog" aria-hidden="false">
+
+  <div class="modal-dialog modal-dialog-scrollable mr-2 my-2" style="width: 640px;" role="document">
+    <div class="modal-content border-0 mb-2 radius-1 shadow">
+      <div class="modal-header bgc-dark-d3 border-0 text-white pt-25 pb-2">
+          <h5 class="text-110 py-0 my-0">
+            New Message
+          </h5>
+
+          <a href="#" class="action-btn text-white bgc-h-white-tp9 radius-1 px-2 py-1" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </a>
+      </div>
+      <div class="modal-body">
+        <form autocomplete="off" class="d-flex flex-column">
+            <div class="form-group row">
+                <div class="flex-grow-1 px-3">
+                    <input type="text" class="px-1 brc-grey-l2 form-control border-none border-b-1 shadow-none radius-0" id="id-form-field-1" placeholder="Recipients" />
+                </div>
+            </div>
+
+
+            <div class="form-group row my-2">
+                <div class="flex-grow-1 px-3">
+                    <input type="text" class="px-1 brc-grey-l2 form-control border-none border-b-1 shadow-none radius-0" i1d="id-form-field-1" placeholder="Subject">
+                </div>
+            </div>
+
+
+            <div class="form-group row mt-3">
+                <div class="px-3 w-100">
+                    <div id="message-editor" placeholder="Type your message" class="overflow-auto text-wrap w-100" style="height: 360px; max-height: 50vh;">
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="message-editor-toolbar" class="collapse position-bl w-100">
+            <!-- wysiwyg editor will be inserted here -->
+            <!-- this is a .collapse element and will be toggeld using the below data-toggle="collapse" button -->
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-start bgc-secondary-l4">
+          <button type="button" class="btn btn-blue py-15 px-4 ml-2">
+            Send
+            </button>
+
+          <div class="ml-3 pl-3 border-l-1 brc-secondary-l1">
+            <a data-toggle="collapse" href="#message-editor-toolbar" class="btn btn-tp btn-white">
+                <i class="fa fa-font"></i>
+            </a>
+
+            <a href="#" class="btn btn-tp btn-white">
+                <i class="fa fa-paperclip"></i>
+            </a>
+
+            <div class="dropdown d-inline-block">
+                <a href="#" class="btn btn-tp btn-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-smile text-125"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right p-1">
+                    <div class="d-flex ">
+                        <a class="dropdown-item px-25" href="#">
+                            <span class="fa-stack w-auto">
+                                <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                <i class="fas fa-smile text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                            </span>
+                        </a>
+
+                        <a class="dropdown-item px-25" href="#">
+                            <span class="fa-stack w-auto">
+                                <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                <i class="fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                            </span>
+                        </a>
+
+                        <a class="dropdown-item px-25" href="#">
+                            <span class="fa-stack w-auto">
+                                <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                <i class="fas fa-smile-wink text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="ml-auto">
+              <span class="text-grey-d1 text-95 mr-2">Draft saved at 9:21 pm</span>
+              <a href="#" class="btn btn-tp btn-outline-grey btn-h-lighter-danger btn-a-lighter-danger">
+                  <i class="fa fa-trash"></i>
+              </a>
+          </div>
+      </div>
+    </div>
+
+    <!-- the button that toggle modal -->
+    <!--
+    <div class="aside-header fade position-br mb-5 d-flex align-items-center">
+        <button type="button" class="shadow ml-2 btn btn-info radius-round mw-auto px-35 py-25"  data-toggle="modal" data-target="#aside-compose">
+           <i class="fa fa-pen mr-1"></i>
+           Compose
+        </button> 
+    </div>
+    -->
+  </div>
+
+</div>

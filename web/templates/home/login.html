@@ -1,0 +1,42 @@
+{% extends 'home/layouts/base.html' %}
+{% load static %}
+
+{% block title %} Masuk {% endblock %}
+
+{% block content %}            
+<body style="height: 100vh; background-color: white;">
+
+    <!-- Page Wrapper -->
+        <div id="page-wrapper">
+            <!-- Main -->
+                <article id="main">                    
+                    <section class="wrapper style5">
+                        <div class="inner">
+
+                            <section style="height: 100vh;">
+                                <h4>Masuk</h4>
+                                <form method="post" action="#">
+                                    <div class="row gtr-uniform">
+                                        <div class="col-6 col-12-xsmall">
+                                            <input type="text" name="nama" id="nama" value="" placeholder="Nama" />
+                                        </div>
+                                        <div class="col-6 col-12-xsmall">
+                                            <input type="password" name="password" id="password" value="" placeholder="Password" />
+                                        </div>
+                                        <div class="col-12">
+                                            <ul class="actions">
+                                                <li><input type="submit" value="Masuk" class="primary" /></li>                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+                        </div>
+                    </section>
+                </article>
+
+        </div>    
+
+</body>    
+{% endblock %}

@@ -1,0 +1,53 @@
+{{#each (get "stats")}}
+
+<div class="col-12 col-sm-6 col-lg-3 p-0 p-md-1 mb-2 mb-lg-0">
+ <div class="p-2 py-lg-3 d-flex pos-rel mx-1 justify-content-start justify-content-lg-center ccard">
+
+	{{#if icon}}
+	<div class="pl-1">
+		<span class="d-inline-block bgc-{{color}}-tp1 p-3 radius-round text-center border-2 brc-black-tp11">
+        	<i class="{{icon}} text-white text-170 w-3 mx-3px"></i>
+        </span>
+	</div>
+	{{/if}}
+	
+	<div class="pl-25">
+		{{#if number}}
+		 <div class="d-flex align-items-center justify-content-between justify-content-md-start">
+			<span class="text-grey-d3 text-160 mr-4">
+				{{number}}
+			</span>
+
+			{{#if stat-success}}
+			 <div class="text-success opacity-1 pr-1 font-bolder">
+				{{stat-success}}
+				<i class="fas fa-level-up-alt"></i>	 	
+			 </div>
+			{{/if}}
+
+			{{#if stat-important}}
+			 <div class="text-danger opacity-2 pr-1 font-bolder">		
+				{{stat-important}}
+				<i class="fas fa-long-arrow-alt-down text-120"></i>
+			 </div>
+			{{/if}}
+		 </div>
+		{{/if}}
+
+		{{#if text}}
+		 <div class="text-blue-d2 text-105">
+			{{text}}
+		 </div>
+		{{/if}}
+
+		{{#if content}}{{! sometimes we have two content texts like in smaller infoboxes, so use a loop }}
+		 <div class="text-nowrap">
+			{{{content}}}
+		 </div>
+		{{/if}}
+	</div>
+
+ </div>
+</div>
+
+{{/each}}

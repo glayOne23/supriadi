@@ -1,0 +1,290 @@
+//tinydatepicker
+$datepicker-top-border: bgc-color('primary', 'm1');
+$datepicker-top-border-width: 0.25rem;
+
+
+$datepicker-item-hover-bg: #e1e3e9;
+$datepicker-item-hover-color: #2b303d;
+
+$datepicker-item-selected-bg: bgc-color('blue', 'd1');//bg-primary
+$datepicker-item-selected-color: #fff;
+
+$datepicker-btn-hover-bg: bgc-color('info', 'd2');//bg-info
+$datepicker-btn-hover-color: #fff;
+
+$datepicker-nav-btn-border: bgc-color('secondary', 'm4');
+$datepicker-nav-btn-color: text-color('secondary', 'd1');
+$datepicker-nav-btn-bg: #fff;
+
+$datepicker-nav-btn-hover-bg: #fff;
+$datepicker-nav-btn-hover-color: text-color('blue', 'd1');
+$datepicker-nav-btn-hover-border: bgc-color('blue', 'm1');
+
+$datepicker-month-hover-color: text-color('grey', 'd2');
+$datepicker-month-hover-bg: bgc-color('grey', 'l2'); //btn-light
+
+$datepicker-today-highlight: bgc-color('orange', 'm1');
+
+
+//daterange
+$datepicker-range-bg: bgc-color('primary', 'l2');
+$datepicker-range-color: rgba(0,0,0,0.8);
+$datepicker-range-selected-bg: bgc-color('blue', 'd1');
+$datepicker-range-selected-color: #fff;
+
+
+//timepicker
+$timepicker-item-hover-bg: bgc-color('secondary', 'l2');
+$timepicker-toolbar-hover-bg: bgc-color('grey', 'l3');
+
+
+
+@if $plugin-datepicker == true {
+
+  //date-time picker
+  .dp-modal {
+    z-index: $zindex-modal;
+  }
+  .modal-backdrop ~ {//when inside bootstrap modal
+    .dp-below, .dp-permanent {
+      .dp {
+        z-index: $zindex-modal + 1;
+      }
+    }
+  }
+
+  .dp {
+    padding-top: 0;
+    border-top: $datepicker-top-border-width solid $datepicker-top-border;
+    border-radius: 3px;
+
+    font-size: $datepicker-font-size;
+
+    &::before {
+      display: none;
+    }
+
+    .dp-col-header {
+      font-size: 0.875em;
+      color: #999;
+    }
+    .dp-day {
+      font-size: 0.925em;
+    }
+  }
+
+  .dp-cal-month, .dp-cal-year, .dp-day, .dp-month, .dp-year {
+    border-radius: 0;
+    font-size: 0.925em;
+  }
+
+
+
+  .dp-day, .dp-month, .dp-year {
+    &:hover {
+      background: $datepicker-item-hover-bg;
+      color: $datepicker-item-hover-color;
+    }
+  }
+
+  .dp-selected:hover, .dp-selected:focus, .dp-selected,
+  .dp-current:focus, .dp-current, .dp-day:focus, .dp-month:focus, .dp-year:focus {
+    background: $datepicker-item-selected-bg;
+    color: $datepicker-item-selected-color;
+  }
+
+  .dp-close,
+  .dp-clear,
+  .dp-today {
+    &:hover, &:focus {
+      background: $datepicker-btn-hover-bg;
+      color: $datepicker-btn-hover-color;
+    }
+  }
+  .dp-next, 
+  .dp-prev {
+    top: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+
+    background-color: $datepicker-nav-btn-bg;
+
+    border: 2px solid $datepicker-nav-btn-border;
+    border-radius: 1rem;
+
+    color: $datepicker-nav-btn-color;
+    
+    &:hover, &:focus {
+      background-color: $datepicker-nav-btn-hover-bg;
+      color: $datepicker-nav-btn-hover-color;
+      border-color: $datepicker-nav-btn-hover-border;
+    }
+  }
+
+
+  .dp-cal-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .dp-cal-month,
+  .dp-cal-year {
+    vertical-align: middle;
+    padding: 0.425rem 0.75rem 0.5rem;
+
+    &:hover, &:focus {
+      color: $datepicker-month-hover-color;
+      background-color: $datepicker-month-hover-bg;
+    }
+  }
+
+  .dp-day-today::after {
+    border-right-color: $datepicker-today-highlight;
+    border-top-color: $datepicker-today-highlight;
+    top: 1px;
+    right: 1px;
+  }
+
+  .dp-day-today.dp-selected::after {
+    border-right-color: #fff;
+    border-top-color: #fff;
+    top: 2px;
+    right: 2px;
+  }
+
+  //daterange picker
+  .dr-cals {
+    display: flex;
+    position: relative;
+    z-index: 11;
+
+    overflow: visible;
+
+    box-shadow: none;
+
+    padding-top: 0;
+    border-top: $datepicker-top-border-width solid $datepicker-top-border;
+    border-radius: 3px;
+
+    font-size: $datepicker-font-size;
+
+    &::before {
+      display: none;
+    }
+
+
+    .dr-in-range {
+      &, &:hover, &:focus {
+        color: $datepicker-range-color;
+        background-color: $datepicker-range-bg;
+      }
+    }
+    .dp-current:hover {
+      color: $datepicker-range-color;
+      background-color: $datepicker-range-bg;
+      transform: scale(1.1);
+    }
+
+    .dr-selected {
+      &, &:hover, &:focus {
+        color: $datepicker-range-selected-color;
+        background: $datepicker-range-selected-bg;      
+        border-radius: 0;
+      }
+    }
+
+  }
+
+
+
+  .dp-daterange-picker {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    @include transition(opacity $transition-general, visibility 0s $transition-general, z-index 0s $transition-general);
+
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+
+    &.visible {
+      opacity: 1;
+      z-index: 100;
+      visibility: visible;
+      @include transition(opacity $transition-general, visibility 0s 0s, z-index 0s 0s);
+    }
+  }
+  .dp-daterange-above {
+    top: auto;
+    bottom: 100%;
+  }
+
+  .dr-cal-end .dp {
+    border-left-width: 0.25rem;
+  }
+
+  @media (max-width: 616px), (max-height: 480px) {
+    .dr-cal-end {
+      display: none;
+    }
+
+    .dr-cal-start .dp-next {
+      visibility: visible;
+    }
+  }
+
+}//@if $plugin-datepicker
+
+
+
+@if $plugin-timepicker == true {
+  .bootstrap-datetimepicker-widget {
+    &.dropdown-menu {
+      width: auto;
+      min-width: 20rem;
+    }
+    
+    .collapse.in {
+      display: list-item;
+    }
+
+    .timepicker .table th, .timepicker .table td , .datepicker .table th, .datepicker .table td,  table td span {
+      border-radius: 0;
+    }
+
+    table td {
+      &.day, &.hour, &.minute, &.second {
+        &:hover {
+          background-color: $timepicker-item-hover-bg;
+        }
+      }
+      &.active {
+        &, &:hover {
+          background-color: $datepicker-item-selected-bg;
+        }
+      }
+    }
+
+    table td span {
+      &:hover {
+        background-color: $timepicker-item-hover-bg;
+      }
+      &.active {
+        background-color: $datepicker-item-selected-bg;
+      }
+    }
+
+    table thead tr:first-child th:hover {
+      background-color: $timepicker-item-hover-bg;
+    }
+
+    .picker-switch  .table td span:hover {
+      background-color: $timepicker-toolbar-hover-bg;
+    }
+
+  }//.bootstrap-datetimepicker-widget
+}//@if $plugin-timepicker
+
+
+

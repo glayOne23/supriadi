@@ -1,0 +1,56 @@
+[
+    {
+       "left": true,
+       "name" : "Jack",
+       "avatar" : "avatar6.jpg",
+       "time" : "38 sec",
+       "time-color" : "blue",
+       "message" : "Raw denim you probably haven't heard of actively? <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+       "status": "success"
+    } ,
+    {
+       "left": true,
+       "name" : "Jack",
+       "avatar" : false,
+       "time" : "4 sec",
+       "time-color" : "success",
+       "message" : "Lorem ipsum dolor sit amet",
+       "status": "success"
+    } ,
+    {
+       "right": true,
+       "name" : "Jane",
+       "avatar" : "avatar5.jpg",
+       "time" : "2 min",
+       "time-color" : "orange",
+       "message" : "Consectetur adipiscing elit. Quis nostrud exercitation!!!",
+       "status": "warning"
+    } ,
+    {
+       "left": true,
+       "name" : "Jack",
+       "avatar" : "avatar6.jpg",
+       "time" : "3 min",
+       "time-color" : "grey",
+       "message" : "Heard of them jean shorts Austin!",
+       "status": "success"
+    } ,
+    {
+       "right": true,
+       "name" : "Jane",
+       "avatar" : "avatar5.jpg",
+       "time" : "38 sec",
+       "time-color" : "blue",
+       "message" : "Fusce dapibus, tellus ac cursus commodo... <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-grin-alt text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+       "status": "warning"
+    } ,
+    {
+       "right": true,
+       "name" : "Jane",
+       "avatar" : false,
+       "time" : "4 min",
+       "time-color" : "success",
+       "message" : "Donec id elit non mi porta gravida at eget metus",
+       "status": "warning"
+    }
+   ]

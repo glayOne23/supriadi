@@ -1,0 +1,166 @@
+
+th {
+    font-weight: $font-semibold;
+}
+
+.table {
+    td, th {
+        border-color: $table-border;
+    }
+    thead {
+        color: $table-header-text;
+        th {
+            border-bottom-width: 1px;
+        }
+    }
+}
+
+.table-hover tbody tr:hover {
+    color: $table-hover-text;
+    background-color: $table-hover-bg;
+}
+
+.table-bordered th {
+    border-bottom-width: 1px;
+}
+.table-bordered-x {
+    th , td {
+        border-width: 1px 0;
+        border-style: solid;
+    }
+}
+.table-bordered-y {
+    th , td {
+        border-width: 0 1px;
+        border-style: solid;
+    }
+}
+
+//inherit border color if table is brc-*
+.table[class*="brc-"] {
+    > thead, > tbody, > tr,
+    > thead > tr, > tbody > tr,
+    > thead > tr > th, > tr > th,
+    > tbody > tr > td, > tr > td
+    {
+        border-color: inherit;
+    }
+}
+.table thead[class*="brc-"] , .table tbody[class*="brc-"] {
+    > tr, > tr > th, > tr > td {
+        border-color: inherit;
+    }
+}
+.table tr[class*="brc-"] {
+    > th , > td {
+        border-color: inherit;
+    }
+}
+
+
+
+.table-spaced {
+    border-spacing: 0 0.75rem;
+    border-collapse: separate;
+
+    td, th {
+        border-width: 0;
+    }
+}
+
+
+.table-lg {
+    td, th {
+        padding: 0.875rem;
+    }
+}
+
+/////////
+
+
+//basictable plugin for responsive tables
+table.bt tbody tr td {
+    padding: 0; 
+    .bt-content {
+        padding: 0.375rem;
+        padding-left: 0.875rem;
+    }
+
+    &:first-child::before, &:first-child .bt-content {
+        padding-top: 0.875rem;
+    }
+
+    &:last-child .bt-content {
+        padding-bottom: 0.875rem;
+    }
+}
+table.bt tbody tr {
+    border-bottom: 1px solid #fff;
+}
+
+table.bt tbody td::before {
+    background-color: $table-responsive-bg;
+    color: #fff;
+    margin-right: 0.625rem;
+    padding: 0.125rem 0.625rem;
+    padding-top: 0.125rem;
+
+    font-weight: $font-semibold;
+}
+
+table.bt tbody[class*="bgc-"] td {
+    &::before {
+        background-color: inherit;
+    }
+    .bt-content {
+        flex: 2 1 0;
+        background-color: #fff;
+    }
+}
+
+
+
+
+// striped tables along with "basictable" plugin for responsiveness
+.table[class*="table-striped"]:not(.bt) tbody tr:nth-of-type(even) {
+    background-color: #fff;
+}
+
+$table-colors: (
+    'none': $table-striped,
+    'primary': $table-striped-primary,
+    'secondary': $table-striped-secondary,
+    'blue': $table-striped-blue,
+    'danger': $table-striped-danger,
+    'success': $table-striped-success,
+    'warning': $table-striped-warning,
+    'info': $table-striped-info,
+    'default': $table-striped-default
+);
+
+@each $name, $value in $table-colors {
+    @if $name == 'none' {
+        $name: '';
+    }
+    @else {
+        $name: '-'+$name;
+    }
+
+    .table-striped#{$name} {
+        tbody tr:nth-of-type(odd) {
+            background-color: $value;
+        }
+
+        @if $plugin-basictable == true {
+            &.bt tbody tr:nth-of-type(odd) {
+                background-color: transparent;
+                > td .bt-content {
+                    background-color: $value;
+                }
+            }
+        }
+    }
+}
+
+
+

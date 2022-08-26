@@ -1,0 +1,48 @@
+<nav class="navbar navbar-sm navbar-expand-lg navbar-fixed navbar-blue">
+ <div class="navbar-inner brc-grey-l2 shadow-md">
+
+    <!-- this button collapses/expands sidebar in desktop mode -->
+    <button type="button" class="btn btn-burger align-self-center d-none d-xl-flex mx-2" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+        <span class="bars"></span>
+    </button>
+
+    <div class="d-flex h-100 align-items-center justify-content-xl-between">
+        <!-- this button shows/hides sidebar in mobile mode -->
+        <button type="button" class="btn btn-burger static burger-arrowed collapsed d-flex d-xl-none ml-2 bgc-h-white-l31" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+            <span class="bars text-white"></span>
+        </button>
+
+        <a class="navbar-brand ml-2 text-white" href="#">
+            ACE App
+        </a>
+    </div>
+
+
+    <!-- .navbar-menu toggler -->
+    <button class="navbar-toggler mx-1 p-25" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <i class="fa fa-user text-white"></i>
+    </button>
+
+
+    <div class="ml-auto mr-lg-2 navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+      <div class="navbar-nav">
+        <ul class="nav nav-compact-2">
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle mr-1px" href="#">
+                    Link
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" href="#">
+                    <i class="fa fa-bell mr-lg-2"></i>
+                    <span class="badge bgc-white text-orange-d4 badge-pill mt-lg-n1">3</span>
+                </a>
+            </li>
+        </ul>
+      </div>
+   </div><!-- .navbar-menu -->
+
+
+ </div><!-- .navbar-inner -->
+</nav>

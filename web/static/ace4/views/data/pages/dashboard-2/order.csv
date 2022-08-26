@@ -1,0 +1,5 @@
+id,name,date,address,status,total
+6328,"Bob Doe","May 8th","London","processed","$149,98"
+7193,"Maria Doe","May 6th","Dubai","cancelled","$29,45"
+8481,"John Smith","May 5th","Istanbul","unpaid","$65,99"
+8229,"Jim Doe","May 3rd","Unknown","delivered","$350,00"

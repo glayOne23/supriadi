@@ -1,0 +1,88 @@
+<div id="conversations" class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bgc-primary-d1">
+        <h6 class="card-title text-white font-normal">
+            <i class="far fa-comment-dots text-130 mr-1"></i>
+            <span class="text-110">
+                Conversation
+            </span>
+            <span class="text-95 d-block d-sm-inline text-center">
+                (6 online)
+            </span>
+        </h6>
+
+        <div class="card-toolbar align-self-center text-white text-90 no-border p-2px">
+            Jack is typing 
+            <div class="typing-dots text-160 text-white mx-md-1">
+                <span class="typing-dot">.</span>
+                <span class="typing-dot">.</span>
+                <span class="typing-dot">.</span>
+            </div>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="reload" class="card-toolbar-btn text-white">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="card-body border-x-1 brc-primary-l1 p-0">
+        <div class="ace-scroll" data-ace-scroll='{"height": 380, "smooth":true}'>
+            {{> page/conversation-item}}
+        </div>
+    </div>
+
+
+    <!-- conversation footer -->
+    <div class="card-footer px-25 pt-1px bgc-white border-1 border-t-0 brc-primary-l1 radius-b-2">
+        <div class="mb-0 p-3 dcard brc-grey-l1">
+            <div class="input-group input-group-fade">
+                <input id="id-reply" type="text" class="form-control pl-2 border-0 radius-0 shadow-none" placeholder="Write your message ..." />
+            
+                <!-- smiley dropdown -->
+                <div class="btn-group mx-2 dropup">
+                    <button type="button" class="btn btn-xs px-1 border-0 btn-lighter-warning btn-bgc-tp dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa-stack">
+                            <i class="far fa-smile text-dark-tp5 text-150 fa-stack-1x"></i>
+                        </span>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-right p-1">
+                        <div class="d-flex">
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile-wink text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group-append">
+                    <button class="btn btn-info radius-3px" type="button">
+                        Send
+                        <i class="fa fa-angle-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.card-footer -->
+
+</div><!-- /.card -->

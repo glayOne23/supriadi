@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> layout/_commons/_head}}
+  </head>
+
+  <body>
+    <div class="body-container">
+      {{> layout/dashboard/navbar}}
+
+      <div class="main-container bgc-white">
+
+        <div id="sidebar" class="sidebar sidebar-fixed expandable sidebar-light">
+          {{> layout/dashboard/sidebar}}
+        </div>
+
+        <div role="main" class="main-content">
+          {{!> layout/_commons/content-nav}}
+
+          <div class="page-content container container-plus">
+            {{{body}}}
+          </div>
+
+          {{> layout/dashboard/footer}}
+        </div>
+
+        {{> layout/_commons/settings-box}}
+
+      </div>
+    </div>
+
+    {{> layout/_commons/_tail}}
+
+  </body>
+</html>

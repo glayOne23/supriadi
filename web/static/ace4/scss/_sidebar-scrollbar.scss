@@ -1,0 +1,72 @@
+@keyframes hideScrollbars {
+    from {
+        overflow-y: auto;
+        overflow-y: overlay;
+    }
+}
+
+.sidebar {
+    .ace-scroll {
+        overflow-x: hidden;
+
+        overscroll-behavior: none;
+        -ms-scroll-chaining: none;
+
+        flex-grow: 1;
+    
+        &:not(:hover) {
+            animation: $scrollbar-hide-delay hideScrollbars;//hide scrollbars with a 2s delay
+        }
+    
+        &:hover, &:focus-within {
+            overflow-y: auto;//override 'scroll' in .ace-scroll
+            overflow-y: overlay;//for chrome, webkit
+        }
+
+        @include iefix(animation, none !important, overflow-y, auto, height, 50%);//IE10 requires height and not only flex-grow: 1 (or the equivalent IE10 prefix)
+    }
+
+
+    //&:not(.collapsed) {
+    //    .ace-scroll:not(:hover) {
+    //        //animation: $scrollbar-hide-delay hideScrollbars;//hide scrollbars with a 2s delay
+    //   }
+    //}
+
+
+    //for mobile devices it's always scrollable, not just on hover
+    .ace-scroll-mob {
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        flex-grow: 1;
+  
+        animation: none !important;
+
+        overscroll-behavior: none;
+        -ms-scroll-chaining: none;
+    }
+
+    //@media (any-hover: none) {
+    @media (hover: none) {
+        .ace-scroll {
+            overflow-x: hidden;
+            overflow-y: auto;
+            
+            animation: none !important;
+
+            overscroll-behavior: none;
+            -ms-scroll-chaining: none;
+        }
+    }
+
+}
+
+
+@if $enable-prefers-reduced-motion-media-query {
+    @media (prefers-reduced-motion: reduce) {
+        .sidebar .ace-scroll {
+            animation: none !important;
+        }
+    }
+}

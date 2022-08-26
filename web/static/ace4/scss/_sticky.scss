@@ -1,0 +1,100 @@
+.sticky-trigger {
+    position: absolute;
+    top: -1px;
+    width: 0;
+    height: 0;
+    z-index: -1;
+}
+
+
+$mobile-max: breakpoint-max($sidebar-mobile-max-width);
+
+$navbar-sibling: ' + div';// could be '~ .main-container' or '~ .page-content'
+
+.sticky-nav {
+    $nw: breakpoint-max($navbar-mobile-max-width);
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $next: breakpoint-next($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($next, $grid-breakpoints);
+    
+        @include media-breakpoint-down($breakpoint) {
+        @at-root thead.sticky-nav#{$infix} > tr > th,
+            &#{$infix} {
+                position: sticky !important;
+                top: 0;
+                z-index: $zindex-footer - 1;
+                
+                //&.is-stuck {
+                    //z-index: $zindex-navbar - 2;
+                //}
+
+                $bw: breakpoint-max($breakpoint);
+
+                @if ($bw == null or $bw > $mobile-max) {
+                    @at-root .navbar-fixed #{$navbar-sibling} .sticky-nav#{$infix} {
+                        top: map-get($navbar-common, 'height');
+                        top: var(--navbar-height);
+                        .sticky-trigger {
+                            top: calc( #{-1 * map-get($navbar-common, 'height')} - 1px);
+                            top: calc( -1 * var(--navbar-height) - 1px);
+                        }
+                    }
+                    @at-root .navbar-fixed #{$navbar-sibling} thead.sticky-nav#{$infix} > tr > th {
+                        top: map-get($navbar-common, 'height');
+                        top: var(--navbar-height);
+                    }
+
+                    @if map-get($navbar-common, 'sm-height') != null {
+                        @at-root .navbar-sm.navbar-fixed #{$navbar-sibling} .sticky-nav#{$infix} {
+                            top: map-get($navbar-common, 'sm-height');
+                            top: var(--navbar-sm-height);
+
+                            .sticky-trigger {
+                                top: calc( #{-1 * map-get($navbar-common, 'sm-height')} - 1px);
+                                top: calc( -1 * var(--navbar-sm-height) - 1px);
+                            }
+                        }
+
+                        @at-root .navbar-sm.navbar-fixed #{$navbar-sibling} thead.sticky-nav#{$infix} > tr > th {
+                            top: map-get($navbar-common, 'sm-height');
+                            top: var(--navbar-sm-height);
+                        }
+                    }
+                }
+            }
+
+            @at-root .table-responsive#{$infix} thead.sticky-nav > tr > th{
+                position: relative !important;
+                top: auto !important;
+            }
+        }//@include media
+		
+		
+    }
+
+    .is-stuck[class*="sticky-nav"] {
+        z-index: $zindex-navbar - 2;
+    }
+}
+
+
+@if map-get($navbar-common, 'mobile-height') != null  {
+    @include media-breakpoint-down($sidebar-mobile-max-width) {
+        .navbar-fixed #{$navbar-sibling} [class*="sticky-nav"] {
+            top: map-get($navbar-common, 'mobile-height');
+            top: var(--navbar-mobile-height);
+            .sticky-trigger {
+                top: calc( #{-1 * map-get($navbar-common, 'mobile-height')} - 1px);
+                top: calc( -1 * var(--navbar-mobile-height) - 1px);
+            }
+        }
+        .navbar-fixed #{$navbar-sibling} thead[class*="sticky-nav"] > tr > th {
+            top: map-get($navbar-common, 'mobile-height');
+            top: var(--navbar-mobile-height);
+        }
+    }
+}
+
+thead[class*="sticky-nav"] {
+    position: static;
+}

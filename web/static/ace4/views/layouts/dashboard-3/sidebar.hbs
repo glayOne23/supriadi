@@ -1,0 +1,46 @@
+<div class="sidebar-inner">
+
+  <!-- .navbar-brand inside sidebar, only show in desktop view -->
+  <div class="d-none d-xl-flex sidebar-section-item m-0 fadeable-left fadeable-top">
+    <div class="fadeinable">
+      <div class="py-2 mx-1 border-b-1 brc-secondary-l3" id="sidebar-header-brand1">
+          <a class="navbar-brand text-140">
+            <i class="fa fa-leaf text-success-m2"></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="fadeable w-100 ">
+      <div class="py-2 text-center mx-3 border-b-1 brc-secondary-l3" id="sidebar-header-brand2">
+
+        <a class="navbar-brand ml-n2 text-140 text-grey-d2" href="#">
+          <i class="fa fa-leaf mr-1 text-success-m2 text-105"></i>
+          ACE <span>App</span>
+        </a>
+
+      </div>
+    </div>
+  </div><!-- /.sidebar-section-item  -->
+
+
+  <div class="pt-2 flex-grow-1 ace-scroll" data-ace-scroll="{}">
+      <!-- some part of sidebar header (brand) is outside scrollable area ^ -->
+      {{> layout/dashboard-3/sidebar-header}}
+
+      <!-- optional `nav` tag -->
+      <nav aria-label="Main">
+        <ul class="nav flex-column mt-2 has-active-border">
+        {{#each sidebarItems}}
+          {{> layout/_commons/sidebar-item}}
+        {{/each}}
+        </ul>
+      </nav>
+
+  </div><!-- /.ace-scroll -->
+
+
+  <div class="sidebar-section">
+    {{> layout/dashboard-3/sidebar-footer}}
+  </div>
+
+</div>

@@ -1,0 +1,1136 @@
+@import "variables";
+
+@mixin sidebar-colors($theme, $sidebar) {
+
+ .sidebar-#{$theme} {
+    background-color: map-get($sidebar, 'background-color');
+    background-image: map-get($sidebar, 'background-image');
+    $shadow: map-get($sidebar, 'shadow');
+
+    $border-color: map-get($sidebar, 'border-color');
+    .sidebar-inner {
+        @if $border-color != null {
+            border-right: 1px solid $border-color;
+        }
+        background: inherit;
+        box-shadow: $shadow;
+    }
+    
+    //if there's shadow, it will be overlapped with submenu during toggle
+    //so we show a border instead
+    @if $shadow != null {
+        $shadow-color: map-get($sidebar, 'shadow-color');
+        @if $shadow-color != null {
+            &.toggling.has-open:not(.collapsed) .sidebar-inner {
+               border-right: 1px solid $shadow-color;
+            }
+        }
+    }
+
+    //ignore
+    @if true == false and $sidebar-hover == true and $border-color != null and $shadow == null {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+           &.sidebar-hover:not(.collapsed) .sidebar-inner {
+                box-shadow: 1px 0 0 0 $border-color;
+                border-right-width: 0;
+           }
+        }
+    }
+
+    // if sidebar has a shadow instead of border, we must make sure submenus etc don't cover the shadow
+    $shadow-padding: map-get($sidebar, 'shadow-padding');
+    $notSelector: '';
+    @if ($horizontal == true) {
+        $notSelector : ':not(.sidebar-h)';
+    }
+    @if $shadow-padding != null {
+        &#{$notSelector} {
+            @include media-breakpoint-up($sidebar-desktop-min-width) {
+                .nav {
+                    position: relative;
+                    left: -1 * $shadow-padding;
+                
+                    //second one is for when sidebar is collapsed and submenu is open
+                    @at-root .sidebar-#{$theme}#{$notSelector} .nav > .nav-item.active:not(.open) > .nav-link,
+                    .sidebar-#{$theme}.collapsed#{$notSelector} .sidebar-inner:not(.is-hover) .nav.active-on-right > .nav-item.active > .nav-link {
+                        left: $shadow-padding;;
+                    }
+
+                    @if map-get($sidebar, 'shadow-padding-collapsed-disabled') == true {
+                        //use it if you don't want collapsed sidebar's active link to be above sidebar's shadow when sidebar is hovered/expanded
+                        @at-root .sidebar-#{$theme}.collapsed#{$notSelector} .sidebar-inner.is-hover .nav > .nav-item.active > .nav-link {
+                            left: auto;
+                            @if $sidebar-active-border == true {
+                                &::before {
+                                    //required
+                                    margin-left: $shadow-padding;
+                                }
+                            }
+                        }
+                    }
+                    @else if map-get($sidebar, 'shadow-padding-collapsed-active-on-right') == true {
+                        //show active border on right so that the white active link area doesn't go onto content area
+                        @at-root .sidebar-#{$theme}.collapsed#{$notSelector} .sidebar-inner.is-hover .nav.has-active-border > .nav-item.active > .nav-link {
+                            @if $sidebar-active-border == true {
+                                &::before {
+                                    left: auto;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    @if $sidebar-active-border == true {
+                        //move the active border, because of the above .nav-link's `left`
+                        &.has-active-border > .nav-item.open > .nav-link::before,
+                        &.has-active-border .submenu .nav-link::before {
+                            margin-left: $shadow-padding;
+                        }
+                    }
+
+                    //for collapsed hoverable, don't `left: -1px`
+                    @if $hoverable == true {
+                        @at-root .sidebar-#{$theme}.hoverable.collapsed#{$notSelector} .nav {
+                            left: auto;
+                            .nav-item > .nav-link {
+                                left: auto;
+                            }
+                            &.has-active-border > .nav-item > .nav-link::before,
+                            &.has-active-border .submenu .nav-link::before {
+                                margin-left: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        @if $horizontal == true {
+            &.sidebar-h {
+              @include media-breakpoint-up($sidebar-desktop-min-width) {
+                    .nav > .nav-item.active > .nav-link {
+                        top: $shadow-padding;
+                    }
+
+                    .nav.active-on-right {
+                        > .nav-item::before , > .nav-item > .nav-link::before {
+                            bottom: auto !important;
+                            top: 0 !important;
+                        }
+                    }
+            
+                    .align-items-#{$sidebar-desktop-min-width}-end {
+                        .nav.active-on-right {
+                            > .nav-item::before , > .nav-item > .nav-link::before {
+                                top: -$shadow-padding !important;
+                            }
+                        }
+                    }
+              }
+            }
+        }
+
+
+        @include media-breakpoint-down($sidebar-mobile-max-width) {
+            &.sidebar-push {
+                .nav {
+                    position: relative;
+                    left: -1 * $shadow-padding;
+                    
+                    > .nav-item.active:not(.open) > .nav-link {
+                        left: $shadow-padding;
+                    }
+
+                    @if $sidebar-active-border == true {
+                        //move the active border to right, because of the above .nav-link's `left`
+                        &.has-active-border > .nav-item.open > .nav-link::before,
+                        &.has-active-border .submenu .nav-link::before {
+                            margin-left: $shadow-padding;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    //determine active item's higlight border offset when on right
+    $active-border-offset-right: 0px;    
+
+    $_lightness: lightness(map-get($sidebar, 'background-color'));
+    @if $_lightness < 50 {
+        $active-border-offset-right: 1px;
+    }
+    @else if $border-color != null {
+        @if $_lightness > 60 {
+            $active-border-offset-right: 2px;
+        }
+        @else {
+            $active-border-offset-right: 1px;
+        }
+    }
+    @else if  $shadow != null {
+        $active-border-offset-right: 0px;
+    }
+
+    --active-border-offset-right: #{$active-border-offset-right};
+    //to be used later for .collapsed .active-on-right positioning
+    .nav.active-on-right .nav-item.active .nav-link::before {
+        right: $active-border-offset-right;
+    }
+
+
+
+
+
+    @include media-breakpoint-down($sidebar-mobile-max-width) {
+        $shadow-color: map-get($sidebar, 'shadow-color');
+        @if $shadow-color != null {
+            @at-root .sidebar-#{$theme}:not(.sidebar-push) .sidebar-inner {
+                box-shadow: none;
+                border-right: 1px solid darken($shadow-color, 4%);
+            }
+            &:not(.sidebar-fixed) .sidebar-inner {
+                border-bottom: 1px solid darken($shadow-color, 4%);
+            }
+        }
+        @else {
+            &:not(.sidebar-fixed) .sidebar-inner {
+                @if $border-color != null {
+                    border-bottom: 1px solid $border-color;
+                }
+                @else {
+                    border-bottom: 1px solid map-get($sidebar, 'background-color');
+                }
+            }
+        }
+    }
+
+
+
+    //the border like line separating nav-item .elements
+    $item-border: map-get($sidebar, 'item-border-color');
+    $item-border-size: map-get($sidebar, 'item-border-size');
+    @if $item-border-size == null { 
+        $item-border-size: map-get($sidebar-common, 'item-border-size');
+    }
+
+    @if $item-border != null and $item-border != transparent {
+        .nav > .nav-item::after {
+            content: "";
+            display: block;
+
+            position: absolute;
+            bottom: -$item-border-size;
+
+            $margin: map-get($sidebar, 'item-border-margin');
+            @if $margin == null { $margin: map-get($sidebar-common, 'item-border-margin'); }
+            left: $margin;
+            right: $margin;
+    
+            height: 0;
+            width: auto;
+            
+            border: 0px solid $item-border;
+            border-width: 0 0 $item-border-size 0;
+        }
+
+        
+        @if $horizontal == true {
+            @include media-breakpoint-up($sidebar-desktop-min-width) {
+              &.sidebar-h .nav > .nav-item::after {
+                display: none;
+              }
+            }
+        }
+
+        //put the separating border on top of first .nav-item as well
+        @if map-get($sidebar, 'item-border-both-sides') != null {
+            .nav > .nav-item:first-child, .nav > .nav-item-caption + .nav-item {
+                &::before {
+                    content: "";
+                    display: block;
+        
+                    position: absolute;
+                    top: -1px;
+        
+                    $margin: map-get($sidebar, 'item-border-margin');
+                    @if $margin == null { $margin: map-get($sidebar-common, 'item-border-margin'); }
+                    left: $margin;
+                    right: $margin;
+            
+                    height: 0;
+                    width: auto;
+                    
+                    border-top: $item-border-size solid $item-border;
+                }
+            }
+        }
+    }
+
+    .nav > .nav-item {
+        border-radius: map-get($sidebar, 'item-border-radius');
+        @if map-get($sidebar, 'item-margin-bottom') != null {
+            margin-bottom: map-get($sidebar, 'item-margin-bottom');
+        }
+        @else if $item-border != null {
+            margin-bottom: $item-border-size;
+        }
+    }
+
+    /////////
+
+    //first level link
+    .nav > .nav-item > .nav-link {
+        color: map-get($sidebar, 'link-color');
+        font-size: map-get($sidebar, 'link-font-size');
+        font-weight: map-get($sidebar, 'link-font-weight');
+        min-height: map-get($sidebar, 'link-height');
+
+        > .nav-icon {
+            color: map-get($sidebar, 'icon-color');
+            font-size: map-get($sidebar, 'icon-font-size');
+        }
+    }
+
+    
+    $item-open-border: map-get($sidebar, 'item-open-border'); 
+    //first level open item
+    .nav > .nav-item.open {
+        background-color: map-get($sidebar, 'item-open-background');
+        @if $item-open-border != null {
+            border: 1px solid $item-open-border;
+            border-width: map-get($sidebar, 'item-open-border-width');
+        }
+        border-radius: map-get($sidebar, 'item-open-border-radius');
+    }
+    
+
+
+    //first level open link
+    .nav > .nav-item.open > .nav-link {
+        color: map-get($sidebar, 'link-open-color');
+        font-weight: map-get($sidebar, 'link-open-font-weight');
+
+        $link-open-background: map-get($sidebar, 'link-open-background');
+        background-color: $link-open-background;
+        
+        //if there is no 'open' link background specified, for .sidebar-spaced use 'hover' bg for 'open' link as well
+        @if $sidebar-spaced == true and (/**lightness( map-get($sidebar, 'background-color') ) < 40 and*/ ($link-open-background == null or $link-open-background == transparent)) {
+            @at-root .sidebar-#{$theme}.sidebar-spaced .nav > .nav-item.open:not(.active) > .nav-link {
+                background-color: map-get($sidebar, 'link-hover-background');//or map-get($sidebar, 'submenu-background');
+            }
+        }
+
+        > .nav-icon {
+            color: map-get($sidebar, 'icon-open-color');
+        }
+    }
+  
+
+
+    //first level hover item
+    $item-hover-border: map-get($sidebar, 'item-hover-border');
+    @if $item-hover-border != null {
+        .nav > .nav-item:not(.is-toggling) {
+            @include transition(border-color $sidebar-link-transition);
+        }
+        .nav > .nav-item:hover {
+            border-color: $item-hover-border;
+        }
+    }
+
+    //first level hover link
+    @if $sidebar-focus-highlight == true {
+        .nav > .nav-item > .nav-link:hover , .nav > .nav-item > .nav-link:focus {
+            font-weight: map-get($sidebar, 'link-hover-font-weight');
+            background-color: map-get($sidebar, 'link-hover-background');
+            color: map-get($sidebar, 'link-hover-color'); 
+        }
+        .nav > .nav-item > .nav-link:hover > .nav-icon , .nav > .nav-item > .nav-link:focus > .nav-icon {
+            color: map-get($sidebar, 'icon-hover-color');
+        }
+    }
+    @else {
+        .nav > .nav-item > .nav-link:hover {
+            font-weight: map-get($sidebar, 'link-hover-font-weight');
+            background-color: map-get($sidebar, 'link-hover-background');
+            color: map-get($sidebar, 'link-hover-color'); 
+        }
+        .nav > .nav-item > .nav-link:hover > .nav-icon {
+            color: map-get($sidebar, 'icon-hover-color');
+        }
+    }
+    
+
+  
+
+
+    //submenu styles
+    .nav > .nav-item > .submenu {
+        background-color: map-get($sidebar, 'submenu-background');
+    }   
+
+    .submenu .nav-link {
+        color: map-get($sidebar, 'submenu-link-color');
+        font-size: map-get($sidebar, 'submenu-link-font-size');        
+    }
+    .submenu .nav-item.open > .nav-link {
+        color: map-get($sidebar, 'submenu-link-open-color');
+        font-weight: map-get($sidebar, 'submenu-link-open-font-weight');
+    }
+
+    @if $sidebar-focus-highlight == true {
+        .submenu .nav-item > .nav-link:hover , .submenu .nav-item > .nav-link:focus {
+            color: map-get($sidebar, 'submenu-link-hover-color');
+            font-weight: map-get($sidebar, 'submenu-link-hover-font-weight');
+            background-color:map-get($sidebar, 'submenu-link-hover-background');
+        }
+    }
+    @else {
+        .submenu .nav-item > .nav-link:hover {
+            color: map-get($sidebar, 'submenu-link-hover-color');
+            font-weight: map-get($sidebar, 'submenu-link-hover-font-weight');
+            background-color:map-get($sidebar, 'submenu-link-hover-background');
+        } 
+    }
+
+
+    //submenu icons
+    .submenu {
+        .nav-icon {
+            color: map-get($sidebar, 'submenu-icon-color');
+            font-size: map-get($sidebar, 'submenu-icon-font-size');
+        }
+        .nav-link:hover > .nav-icon {
+            color: map-get($sidebar, 'submenu-icon-hover-color');
+        }
+        .nav-item.open > .nav-link > .nav-icon {
+            color: map-get($sidebar, 'submenu-icon-open-color');
+        }
+        .nav-item.active > .nav-link > .nav-icon {
+            color: map-get($sidebar, 'submenu-icon-active-color');
+        }
+    }
+
+
+
+    //submenu caret
+    .caret {
+        font-size: map-get($sidebar, 'caret-size');
+        $caret-color: map-get($sidebar, 'caret-color');
+
+        @if $caret-color != null {
+            color: $caret-color;
+        }
+        @else {
+            color: inherit;
+            opacity: 0.75;
+        }        
+    }
+    .open > .nav-link > .caret {
+        $caret-open-color: map-get($sidebar, 'caret-open-color');
+        @if $caret-open-color != null {
+            color: $caret-open-color;
+        }
+        @else {
+            color: inherit;
+            opacity: 0.82;
+        } 
+    }
+    @if $sidebar-focus-highlight == true {
+        .nav-item > .nav-link:hover > .caret, .nav-item > .nav-link:focus > .caret {
+            $caret-hover-color: map-get($sidebar, 'caret-hover-color');
+            @if $caret-hover-color != null {
+                color: $caret-hover-color;
+            }
+            @else {
+                color: inherit;
+                opacity: 0.82;
+            }
+        }
+    }
+    @else {
+        .nav-item > .nav-link:hover > .caret {
+            $caret-hover-color: map-get($sidebar, 'caret-hover-color');
+            @if $caret-hover-color != null {
+                color: $caret-hover-color;
+            }
+            @else {
+                color: inherit;
+                opacity: 0.82;
+            }
+        }
+    }
+    .nav-item.active > .nav-link > .caret {
+        $caret-active-color: map-get($sidebar, 'caret-active-color');
+        @if $caret-active-color != null {
+            color: $caret-active-color;
+        }
+        @else {
+            color: inherit;
+            opacity: 0.82;
+        }
+    }
+    .nav-item.active.open > .nav-link > .caret {
+        $caret-activeopen-color: map-get($sidebar, 'caret-activeopen-color');
+        @if $caret-activeopen-color != null {
+            color: $caret-activeopen-color;
+        }
+        @else {
+            color: inherit;
+            opacity: 0.92;
+        }
+    }
+
+
+
+      
+    //.active item
+    $item-active-border: map-get($sidebar, 'item-active-border');
+    .nav > .nav-item.active {
+        @if $item-active-border != null {
+            border: 1px solid $item-active-border;
+            border-width: map-get($sidebar, 'item-active-border-width');
+        }
+
+        @if $horizontal == true {
+            @include media-breakpoint-up($sidebar-desktop-min-width) {
+                @at-root .sidebar-#{$theme}.sidebar-h .nav > .nav-item.active {
+                    border-width: 0 1px;
+                }
+            }
+        }
+    }
+
+    // .active link
+    $font-weight-active: map-get($sidebar, 'link-active-font-weight');
+   .nav > .nav-item.active > .nav-link {
+        color: map-get($sidebar, 'link-active-color');//#71abdb;
+        background-color: map-get($sidebar, 'link-active-background');
+        @if $font-weight-active != null {
+            font-weight: $font-weight-active;
+        }
+        @else if $sidebar-active-bold == true {
+            font-weight: $font-semibold;
+        }
+    }        
+    @if $font-weight-active == null and $sidebar-active-bold != true {
+        //if no active font weight specified, let's make it bold except when it's open
+        .nav > .nav-item.active:not(.open) > .nav-link {
+            font-weight: $font-semibold;
+        }
+    }
+
+
+    .nav > .nav-item.active.open {
+        border-color: map-get($sidebar, 'item-activeopen-border');
+        border-width: map-get($sidebar, 'item-activeopen-border-width');
+    }
+
+    $active-open-bg: map-get($sidebar, 'link-activeopen-background');
+    .nav > .nav-item.active.open > .nav-link:not(:hover) {
+        color: map-get($sidebar, 'link-activeopen-color');
+        background-color: $active-open-bg;
+        > .nav-icon {
+            color: map-get($sidebar, 'icon-activeopen-color');
+        }
+    }
+    
+    @if $active-open-bg != null and ($hoverable == true or $expandable == true) {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            &.collapsed .sidebar-inner:not(.is-hover) .nav > .nav-item.active.open > .nav-link {
+                background-color: map-get($sidebar, 'link-active-background');
+            }
+        }
+    }
+
+
+    //first level active icon
+    .nav > .nav-item.active > .nav-link > .nav-icon {
+        $color: map-get($sidebar, 'icon-active-color');
+        $fill: map-get($sidebar, 'icon-active-fill');
+
+        @if $fill == null {
+            color: $color;
+        }
+        @else {
+            color: #fff;
+            background-color: $color;
+
+            width: 2.125rem;
+            height: 2.125rem;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-left: -0.25rem;
+            margin-right: 0.5rem;
+
+            border-radius: 0.25rem;
+        }
+        
+    }
+
+    $submenu-bullets: map-get($sidebar, 'submenu-bullets');
+
+    //submenu active link
+    $submenu-font-weight-active: map-get($sidebar, 'submenu-link-active-font-weight');
+    .submenu .nav-item.active > .nav-link {
+        color: map-get($sidebar, 'submenu-link-active-color');    
+        @if $submenu-font-weight-active != null {
+            font-weight: $submenu-font-weight-active;
+        }
+        @else if $sidebar-submenu-active-bold == true {
+            font-weight: $font-semibold;
+        }
+
+        > .nav-icon {
+            color: map-get($sidebar, 'submenu-icon-active-color');
+        }
+    }
+    .submenu .nav-item.active:not(.open) > .nav-link {
+        background-color: map-get($sidebar, 'submenu-link-active-background');
+        @if $submenu-font-weight-active == null and $sidebar-submenu-active-bold != true {
+            //if no active font weight specified, let's make it bold except when it's open
+            font-weight: $font-semibold;
+        }
+    }
+
+    //for hoverable mode, show .active the colors on .active.open as well
+    @if $hoverable == true or $sidebar-hover == true {
+     @include media-breakpoint-up($sidebar-desktop-min-width) {
+        &.hoverable.collapsed , &.sidebar-hover:not(.collapsed) {
+            .submenu .nav-item.active.open/**:not(:hover)*/ > .nav-link {
+                color: map-get($sidebar, 'submenu-link-active-color');
+                background-color: map-get($sidebar, 'submenu-link-active-background');
+                font-weight: $font-semibold;
+            }
+
+            @if $submenu-bullets == 1 or $submenu-bullets == 3 {
+                .submenu .nav-item.active > .nav-link > .nav-text::before {
+                    content: "";
+                    display: block;
+                    opacity: 1;
+                }
+            }
+        }
+     }
+    }
+    @if $expandable == true {
+     @include media-breakpoint-up($sidebar-desktop-min-width) {
+        &.expandable.collapsed .sidebar-inner:not(.is-hover) {
+            $box-shadow: map-get($sidebar, 'collapsed-shadow');
+            @if $box-shadow != null {
+                border-right: none !important;
+                box-shadow: $box-shadow;
+            }
+        }
+     }
+    }//@if expandable
+
+
+    
+    //the left side border displayed on hover
+    $link-hover-highlight-border: map-get($sidebar, 'link-hover-highlight-border');
+    @if $link-hover-highlight-border != null {
+        @if $sidebar-focus-highlight == true {
+            @media (hover: hover) {
+                .nav > .nav-item > .nav-link:hover::before {
+                    border-color: $link-hover-highlight-border;
+                }
+            }
+            .nav > .nav-item > .nav-link:focus::before {
+                border-color: $link-hover-highlight-border;
+            }
+        }
+        @else {
+            //highlight border only when device supports
+            @media (hover: hover) {
+                .nav > .nav-item > .nav-link:hover::before {
+                    border-color: $link-hover-highlight-border;
+                }
+            }
+        }
+    }
+    @if map-get($sidebar, 'horizontal-link-hover-highlight-border') != null {
+        @media (hover: hover) {
+            &.sidebar-h .nav > .nav-item > .nav-link:hover::before {
+                border-color: map-get($sidebar, 'horizontal-link-hover-highlight-border');
+            }
+        }
+    }
+
+    @if $sidebar-active-border == true {
+
+     .nav.has-active-border {
+        //the left side active item displayed on active
+        $item-active-highlight-border: map-get($sidebar, 'item-active-highlight-border');
+        @if $item-active-highlight-border != null {
+            > .nav-item.active::before {
+                content: "";
+                border-color: $item-active-highlight-border;    
+            }
+
+            //if .nav-item is to be highlighted, then hide .nav-link's highlight
+            .nav-item.active > .nav-link::before {
+                display: none !important;
+            }
+        }
+
+        $link-active-highlight-border: map-get($sidebar, 'link-active-highlight-border');
+        @if $link-active-highlight-border != null {
+            .nav-item.active > .nav-link::before {
+                content: "";
+                border-color: $link-active-highlight-border;
+                @if $item-active-border != null {
+                    top: -1px;
+                    bottom: -1px;
+                }
+                
+                top: map-get($sidebar, 'link-highlight-offset-y');
+                bottom: map-get($sidebar, 'link-highlight-offset-y');
+                margin-left: map-get($sidebar, 'link-highlight-offset-x');
+                border-radius: map-get($sidebar, 'link-highlight-radius');   
+            }
+            @if $link-hover-highlight-border != null {
+                //if active item is hovered make sure color is correct
+                > .nav-item.active:hover > .nav-link::before {
+                    border-color: $link-active-highlight-border;
+                }
+
+                //do or don't highlight on hover if active item is open ???
+                @media (hover: hover) {
+                    > .nav-item.active.open > .nav-link:hover::before {
+                        //display: none;
+                        display: block;
+                    }
+                }
+            }
+        }
+     }
+
+    }//@if $sidebar-active-border
+    
+    
+    ////////////submenu styles
+    //style 1
+    $submenu-tree: map-get($sidebar, 'submenu-tree-border');
+    @if $submenu-tree != null {
+        //the tree like submenu lines for first level submenu
+        .nav > .nav-item > .submenu::before {
+            content: "";
+            display: block;
+    
+            border-left: 1px dotted $submenu-tree;
+    
+            position: absolute;
+            left: 2rem;
+            top: 0.375rem;
+            bottom: 0.375rem;
+    
+            z-index: 1;// so that it appears above nav-link:hover background
+        }
+        //for 2+ level items as well
+        .nav-item .nav-item::before {
+            content: "";
+            display: block;
+            
+            width: 0.5rem;
+            border-top: 1px dotted $submenu-tree;
+    
+            position: absolute;
+            left: calc(2rem + 2px);
+            top: map-get($sidebar, 'submenu-link-height') / 2;
+    
+            z-index: 1;
+        }
+    }
+
+    //padding for deeper level links
+    .submenu .nav-link {
+        padding-left: map-get($sidebar, 'sublink-padding-1');
+    }
+    .submenu .submenu .nav-link {
+        padding-left: map-get($sidebar, 'sublink-padding-2');
+    }
+    .submenu .submenu .submenu .nav-link {
+        padding-left: map-get($sidebar, 'sublink-padding-3');
+    }
+
+    //style 2 (submenu items bullets)
+    $submenu-bullets: map-get($sidebar, 'submenu-bullets');
+    @if $submenu-bullets != null {
+        $bullet-style: map-get($sidebar, 'submenu-bullet-style');
+
+        .submenu {
+            .nav-text::before {
+                @if not ( $submenu-bullets == 1 or $submenu-bullets == 2 or $submenu-bullets ==3 ) {
+                    content: "";
+                    display: block;//by default always display bullets
+                }
+                @else {
+                    display: none;//otherwise display it later when active or hovered
+                }
+        
+                position: absolute;
+        
+                $left: map-get($sidebar, 'sublink-padding-1');
+                @if $left == null {
+                    $left: 3.75em;
+                }
+                left: ($left - 1);
+                z-index: 1;
+
+                opacity: 0.65;
+
+                $bullet-size: map-get($sidebar-common, 'submenu-bullet-size');
+                
+                @if $bullet-style == 'caret' {
+                    top: calc(50% - #{$bullet-size});
+
+                    width: 0;
+                    height: 0;
+        
+                    border: $bullet-size solid transparent;
+                    border-left-color: currentColor;
+                    border-right-width: 0;
+                }
+                @else {//default bullets      
+                    top: calc(50% - #{$bullet-size/2});
+
+                    width: $bullet-size;
+                    height: $bullet-size;
+                    border-radius: $bullet-size * 2;
+    
+                    background-color: currentColor;
+                }
+            }
+            //position of deeper level items?
+            .submenu .nav-text::before {
+                $left: map-get($sidebar, 'sublink-padding-2');
+                @if $left == null {
+                    $left: 4.25em;
+                }
+                left: ($left - 1);
+            }
+            .submenu .submenu .nav-text::before {                
+                $left: map-get($sidebar, 'sublink-padding-3');
+                @if $left == null {
+                    $left: 5em;
+                }
+                left: ($left - 1);
+            }
+
+            
+            /////////////
+            @if $submenu-bullets == 2 or $submenu-bullets == 3 {
+                //display it on hover
+                @if $sidebar-focus-highlight == true {
+                    .nav-item > .nav-link:hover > .nav-text::before , .nav-item > .nav-link:focus > .nav-text::before {
+                        content: "";
+                        display: block;
+                        opacity: 0.8;
+                    }
+                }
+                @else {
+                    .nav-item > .nav-link:hover > .nav-text::before {
+                        content: "";
+                        display: block;
+                        opacity: 0.8;
+                    }
+                }
+            }
+            
+            @if $submenu-bullets == 1 or $submenu-bullets == 3 {
+                //display it on active
+                .nav-item.active:not(.open) > .nav-link > .nav-text::before {
+                    content: "";
+                    display: block;
+                    opacity: 1;
+                }
+            }
+
+        }
+
+
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            @if $hoverable == true or $sidebar-hover == true {
+                &.hoverable.collapsed , &.sidebar-hover:not(.collapsed) {
+                    .submenu .nav-text::before {
+                        left: calc(0.5em + 1px) !important;//position of caret for submenu in hoverable mode
+                    }
+                }
+            }
+        }
+        
+
+    }//.submen-bullets
+
+    
+
+
+    //caption color
+    .nav-item-caption {
+        color: map-get($sidebar, 'caption-color');
+        font-size: map-get($sidebar, 'caption-size');
+    }
+
+
+    //divider color
+    $divider-color: map-get($sidebar, 'divider-color');
+    @if $divider-color != null {
+        .nav-item-divider {
+            border-top: 1px solid $divider-color;
+        }        
+        //second level divider
+        .submenu .nav-item-divider {
+            border-top-color: lighten($divider-color, 5%);
+        }
+    }
+
+
+
+    //1st level submenu background and borders    
+    $background-color: map-get($sidebar, 'background-color');
+    $submenu-border: map-get($sidebar, 'submenu-border');
+    @if ( $submenu-border != null ) {
+        .nav > .nav-item > .submenu > .submenu-inner {
+            border: 1px solid $submenu-border;
+            border-width: map-get($sidebar, 'submenu-border-width');
+        }
+        
+        @if $item-active-border != null {
+            //if .active item has borders, then with submenu it will become double border, so remove submenu's bottom border
+            .nav > .nav-item.active > .submenu > .submenu-inner {
+                border-bottom-width: 0;
+            }
+            .nav > .nav-item.open + .nav-item.active,
+            .nav > .nav-item.is-toggling + .nav-item.active {
+                $x: map-get($sidebar, 'item-margin-bottom');
+                @if $x == null {
+                    $x: 0;
+                }
+                margin-top: -(1px + $x);//to cover up submenu's border-bottom, so it doesn't become one big border
+            }
+        }
+    }
+
+    $submenu-background: map-get($sidebar, 'submenu-background');
+    @if ( $background-color != null and lightness( $background-color ) > 70 and $background-color != $submenu-background ) {
+        $submenu-border: null;
+        @if $item-border != null {
+            $submenu-border: $item-border;
+        }
+        @else if $item-open-border != null {
+            $submenu-border: $item-open-border;
+        }
+        @if $submenu-border != null {
+            .nav > .nav-item > .submenu > .submenu-inner {
+                border-top: 1px solid $submenu-border;
+            }
+            @if $hoverable == true {
+             @include media-breakpoint-up($sidebar-desktop-min-width) {
+                &.hoverable.collapsed   .nav > .nav-item > .submenu > .submenu-inner {
+                    border-top-width: 0;//no submenu inner border when collapsed
+                }
+             }
+            }
+        }
+        
+
+        
+        @if $submenu-background == null or  $submenu-background == $background-color {//for example for sidebar-white
+            .nav > .nav-item > .submenu > .submenu-inner {
+                padding-bottom: 0.5rem;//a little distance from next .nav-item
+            }
+            //highlight the active item
+            .nav > .nav-item.active {
+                &.open::before {
+                    bottom: 0.5rem;//because of a little distance from next .nav-item
+                }
+            }
+        }
+        
+    }
+
+
+    ////////hoverable sidebar
+    @if ( $hoverable == true and $background-color != null and lightness( $background-color ) < 60 ) {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            &.hoverable.collapsed {
+                .sidebar-section-item .fadeable,
+                .nav > .nav-item > .nav-link > .nav-text,
+                .nav > .nav-item > .submenu {
+                    background-color: $background-color;
+                }
+
+                .sub-arrow {
+                    border-color: $background-color !important;
+                }
+            }
+        }
+    }
+
+    @if ( ($sidebar-hover == true or $horizontal == true) and $background-color != null and lightness( $background-color ) < 60 ) {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {            
+            &.sidebar-hover:not(.collapsed) , &.sidebar-h:not(.collapsed) {
+                .sidebar-section-item .fadeable,
+                .nav > .nav-item > .submenu {
+                    background-color: $background-color;
+                }
+                .sub-arrow {
+                    border-color: $background-color !important;
+                }
+            }
+        }
+    }
+
+
+
+    //scrollbars colors
+    .ace-scroll {
+        scrollbar-color: map-get($sidebar, 'scrollbar-thumb') map-get($sidebar, 'scrollbar-track');
+
+        $bgc: map-get($sidebar, 'background-color');
+        &::-webkit-scrollbar-track {
+            background-color: map-get($sidebar, 'scrollbar-track');
+            border-right: 1px solid $bgc;//add a border (and distance from right) to make scrollbars more visible
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: map-get($sidebar, 'scrollbar-thumb');
+            border-right: 1px solid $bgc;
+        }
+    }
+
+
+    @if $sidebar-spaced == true {
+        &.sidebar-spaced {
+            @if $shadow-padding != null {
+                .nav {
+                    margin-left: 0;
+                }
+                .nav > .nav-item.active:not(.open) > .nav-link {
+                    left: auto;
+                }
+            }
+            .nav > .nav-item {
+                border-radius: map-get($sidebar, 'spaced-item-border-radius');
+                @if map-get($sidebar, 'spaced-item-border-width') != null {
+                    border-style: solid;
+                    border-width: map-get($sidebar, 'spaced-item-border-width');
+                    transition: border $transition-general;
+                    @if map-get($sidebar, 'spaced-item-border-color') != null {             
+                        border-color: map-get($sidebar, 'spaced-item-border-color');
+                    }
+                    @else {
+                        border-color: transparent;
+                    }
+                }
+                
+                &.open {
+                    border-radius: map-get($sidebar, 'spaced-item-open-border-radius');
+                    border-width: map-get($sidebar, 'spaced-item-open-border-width');
+                    border-color: map-get($sidebar, 'spaced-item-open-border-color');
+                }
+
+                &:hover {
+                    border-radius: map-get($sidebar, 'spaced-item-hover-border-radius');
+                    border-width: map-get($sidebar, 'spaced-item-hover-border-width');
+                    border-color: map-get($sidebar, 'spaced-item-hover-border-color');
+                }
+
+                &.active {
+                    border-radius: map-get($sidebar, 'spaced-item-active-border-radius');
+                    border-width: map-get($sidebar, 'spaced-item-active-border-width');
+                    border-color: map-get($sidebar, 'spaced-item-active-border-color');
+                }
+
+                &.active.open {
+                    border-radius: map-get($sidebar, 'spaced-item-activeopen-border-radius');
+                    border-width: map-get($sidebar, 'spaced-item-activeopen-border-width');
+                    border-color: map-get($sidebar, 'spaced-item-activeopen-border-color');
+                }
+            }
+
+            @include media-breakpoint-up($sidebar-desktop-min-width) {
+                &.collapsed .sidebar-inner:not(.is-hover) {
+                    .nav > .nav-item {
+                        @if map-get($sidebar, 'spaced-item-open-border-radius') != map-get($sidebar, 'spaced-item-border-radius') {
+                            border-radius: map-get($sidebar, 'spaced-item-border-radius');
+                        }
+                        @if map-get($sidebar, 'spaced-item-open-border-width') != map-get($sidebar, 'spaced-item-border-width') {
+                            border-width: map-get($sidebar, 'spaced-item-border-width');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    //when sidebar is collapsed, don't highlight .open:not(.active) item
+    $link-open-background: map-get($sidebar, 'link-open-background');    
+    $link-open-color: map-get($sidebar, 'link-open-color');
+
+    @if ($link-open-background != null and $link-open-background != transparent) or $link-open-color != null or map-get($sidebar, 'spaced-item-open-border-color') != null {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            &.toggling .nav > .nav-item.active.open {
+                transition: none;//disable nav-item border color transitions
+            }
+
+            &.expandable.collapsed .sidebar-inner:not(.is-hover),
+            &.hoverable.collapsed
+            {
+                .nav > .nav-item.open:not(.active) {
+                    border-color: transparent;
+                    background-color: transparent;
+                    > .nav-link {
+                        color: map-get($sidebar, 'link-color');
+                        background-color: transparent;
+
+                        > .nav-icon {
+                            color: map-get($sidebar, 'icon-color');
+                        }
+                    }
+                }
+
+                .nav > .nav-item.active.open {
+                    //don't apply (.open) styles when collapsed
+                    border-width: map-get($sidebar, 'item-active-border-width');
+                    border-radius: map-get($sidebar, 'item-border-radius');
+                    transition: none;
+                }
+            }
+        }//media
+    }
+
+    ///////////////////////
+
+    .sidebar-search-input {
+        color: map-get($sidebar, 'search-input-color');
+        border-bottom-color: map-get($sidebar, 'search-input-border');
+        &:focus {            
+            border-bottom-color: map-get($sidebar, 'search-input-focus-border');
+        }
+
+        $placeholder: map-get($sidebar, 'search-input-placeholder');
+        @if $placeholder != null {
+            &::placeholder {
+                color: rgba($placeholder, 0.5);
+            }
+            &::-moz-placeholder {
+                color: $placeholder;
+            }
+        }
+    }
+
+
+ }//.sidebar-#{$theme}
+}
+
+
+
+

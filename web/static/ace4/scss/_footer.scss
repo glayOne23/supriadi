@@ -1,0 +1,144 @@
+
+.footer {
+  height: $footer-height;
+  width: 100%;
+
+  margin-top: 1.25rem;
+
+  direction: rtl;//because we want .footer-tools to be located on right side
+}
+.footer-sm {
+  height: $footer-sm-height;
+}
+
+.footer-inner {
+  text-align: center;
+  height: inherit;
+
+  direction: ltr;//reset .footer's rtl back to ltr
+
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+.footer-fixed .footer-inner {
+  position: fixed;
+  bottom: 0;
+  left: auto;
+  right: auto;
+
+  z-index: $zindex-footer;
+
+  width: 100%;
+}
+
+@include media-breakpoint-up($container-min-width-allowed) {
+  .container {
+    //inherit container size for fixed footer
+    .main-container , .main-content, .footer-fixed {
+      max-width: inherit;
+    }
+    .footer-fixed .footer-inner {
+      max-width: inherit;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+  .sidebar ~ .main-content .footer-fixed .footer-inner {
+    padding-left:  map-get($sidebar-common, 'width');
+    padding-left: var(--sidebar-width);
+  }
+
+  .sidebar.toggling ~ .main-content .footer-fixed .footer-inner {
+    @include transition(padding-left $expandable-transition-duration);
+  }
+
+  .sidebar.collapsed ~ .main-content .footer-fixed .footer-inner {
+    padding-left: map-get($sidebar-common, 'collapsed-width');
+    padding-left: var(--sidebar-collapsed-width);
+  }
+  @if $hideable == true {
+    .sidebar.hideable.collapsed ~ .main-content .footer-fixed .footer-inner {
+      padding-left: 0;
+    }
+  }
+}//media desktop
+
+
+
+
+//footer tools contains scroll to top button or other things
+.footer-tools {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: $zindex-footer;
+}
+.footer .footer-tools {
+  right: auto;
+  width: 0;// so that it doesn't block content below it
+}
+
+
+//the scroll to top button
+.btn-scroll-up {
+  visibility: hidden;
+  pointer-events: none;
+
+  opacity: 0.75;
+  transform: translateY(150%);
+  @include transition(transform 300ms 0ms, opacity 200ms 0ms, visibility 0ms 300ms !important);
+
+  &:hover {
+    opacity: 0.92;
+  }
+
+  &.scroll-btn-visible {
+    transform: none;
+    pointer-events: auto;
+    visibility: visible;
+
+    transition-delay: 0ms !important;
+  }
+}
+
+@if $enable-prefers-reduced-motion-media-query {
+  @media (prefers-reduced-motion: reduce) {
+    .btn-scroll-up {
+      transition: none !important;
+    }
+ }
+}
+
+
+// this is used for browsers that support "IntersectionObserver"
+// we observe this element and if it goes out of view, it means we scrolled down enough for `btn-scroll-up` to become visible
+.scroll-btn-observe {
+  position: absolute;
+  top: 90vh;// show scroll top button when we've scrolled down as much as 90vh
+  bottom: auto;
+  right: 0;
+
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (min-width: 600px)  {
+  .scroll-btn-observe {
+    top: 70vh;
+  }
+}
+
+@media (min-width: 850px)  {
+ .scroll-btn-observe {
+   top: 40vh;
+ }
+}

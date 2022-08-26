@@ -1,0 +1,121 @@
+$dark-text-color-count: 4;
+$medium-text-color-count: 3;
+$light-text-color-count: 5;
+
+
+
+$_text-colors: ();
+@each $name, $value in $text-colors {
+    $bg: #fff;
+
+    @if $add-contrast == true and map-get($exclude-from-text-contrast, $name) == null {
+        @while color-contrast($value, $bg) < $default-text-color-contrast {
+            $value: darken($value, 0.5%);
+        }
+    }
+
+    $_text-colors: map-merge(($name: $value), $_text-colors) !global;
+}
+$text-colors: $_text-colors;
+
+
+
+@each $name, $value in $text-colors {
+    .text-#{$name} {
+        color: $value !important;
+        
+        @at-root a.text-#{$name}[href]:hover , a.text-#{$name}[href]:focus {
+            color: darken($value, 5%) !important;
+        }
+    }
+
+    @for $i from 1 through $medium-text-color-count {
+        .text-#{$name}-m#{$i} {
+            $val: text-color($name, 'm'+$i);//m1, m2, m3, etc
+            color: $val !important;
+            
+            @if $i < 2 {
+                @at-root a.text-#{$name}-m#{$i}:hover , a.text-#{$name}-m#{$i}:focus {
+                    color: darken($val, 5%) !important;
+                }
+            }
+        }        
+    }
+
+    @for $i from 1 through $dark-text-color-count {
+        .text-#{$name}-d#{$i} {
+            $val: text-color($name, 'd'+$i);//d1, d2, d3, etc
+
+            color: $val !important;
+    
+            @if $i < 2 {
+                @at-root a.text-#{$name}-d#{$i}:hover , a.text-#{$name}-d#{$i}:focus {
+                    color: darken($val, 5%) !important;
+                }
+            }
+        }
+    }
+
+    @for $i from 1 through $light-text-color-count {
+        .text-#{$name}-l#{$i} {
+            $val: text-color($name, 'l'+$i);//l1, l2, l3, etc
+            
+            color: $val !important;
+
+            //@at-root a.text-#{$name}-l#{$i}:hover , a.text-#{$name}-l#{$i}:focus {
+            //    color: darken($val, 5%) !important;
+            //}
+        }
+    }
+
+}
+
+
+.text-white-tp1 {
+    color: rgba(255, 255, 255, 0.93) !important;
+}
+.text-white-tp2 {
+    color: rgba(255, 255, 255, 0.87) !important;
+}
+.text-white-tp3 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+.text-white-tp4 {
+    color: rgba(255, 255, 255, 0.73) !important;
+}
+.text-dark-tp1 {
+    color: rgba(0, 0, 0, 0.91) !important;
+}
+.text-dark-tp2 {
+    color: rgba(0, 0, 0, 0.82) !important;
+}
+.text-dark-tp3 {
+    color: rgba(0, 0, 0, 0.73) !important;
+}
+.text-dark-tp4 {
+    color: rgba(0, 0, 0, 0.64) !important;
+}
+.text-dark-tp5 {
+    color: rgba(0, 0, 0, 0.55) !important;
+}
+
+
+.text-body {
+    color: $body-text-color !important;
+}
+
+.opacity-1 {
+    opacity: 0.91;
+}
+.opacity-2 {
+    opacity: 0.82;
+}
+.opacity-3 {
+    opacity: 0.73;
+}
+.opacity-4 {
+    opacity: 0.64;
+}
+.opacity-5 {
+    opacity: 0.55;
+}

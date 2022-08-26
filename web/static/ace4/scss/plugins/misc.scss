@@ -1,0 +1,262 @@
+$summernote-btn-color: text-color('grey', 'm1');
+$summernote-btn-hover-bg: bgc-color('primary', 'l2');
+$summernote-btn-hover-color: rgba(0,0,0,0.6);
+$summernote-toolbar-bg: bgc-color('grey', 'l3');
+$summernote-toolbar-border: bgc-color('grey', 'l1');
+
+
+$wysiwyg-toolbar-bg: bgc-color('grey', 'l3');
+$wysiwyg-toolbar-border: bgc-color('dark', 'l2');
+
+
+$markdown-textarea-bg: bgc-color('grey', 'l4');
+
+
+$taginput-bg: bgc-color('default', 'd1');
+
+
+//dropzone
+@if $plugin-dropzone == true {
+ .dropzone .dz-preview .dz-progress.progress {
+    border-radius: 2px;
+ }
+ .dropzone .dz-preview .dz-progress.progress .dz-upload {
+    background: none;
+ }
+ .dropzone .dz-preview.dz-image-preview {
+    background-color: transparent;
+ }
+}//$plugin-dropzone
+
+
+//summernote
+@if $plugin-summernote == true {
+  .note-editor.note-frame, .note-editor.note-airframe {
+    border-width: 0;
+  }
+  .note-toolbar {
+    background-color: $summernote-toolbar-bg;
+    border-color: $summernote-toolbar-border;
+
+    .note-btn {
+      font-size: $summernote-btn-font-size;
+  
+      color: $summernote-btn-color;
+      padding: 0.375rem 0.75rem;
+      border-width: 0 !important;//override :hover's
+    
+      &:hover, &:focus, &.focus {
+        color: $summernote-btn-hover-color;
+        background-color: $summernote-btn-hover-bg;
+      }
+    
+      > .fa {
+        color: inherit;
+        font-size: $summernote-btn-font-size;   
+      }
+    
+      > .note-current-fontname {
+          color: inherit;
+      }
+    }
+  }
+
+  .note-modal-footer {
+    min-height: 3rem;
+  }
+}//$plugin-summernote
+
+
+
+//markdown editor
+@if $plugin-markdown == true {
+  .md-editor > textarea {
+    background-color: $markdown-textarea-bg;
+  }
+  .card-body > .md-editor {
+    border-width: 0;
+  }
+}//$plugin-markdown
+
+
+
+//lightweight bootstrap editor
+@if $plugin-wysiwyg == true {
+
+ .bootstrap-wysiwyg-editor {
+   min-height: 200px;
+   max-height: calc(100vh - 2rem);
+
+   overflow: auto;
+   > img {
+      margin: 0.25rem;
+   }
+  }
+  
+  .card-body .bootstrap-wysiwyg-editor {
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  
+  .bootstrap-wysiwyg-toolbar {
+    background-color: $wysiwyg-toolbar-bg;
+    padding: 0.25rem 0.3125rem;
+  
+    .btn[data-edit] , a[data-toggle] {
+      //background-color: #fff;    
+    }
+  
+    &.bsw-toolbar-style-2 {
+      border: 1px solid $wysiwyg-toolbar-border;
+  
+      .btn[data-edit] , a[data-toggle] {
+        border-radius: 0.25rem;
+        border-width: 0;  
+      }
+  
+      .btn-group + .btn-group {
+        margin-left: 2px;
+      }
+    }
+  }
+
+  .card-body .bsw-toolbar-style-2 {
+    border-width: 0 0 1px 0;
+  }
+
+  .file-input-invisible {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .popover-wysiwyg-image {
+    transform: none !important;
+    left: 0 !important;
+    top: 0 !important;
+  
+    width: 300px;
+    max-width: calc(100vw - 2rem);
+  
+    .arrow {
+      display: none;
+    }
+  }
+
+}//$plugin-wysiwyg
+
+
+  
+//rating
+@if $plugin-rating == true {
+ .rating-container .badge {
+    font-size: 0.825rem;
+    font-weight: $font-semibold;
+ }
+ .rating-container .filled-stars {
+    text-shadow: none;
+    color: inherit;
+    -webkit-text-stroke: 1px currentColor;
+ }
+}//$plugin-rating
+
+
+
+// typeahead
+@if $plugin-typeahead == true {
+  input.typeahead ~ .dropdown-menu {
+    width: 100%;
+  }
+  input.typeahead.scrollable ~ .dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}//$plugin-typeahead
+  
+  
+  
+@if $plugin-tagsinput == true {
+
+ .bootstrap-tagsinput {
+    color: text-color('grey');
+    background-color: #fff;
+    border: 1px solid $input-border;
+
+    display: block; 
+    padding: 0.5rem 0.375rem 0.25rem;
+    min-height: $input-height;
+
+    &:hover {
+      border-color: $input-hover-border;
+    }
+
+    &.tagsinput-focus , &.tagsinput-focus:hover {
+      border-color: $input-focus-border;
+      outline: 0;
+    }
+
+    input {
+      display: inline;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+
+      color: inherit;
+    }
+
+
+   .tag {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      &:not(.badge) {
+        background-color: $taginput-bg;
+        color:#fff;
+      }
+      
+      display: inline-block;
+      position: relative;
+      
+      font-size: $taginput-font-size;
+      font-weight: $font-normal;
+  
+      white-space: nowrap;
+      
+    
+      margin-bottom: 0.25rem;
+      margin-right: 1px;
+      padding-right: 1.75rem !important;
+
+      @include transition(all $transition-general);
+      
+      &:empty {
+        display: none;
+      }
+  
+      span[data-role="remove"] {
+        position: absolute;
+        right: 1px;
+        top: 0;
+        bottom: 0;
+
+        width: 1.25rem;
+        text-align: center;
+        line-height: 1.8;
+  
+        cursor: pointer;
+        
+        &:hover {
+          background-color: rgba(0,0,0,0.125);
+        }
+  
+        &::after {
+          content: "\00D7";
+          font-size: 1.1em;
+        }
+      }
+   }//.tag
+
+ }//.bootstrap-tagsinput
+
+}//$plugin-tagsinput

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> layout/_commons/_head}}
+    {{{include-css files="dist/css/ace-themes.css@ace"}}}
+  </head>
+
+  <body>
+    <div class="body-container">
+      {{> layout/horizontal/navbar}}
+
+      <div id="sidebar" class="sidebar sidebar-fixed sidebar-hover sidebar-h sidebar-white sidebar-top" data-swipe="true" data-backdrop="true" data-dismiss="true">
+        {{> layout/horizontal/sidebar}}
+      </div>
+
+      <div class="main-container">
+
+        <div role="main" class="main-content">
+          <div class="page-content container container-plus px-md-4 px-xl-5">
+           {{{body}}}
+          </div>
+
+          {{> layout/horizontal/footer}}
+        </div>
+
+        {{!> layout/_commons/settings-box}}
+      </div>
+
+    </div>
+
+    {{> layout/_commons/_tail}}
+
+  </body>
+</html>

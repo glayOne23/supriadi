@@ -1,0 +1,188 @@
+<div class="page-header">
+    <h1 class="page-title text-primary-d2">
+        {{title}}
+        <small class="text-md ml-0 text-secondary-d3">
+            and diagrams
+        </small>
+    </h1>
+</div>
+
+
+<div class="alert bgc-primary-l4 brc-primary-l1 radius-1 d-flex align-items-center m-2" role="alert">
+    <div class="position-tl h-102 m-n1px brc-primary-m2 border-l-5"></div>
+    <i class="fas fa-info-circle mr-3 fa-2x text-primary-m3"></i>
+    <div>
+        You can use any chart drawing library with Ace. Below is only a few examples.
+    </div>
+</div>
+
+
+<div class="row mt-4">
+
+    <div class="col-lg-4">        
+        <div class="card ccard h-100">
+            <div class="card-header border-0 text-dark-m2">
+                <h4 class="text-120">
+                    Chart.js Piecharts
+                </h4>
+
+                <div class="card-toolbar align-self-center no-border">
+                    <a href="#" data-action="reload" class="card-toolbar-btn text-blue text-105">
+                        <i class="fas fa-sync-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="pos-rel">
+                    <canvas id="piechart" height="180"></canvas>
+                    <div class="position-center text-center">
+                        <h3 class="d-none d-sm-block d-md-none d-xl-block">84,529</h3>
+                        <h3 class="d-sm-none d-md-block d-xl-none text-140">~84k</h3>
+                        Visitors
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-5 mt-3 mt-lg-0">
+        <div class="card ccard h-100">
+            <div class="card-header border-0 text-dark-m2">
+                <h4 class="text-120">
+                    Mixed Charts
+                </h4>
+
+                <div class="card-toolbar no-border">
+                    <a class="btn btn-light-secondary border-1 btn-bold btn-xs btn-brc-tp" href="#">
+                        Monthly
+                    </a>
+        
+                    <a class="btn btn-light-secondary border-1 btn-bold btn-xs btn-brc-tp ml-1" href="#">
+                        USA
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <canvas id="mixchart" height="155"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 mt-3 mt-lg-0">
+        <div class="card ccard h-100">
+            <div class="card-header border-0 text-dark-m2">
+                <h4 class="text-120">
+                    Misc
+                </h4>
+
+                <div class="card-toolbar align-self-center no-border">
+                    <a href="#" data-action="reload" class="card-toolbar-btn text-green text-105">
+                        <i class="fas fa-sync-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body pt-2 h-100">
+                <div class="d-flex flex-wrap mb-4">
+                    <div class="flex-grow-1 mb-2">
+                        <div class="text-600 text-grey-d2">
+                            <i class="fa fa-circle text-blue-m3 text-80 mr-2px"></i>
+                            33%
+                        </div>
+                        <span class="text-grey pl-3 text-95 text-nowrap">
+                            Twitter
+                        </span>
+                    </div>
+
+                    <div class="flex-grow-1 mb-2">
+                        <div class="text-600 text-grey-d2">
+                            <i class="fa fa-circle text-blue-d1 text-80 mr-2px"></i>
+                            19%
+                        </div>
+                        <span class="text-grey pl-3 text-95 text-nowrap">
+                            Facebook
+                        </span>
+                    </div>
+
+                    <div class="flex-grow-1 mb-2">
+                        <div class="text-600 text-grey-d2">
+                            <i class="fa fa-circle text-purple-m1 text-80 mr-2px"></i>
+                            25%
+                        </div>
+                        <span class="text-grey pl-3 text-95 text-nowrap">
+                            Instagram   
+                        </span>
+                    </div>
+                </div>
+                <div id="progress-chart" class="pos-rel"></div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.row -->
+
+
+
+<div class="card ccard mt-4 mt-lg-5">
+    <div class="card-body">
+        <div class="row">  
+     
+            <div class="col-md-6">
+                <div class="col-12">
+                    <h4 class="text-blue-d1 py-2 mb-2 mb-lg-3 mx-n2">
+                        Flotcharts
+                    </h4>
+                </div>            
+                <div class="col-12 bgc-white p-3 border-1 brc-grey-l3 radius-1">
+                    <div id="sales-chart" style="height: 230px"></div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt-4 mt-md-0">
+                <div class="col-12">
+                    <h4 class="text-pink py-2 mb-2 mb-lg-3 mx-n2">
+                        Chartist
+                        <small class="text-muted">using SVG</small>
+                    </h4>
+                </div>
+                <div class="col-12 bg-white pt-4 pr-4 pb-0 pl-0 border-1 brc-grey-l3 radius-1">
+                    <div id="my-chart" class="ct-chart ct-perfect-fourth"></div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div>
+</div><!-- /.card -->
+
+
+
+
+<div class="card shadow-sm mt-4 mt-lg-5">
+    <div class="card-header brc-grey-l2">
+        <h5 class="cart-title text-orange-d4">
+            Google Charts
+        </h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5 col-12">
+                <div id="google_chart_gauge"></div>
+                <hr />
+                <div id="google_chart_tree" style="width: 300px; height: 200px;"></div>
+            </div>
+
+            <div class="offset-md-1">
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div id="google_chart_region"></div>
+            </div>
+        </div><!-- /.row -->
+    </div>
+</div><!-- /.card -->
+

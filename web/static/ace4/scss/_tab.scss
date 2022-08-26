@@ -1,0 +1,640 @@
+.tab-content {
+    border: 1px solid $tab-border-color;
+    padding: 1rem;
+}
+
+
+//sliding tabs
+.tab-sliding {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    .tab-pane {
+        max-width: 100%;
+        flex: 1 0 auto;
+        display: block !important;
+
+        transform: none;
+
+        visibility: hidden;
+        max-height: 0;
+
+        @include transition(margin-left, margin-right, transform, max-height, visibility);
+        transition-duration: $sliding-tab-duration, $sliding-tab-duration, $sliding-tab-duration, $sliding-tab-duration, 0s;
+        transition-delay: 0s, 0s, 0s, 0s, $sliding-tab-duration - 10;//hide it a bit faster  
+        transition-timing-function: ease;
+
+        
+        &:not(.active) {
+            pointer-events: none;
+        }
+    }
+    .tab-pane {
+        margin-left: -100%;
+    }
+    .tab-pane.active {
+        transform: translateX(100%);
+        visibility: visible;
+        max-height: 100%;// 2000px
+
+        transition-delay: 0s;
+    }
+
+    //// adding `mh-none` to `.tab-pane` disables animated (delayed) max-height change
+    .tab-pane.mh-none:not(.active) {
+        max-height: 0 !important;
+    }
+
+    .tab-pane.active ~ .tab-pane {
+        margin-left: 100%;
+        margin-right: -200%;//this is needed for tab-panes to be on the same place (therefore smoother transitions)
+    }
+}
+
+.tab-pane.tab-swiping.active {
+    overflow: hidden;
+    transition: none;
+    touch-action: none;
+}  
+.tab-pane.tab-swiping:not(.active) {
+    transition: none;
+    visibility: visible;
+    max-height: none;
+}
+
+//otherwise (visibile:visible) will make them interactable
+.dropdown-menu:not(.show) .tab-sliding .tab-pane.active {
+    visibility: hidden;
+}
+.dropdown-hover:hover .tab-sliding .tab-pane.active {
+    visibility: visible;
+}
+
+
+
+//scrollable tab buttons
+.nav-tabs-scroll {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+
+    overflow: hidden;
+    &:not([class*="sticky-nav"]) {
+        position: relative;// so that `LI` item's offset is calculated relative to parent `ul.nav`
+    }
+
+    @supports (overflow: overlay) or (scrollbar-width: none) {
+         &.is-scrollable:not(.is-scrollbar-shown) {
+            overflow-x: scroll;
+
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0px;
+            }
+        }
+    }
+}
+
+
+
+
+
+.nav-tabs {
+    border-width: 0;
+    border-color: $nav-tab-border-color;
+
+    .nav-item {
+        display: flex;//so that all elements have the same height
+        margin-right: -1px;
+        margin-bottom: -1px;
+
+        //&:first-child .nav-link {
+            //border-top-left-radius: 0.25rem;
+        //}
+        &:last-child {
+            margin-right: 0;
+            //.nav-link {
+                //border-top-right-radius: 0.25rem;
+            //}
+        }
+    }
+
+    .nav-link {
+        width: 100%;
+        height: calc(100% - 1px);
+        margin-bottom: 0;
+
+        box-shadow: none;
+
+        border: 1px solid $tab-border-color;
+        border-bottom-width: 0;
+        border-radius: 0;
+  
+        font-size: $tab-link-font-size;
+
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        &:not([class*="btn-"]) {
+            color: $tab-text-color;
+            background-color: $tab-bg-color;
+        }
+
+        &:not([class*="btn-"]):hover {
+            background-color: $tab-hover-bg-color;
+            border-color: $tab-hover-border-color;
+        }
+
+        @at-root .nav-tabs .nav-item.show .nav-link,
+        &.active {
+            margin-top: -2px;
+            height: calc(100% + 2px);
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
+        @at-root .nav-tabs .nav-item.show .nav-link,
+        &.active {
+            z-index: 1;
+            &:not([class*="btn-"]) {
+                color: $tab-active-text-color;
+                background-color: $tab-active-bg-color;
+
+                border-top-width: $tab-highlight-width;
+                border-color: $tab-active-border-color;
+                border-top-color: $tab-active-highlight-border-color;
+
+                font-weight: $font-semibold;
+            }
+        }
+
+        @at-root .nav-tabs.nav-tabs-shadow .nav-item.show .nav-link, .nav-tabs.nav-tabs-shadow .nav-item .nav-link.active {
+            //&:not([class*="btn-"]) {
+                box-shadow: 0 -0.125rem 0.325rem rgba(0, 0, 0, 0.1);
+            //}
+        }
+    }
+
+    .nav-item[class*="brc-"] .nav-link.active {
+        border-top-color: inherit;
+    }
+
+    .btn {
+        width: 100%;
+        height: calc(100% - 1px);
+        border-bottom-width: 0;
+        
+        &.active {
+            margin-top: -2px;
+            height: calc(100% + 2px);
+            border-top-width: $tab-highlight-width;
+
+            font-weight: $font-semibold;
+        }
+        &.active[class*="border-b-"] {
+            margin-bottom: -2px;
+            margin-top: 0;
+        }
+        //&.active, &:focus {
+            // box-shadow: 0 -0.125rem 0.325rem rgba(0, 0, 0, 0.1);
+        //}
+    }
+
+    //i.e. tabs don't overlap with content
+    &.nav-tabs-detached {
+        .nav-link, .btn {
+            &.active {
+                margin-top: -3px;
+            }
+            &.active[class*="border-b-"] {
+                margin-bottom: -3px;
+                margin-top: 0;
+            }
+        }
+    }
+
+    &.nav-tabs-static {
+        .nav-link, .btn {
+            height: 100%;
+            //border-bottom-width: 1px;
+            &.active {
+                height: 100%;
+                margin-top: 0;
+            }
+        }
+    }
+
+}
+
+.nav-tabs-faded {
+    .nav-link, .btn {
+        &:not(.active):not(:hover) {
+            opacity: 0.77;
+        }
+    }
+}
+
+
+
+
+//simple tabs
+.nav-tabs.nav-tabs-simple {
+    .nav-link {
+        border-width: 0;
+
+        //margin-right: 0.5rem;
+        padding-left: 0.25rem;
+
+        background-color: transparent;
+        color: $simple-tabs-text-color;
+
+        height: calc(100% - 1px);
+
+        &:not(.active):hover {
+            color: $simple-tabs-hover-text-color;
+            background-color: transparent;
+        }
+    
+
+        @at-root .nav-tabs-simple .nav-item.show .nav-link,
+        &.active
+        {
+            // height: 100%;
+            margin-top: 0;
+            box-shadow: none;
+
+            border-width: 0 0 $tab-highlight-width 0;
+            color: $simple-tabs-active-text-color;
+            font-weight: $font-semibold;
+            background-color: $simple-tabs-active-bg;
+
+            &:not([class*="btn-"]) {
+                border-bottom-color: $simple-tabs-active-highlight-border-color;
+            }
+        }
+
+    }
+
+    + .tab-content {
+        border-width: 0;
+        padding: 0.75rem;
+    }
+}
+
+
+
+@if $tabs-left == true {
+ .tabs-left {
+    display: flex;
+    flex-direction: row;
+
+    > .tab-content {
+        flex-grow: 1;
+    }
+
+    > .nav-tabs {
+        flex-direction: column;
+
+        .nav-item {
+            margin-bottom: 0;
+            margin-top: 0;
+
+            display: inline-block;
+        }
+
+        .nav-item:first-child .nav-link:not(.active) {
+            border-radius: 0.25rem 0 0  0;
+        }
+        .nav-item:last-child .nav-link:not(.active) {
+            border-radius: 0 0 0 0.25rem;
+        }
+
+
+        .nav-link {
+            border-width: 1px 0 1px 1px;
+            border-radius: 0;
+            margin: 0 0 -1px 0;
+
+            width: auto;
+            height: auto;
+
+            @at-root .tabs-left .nav-tabs .nav-item.show .nav-link,
+            &.active {
+                position: relative;
+
+                font-weight: $font-normal;
+                margin: 0 -1px -1px -1px;
+                border-width: 1px 1px 1px $tab-highlight-width;
+
+                border-top-color: $tab-active-border-color;
+
+                border-radius: 0.25rem 0 0 0.25rem;
+
+                border-right-color: transparent;                
+
+                &:not([class*="btn-"]) {
+                    border-left-color: $tab-active-highlight-border-color;
+                }
+            }
+
+            @at-root .tabs-left .nav-tabs.nav-tabs-shadow .nav-item.show .nav-link, .tabs-left .nav-tabs.nav-tabs-shadow .nav-item .nav-link.active {
+                //&:not([class*="btn-"]) {
+                    box-shadow: -0.125rem 0 0.325rem rgba(0, 0, 0, 0.1);
+                //}
+            }
+
+        }
+
+        .nav-item:last-child {
+            .nav-link, .btn {
+                margin-bottom: 0;
+                // border-top-right-radius: 0;
+            }
+        }
+
+        .nav-item[class*="brc-"] .nav-link.active {
+            border-top-color: $tab-active-border-color;
+            border-left-color: inherit;
+        }
+
+    }//.nav-tabs
+ }//.tabs-left
+
+}//@if $tabs-left
+
+
+
+
+@if $tabs-right == true {
+ .tabs-right {
+    display: flex;
+    flex-direction: row-reverse;
+
+    > .tab-content {
+        flex-grow: 1;
+    }
+
+    > .nav-tabs {
+        flex-direction: column;
+
+        .nav-item {
+            margin-bottom: 0;
+            margin-top: 0;
+
+            display: inline-block;
+        }
+        
+
+        .nav-item:first-child .nav-link:not(.active) {
+            border-radius: 0 0.25rem 0 0;
+        }
+        .nav-item:last-child .nav-link:not(.active) {
+            border-radius: 0 0 0.25rem 0;
+        }
+
+        .nav-link {
+            border-width: 1px 1px 1px 0;
+
+            margin: 0 0 -1px 0;
+
+            width: auto;
+            height: auto;
+
+            @at-root .tabs-right .nav-tabs .nav-item.show .nav-link,
+            &.active {
+                font-weight: $font-normal;
+                margin: 0 -1px -1px -1px;
+                border-width: 1px $tab-highlight-width 1px 1px;
+
+                border-top-color: $tab-active-border-color;
+
+                border-radius: 0 0.25rem 0.25rem 0;
+   
+                border-left-color: transparent;
+                position: relative;
+
+                &:not([class*="btn-"]) {
+                    border-right-color: $tab-active-highlight-border-color;
+                }
+            }
+
+            
+            @at-root .tabs-right .nav-tabs.nav-tabs-shadow .nav-item.show .nav-link, .tabs-right .nav-tabs.nav-tabs-shadow .nav-item .nav-link.active {
+                //&:not([class*="btn-"]) {
+                    box-shadow: 0.125rem 0 0.325rem rgba(0, 0, 0, 0.1);
+                //}
+            }
+        }
+
+        .nav-item:last-child {
+            .nav-link, .btn {
+                margin-bottom: 0;
+                // border-top-right-radius: 0;
+            }
+        }
+
+        .nav-item[class*="brc-"] .nav-link.active {
+            border-top-color: $tab-active-border-color;
+            border-right-color: inherit;
+        }
+   
+
+    }//.nav-tabs
+ }//.tabs-right
+
+}//@if $tabs-right
+
+
+
+
+
+
+
+
+
+
+
+//page tabs
+$page-tabs: false;
+@if $page-tabs == true {
+
+//larger tabs
+.nav-tabs-lg {
+    .nav-item {
+       margin-left: 0.25rem;
+       margin-right: 0.25rem;
+
+       .nav-link {
+           width: 100%;
+       }
+   }
+
+   .nav-link {
+        border-radius: 0.25rem 0.25rem 0 0;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+   }
+}//.nav-tabs-lg
+
+.nav-tabs-lg.nav-tabs-compact.nav-tabs {
+   .nav-item {
+       margin: 0 -1px -1px 0;
+   }
+   .nav-link {
+       border-radius: 0;
+   }
+   .nav-item:first-child .nav-link {
+       border-top-left-radius: 0.25rem;
+   }
+   .nav-item:last-child .nav-link {
+       border-top-right-radius: 0.25rem;
+   }
+}//.nav-tabs-lg.nav-tabs-compact
+
+
+
+
+.nav-tabs.page-nav-tabs {
+    margin: 0 -1*$page-content-padding-x;
+    padding: 0 $page-content-padding-x;
+
+    + .tab-content {
+        border-width: 1px 0 0;
+        //margin: 0 -1*$page-content-padding-x;//as much as page-content
+        //padding: 1rem $page-content-padding-x+0.25rem;
+    }
+  
+    .nav-item {
+        .nav-link {
+            width: 100%;
+
+            @include transition(background-color $tab-link-transition, border-color $tab-link-transition, color $tab-link-transition);
+        
+            font-weight: $font-semibold;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+
+    //based on simple tabs    
+    &.nav-tabs-simple {
+
+        .nav-item {
+            margin: 0 1px -1px 0;
+        }
+    
+        .nav-link {
+            font-weight: $font-semibold;
+            border-bottom: 2px solid;
+
+            padding: 0.75rem 0.5rem;
+            margin-right: 2px;
+           
+    
+            &:hover {
+                background-color: $page-tabs-simple-active-bg-color;
+            }
+            &:not(.active) {
+                border-bottom-color: transparent !important;
+            }
+            &:not(.active):hover {
+                border-bottom: 2px solid $page-tabs-simple-active-highlight-border-color;
+            }
+        }
+    
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            border-bottom-width: 3px;
+        }
+    
+        + .tab-content {
+            border-top-width: 0;
+        }
+
+
+        &.nav-tabs-double {
+            .nav-link:hover {
+                background-color: $page-tabs-double-hover-bg;
+            }
+
+            .nav-link.active,
+            .nav-item.show .nav-link {
+                border-bottom-width: 2px;
+            }
+        }
+    }//nav tabs simple
+    
+    /////////////
+
+    &.nav-tabs-boxed {
+        background-color: $page-tabs-boxed-nav-bg;
+        border-width: 0;
+        margin: 0;
+        padding: 0;
+   
+        .nav-item {
+            //margin: 0 -1px -1px 0;
+            margin: 0 -1px 0 0;
+            display: flex;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        
+        .nav-link {
+            border-radius: 0;
+           
+            padding: 0.875rem 0.75rem;
+            height: 100%;
+
+            font-size: 0.925rem;
+            border: 1px solid;
+            
+            &:not([class*="btn-"]) {
+                background-color: transparent;
+            }
+                    
+            &:not(.active) {
+                border-color: $page-tabs-boxed-border !important;
+            }
+            &:not([class*="btn-h-"]):not(.active):hover {
+                background-color: $page-tabs-boxed-hover-bg;
+            }
+            &[class*="btn-h-"]:hover {
+                z-index: 1;
+            }
+            //}
+        }
+    
+        .nav-item:first-child .nav-link {
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+        .nav-item:last-child .nav-link {
+            border-radius: 0 0.25rem 0.25rem 0;
+        }
+
+    
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            margin-top: 0;
+            margin-bottom: 0;
+    
+            border-bottom-width: 3px;
+            font-weight: 0.95rem;
+
+            z-index: 2;
+            background-color: $page-tabs-boxed-active-bg;
+    
+            &:not([class*="btn-a-"]) {  
+                color: $page-tabs-boxed-active-bg-text-color;                
+                border-color: $page-tabs-boxed-active-border $page-tabs-boxed-active-border $page-tabs-boxed-active-higlight-border;
+            }
+        }
+    }//nav-tabs-boxed
+
+}//.page-tabs
+
+}//@if $page-tabs
+

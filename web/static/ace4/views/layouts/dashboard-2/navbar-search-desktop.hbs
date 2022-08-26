@@ -1,0 +1,27 @@
+<!-- search box for desktop view -->
+<!-- it's a .dropdown-menu with custom position and width, etc -->
+
+<a class="nav-link dropdown-toggle px-35" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-search text-110 text-primary-m2"></i>
+</a>
+
+<div class="dropdown-menu dropdown-animated position-tl w-auto mw-none h-auto overflow-hidden border-0 p-0 bgc-white radius-0 shadow-none">
+    <div class="dropdown-clickable w-100"><!-- .dropdown-clickable, so dropdown won't be hidden when you click on it -->
+        <!-- by putting the search input inside a "FORM[data-submit=dismiss]" element, when we submit the form, dropdown will be hidden -->
+        <form class="pos-rel d-flex align-items-center w-50 mx-auto pl-4 pl-lg-0" data-submit="dismiss">
+            <i class="fa fa-search text-primary-m2 mr-1"></i>
+
+            <!-- .autofocus input -->
+            <input type="text" class="form-control autofocus text-110 shadow-none mx-0 w-100 border-0 my-25 py-2" placeholder=" Start searching ..." aria-label="Search" />
+
+            <a href="#" class="btn border-0 mr-1 radius-50 py-15 px-25 btn-text-lightgrey btn-h-light-blue">
+                <i class="fa fa-microphone text-110"></i>
+            </a>
+
+            <!-- the close button -->
+            <a data-dismiss="dropdown" href="#" class="position-rc py-0 mr-n5 btn btn-outline-lightgrey btn-h-outline-red btn-a-outline-red border-0 radius-1">
+                <span class="text-180">&times;</span>
+            </a>
+        </form>
+    </div>
+</div>

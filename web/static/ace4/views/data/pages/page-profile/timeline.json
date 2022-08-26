@@ -1,0 +1,90 @@
+[
+    {
+        "title": "Today",
+        "color": "info",
+        "items": [
+            {
+                "color": "success",
+                "time": "10:10 pm",
+                "icon": "fa fa-bookmark text-success-m3",
+                "name": "Alex",
+                "description": "bookmarked your post"
+            },
+            {
+                "color": "blue",
+                "time": "9:35 pm",
+                "icon": "fa fa-pen text-blue-m2",
+                "name": "Susan",
+                "description": "reviewed a product",
+                "action": "Read"
+            },
+            {
+                "color": "purple",
+                "time": "4:19 pm",
+                "icon": "fa fa-book text-purple",
+                "name": "John",
+                "description": "started a new course",
+                "action": "Enroll"
+            },
+            {
+                "color": "warning",
+                "time": "11:40 am",
+                "icon": "fa fa-image text-warning",
+                "name": "Alex",
+                "description": "posted a new photo",
+                "action": "View"
+            },
+            {
+                "color": "pink",
+                "time": "9:00 am",
+                "icon": "fa fa-user text-pink",
+                "name": "Max",
+                "description": "became friends with you"
+            }
+        ]
+    },
+
+    {
+        "title": "Yesterday",
+        "color": "secondary",
+        "items": [
+            {
+                "color": "purple",
+                "time": "6:11 pm",
+                "icon": "fa fa-microphone text-purple-m1",
+                "name": "Freddie",
+                "description": "sang a new song",
+                "action": "Listen"
+            },
+            {
+                "color": "success",
+                "time": "5:35 pm",
+                "icon": "fa fa-pen text-success-m3",
+                "name": "Robin",
+                "description": "read a new novel"
+            },
+            {
+                "color": "blue",
+                "time": "4:20 pm",
+                "icon": "fa fa-graduation-cap text-blue-m1",
+                "name": "Katy",
+                "description": "finished a long course"
+            },
+            {
+                "color": "warning",
+                "time": "10:15 am",
+                "icon": "fa fa-user text-warning",
+                "name": "Philip",
+                "description": "update profile photo",
+                "action": "View"
+            },
+            {
+                "color": "pink",
+                "time": "9:35 am",
+                "icon": "fa fa-plane text-pink",
+                "name": "Melissa",
+                "description": "is going on vacation"
+            }
+        ]
+    }
+]

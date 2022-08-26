@@ -1,0 +1,117 @@
+
+.accordion {
+    .card {
+        border: 1px solid $accordion-border-color;
+
+        &:first-of-type , &:not(:first-of-type):not(:last-of-type) {
+            border-bottom: 1px solid $accordion-border-color;
+        }
+    }
+
+    .card[class*="brc-"] .card-header {
+        border-bottom-width: 0;
+    }
+    
+    .card + .card {
+        margin-top: 0.125rem;
+    }
+
+
+    .card-header {
+        border-bottom-color: $accordion-border-color;
+        padding: 0;
+
+        .card-title {
+            font-size: 1rem;
+        }
+        .accordion-toggle {
+            display: block;
+            width: 100%;
+
+            text-align: left;
+            border-width: 0;
+            font-weight: $font-semibold;
+
+            padding: 0.75rem 1.25rem 0.875rem;
+
+            
+            position: relative;
+            overflow: hidden;
+
+            &.collapsed {
+                font-weight: $font-normal;
+            }
+
+            &:not(.btn) {
+                @include transition(all $accordion-toggle-transition);
+
+                color: $accordion-text-color;
+                background-color: $accordion-bg-color;
+
+                &.collapsed {
+                    color: $accordion-collapsed-text-color;
+                    background-color: $accordion-collapsed-bg-color;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                    color: $accordion-hover-text-color;
+                    background-color: $accordion-hover-bg-color;
+                }
+                &.collapsed:hover {
+                    color: $accordion-collapsed-hover-text-color;
+                    background-color: $accordion-collapsed-hover-bg-color;
+                }
+
+            }
+        }
+
+        .card-title[class*="bgc-"] .accordion-toggle:not(.collapsed) {
+            background-color: inherit !important;
+        }
+        .card-title[class*="brc-"] .accordion-toggle:not(.collapsed) {
+            border-color: inherit !important;
+        }
+        .card-title[class*="text-"] .accordion-toggle:not(.collapsed) {
+            color: inherit;
+        }
+    }
+}
+
+
+.accordion-faded {
+    > .card > .card-header > .card-title > .accordion-toggle {
+        &.collapsed:not(:hover) {
+            opacity: 0.77;
+        }
+    }
+}
+
+a[data-toggle="collapse"], .accordion-toggle {
+    &.collapsed { 
+        .toggle-icon {
+            transform: none;
+        }
+    }
+
+    .toggle-icon {
+        @include transition(transform $accordion-toggle-transition);
+    }
+
+    &:not(.collapsed) {
+        .toggle-icon {            
+            &[class*="-down"] {
+                transform: rotate(-180deg);
+            }
+            &[class*="-up"] {
+                transform: rotate(180deg);
+            }
+            &[class*="-left"] {
+                transform: rotate(-90deg);
+            }
+            &[class*="-right"] {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

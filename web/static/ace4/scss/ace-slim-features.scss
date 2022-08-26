@@ -1,0 +1,95 @@
+// enable/disable sidebar different collapsed modes
+// only one should be 'true'
+$expandable: true;// when sidebar is collapsed and mouse hovers it, it is expanded to its full size
+$hoverable: false;// when sidebar is collapsed and an item is hovered, its submenu will be shown like a popup menu
+$hideable: false;// when sidebar is collapsed it gets hidden completely
+
+$horizontal: false;// enable/disable horizontal sidebar
+$sidebar-hover: false;// display submenu when mouse hovers it
+
+$sidebar-focus-expand: false;// expands collapsed sidebar when an element inside it receives focus
+$sidebar-focus-highlight: false;// highlight sidebar elements when they receive focus. the highlight is like hover
+
+$sidebar-spaced: false;// sidebar elements with a little space from sides
+
+$sidebar-active-arrow: true;// the white arrow pointing to active element in dark sidebars
+$sidebar-active-border: true;// the border on left or right of active sidebar elements
+
+$collapsed-sidebar-caption-no-margin: false;// if true when sidebar is collapsed, captions won't have margin-top and take up less space
+
+$sidebar-active-bold: false;// should active sidebar item be bold in all cases?
+$sidebar-submenu-active-bold: false;// should active sidebar item be bold in all cases?
+
+
+//navbar
+$sticky-navbar: false;//if true, navbar will have `position: sticky` instead of `position:fixed` and sticky doesn't work on IE and older browsers
+
+
+
+//
+$body-bg-themes: true;// the extra body background colors
+
+// buttons
+$desktop-button-click-effect: true;// the effect when you click a 'button.btn' element in desktop
+$mobile-button-press-effect: true;// the effect when you click/press a 'button.btn' element in mobile devices
+
+$btn-light-style: true;// i.e. .btn-light-danger & .btn-lighter-danger, etc 
+$btn-sliding-text: true;// buttons with sliding text/icon
+$btn-app: false;// big buttons with gradient background
+$btn-focus-states: false;// different focus states for buttons such .fs--shadow , etc
+
+$badge-color: true;
+$badge-arrow: false;// arrowed badges
+
+
+// dropdowns
+$mobile-dropdowns: true;// dropdowns slide from bottom on small devices
+
+// for elements
+$custom-control: true;// custom checkbox and radios
+$custom-switch: true;// custom switches
+$custom-file-input: true;
+$custom-select: true;
+
+$custom-asides: true;
+
+$animated-icons: true;
+
+
+// tabs
+$tabs-left: false;
+$tabs-right: false;
+
+
+
+// plugins
+$plugin-basictable: false;// the responsive table plugin
+
+$plugin-bootstraptable: false;
+
+$plugin-datatables: false;
+
+$plugin-jqgrid: false;
+$plugin-wizard: false;
+
+
+$plugin-datepicker: false;
+$plugin-timepicker: false;
+$plugin-nouislider: false;
+$plugin-ionslider: false;
+$plugin-touchspin: false;
+
+$plugin-dropzone: false;
+$plugin-summernote: false;
+$plugin-markdown: false;
+$plugin-wysiwyg: false;
+$plugin-rating: false;
+$plugin-typeahead: false;
+$plugin-tagsinput: false;
+
+$plugin-chosen: false;
+$plugin-select2: false;
+
+$plugin-fullcalendar: false;
+
+$plugin-treeview: false;

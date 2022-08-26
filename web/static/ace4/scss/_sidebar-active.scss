@@ -1,0 +1,297 @@
+//the active white arrow pointing to active element (good for dark sidebars)
+@if $sidebar-active-arrow = true {
+ .nav.has-active-arrow {
+
+    $arrow-size: map-get($sidebar-common, 'arrow-size');
+
+    .nav-item.active > .nav-link::after {
+        content: "";
+        display: none;
+        position: absolute;
+        z-index: 0;
+
+        width: 0;
+        height: 0;
+        margin: 0;
+
+        right: 0;
+        top: calc(50% - #{$arrow-size});
+
+        border-right: $arrow-size solid $page-content-background;
+        border-left: none;
+        border-top:  $arrow-size solid transparent;
+        border-bottom: $arrow-size solid transparent;
+    }
+    .nav-item.active:not(.open) > .nav-link::after {
+        display: block;
+    }
+    .nav-item.active.open .nav-item.active:not(.open) > .nav-link::after {
+        display: block;
+    }
+    .nav-item.active:not(.open) .nav-item.active:not(.open) > .nav-link::after {
+        display: none;
+    }
+
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        //for collapsed sidebar
+       @if $expandable == true {
+        @at-root .sidebar.expandable {
+           
+            &.sidebar-spaced:not(.collapsed) , &.sidebar-spaced.toggling {
+                .nav.has-active-arrow .nav-item.active > .nav-link::after {
+                    display: none !important;
+                }
+            }
+        
+            &.collapsed {
+        
+                &:not(.toggling) {
+                    .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                        right: auto !important;
+                        left: map-get($sidebar-common, 'collapsed-width') - map-get($sidebar-common, 'arrow-size');
+                        left: calc( var(--sidebar-collapsed-width) - #{map-get($sidebar-common, 'arrow-size')} );
+                    }
+
+                    &.sidebar-spaced .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                        margin-left: calc( #{-1*map-get($sidebar-common, 'spaced') * 0.25} - 2px );//2px to account for .nav-item border
+                    }
+                }
+                
+        
+                .nav.has-active-arrow .nav-item .nav-item > .nav-link::after {
+                    display: none !important;
+                }
+                
+                &:not(.toggling) .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                    @include transition(visibility 0s $expandable-hide-delay + $expandable-transition-duration);        
+                }
+                .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                    display: block;
+                }
+                .sidebar-inner:hover , .sidebar-inner.has-focus {
+                    .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                        visibility: hidden;
+                        transition-delay: $expandable-show-delay;
+                    }
+                }
+                @if $sidebar-focus-expand == true {
+                    .sidebar-inner:focus-within {
+                        .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                            visibility: hidden;
+                            transition-delay: $expandable-show-delay;
+                        }
+                    }
+                }
+        
+            }
+         }
+        }//@if expandable
+
+
+        //for hoverable
+        @if $hoverable == true {
+         @at-root .sidebar.hoverable.collapsed {
+            .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+                display: block;
+                right: -1px;//so that it appears a little smaller (when sidebar is collapsed)
+            }
+        
+            .nav.has-active-arrow .nav-item .nav-item.active > .nav-link::after {
+                display: none !important;
+            }    
+         }
+        }
+    }//media
+
+    //for mobile sidebar don't show white active arrow
+    @include media-breakpoint-down($sidebar-mobile-max-width) {
+        @at-root .sidebar:not(.sidebar-push),
+        .sidebar.sidebar-backdrop {
+            .nav.has-active-arrow .nav-item.active > .nav-link::after {
+                display: none !important;
+            }
+        }
+    }//media
+
+ }//.nav.has-active-arrow
+
+
+ .main-container.bgc-white {
+    .nav.has-active-arrow .nav-item.active > .nav-link::after {
+        border-right-color: #fff;
+    }
+ }
+
+}//@if $sidebar-active-arrow
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+//highlight border on active item
+@if $sidebar-active-border == true {
+ .nav.has-active-border {
+    //highlight the active .nav-item
+    > .nav-item.active::before {
+        //content: "";
+        //display: none;
+
+        position: absolute;
+        z-index: 1;
+
+        left: 1px;
+        top: 0;
+        bottom: 0;
+
+        border: 0px solid transparent;
+        border-left-width: $sidebar-active-border-width;
+    }
+    > .nav-item.active[class*="brc-"]::before {
+        border-left-color: inherit;
+    }
+
+
+    //or only highlight the active .nav-link
+    .nav-item.active > .nav-link::before {
+        position: absolute;
+        z-index: 1;
+
+        left: 1px;
+        top: 0;
+        bottom: 0;
+
+        border: 0px solid transparent;
+        border-left-width: $sidebar-active-border-width;
+    }
+
+    //don't show border when item is open
+    .nav-item.active.open > .nav-link::before {
+        display: none;
+    }
+    //don't show it when parent is being closed
+    .nav-item.active:not(.open) .nav-item > .nav-link::before {
+        display: none;
+    }
+
+
+
+    @if $expandable == true {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            //the active link highlight
+            @at-root .sidebar.expandable.collapsed .sidebar-inner {
+                .nav.has-active-border > .nav-item.active > .nav-link::before {
+                    display: block;
+                }
+                &.is-hover, &.has-focus {
+                    //hide the active border when .nav-item is .open
+                    .nav.has-active-border > .nav-item.active.open > .nav-link::before {
+                        visibility: hidden;
+                    }
+                    .nav.has-active-border > .nav-item.active:not(.open) > .nav-link::before {
+                        visibility: visible;
+                    }
+                }
+
+                @if $sidebar-focus-expand == true {
+                    &:focus-within {
+                        //hide the active border when .nav-item is .open
+                        .nav.has-active-border > .nav-item.active.open > .nav-link::before {
+                            visibility: hidden;
+                        }
+                        .nav.has-active-border > .nav-item.active:not(.open) > .nav-link::before {
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }//@media
+    }
+
+    &.active-on-top {//only first level item has the active border indicator
+        .nav-item.active::before {
+            display: none !important;
+        }
+        .nav-item.active > .nav-link::before {
+            display: block !important;
+            visibility: visible !important;//to override .expandable transitions and delays that make it visible/invisible
+        }
+        .nav-item .nav-item.active > .nav-link::before {
+            display: none !important;
+        }
+    }
+
+    //for hoverable, it should be like 'active-on-top' as well
+    @if $hoverable == true {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            @at-root  .sidebar.hoverable.collapsed {
+                .nav.has-active-border {
+                    > .nav-item.active > .nav-link::before {
+                        display: block !important;
+                        visibility: visible !important;//to override .expandable transitions and delays that make it visible/invisible
+                    }
+                    .nav-item .nav-item.active > .nav-link::before {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+
+
+    //show highlight border on right
+    &.active-on-right {
+        .nav-item.active > .nav-link::before,
+        > .nav-item.active::before {
+            left: auto !important;
+        }
+    }
+    //highlight border on right position for for collapsed sidebar
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        @at-root .collapsed:not(.toggling) .sidebar-inner:not(.is-hover) .nav.active-on-right {
+            .nav-item.active > .nav-link::before,
+            > .nav-item.active::before {
+                left: map-get($sidebar-common, 'collapsed-width') !important;
+                left: var(--sidebar-collapsed-width) !important;
+                margin-left: calc(#{-1 * $sidebar-active-border-width} - 2px);
+                margin-left: calc(#{-1 * $sidebar-active-border-width} - var(--active-border-offset-right));
+                right: auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            @at-root .collapsed:not(.toggling) .sidebar-inner:hover .nav.active-on-right {
+                .nav-item.active > .nav-link::before,
+                > .nav-item.active::before {
+                    left: auto !important;
+                    margin-left: auto;
+                    right: 0;
+                }
+            }
+        }
+    }
+
+ }
+
+ //hide for sidebar-spaced
+ @if $sidebar-active-arrow = true {
+  .sidebar-spaced {
+    .nav.has-active-arrow .nav-item.active > .nav-link::after {
+        display: none !important;
+    }
+  }
+ }
+
+ //hide highlight and active arrow for 'collapsed' hoverable dark sidebars
+ @if $hoverable == true and $sidebar-active-border == true {
+  @include media-breakpoint-up($sidebar-desktop-min-width) {
+    .sidebar-spaced.sidebar-color.hoverable.collapsed {
+        .nav.has-active-border > .nav-item.active > .nav-link::before {
+            display: none !important;
+        }
+    }
+  }
+ }
+
+
+}//@if $sidebar-active-border 
+

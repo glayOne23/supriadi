@@ -1,0 +1,93 @@
+a {
+    color: text-color('primary');
+    &:hover {
+        color: darken(text-color('primary'), 5%);
+    }
+
+    &:not([href]) {
+        text-decoration: none;
+    }    
+}
+
+
+@for $i from 4 through 20 {
+ .text-#{$i*10} {
+    font-size: ($i/10) * 1em !important;
+ }
+}
+.text-95 {
+    font-size: .95em !important;
+}
+.text-85 {
+    font-size: .85em !important;
+}
+.text-75 {
+    font-size: .75em !important;
+}
+.text-105 {
+    font-size: 1.05em !important;
+}
+.text-115 {
+    font-size: 1.15em !important;
+}
+.text-125 {
+    font-size: 1.25em !important;
+}
+.text-xs {
+    font-size: 0.625rem !important;
+}
+.text-sm {
+    font-size: 0.875rem !important;
+}
+.text-md {
+    font-size: 1rem !important;
+}
+.text-lg {
+    font-size: 1.25rem !important;
+}
+.text-xl {
+    font-size: 1.5rem !important;
+}
+
+
+
+
+.text-700, .font-bold {
+    font-weight: $font-bold !important;
+}
+.text-600 , .font-bolder {
+    font-weight: $font-semibold !important;
+}
+.text-500 , .font-medium {
+    font-weight: 500 !important;
+}
+.text-400 , .font-normal {
+    font-weight: $font-normal !important
+}
+.text-300, .font-light, .font-lighter {
+    font-weight: $font-light !important;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: $font-normal;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}
+.line-through {
+    text-decoration: line-through !important;
+}
+.line-height-n {
+    line-height: normal !important;
+}
+
+.letter-spacing {
+    letter-spacing: 0.5px !important;
+}
+@for $i from 1 through 4 {
+    .letter-spacing-#{$i} {
+        letter-spacing: ($i*0.5+0.5) * 1px !important;
+    }
+}

@@ -1,0 +1,306 @@
+
+.form-control {
+    color: $input-color;
+    background-color: $input-bg;
+
+    border: 1px solid $input-border;
+    border-radius: $input-radius;
+    
+    font-family: inherit;
+
+    transition-duration: $transition-form-control;
+
+    &:hover {
+        border-color: $input-hover-border;
+    }
+    &:focus {
+        box-shadow: 0 0 0 2px rgba($input-focus-border, 0.2);//none;
+        color: $input-focus-color;
+        border-color: $input-focus-border;
+        background-color: $input-focus-bg;
+        
+        outline: none;
+    }
+
+
+    &.brc-on-focus:not(:focus) {
+      border-color: $input-border !important;
+    }    
+    &.brc-on-focus:not(:focus):not([disabled]):hover {
+      border-color: $input-hover-border !important;
+    }    
+
+    &[disabled] {
+        color: $input-disabled-color;
+        background-color: $input-disabled-bg;
+        &:hover {
+          border-color: $input-border;
+        }
+    }
+    &[readonly] {
+        color: $input-readonly-color;
+        background: $input-readonly-bg;
+        cursor:default;
+      
+        &:hover {
+          border-color: lighten($input-readonly-focus-border , 10%);
+        }
+        &:focus {
+          box-shadow: none;
+          border-color: $input-readonly-focus-border;
+          background-color: $input-readonly-focus-bg;
+        }
+    }
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+}
+
+
+@mixin form-control-colors($colorName, $colorValue) {
+  .form-control[class*="brc-#{$colorName}"]:focus:not(:disabled):not(.disabled) {
+    box-shadow: 0 0 0 2px rgba($colorValue, 0.2);
+  }
+}
+
+$input-colors: (
+  "success": bgc-color("success"),
+  "danger": bgc-color("danger"),
+  "warning": bgc-color("warning"),
+  "primary": bgc-color("primary"),
+  "info": bgc-color("info"),
+  "blue": bgc-color("blue")
+);
+
+@each $colorName, $colorValue in $input-colors {
+  @include form-control-colors($colorName, $colorValue);
+}
+
+
+
+
+//valid/invalid form state
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: $valid-border-color;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($valid-border-color, 0.2);
+  }
+}
+.valid-feedback {
+  color: $valid-text-color;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: $invalid-border-color;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($invalid-border-color, 0.2);
+  }
+}
+.invalid-feedback {
+  color: $invalid-text-color;
+}
+
+
+
+//label
+label {
+  cursor: pointer;
+  &.disabled {
+    cursor: default;
+  }
+}
+input[type=checkbox], input[type=radio] {
+  &:disabled + label {
+    cursor: default;
+  }
+}
+
+
+//the button will have transparency when input is not focused
+.input-group-fade {
+  .input-group-append > .btn {
+    opacity: 0.55;
+    &:hover, &:active, &.active, &:focus, &.focus {
+      opacity: 1;
+    }
+  }
+
+  .form-control:focus ~ .input-group-append > .btn {
+    opacity: 1;
+  }
+}
+
+
+
+
+//input with placeholder that moves up when input is focused
+//@supports selector(:placeholder-shown) {
+.input-floating-label {
+  position: relative;
+
+  .floating-label {
+    pointer-events: none;
+    
+    background-color: #fff;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include transition(all $transition-general);
+  }
+
+  input::placeholder {
+    color: transparent;
+  }
+  input:focus-visible {
+    text-shadow: none;// override Bootstrap's
+  }
+
+  input:focus ~ .floating-label , input:not(:placeholder-shown) ~ .floating-label , .floating-label.active {
+    top: 0;
+    font-size: $floating-label-focus-size;
+    opacity: 0.85;
+  }
+
+  input:-webkit-autofill ~ .floating-label {
+    top: 0;
+    font-size: $floating-label-focus-size;
+    opacity: 0.85;
+  }
+
+
+  &[class*="text-"] {
+    input:focus ~ .floating-label {
+      color: inherit !important;
+      opacity: 0.95;
+    }
+  }
+
+  &[class*="brc-"] {
+    input:focus {
+      border-color: inherit;
+    }
+  }
+}
+//}
+
+
+
+
+
+//
+//select boxes
+select {
+  &.form-control {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    option {
+      padding: 0.3125rem 0.3125rem 0.375rem;
+    }
+  }
+
+
+
+ @if $custom-select == true {
+  $custom-select-caret-color: text-color('secondary');
+  $custom-select-svg-icon-path: "M1,3 L5,7 L9,3";
+  $custom-select-icon:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$custom-select-caret-color}' d='#{$custom-select-svg-icon-path}'/%3e%3c/svg%3e"), "#", "%23");
+  
+  $custom-select-svg-icon-path-2: "M1,7 L5,3 L9,7";
+  $custom-select-icon-2:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$custom-select-caret-color}' d='#{$custom-select-svg-icon-path-2}'/%3e%3c/svg%3e"), "#", "%23");
+
+  $custom-select-svg-icon-path-3: "M1,7 L5,11 L9,7 M1,5 L5,1 L9,5";
+  $custom-select-icon-3:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$custom-select-caret-color}' d='#{$custom-select-svg-icon-path-3}'/%3e%3c/svg%3e"), "#", "%23");
+
+
+  &.ace-select {
+    position: relative;
+    cursor: pointer;
+
+    appearance: none;
+
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2rem;
+    padding-left: 0.5rem;
+
+    border: 2px solid $custom-select-border;
+    border-radius: 3px;
+    background-color: #fff;
+
+
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%), linear-gradient(to right, $custom-select-sep-color, $custom-select-sep-color);
+    background-position: calc(100% - #{$custom-select-caret-margin + $custom-select-caret-size} - 0.5px) center, calc(100% - #{$custom-select-caret-margin} - 0.5px) center,  calc(100% - #{$custom-select-caret-margin*2 + $custom-select-caret-size*2}) center;
+    background-size: $custom-select-caret-size $custom-select-caret-size, $custom-select-caret-size $custom-select-caret-size, 1px 1.5rem;
+    background-repeat: no-repeat;
+
+    &.caret-double {
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%), linear-gradient(135deg, transparent 50%, currentColor 50%), linear-gradient(45deg, currentColor 50%, transparent 50%), linear-gradient(to right, $custom-select-sep-color, $custom-select-sep-color);
+      background-position: calc(100% - #{$custom-select-caret-margin + $custom-select-double-caret-size} - 0.5px) calc(50% + #{$custom-select-double-caret-size*0.8}), calc(100% - #{$custom-select-caret-margin} - 0.5px) calc(50% + #{$custom-select-double-caret-size*0.8}), calc(100% - #{$custom-select-caret-margin + $custom-select-double-caret-size} - 0.5px) calc(50% - #{$custom-select-double-caret-size*0.8}), calc(100% - #{$custom-select-caret-margin} - 0.5px) calc(50% - #{$custom-select-double-caret-size*0.8}), calc(100% - #{$custom-select-caret-margin*2 + $custom-select-double-caret-size*2}) center;
+      background-size: $custom-select-double-caret-size $custom-select-double-caret-size, $custom-select-double-caret-size $custom-select-double-caret-size, $custom-select-double-caret-size $custom-select-double-caret-size, $custom-select-double-caret-size $custom-select-double-caret-size, 1px 1.5rem;
+    }
+
+    option {
+      background-color: #fff;
+      color: $custom-select-option-text;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.no-border {
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    }
+    &.caret-double.no-border {
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%), linear-gradient(135deg, transparent 50%, currentColor 50%), linear-gradient(45deg, currentColor 50%, transparent 50%);
+    }
+
+    &.angle-down {
+      background-image: $custom-select-icon;
+      background-size: 12px 12px;
+      background-position-x: calc(100% - 10px);
+      background-position-y: center;
+    }
+    &.angle-up {
+      background-image: $custom-select-icon-2;
+      background-size: 12px 12px;
+      background-position-x: calc(100% - 10px);
+      background-position-y: center;
+    }
+    &.angle-double {
+      background-image: $custom-select-icon-3;
+      background-size: 14px 14px;
+      background-position-x: calc(100% - 8px);
+      background-position-y: center;
+    }
+  }//.ace-select
+
+ }//@if custom-select
+
+}
+
+
+///////
+
+
+//form popover
+.form-text.popover {
+  left: auto;
+  margin-top: 0;
+  z-index: auto;
+}
+.form-text.bs-popover-right > .arrow, .form-text.bs-popover-auto[x-placement^="right"] > .arrow {
+  top: 50%;
+  margin-top: -0.5rem;
+}
+

@@ -1,0 +1,202 @@
+.tooltip { 
+    top: 0;//fixes a positioning issue
+}
+
+.bs-tooltip-top, .bs-tooltip-auto[x-placement="top"] {
+    .arrow {
+        left: calc(50% - #{$tooltip-arrow-width / 2}) !important;
+        &[class*="brc-"]::before {
+            border-top-color: inherit;
+        }
+
+        + .arrow {
+            margin-bottom: 2px;
+        }
+    }
+}
+.bs-tooltip-bottom, .bs-tooltip-auto[x-placement="bottom"] {
+    .arrow {
+        left: calc(50% - #{$tooltip-arrow-width / 2}) !important;
+        &[class*="brc-"]::before {
+            border-bottom-color: inherit;
+        }
+
+        + .arrow {
+            margin-top: 2px;
+        }
+    }
+}
+
+.bs-tooltip-left, .bs-tooltip-auto[x-placement="left"] {
+    .arrow {
+        top: calc(50% - #{$tooltip-arrow-height}) !important;
+        &[class*="brc-"]::before {
+            border-left-color: inherit;
+        }
+
+        + .arrow {
+            margin-right: 2px;
+        }
+    }
+}
+.bs-tooltip-right, .bs-tooltip-auto[x-placement="right"] {
+    .arrow {
+        top: calc(50% - #{$tooltip-arrow-height}) !important;
+        &[class*="brc-"]::before {
+            border-right-color: inherit;
+        }
+
+        + .arrow {
+            margin-left: 2px;
+        }
+    }
+}
+
+
+//popover
+.popover {
+    //for bottom popover we may need two arrows
+    .arrow2 {
+        z-index: 1;
+    }
+    .arrow2::after, .arrow2 + .arrow::after {
+        display: none;
+    }
+}
+
+.bs-popover-top, .bs-popover-auto[x-placement="top"] {
+    .arrow {
+        left: calc(50% - #{$popover-arrow-width / 2}) !important;
+        margin-left: 0;
+        margin-right: 0;
+
+        &[class*="brc-"]::before {
+            border-top-color: inherit;
+        }        
+    }
+
+    .arrow2 {
+        margin-bottom: 1px;
+    }
+}
+.bs-popover-bottom, .bs-popover-auto[x-placement="bottom"] {
+    .arrow {
+        left: calc(50% - #{$popover-arrow-width / 2}) !important;
+        margin-left: 0;
+        margin-right: 0;      
+
+        &[class*="brc-"]::before {
+            border-bottom-color: inherit;
+        }
+    }
+
+    .arrow2 {
+        margin-top: 1px;
+    }
+}
+
+.bs-popover-left, .bs-popover-auto[x-placement="left"] {
+    .arrow {
+        top: calc(50% - #{$popover-arrow-height}) !important;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &[class*="brc-"]::before {
+            border-left-color: inherit;
+        }        
+    }
+
+    .arrow2 {
+        margin-right: 1px;
+    }
+}
+.bs-popover-right, .bs-popover-auto[x-placement="right"] {
+    .arrow {
+        top: calc(50% - #{$popover-arrow-height}) !important;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &[class*="brc-"]::before {
+            border-right-color: inherit;
+        }        
+    }
+    
+    .arrow2 {
+        margin-left: 1px;
+    }
+}
+
+.popover .arrow[class*="brc-"] ~ .popover-header::before {
+    display: none !important;
+}
+
+
+
+////////////// colored tooltips
+.ng-custom-tooltip {
+    visibility: hidden;
+
+    .arrow, .tooltip-inner {
+        visibility: visible;
+    }
+}
+
+.tooltip[class*="bgc-"] {
+    .tooltip-inner {
+        background-color: inherit;
+    }
+}
+
+.tooltip[class*="text-"] {
+    .tooltip-inner {
+        color: inherit;
+    }
+}
+
+.tooltip[class*="brc-"] {
+    .arrow {
+        border-color: inherit;
+    }
+}
+
+.bs-tooltip-top, .bs-tooltip-auto[x-placement="top"] {
+    &[class*="brc-"] .arrow::before {
+        border-top-color: inherit;
+    }
+}
+
+.bs-tooltip-bottom, .bs-tooltip-auto[x-placement="bottom"] {
+    &[class*="brc-"] .arrow::before {
+        border-bottom-color: inherit;
+    }
+}
+
+.bs-tooltip-right, .bs-tooltip-auto[x-placement="right"] {
+    &[class*="brc-"] .arrow::before {
+        border-right-color: inherit;
+    }
+}
+
+.bs-tooltip-left, .bs-tooltip-auto[x-placement="left"] {
+    &[class*="brc-"] .arrow::before {
+        border-left-color: inherit;
+    }
+}
+
+
+.ng-custom-popover {
+    visibility: hidden;
+
+    > .arrow , > .arrow2 {
+        display: none;
+    }
+
+    > .popover-body {
+        padding: inherit !important;
+        visibility: visible;
+    }
+
+    .popover {
+        position: relative;
+    }
+}

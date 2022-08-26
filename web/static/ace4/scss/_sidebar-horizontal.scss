@@ -1,0 +1,462 @@
+@if $horizontal == true {
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+
+  .sidebar.sidebar-h {
+    // will-change: unset;
+    transition: none;
+
+    min-height: auto;
+
+    height: map-get($sidebar-common, 'horizontal-height');
+    height: var(--sidebar-horizontal-height);
+
+    width: 100%;
+
+    .sidebar-inner {
+        top: auto !important;
+        bottom: auto !important;
+
+        flex-direction: row;
+
+        overflow: visible;
+        height: inherit !important;
+    }
+
+
+    .ace-scroll {
+        overflow: visible !important;
+        width: auto;
+        height: auto;
+    }
+
+
+    .nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        > .nav-item {
+            width: auto;
+
+            margin-bottom: 0 !important;            
+            margin: 0 1px;
+
+            position: relative;
+
+            > .nav-link {
+                width: auto;
+                height: 100%;
+                               
+                padding-left: 0.75em;
+                padding-right: 0.75em;
+
+                position: relative;
+
+                .nav-icon {
+                    margin-right: 0.5em;
+                    margin-left: 0.125em;
+                }
+
+                .nav-text {
+                    flex-grow: 0;
+                    margin-right: 0;
+
+                    .badge {
+                        float: none;
+                    }
+                }
+
+                > .caret {
+                    display: none;
+                }
+            }
+
+            &.active > .nav-link {
+                font-weight: $font-semibold;
+            }
+        }
+   
+        &.nav-link-rounded > .nav-item > .nav-link {
+            border-radius: 0.25em 0.25em 0 0;
+        }
+    }
+
+    
+    .nav-fill {        
+        width: 100%;
+
+        &.text-center > .nav-item > .nav-link {
+            justify-content: center;
+        }
+
+        .nav-item .nav-item {
+            text-align: left;
+        }
+    }
+
+
+    .nav-item-caption , .nav-item-divider {
+        display: none;
+    }    
+
+
+
+    .nav > .nav-item {
+        > .submenu {
+            position: absolute !important;
+            top: 100% !important;
+            left: 0 !important;
+    
+            min-width: map-get($sidebar-common, 'width') - 1;
+            min-width: calc(var(--sidebar-width) - 1rem);
+    
+            margin-left: 0;
+            margin-top: map-get($sidebar-light-base, 'hoverable-submenu-margin'); 
+        }
+
+        &:hover > .submenu {
+            margin-left: 0 !important;
+            margin-top: map-get($sidebar-light-base, 'hoverable-submenu-hover-margin') !important;
+        }
+    }
+
+
+
+    // the highlight border on 'hover'
+    .nav > .nav-item > .nav-link::before {
+        top: auto !important;
+        bottom: 1px !important;
+
+        left: 1px !important;
+        right: 1px !important;
+
+        border-width: $sidebar-h-active-border-width 0 0 0;
+    }    
+    .nav.active-on-right > .nav-item > .nav-link::before {
+        bottom: auto !important;
+        top: 1px !important;
+        left: 0 !important;
+        right: 0 !important;
+
+        border-width: 0 0 $sidebar-h-active-border-width 0;
+    }
+
+
+    @if $sidebar-active-border == true {
+        .nav.has-active-border {
+            > .nav-item.active::before , > .nav-item.active > .nav-link::before {
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 1px !important;
+                top: auto;
+
+                border-width: $sidebar-h-active-border-width 0 0 0;
+            }
+        }
+    }
+    //if none-full height .nav
+    .align-items-#{$sidebar-desktop-min-width}-end {
+        .nav.active-on-right {
+            > .nav-item.active::before , > .nav-item > .nav-link::before {
+                top: 0 !important;
+            }
+        }
+    }
+
+    
+    // smaller, compact highlight borders
+    .nav.nav-active-sm > .nav-item > .nav-link::before, 
+    .nav.nav-active-sm > .nav-item.active > .nav-link::before {
+        left: 10% !important;
+        right: 10% !important;
+    }
+
+    .nav.nav-spaced > .nav-item {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+
+        > .nav-link {
+            padding-left: 0.375rem;
+            padding-right: 0.375rem;
+        }
+    }
+
+
+
+    @if $sidebar-active-arrow == true {
+        .nav.has-active-arrow > .nav-item.active > .nav-link::after {
+            display: block !important;
+
+            top: auto;
+            bottom: -1px;
+            right: auto;
+            left: calc(50% - #{map-get($sidebar-common, 'arrow-size')});
+
+            border-right: map-get($sidebar-common, 'arrow-size') solid transparent;
+            border-left: map-get($sidebar-common, 'arrow-size') solid transparent;
+            border-top-width: 0;
+            border-bottom: map-get($sidebar-common, 'arrow-size') solid #fff;
+
+            z-index: 1;
+        }
+        .nav.has-active-arrow .nav-item .nav-item.active > .nav-link::after {
+            display: none !important;
+        }
+    }
+    
+
+
+    //sub arrow
+    .nav > .nav-item > .sub-arrow , .sidebar-section-item.fadeable-below .sub-arrow {
+        top: calc(100% - #{map-get($sidebar-common, 'arrow-size') * 2} + 1px);
+        bottom: auto;
+        left: 1rem !important;
+        right: auto;
+
+        margin-left: 0 !important;
+        margin-top: map-get($sidebar-light-base, 'hoverable-submenu-margin');
+
+        &::after, &::before {
+            border: map-get($sidebar-common, 'arrow-size') solid;
+            border-color: transparent;
+            right: auto;
+            border-right-color: transparent !important;//override other places
+        }
+
+        &::after {
+            border-bottom-color: map-get($sidebar-light-base, 'hoverable-submenu-border');
+            top: -1px;
+            z-index: 0;
+        }
+
+        &::before {
+            border-bottom-color: map-get($sidebar-light-base, 'hoverable-submenu-background');
+            z-index: 1;
+        }
+    }
+
+    .nav.has-active-arrow > .nav-item > .sub-arrow {
+        left: calc(50% - #{map-get($sidebar-common, 'arrow-size')}) !important;
+    }
+
+    &:not(.sidebar-hover) .nav > .nav-item.open > .sub-arrow {
+        display: block;
+    }
+
+    &.sidebar-hover .nav > .nav-item:hover > .sub-arrow {
+        margin-top: map-get($sidebar-light-base, 'hoverable-submenu-hover-margin');
+    }
+
+    //////////
+
+    .sidebar-section-item.fadeable-below .fadeable .sub-arrow {
+        top: calc(#{map-get($sidebar-common, 'arrow-size') * -2} + 1px);
+        margin-top: 0 !important;
+    }
+    .sidebar-section-item.fadeable-right .fadeable .sub-arrow {
+        left: auto !important;
+        right: 2rem;
+    }
+
+    //////////
+
+    // show the last submenu on right (right aligned)
+    .nav > .nav-item, .nav > .nav-item {
+        &:last-of-type, &.submenu-right {
+            > .submenu {
+                left: auto !important;
+                right: 0 !important;
+            }
+        }
+    }
+    // and update .sub-arrow position
+    .nav:not(.has-active-arrow) > .nav-item {
+        &:last-of-type , &.submenu-right {
+            > .sub-arrow {
+                left: auto !important;
+                right: 2rem !important;
+            }
+        }
+    }
+
+
+    
+    // sidebar sections positioning and display in horizontal menu
+    .sidebar-section {
+        width: auto;
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    .sidebar-section-item {
+        .fadeable {
+            animation: 1s navItemHidden;
+            
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.fadeable-below  .fadeable {
+            top: 100% !important;
+            left: 0 !important;
+
+            margin-left: 0 !important;
+            margin-top: map-get($sidebar-light-base, 'hoverable-submenu-margin');
+        }
+
+        &.fadeable-right .fadeable {
+            left: auto !important;
+            right: 0;
+        }
+
+        .fadeinable {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: none;
+        }
+        
+        &:hover .fadeable {
+            opacity: 1;
+            visibility: visible;
+
+            transition-delay: 0ms;
+
+            margin-left: 0 !important;
+            margin-top: map-get($sidebar-light-base, 'hoverable-submenu-hover-margin');
+        }
+        
+        &:focus-within .fadeable {
+            margin-top: map-get($sidebar-light-base, 'hoverable-submenu-hover-margin');
+        }
+    }
+
+
+    .sidebar-section:first-child .sidebar-section-item.fadeable-center:not(:first-child),
+    .sidebar-section:not(:first-child) .sidebar-section-item.fadeable-center {
+        .fadeable {
+            left: 50% !important;
+            transform: translateX(-50%);
+
+            .sub-arrow {
+                left: calc(50% - #{map-get($sidebar-common, 'arrow-size')}) !important;
+            }
+        }
+    }
+
+
+  }//.sidebar.sidebar-h
+
+
+
+
+  // collapsed horizontal sidebar
+  .sidebar-h.collapsed-h {
+    height: map-get($sidebar-common, 'horizontal-collapsed-height');
+    height: var(--sidebar-horizontal-collapsed-height);
+
+    .nav > .nav-item > .nav-link {
+        > .nav-text {
+            display: none;
+        }
+        > .nav-icon {
+            margin: 0 map-get($sidebar-common, 'horizontal-collapsed-icon-margin');
+        }
+    }
+  }
+
+
+
+   // non-fixed navbar + fixed sidebar (sticky)
+   //@supports(position: sticky) {
+    .navbar:not(.navbar-fixed) {
+        & ~ .sidebar-h.sidebar-fixed , & ~ .main-container .sidebar-h.sidebar-fixed {
+            position: sticky;
+            top: 0;
+            .sidebar-inner {
+                position: relative;
+            }
+        }
+    }
+
+    
+    .main-container .sidebar-h.sidebar-fixed {
+        position: sticky;
+        top: 0;
+        .sidebar-inner {
+            position: relative;
+        }
+    }
+    .navbar-fixed ~ .main-container , .main-container .navbar-fixed ~ {
+        .sidebar-h.sidebar-fixed {
+            top: map-get($navbar-common, 'height');
+            top: var(--navbar-height);
+        }
+    }
+    .navbar-fixed.navbar-sm ~ .main-container ,  .main-container .navbar-fixed.navbar-sm ~ {
+        .sidebar-h.sidebar-fixed {
+            top: map-get($navbar-common, 'sm-height');
+            top: var(--navbar-sm-height);
+        }
+    }
+
+    .sidebar-h.sidebar-fixed ~ .main-container .sidebar-fixed {
+        .sidebar-inner {
+            margin-top: map-get($sidebar-common, 'horizontal-height');
+            margin-top: var(--sidebar-horizontal-height);
+        }
+    }
+    .collapsed-h.sidebar-fixed ~ .main-container .sidebar-fixed {
+        .sidebar-inner {
+            margin-top: map-get($sidebar-common, 'horizontal-collapsed-height');
+            margin-top: var(--sidebar-horizontal-collapsed-height);
+        }
+    }
+
+  //}
+
+
+ }//@media
+
+  @media (min-width: 1600px) {
+    .container .sidebar-h, .sidebar-h .container {
+        .sidebar-section:first-child .sidebar-section-item.fadeable-center:first-child {
+            .fadeable {
+                left: 50% !important;
+                transform: translateX(-50%);
+
+                .sub-arrow {
+                    left: calc(50% - #{map-get($sidebar-common, 'arrow-size')}) !important;
+                }
+            }
+        }
+    }
+  }
+  
+  @media (min-width: 1750px) {
+    .container-plus .sidebar-h, .sidebar-h .container-plus {
+        .sidebar-section:first-child .sidebar-section-item.fadeable-center:first-child {
+            .fadeable {
+                left: 50% !important;
+                transform: translateX(-50%);
+
+                .sub-arrow {
+                    left: calc(50% - #{map-get($sidebar-common, 'arrow-size')}) !important;
+                }
+            }
+        }
+    }
+  }
+
+  @include media-breakpoint-down($sidebar-mobile-max-width) {
+      .sidebar-h {
+        .nav.nav-fill .nav-item {
+            flex: unset;
+            text-align: left;
+        }
+
+        .container {
+            height: 100%;
+        }
+      }
+  }
+
+}//@if horizontal

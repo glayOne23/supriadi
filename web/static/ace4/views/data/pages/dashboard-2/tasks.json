@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Process emails and social media",
+        "summary": "delay until next week",
+        "color": "blue",
+        "status": "<span class='badge bgc-green-l3 text-green-d1 border-l-2 brc-green-m3'>open</span>"
+    },
+    {
+        "title": "Design business card",
+        "summary": "choose a logo",
+        "color": "green",
+        "status": "<span class='badge bgc-green-l3 text-green-d1 border-l-2 brc-green-m3'>open</span>"
+    },
+    {
+        "title": "Meeting with Alex",
+        "summary": "location not specified <i class='fa fa-exclamation-circle text-danger-m1 text-110 mx-1'></i>",
+        "color": "warning",
+        "status": "<span class='badge bgc-orange-l3 text-brown-d1 border-l-2 brc-orange-m3'>cancelled</span>"
+    },
+    {
+        "title": "Order books",
+        "summary": "preferrably e-books",
+        "color": "purple",
+        "status": "<span class='badge bgc-green-l3 text-green-d1 border-l-2 brc-green-m3'>open</span>"
+    },
+    {
+        "title": "Hire assistant",
+        "summary": "A.S.A.P <span class='fa-stack w-auto mx-1'> <i class='fas fa-circle text-dark fa-stack-1x text-110'></i> <i class='fas fa-angry text-warning-m2 text-130 fa-stack-1x pos-rel'></i> </span>",
+        "color": "red",
+        "status": "<span class='badge bgc-red-l3 text-danger-d1 border-l-2 brc-red-m4'>urgent</span>"
+    }
+]

@@ -1,0 +1,25 @@
+<div class="sidebar-inner border-r-0 border-b-1 brc-secondary-l2 shadow-md">
+ <div class="container container-plus px-0 d-flex flex-column flex-xl-row">
+
+  <div class="flex-grow-1 d-xl-flex flex-xl-row ace-scroll" data-ace-scroll="{}"><!-- ace-scroll is not applied in desktop view, but it's used in mobile view -->
+      <div class="sidebar-section">
+        {{> layout/horizontal/sidebar-header}}
+      </div>
+
+      <ul class="nav nav-spaced nav-fill text-center nav-active-sm has-active-border active-on-top">
+      {{#each sidebarItems}}
+        {{> layout/_commons/sidebar-item}}
+      {{/each}}
+      </ul>
+  </div>
+
+  <div class="sidebar-section d-none d-xl-flex ml-xl-auto pl-xl-4"><!-- the logout and settings button, only shown in desktop view -->
+    {{> layout/horizontal/sidebar-footer}}
+  </div>
+
+  <div class="sidebar-section d-xl-none ml-xl-auto"><!-- sidebar footer, only show in mobile view -->
+    {{> layout/dashboard-3/sidebar-footer}}
+  </div>
+
+ </div><!-- .container -->
+</div><!-- .sidebar-inner -->

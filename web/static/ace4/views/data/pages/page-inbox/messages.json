@@ -1,0 +1,93 @@
+[
+    {
+        "abbr": "M",
+        "color": "purple",
+        "name": "Martin Roberts",
+        "title": "Click to open this message",
+        "message": "Anim pariatur cliche reprehenderit, enim eiusmod high",
+        "unread": true,
+        "count": 3,
+        "starred": true,
+        "time": "12:20 pm",
+        "urgent": true,
+        "attachment": true
+    },
+    {
+        "abbr": "S",
+        "color": "blue",
+        "name": "Susan Blake",
+        "title": "Another unread message",
+        "message": "3 wolf moon officia aute, non cupidatat skateboard dolor brunch",
+        "unread": true,
+        "time": "3:35 am"
+    },
+    {
+        "avatar": "avatar3.jpg",
+        "name": "Rebecca Jones",
+        "title": "Donec id elit non mi porta gravida at eget metus. Fusce dapibus",
+        "message": "Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor",
+        "count": 2,
+        "tag-family": true,
+        "time": "Sep 15"
+    },
+    {
+        "abbr": "D",
+        "color": "green",
+        "name": "David Russell",
+        "title": "Nullam quis risus eget urna mollis ornare",
+        "message": "Single-origin coffee nulla assumenda shoreditch et?",
+        "tag-work": true,
+        "time": "Sep 14",
+        "attachment": true
+    },
+    {
+        "abbr": "S",
+        "color": "pink",
+        "name": "Sabrina",
+        "title": "Photo booth beard raw denim letterpress vegan messenger",
+        "time": "Sep 14",
+        "important": true
+    },
+    {
+        "avatar": "avatar1.jpg",
+        "name": "Philip Markov",
+        "starred": true,
+        "count": 5,
+        "title": "Vestibulum id ligula porta felis euismod",
+        "tag-friends": true,
+        "time": "Sep 8"
+    },
+    {
+        "abbr": "G",
+        "color": "red",
+        "name": "Google Inc ",
+        "title": "Convallis facilisis euismod urna sodales",
+        "unread": true,
+        "time": "Aug 29",
+        "attachment": true
+    },
+    {
+        "abbr": "Y",
+        "color": "secondary",
+        "name": "Yahoo!",
+        "starred": true,
+        "title": "Tofu biodiesel williamsburg marfa, four loko mcsweeney",
+        "tag-other": true,
+        "time": "Aug 22",
+        "attachment": true
+    },
+    {
+        "abbr": "R",
+        "color": "warning",
+        "name": "Robin Hood",
+        "title": "No eos veniam equidem mentitum, his porro",
+        "time": "Aug 21"
+    },
+    {
+        "avatar": "avatar5.jpg",
+        "name": "Alexa Western",
+        "title": "Vim te vivendo convenire, summo fuisset",
+        "tag-friends": true,
+        "time": "Aug 18"
+    }
+]

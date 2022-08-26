@@ -1,0 +1,58 @@
+<!-- .navbar-brand inside sidebar, only shown in desktop view -->
+<div class="d-none d-xl-flex sidebar-section-item fadeable-left fadeable-top">
+  <div class="fadeinable"><!-- shown when sidebar is collapsed -->
+    <div class="py-2 mx-1" id="sidebar-header-brand1">
+        <a class="navbar-brand text-140">
+          <i class="fa fa-leaf text-success-l1"></i>
+        </a>
+      </div>
+  </div>
+
+  <div class="fadeable w-100"><!-- shown when sidebar is full-width -->
+    <div class="py-2 text-center mx-3" id="sidebar-header-brand2">
+      <a class="navbar-brand ml-n2 text-140 text-white" href="#">
+        <i class="fa fa-leaf mr-1 text-success-l1"></i>
+        ACE <span>App</span>
+      </a>
+    </div>
+  </div>
+</div><!-- /.sidebar-section-item  -->
+
+
+<!-- the user avatar and image -->
+<div class="sidebar-section-item pt-2 fadeable-left fadeable-top">
+    <div class="fadeinable">
+      <img alt="Natalie's avatar" src="assets/image/avatar/avatar3.jpg" width="48" class="p-2px border-2 brc-primary-tp2 radius-round" />
+    </div>
+     
+    <div class="fadeable hideable">
+       <div class="py-2 d-flex flex-column align-items-center">
+         <img alt="Natalie's avatar" src="assets/image/avatar/avatar3.jpg" class="p-2px border-2 brc-primary-m2 radius-round" />
+         
+         <div class="text-center mt-1" id="id-user-info">
+           <a href="#id-user-menu" class="d-style pos-rel collapsed text-orange-l2 accordion-toggle no-underline bgc-h-white-tp9 radius-1 px-1 py-2px" data-toggle="collapse" aria-expanded="false">
+              <span class="text-95 font-bolder">Natalie Kidman</span>
+              <i class="fa fa-caret-down text-90 d-collapsed"></i>
+              <i class="fa fa-caret-up text-90 d-n-collapsed"></i>
+           </a>
+           <div class="text-white text-85">Marketing</div>
+         </div><!-- /#id-user-info -->
+         
+         <div class="collapse" id="id-user-menu">
+           <div class="mt-3">
+            <a href="#" class="btn bgc-black-tp8 btn-h-outline-blue py-2 px-1">
+                <i class="fa fa-envelope w-4 text-110 text-blue-m2"></i>
+            </a>
+
+            <a href="#" class="btn bgc-black-tp8 btn-h-outline-purple py-2 px-1">
+                <i class="fa fa-users w-4 text-110 text-purple-m2"></i>
+            </a>
+
+            <a href="#" class="btn bgc-black-tp8 btn-h-outline-orange py-2 px-1">
+                <i class="fa fa-star w-4 text-110 text-orange-m2"></i>
+            </a>
+           </div>
+         </div><!-- /.collapse -->
+       </div>
+    </div>
+</div>

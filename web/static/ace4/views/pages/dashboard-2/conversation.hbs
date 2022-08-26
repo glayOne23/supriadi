@@ -1,0 +1,77 @@
+<div class="bcard card pt-1 pt-lg-2 h-100" id="conversations">
+
+    <div class="card-header bg-transparent brc-default-l3">
+        <h5 class="card-title text-dark-m2 pl-1 text-110">
+            Conversation
+        </h5>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="expand" class="card-toolbar-btn text-orange-d2 text-110 d-style">
+                <i class="fa fa-expand d-n-active"></i>
+                <i class="fa fa-compress d-active"></i>
+            </a>
+            <a href="#" data-action="close" class="card-toolbar-btn text-danger-m1 text-110 ml-3">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="card-body p-0 border-0">
+      <div class="ace-scroll px-2" data-ace-scroll='{"height": 320, "smooth":true}'>
+        {{> page/conversation-item}}
+      </div>
+    </div>
+
+
+    <div class="card-footer p-0 bgc-white border-t-1 brc-default-l1 radius-b-1">      
+        <div class="input-group flex-wrap p-3">
+            <input type="text" placeholder="Type your message ..." class="shadow-none form-control form-control-lg brc-on-focus brc-primary-m2 border-0 border-b-1 pl-1 text-100" />
+
+            <div class="input-group-append">
+                <!-- the emoji icon and popup -->
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-sm btn-white bg-transparent border-0 py-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa-stack w-auto">
+                            <i class="fas fa-circle text-dark fa-stack-1x text-140"></i>
+                            <i class="fas fa-smile text-warning-m3 text-160 fa-stack-1x pos-rel"></i>
+                        </span>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-caret dropdown-menu-right p-1">
+                        <div class="d-flex ">
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x"></i>
+                                    <i class="fas fa-smile text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x"></i>
+                                    <i class="fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a class="dropdown-item px-25" href="#">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x"></i>
+                                    <i class="fas fa-smile-wink text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group-append d-block">
+                <button class="btn btn-blue radius-round py-2 text-90 text-600" type="button">
+                    Send
+                    <i class="ml-1 ml-md-2 fa fa-paper-plane text-90"></i>
+                </button>
+            </div>
+        </div><!-- /.input-group -->
+    </div><!-- /.card-footer -->
+
+</div>

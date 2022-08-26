@@ -1,0 +1,19 @@
+{{#each (get "activity")}}
+<div class="mb-2 text-dark-m3 text-95 border-l-3 brc-{{color}} pl-3">
+    <div class="d-flex align-items-start">
+        <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="border-1 brc-success-m1 radius-round p-1px w-5" />
+
+        <div class="mx-2">
+            <span class="font-bolder text-blue-d1">
+                {{name}}
+            </span>
+            {{{summary}}}
+        </div>
+
+        <span class="text-90 text-grey-m1 ml-auto text-nowrap">
+            {{time}}
+        </span>
+    </div>
+</div>
+<hr class="brc-grey-l3" />
+{{/each}}

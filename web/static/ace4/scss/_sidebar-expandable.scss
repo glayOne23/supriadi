@@ -1,0 +1,177 @@
+@if $expandable == true {
+
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+
+    .sidebar.expandable {
+        .ace-scroll,
+        .sidebar-section,
+        nav, .nav {
+            width: inherit;
+        }
+        @if $sidebar-spaced == true {
+            &:not(.sidebar-spaced) .nav > .nav-item {
+                width: inherit;
+            }
+        }
+        @else {
+            .nav > .nav-item {
+                width: inherit;
+            }
+        }
+
+        //mainly because of the .nav-item::after line, otherwise was not needed
+        .nav > .nav-item > .nav-link,
+        .nav > .nav-item > .submenu,
+        .sidebar-section-item {
+            width: map-get($sidebar-common, 'width');
+            width: var(--sidebar-width);
+
+            white-space: nowrap;
+        }
+    }
+
+    // required, so when mouse is inside sidebar and we expand it, it remains expanded and is not re-collapsed first
+    .sidebar:not(.collapsed).toggling .sidebar-inner.is-hover:hover {
+        width: map-get($sidebar-common, 'width');
+        width: var(--sidebar-width);
+    }
+    .sidebar.collapsed.toggling .sidebar-inner.is-hover:hover {
+        width: map-get($sidebar-common, 'width');
+        width: var(--sidebar-width);
+    }
+
+
+    .sidebar.expandable.collapsed {
+       &:not(.sidebar-fixed) {
+           .sidebar-inner {
+               position: absolute;//don't take up horizontal space
+               top: 0;
+           }
+       }
+       
+       .sidebar-inner {
+            @include transition(width $expandable-transition-duration ease-out $expandable-hide-delay);
+   
+            .fadeable {
+                transition-delay: $expandable-hide-delay, $expandable-hide-delay + $expandable-transition-duration;
+            }
+            .fadeinable {
+                transition-delay: $expandable-hide-delay, $expandable-hide-delay + $expandable-transition-duration;
+            }
+   
+           //.hideable element (it will have zero height when sidebar is collapsed)
+           .hideable {
+               max-height: 0;
+               overflow: hidden;
+       
+              @include transition(max-height 0ms $expandable-hide-delay);
+           }
+           //.hideable & .fadeable element
+           .hideable.fadeable {
+               visibility: visible;
+               @include transition(max-height 0ms $expandable-hide-delay, opacity 0ms $expandable-hide-delay);
+           }
+           
+       }// .sidebar-inner
+
+
+       // when sidebar is .let-expanded and mouse is inside it then it will collapse but remains expanded (liked expected)
+       // when sidebar isn't .let-expanded, it will collapse even when toggler button is inside it and mouse is inside it
+       &.let-expanded .sidebar-inner , &:not(.toggling):not(.let-expanded) .sidebar-inner {
+            &:hover , &.has-focus {
+                //on hover it becomes fullwidth
+                width: map-get($sidebar-common, 'width');
+                width: var(--sidebar-width);
+
+                transition-delay: $expandable-show-delay;//with a little delay
+            }
+            @if $sidebar-focus-expand == true {
+                &:focus-within {
+                    //on hover it becomes fullwidth
+                    width: map-get($sidebar-common, 'width');
+                    width: var(--sidebar-width);
+    
+                    transition-delay: $expandable-show-delay;//with a little delay
+                }
+            }
+
+
+            &:hover .fadeable , &.has-focus .fadeable {
+                opacity: 1;
+                visibility: visible;
+                transition-delay: $expandable-show-delay, $expandable-show-delay;
+            }
+            @if $sidebar-focus-expand == true {
+                &:focus-within .fadeable {
+                    opacity: 1;
+                    visibility: visible;
+                    transition-delay: $expandable-show-delay, $expandable-show-delay;
+                }
+            }
+
+                       
+            &:hover .fadeinable , &.has-focus .fadeinable {
+                opacity: 0;
+                visibility: hidden;
+                transition-delay: $expandable-show-delay;
+                transition-duration: 0ms;//hide the small fadeinable items instantly (after the delay)
+            }
+            @if $sidebar-focus-expand == true {
+                &:focus-within .fadeinable {
+                    opacity: 0;
+                    visibility: hidden;
+                    transition-delay: $expandable-show-delay;
+                    transition-duration: 0ms;//hide the small fadeinable items instantly (after the delay)
+                }
+            }
+            
+
+               
+            &:hover .hideable , &.has-focus .hideable {
+                max-height: 2000px;
+                transition-delay: $expandable-show-delay;//a 0ms delay could cause visual problems when mouse passes over the area briefly
+            }
+            @if $sidebar-focus-expand == true {
+                &:focus-within .hideable {
+                    max-height: 2000px;
+                    transition-delay: $expandable-show-delay;//a 0ms delay could cause visual problems when mouse passes over the area briefly
+                }
+            }
+
+            
+   
+            &:hover .hideable.fadeable , &.has-focus .hideable.fadeable {
+                transition-delay: $expandable-show-delay, $expandable-show-delay;
+                transition-duration: 0ms , $expandable-transition-duration;
+            }
+            @if $sidebar-focus-expand == true {
+                &:focus-within .hideable.fadeable {
+                        transition-delay: $expandable-show-delay, $expandable-show-delay;
+                        transition-duration: 0ms , $expandable-transition-duration;
+                }
+            }
+       }
+
+       
+       &.toggling {
+            .fadeable {
+                transition-delay: 0ms , $expandable-transition-duration;//when collapsing, delay visibility:hidden
+            }
+            &:not(.collapsed) .fadeable {
+                transition-delay: 0ms , 0ms;//when uncollapsing, don't delay visibility:visible
+            }
+
+            .fadeinable {
+                transition-delay: 0ms , 0ms;//when collapsing, don't visibility:visible
+            }
+            .sidebar-inner {
+               transition: none;//required so that 400ms transition-delay in "&.expandable > .sidebar-inner" doesn't cause visual problems
+            }
+       }//toggling
+
+    }//sidebar.collapsed
+   
+ }//media query
+
+
+}//@if $expandable == true

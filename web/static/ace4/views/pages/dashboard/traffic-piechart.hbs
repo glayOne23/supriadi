@@ -1,0 +1,47 @@
+<div class="card ccard h-100 overflow-hidden">
+    <div class="card-header border-0 bgc-white card-header-sm">
+        <h6 class="card-title text-dark-m3 pl-25 pt-15 text-110">
+            Traffic Sources
+            <br />
+            <span class="text-85 text-dark-l2">
+                Last 7 days
+            </span>
+        </h6>
+
+        <div class="card-toolbar no-border align-self-start mt-15 mr-1">
+            <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a class="btn btn-light-secondary border-0 btn-bold btn-xs dropdown-toggle" href="#" role="button" data-toggle="dropdown"  data-display="static" aria-haspopup="true" aria-expanded="false">
+                    This Week
+                    <i class="fa fa-caret-down ml-2"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md">
+                    <div class="dropdown-inner">
+                        <a class="dropdown-item active btn-a-bold m-1" href="#">This Week</a>
+                        <a class="dropdown-item m-1" href="#">Last Week</a>
+                        <a class="dropdown-item m-1" href="#">This Month</a>
+                        <a class="dropdown-item m-1" href="#">Last Month</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body p-0 bgc-whit flex-grow-1">
+        <div class="d-flex align-items-center justify-content-center flex-wrap h-100">
+            <div class="pos-rel"> 
+                <div class="position-center text-center text-secondary-d3 mt-n3">
+                    <span>
+                        total
+                    </span>
+
+                    <div class="mt-n1 text-180 text-secondary-d4 text-600">
+                        730k
+                    </div>
+                </div>
+
+                <canvas id="traffic-source-chart" class="mb-3" style="height: 170px; width: 170px; max-height: 170px; max-width: 170px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div><!-- /.card -->

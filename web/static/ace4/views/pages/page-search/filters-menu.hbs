@@ -1,0 +1,287 @@
+
+<!-- .modal-off-lg will turn off modal features in lg+ view. So .modal is displayed without needing to toggle it -->
+<div id="search-filters" class="modal fade modal-off-lg">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content brc-dark-l4 border-y-0 border-l-0 pr-lg-3">
+        
+            <div class="modal-header d-lg-none"><!-- .hide header in lg+ view -->
+                <h5 class="modal-title text-primary-d1">
+                    Filter results
+                </h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body pt-lg-1 px-1 ace-scrollbar">
+
+                <div class="card acard">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Keyword
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Keyword
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <div class="p-2 px-25">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search within results ..." />
+                            <div class="input-group-append">
+                                <button class="btn btn-blue px-3 btn-sm" type="button">
+                                    Find
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card acard mt-4">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Category
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Category
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body py-0 px-25">
+                        <div class="d-flex align-items-center py-2">
+                            <label class="text-95 mb-0">
+                                <input type="checkbox" class="mr-2 bgc-blue brc-h-blue-m1" checked />
+                                Arts &amp; Crafts
+                            </label>
+
+                            <span class="badge badge-pill bgc-blue-l3 text-blue-d2 ml-auto">320</span>
+                        </div>
+
+                        <div class="d-flex align-items-center py-2">
+                            <label class="text-95 mb-0">
+                                <input type="checkbox" class="mr-2 bgc-blue brc-h-blue-m1" checked />
+                                Real Estate
+                            </label>
+
+                            <span class="badge badge-pill bgc-secondary-l3 text-secondary-d2 ml-auto">45</span>
+                        </div>
+
+                        <div class="d-flex align-items-center py-2">
+                            <label class="text-95 mb-0">
+                                <input type="checkbox" class="mr-2 bgc-blue brc-h-blue-m1" />
+                                Cars &amp; Trucks
+                            </label>
+
+                            <span class="badge badge-pill bgc-secondary-l3 text-secondary-d2 ml-auto">219</span>
+                        </div>
+
+                        <!-- More catergories to show when clicking "Show More" button -->
+                        <div class="collapse" id="categories-more">
+                            <div class="d-flex align-items-center py-2">
+                                <label class="text-95 mb-0">
+                                    <input type="checkbox" class="mr-2 bgc-blue brc-h-blue-m1" />
+                                    Other
+                                </label>
+
+                                <span class="badge badge-pill bgc-secondary-l3 text-secondary-d2 ml-auto">76</span>
+                            </div>
+                        </div>
+
+                        <!-- the button to show more categories above -->
+                        <div class="text-center mt-2">
+                            <a class="d-style collapsed btn btn-white btn-h-lighter-primary btn-a-lighter-primary btn-xs" href="#categories-more" data-toggle="collapse" aria-expanded="false">
+                                Show More
+                                <i class="fa fa-angle-double-down d-collapsed mx-1"></i>
+                                <i class="fa fa-angle-double-up d-n-collapsed mx-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card acard mt-4">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Price Range
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Price Range
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body py-0 px-25">
+                        <div class="pt-35">
+                            <div id="id-price-slider" class="noUi-toggle-tooltip mb-3 slider-thin"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card acard mt-4">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Rating
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Rating
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body py-0 px-25">
+                        <div class="text-95 text-warning-m2 mt-2">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-dark-m3 text-90">&amp; Up</span>
+                        </div>
+                        <div class="text-95 text-warning-m2">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-dark-m3 text-90">&amp; Up</span>
+                        </div>
+                        <div class="text-95 text-warning-m2">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-dark-m3 text-90">&amp; Up</span>
+                        </div>
+                        <div class="text-95 text-warning-m2">
+                            <i class="fa fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-dark-m3 text-90">&amp; Up</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card acard mt-4">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Location
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Location
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body py-0 px-25">
+                        <div class="input-group mt-2">
+                            <input type="text" class="form-control" placeholder="e.g. Berlin" />
+                            <div class="input-group-append">
+                                <button class="btn btn-lighter-grey btn-bgc-white btn-a-lighter-primary btn-h-lighter-primary px-3 btn-sm" type="button">
+                                    Go
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card acard mt-4">
+                    <div class="card-header border-0 py-0">
+                        <a href="#" data-action="toggle" class="d-flex d-style w-100 align-items-center px-2 py-1 text-grey-d1 text-105 bgc-h-primary-l3 radius-1 no-underline">
+                            <span class="d-collapsed">
+                                Extra Filters
+                            </span>
+
+                            <span class="d-n-collapsed text-dark-m3 text-600 ">
+                                Extra Filters
+                            </span>
+                            
+                            <i class="fa fa-angle-up ml-auto mr-1"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="card-body py-0 px-25">
+                        <div class="d-flex align-items-center mt-2">
+                            <label class="text-95" for="id-switch-1">
+                                On Sale
+                            </label>
+
+                            <input type="checkbox" class="ace-switch ml-auto radius-1px input-sm" id="id-switch-1" />
+                        </div>
+
+                        <div class="d-flex align-items-center my-2">
+                            <label class="text-95" for="id-switch-2">
+                                Private
+                            </label>
+
+                            <input type="checkbox" class="ace-switch ml-auto radius-1px input-sm" id="id-switch-2" />
+                        </div>
+
+                        <div class="d-flex align-items-center my-2">
+                            <label class="text-95" for="id-switch-3">
+                                Free Shipping
+                            </label>
+
+                            <input type="checkbox" class="ace-switch ml-auto radius-1px input-sm" id="id-switch-3" checked />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="modal-footer px-0  d-block mt-lg-4 position-b pos-sticky" style="z-index: 11;">
+                <div class="text-center">
+                    <a href="#" class="btn btn-info text-600 text-sm px-425 radius-2px mr-1 d-none d-lg-inline-block">
+                        Apply
+                    </a>
+
+                    <a href="#search-filters" data-toggle="modal" class="btn btn-info text-600 text-sm px-425 radius-2px mr-1 d-lg-none">
+                        Apply
+                    </a>
+
+                    <a href="#" class="btn btn-light-secondary btn-bgc-white text-600 text-sm px-3 radius-1px">
+                        Reset
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

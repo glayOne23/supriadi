@@ -1,0 +1,34 @@
+[
+    {
+        "abbr": "SD",
+        "name": "Susan Dalek",
+        "summary": "Uploaded a new photo",
+        "color": "purple",
+        "icon": "<i class='fa fa-camera-retro'></i>",
+        "time": "3 min ago"
+    },
+    {
+        "avatar": "avatar2.jpg",
+        "name": "Robin Hood",
+        "summary": "Upgraded his membership plan",
+        "color": "green",
+        "icon": "<i class='fa fa-check-double'></i>",
+        "time": "4 min ago"
+    },
+    {
+        "avatar": "avatar4.jpg",
+        "name": "River Song",
+        "summary": "Reviewed a product",
+        "color": "blue",
+        "icon": "<i class='fa fa-shopping-cart'></i>",
+        "time": "11 min ago"
+    },
+    {
+        "avatar": "avatar1.jpg",
+        "name": "Jack Alien",
+        "summary": "Won a trophy",
+        "color": "warning",
+        "icon": "<i class='fa fa-trophy'></i>",
+        "time": "20 min ago"
+    }
+]

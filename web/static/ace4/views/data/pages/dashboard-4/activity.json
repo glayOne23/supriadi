@@ -1,0 +1,35 @@
+[
+    {
+        "color": "purple",
+        "textColor": "dark-tp2",
+        "icon": "fa fa-check",
+        "name": "Susan Dalek",
+        "summary": "Uploaded a new photo",
+        "time": "3 min ago"
+    },
+    {
+        "color": "success",
+        "textColor": "blue-d1",
+        "icon": "fa fa-check",
+        "name": "River Song",
+        "summary": "Reviewed a product",
+        "time": "4 min ago"
+    },
+    {
+        "color": "danger",
+        "textColor": "danger-m1",
+        "icon": "fa fa-times",
+        "name": "Jack Alien",
+        "summary": "Won a trophy",
+        "time": "20 min ago"
+    },
+    {
+        "color": "warning",
+        "textColor": "dark-tp2",
+        "icon": "fa fa-star",
+        "name": "Robin Hood",
+        "summary": "Upgraded his membership plan",
+        "time": "1 hour ago"
+    }
+
+]

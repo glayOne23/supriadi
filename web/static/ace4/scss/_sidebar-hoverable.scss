@@ -1,0 +1,539 @@
+@if $hoverable == true or $sidebar-hover == true {
+
+ @keyframes navItemHidden {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(0);
+    }
+ }
+
+ // in desktop hoverable mode we move submenus up if they are out of view. using inline `translateY`
+ // so we should revert that back when not needed
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+    .sidebar.hoverable:not(.collapsed):not(.sidebar-hover), .sidebar:not(.hoverable):not(.sidebar-hover) , .sidebar.toggling:not(.collapsed) {
+       .submenu,
+       .nav > .nav-item > .nav-link > .nav-text {
+           transform: none !important;
+       }
+    }
+ }
+
+ @include media-breakpoint-down($sidebar-mobile-max-width) {
+    .sidebar {
+       .submenu,
+       .nav > .nav-item > .nav-link > .nav-text {
+           transform: none !important;
+       }
+    }
+ }
+
+}
+
+
+@if $hoverable == true {
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+
+    //for scrollbars and width, etc
+    .sidebar.hoverable:not(.collapsed):not(.toggling) {
+        .ace-scroll,
+        .sidebar-section,
+        .sidebar-section-item,
+        nav, .nav
+        {
+            width: inherit;
+        }
+    }
+   
+   
+    .sidebar.hoverable.collapsed {
+     
+        .sidebar-inner,
+        .ace-scroll,
+        .ace-scroll-mob {
+           overflow: visible;//because submenu will be displayed outside of sidebar area
+           animation: none;//disable the hideScrollbars animation which hides scrollbar after 2seconds
+       }
+       .submenu-inner {
+           overflow: visible;
+       }
+       &.toggling {
+          .sidebar-inner,
+          .submenu-inner,
+          .ace-scroll,
+          .ace-scroll-mob {
+             overflow: hidden;//hide outside content during toggling
+          }
+       }
+   
+       .ace-scroll,
+       .sidebar-section {
+           width: auto;
+           white-space: nowrap;
+       }
+       .sidebar-section-item {
+            // so that when collapsing they are located on left (and not in the middle)
+            width: map-get($sidebar-common, 'collapsed-width');
+            width: var(--sidebar-collapsed-width);
+        }
+       
+       &.toggling {
+           .submenu,
+           .sub-arrow,
+           .nav > .nav-item > .nav-link > .nav-text {
+               display: none;//display:none it only when toggling, so that it will be displayed again after toggling, because we want submenu to popup with transition effect on mouse hover
+           }   
+           .sidebar-section .fadeable {
+               display: none;
+           }
+           .fadeinable {
+               transition: none;
+           }
+       }
+
+       
+       .submenu,
+       .sub-arrow,
+       .nav > .nav-item > .nav-link > .nav-text,
+       .sidebar-section-item .fadeable,
+       .nav-item-caption .fadeable {
+           animation: 1s navItemHidden;
+           //in real world apps, this may not happen at all, but in this demo
+           //because when we are in mobile view .sidebar.collapsed effects are not applied and then we resize window to desktop view, .nav-text and .submenu transition delays cause them to become visible for a while
+           //so we apply this animation to hide them for a second until their transition is done
+       }
+   
+       .submenu,
+       .sub-arrow,
+       .nav > .nav-item > .nav-link > .nav-text {
+           @include transition(margin $hoverable-transition-duration, opacity $hoverable-transition-duration, visibility 0ms);
+           transition-delay: $submenu-delay, $submenu-delay, $submenu-delay+$hoverable-transition-duration;//have 800ms delay when hiding submenu
+       }
+   
+
+       //a little but almost no delay when showing submenus
+       .nav-item:hover > .submenu,
+       .nav-item:hover > .sub-arrow,
+       .nav > .nav-item:hover > .nav-link > .nav-text,
+       .sidebar-section-item:hover .fadeable,
+       .nav-item-caption:hover .fadeable {
+           animation-duration: 0ms;//we need this as well because we don't want to wait 1s for navItemHidden animation to complete when mouse is over nav-item (and animation: none doesn't seem to work!?!)
+           transition-delay: 100ms, 100ms, 0ms;
+       }
+
+       //no delay when showing 1st-level submenus
+       .nav > .nav-item:hover > .submenu,
+       .nav > .nav-item:hover > .sub-arrow,
+       .nav > .nav-item:hover > .nav-link > .nav-text {
+           transition-delay: 0ms;
+       }
+   
+       .sidebar-inner:hover {
+           .nav-item:not(:hover) > .submenu,
+           .nav-item:not(:hover) > .sub-arrow,
+           .nav > .nav-item:not(:hover) > .nav-link > .nav-text {
+               //when mouse is still inside "sidebar" but not inside this "nav-item" or its submenu, then hide the submenu faster because maybe another submenu is going to be displayed
+               //though maybe we should override this in javascript to hide the visible submenu faster only when the newly hovered "nav-item" has a submenu
+               transition: none;
+           }
+       }
+   
+       
+
+       .nav-item {
+            position: relative;//because of absolutely positioned submenu's etc
+        }
+
+       .submenu,
+       .sub-arrow,
+       .nav > .nav-item > .nav-link > .nav-text {
+           //positioning
+           position: absolute !important;           
+           left: 100%;
+           z-index: 2;
+        
+           //transition properties
+           margin-left: map-get($sidebar-light, 'hoverable-submenu-margin');
+           opacity: 0;
+           visibility: hidden;
+        }
+
+       .submenu,
+       .nav > .nav-item > .nav-link > .nav-text {
+            top: 0;
+
+           //size & styling
+           min-width: map-get($sidebar-light, 'width') - 2;
+           min-width: calc(var(--sidebar-width) - 2rem);
+           
+           box-shadow: map-get($sidebar-light, 'hoverable-submenu-shadow');
+           border: 1px solid map-get($sidebar-light, 'hoverable-submenu-border');
+        }
+
+       .nav > .nav-item > .nav-link > .nav-text {
+           display: flex;
+           align-items: center;
+           height: 100%;
+           
+           .badge {
+               margin-left: auto !important;
+               float: none;
+           }
+       }
+       .nav > .nav-item > .submenu {
+           //first level submenu should be moved lower because of the .nav-text above it
+           top: calc(100% - 3px);
+           border-top-color: map-get($sidebar-light, 'hoverable-submenu-top-border');
+       }
+       .nav-item .nav-item > .submenu {
+            top: -0.125rem;
+        }
+
+       .submenu-inner {
+           border-width: 0 !important;
+           margin: 0 0.125rem;
+       }
+   
+       .nav-item:hover > .submenu,
+       .nav-item:hover > .sub-arrow,
+       .nav > .nav-item:hover > .nav-link > .nav-text {
+           margin-left: map-get($sidebar-light, 'hoverable-submenu-hover-margin');
+           opacity: 1;
+           visibility: visible;
+       }
+   
+       //to override BS's collapse plugin (cause it's not needed in hoverable)
+       .nav-item > .submenu {
+           display: block;
+           height: auto !important;
+       }
+   
+
+        //make submenu's a litter less square
+        .nav > .nav-item > .submenu {
+            border-radius: 0 0 map-get($sidebar-light, 'hoverable-submenu-radius') map-get($sidebar-light, 'hoverable-submenu-radius');
+        }       
+        .nav > .nav-item > .nav-link.dropdown-toggle > .nav-text {
+            border-radius: map-get($sidebar-light, 'hoverable-submenu-radius') map-get($sidebar-light, 'hoverable-submenu-radius') 0 0;
+        }
+        .nav > .nav-item > .nav-link > .nav-text {
+            border-radius: map-get($sidebar-light, 'hoverable-submenu-radius');
+        }    
+        .nav > .nav-item > .submenu .submenu {
+            border-radius: map-get($sidebar-light, 'hoverable-submenu-radius');
+        }
+
+    }
+   
+ }//media-breakpoint-up($sidebar-desktop-min-width)
+
+}//@if $hoverable == true
+
+
+
+
+@if $horizontal == true or $hoverable == true {
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+
+  $selector : '';
+  @if $horizontal == true and $hoverable == true {
+      $selector : '.sidebar.hoverable.collapsed , .sidebar.sidebar-h';
+  }
+  @else if $horizontal == true {
+    $selector : '.sidebar.sidebar-h';
+  }
+  @else if $hoverable == true {
+    $selector : '.sidebar.hoverable.collapsed';
+  }
+
+  #{$selector} {
+
+    .sidebar-section-item {
+        .fadeable {
+            position: absolute;
+            left: 0;
+            z-index: 2;
+
+            min-height: inherit;
+            min-width: map-get($sidebar-common, 'width');
+            min-width: var(--sidebar-width);
+
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: map-get($sidebar-light, 'hoverable-fadeable-background');
+            box-shadow: map-get($sidebar-light, 'hoverable-fadeable-shadow');
+
+            border-radius: map-get($sidebar-light, 'hoverable-submenu-radius');
+
+            @include transition(opacity $hoverable-transition-duration, visibility 0ms, background-color 0ms, box-shadow 0ms);
+            transition-delay: $submenu-delay, $submenu-delay+$hoverable-transition-duration, $submenu-delay+$hoverable-transition-duration, $submenu-delay+$hoverable-transition-duration;
+        }
+
+        &[class*="fadeable-"] .fadeable {
+            margin-left: map-get($sidebar-light, 'hoverable-submenu-margin');
+
+            @include transition(opacity $hoverable-transition-duration, margin $hoverable-transition-duration, visibility 0ms, background-color 0ms, box-shadow 0ms);
+            transition-delay: $submenu-delay, $submenu-delay, $submenu-delay+$hoverable-transition-duration, $submenu-delay+$hoverable-transition-duration, $submenu-delay+$hoverable-transition-duration;
+        }
+
+        &:hover .fadeable {
+            opacity: 1;
+            visibility: visible;
+
+            transition-delay: 0ms;
+        }
+
+        //@if $sidebar-focus-expand == true {
+        &:focus-within .fadeable {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0ms;
+        }
+        //}
+
+        &.fadeable-left:hover .fadeable {
+            margin-left: map-get($sidebar-light, 'hoverable-submenu-hover-margin');
+            transition-delay: 0ms;
+        }
+        &.fadeable-left:focus-within .fadeable {
+            margin-left: map-get($sidebar-light, 'hoverable-submenu-hover-margin');
+            transition-delay: 0ms;
+        }
+
+        .fadeinable {
+            position: relative;// so that it takes up more space
+        }
+
+        &:not(:hover) .fadeinable {
+            transition-delay: 0s, $submenu-delay;
+        }
+        &:hover .fadeinable {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.fadeable-left {
+            .fadeable {
+                left: 100%;
+            }
+            .fadeinable {
+                opacity: 1;
+                visibility: visible;
+                transition: none;
+            }
+        }
+
+        &.fadeable-top .fadeable {
+            top: 0;
+        }
+        &.fadeable-bottom .fadeable {
+            bottom: 0;
+        }
+
+
+        .sub-arrow {
+            left: auto;
+            right: 100%;
+    
+            opacity: 1;
+            visibility: visible;
+            margin-left: auto !important;
+    
+            transition: none;
+            animation: none;
+            &::after {
+                border-right-color: map-get($sidebar-light, 'hoverable-fadeable-background');
+            }
+        }
+
+        &.fadeable-top .sub-arrow {
+            top: 2 * map-get($sidebar-light, 'arrow-size');
+        }
+
+        &.fadeable-bottom .sub-arrow {
+            top: auto;
+            bottom: 4 * map-get($sidebar-light, 'arrow-size');
+        }
+    }//.sidebar-section-item
+
+    //when moving to another sidebar element, instantly hide this one (the currently visible one)
+    .sidebar-inner:hover .sidebar-section-item:not(:hover) {
+        .fadeable, .fadeinable {
+            transition: none;
+        }
+    }
+
+    //for caption items we don't show them again on hover
+    //and so we set width: 0 so it doesn't go beyond sidebar area if text is long
+    .nav-item-caption .fadeable {
+        width: 0;
+    }
+
+  }//selector
+
+
+
+ }// @media
+}// @if $horizontal == true or $hoverable == true
+
+
+
+
+
+// sidebar hover
+@if $sidebar-hover == true or $hoverable == true {
+ @include media-breakpoint-up($sidebar-desktop-min-width) {
+   .sidebar.hoverable.collapsed , .sidebar-hover:not(.collapsed) {
+        .nav-item > .nav-link > .caret {
+            transform: none;
+    
+            //carets should point to submenu
+            &[class*="-down"] {
+                transform: rotate(-90deg) !important;
+            }
+            &[class*="-up"] {
+                transform: rotate(90deg) !important;
+            }
+            &[class*="-left"] , &[class*="-right"] {
+                transform: scaleX(-1) !important;
+            }
+        }
+   }
+
+
+
+
+  @if $sidebar-hover == true {
+
+    .sidebar-hover.toggling .sidebar-inner {
+        overflow: hidden !important;
+    }
+
+    .sidebar-hover:not(.collapsed) {
+        .sidebar-inner,
+        .ace-scroll,
+        .ace-scroll-mob {
+        overflow: visible;//because submenu will be displayed outside of sidebar area
+        animation: none !important;//disable the hideScrollbars animation which hides scrollbar after 2second
+        animation-duration: 0ms;
+        }
+        
+        .submenu-inner {
+            overflow: visible;
+        }
+
+        
+        .nav-item {
+            position: relative;// because of absolutely positioned submenu's etc
+        }
+        .nav-item .nav-item > .nav-link {
+            padding-left: map-get($sidebar-light, 'hoverable-submenu-link-padding') !important;
+
+            > .nav-text::before {
+                margin-left: 2px;
+            }
+        }
+
+        .submenu,
+        .sub-arrow {
+            animation: 1s navItemHidden;
+
+            // positioning
+            position: absolute !important;
+            left: 100%;
+            z-index: 2;
+
+            // transition properties
+            margin-left: map-get($sidebar-light, 'hoverable-submenu-margin');
+            opacity: 0;
+            visibility: hidden;
+
+            @include transition(margin $hoverable-transition-duration, opacity $hoverable-transition-duration, visibility 0ms);
+            transition-delay: $submenu-delay, $submenu-delay, $submenu-delay+$hoverable-transition-duration;// have 800ms delay when hiding submenu
+        }
+
+        .sidebar-section-item .fadeable .sub-arrow {
+            transition: none;
+        }
+
+        .submenu {
+            top: 0;
+
+            // size & styling
+            min-width: map-get($sidebar-light, 'width') - 2;
+            min-width: calc(var(--sidebar-width) - 2rem);
+            
+            box-shadow: map-get($sidebar-light, 'hoverable-submenu-shadow');
+            border: 1px solid map-get($sidebar-light, 'hoverable-submenu-border');
+
+            border-radius: map-get($sidebar-light, 'hoverable-submenu-radius');
+        }
+
+        .sub-arrow {
+            &::after {
+                border-right-color: map-get($sidebar-light, 'hoverable-submenu-background');
+            }
+        }
+
+        //no delay when showing 1st-level submenus
+        .nav > .nav-item:hover > .submenu,
+        .nav > .nav-item:hover > .sub-arrow {
+            transition-delay: 0ms;
+        }
+
+        .sidebar-inner:hover {
+            .nav-item:not(:hover) > .submenu,
+            .nav-item:not(:hover) > .sub-arrow {
+                //when mouse is still inside "sidebar" but not inside this "nav-item" or its submenu, then hide the submenu faster because maybe another submenu is going to be displayed
+                //though maybe we should override this in javascript to hide the visible submenu faster only when the newly hovered "nav-item" has a submenu
+                transition: none;
+            }
+        }
+
+
+        .nav-item:hover > .submenu,
+        .nav-item:hover > .sub-arrow {
+            margin-left: map-get($sidebar-light, 'hoverable-submenu-hover-margin');
+            opacity: 1;
+            visibility: visible;
+
+            animation-duration: 0ms;//we need this as well because we don't want to wait 1s for navItemHidden animation to complete when mouse is over nav-item (and animation: none doesn't seem to work!?!)
+            transition-delay: 100ms, 100ms, 0ms;
+        }
+
+        // to override BS's collapse plugin (cause it's not needed in hoverable)
+        .nav-item > .submenu {
+            display: block;
+            height: auto !important;
+        }
+
+    
+        .nav > .nav-item  .submenu {
+            top: -0.125rem;
+            background-color: map-get($sidebar-light, 'hoverable-submenu-background');
+        }
+        .nav > .nav-item > .submenu {
+            top: -0.5rem;
+        }
+        .submenu-inner {
+            border-width: 0 !important;
+            margin: 0 0.125rem;
+            padding-top: 0.125rem;
+            padding-bottom: 0.125rem;
+        }
+
+        .nav-item .nav-link:not(.dropdown-toggle) ~ .sub-arrow {
+            display: none !important;
+        }
+    }
+
+  }//@if sidebar-hover
+
+
+ }//@media
+}//@if hoverable or sidebar-hover
+

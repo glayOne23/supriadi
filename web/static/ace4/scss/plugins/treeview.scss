@@ -1,0 +1,180 @@
+$jqtree-subtree-padding: 1rem;
+$jqtree-dotted-branch: #67b2dd;
+$jqtree-selected-bg: #e6f1f8;
+$jqtree-hint-color: bgc-color('info');
+
+
+@if $plugin-treeview == true {
+
+ .jqtree-toggler + .jqtree-title {
+    .opened-icon {
+        display: inline-block;
+    }
+    .closed-icon {
+        display: none;
+    }
+ }
+
+ .jqtree-closed + .jqtree-title {
+    .opened-icon {
+        display: none;
+    }
+    .closed-icon {
+        display: inline-block;
+    }
+ }
+
+
+ ul.jqtree-tree {
+    margin: auto;
+    padding: 0 0 0 $jqtree-subtree-padding;
+    position: relative;
+ }
+
+ ul.jqtree_common ul.jqtree_common {
+    margin-left: 0.5rem;
+    padding-left: 1rem;
+ }
+ ul.jqtree-tree li.jqtree_common {
+    margin: 0.5rem 0;
+ }
+
+ .jqtree_common {
+    position: relative;
+ }
+ ul.jqtree_common::before {
+    display: inline-block;
+    content: "";
+
+    position: absolute;
+    top: -1.125rem;
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    border-left: 1px dotted $jqtree-dotted-branch;
+
+    z-index: auto;
+ }
+
+ ul.jqtree-tree::before {
+    left: 0;
+    bottom: 0.5rem;
+ }
+ ul.jqtree-tree > .jqtree_common:last-child::after,
+ li.jqtree_common:last-child::after {
+    display: inline-block;
+    content: "";
+
+    position: absolute;
+    top: calc(1rem - 1px);
+    bottom: -0.5rem;
+    left: -$jqtree-subtree-padding;
+
+    width: 0;
+    border-left: 1px solid #fff;//hide last part of tree branch
+
+    z-index: 1;
+ }
+
+ li.jqtree_common:last-child::after {
+    left: -1rem;
+ }
+
+
+ li.jqtree_common {
+    position: relative;
+    &::before {
+        display: block;
+        content: "";
+        position: absolute;
+    
+        top: 0.925rem;
+        left: calc(-1rem + 2px);
+    
+        border-top: 1px dotted $jqtree-dotted-branch;
+        height: 1px;
+        width: 1.125rem;
+    
+        z-index: auto;
+    }
+ }
+
+ ul.jqtree-tree .jqtree-title {
+    margin-left: 0.325rem;
+ }
+ .tree-dotted ul.jqtree-tree .jqtree-title:not(.jqtree-title-folder) {
+    margin-left: 0.925rem;
+ }
+
+
+ ul.jqtree-tree li.jqtree-selected > .jqtree-element, ul.jqtree-tree li.jqtree-selected > .jqtree-element:hover {
+    background: $jqtree-selected-bg;
+ }
+
+ .jqtree-tree .jqtree-element {
+    padding: 0.125rem 0.125rem 0.25rem;
+    align-items: center;
+ }
+ .jqtree-folder > .jqtree-element {
+    margin-left: 1rem;
+    > .jqtree-toggler {
+        margin-left: -1.125rem;
+    }
+ }
+
+ //////
+
+
+ //ul.jqtree-tree .jqtree-toggler.jqtree-toggler-left {
+    //margin-right: 0;
+ //}
+ .node-icon {
+    margin-right: 0.5rem;
+    margin-left: 0.125rem;
+ }
+
+
+ //////
+ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
+    outline: none;
+ }
+ ul.jqtree-tree span.jqtree-border {
+    border-color: $jqtree-hint-color;
+ }
+ ul.jqtree-tree li.jqtree-ghost span.jqtree-circle {
+    border-color: $jqtree-hint-color;
+ }
+ ul.jqtree-tree li.jqtree-ghost span.jqtree-line {
+    background-color: $jqtree-hint-color;
+ }
+ span.jqtree-dragging {
+    z-index: 4;
+ }
+
+  ///// the tiny blue dot before tree items
+ .jqtree.tree-dotted .jqtree_common:not(.jqtree-folder) > .jqtree-element {
+    position: relative;
+
+    &::before {
+        content: "";
+        display: inline-block;
+
+        width: 0.375rem;
+        height: 0.375rem;;
+        border-radius: 100%;
+
+        background-color: bgc-color('secondary');
+
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        bottom: 0;
+        left: 0.25rem;
+        margin-top: auto;
+        margin-bottom: auto;   
+    }
+ }
+
+
+}//treeview

@@ -1,0 +1,46 @@
+<div class="sidebar-inner">
+
+  <!-- .navbar-brand inside sidebar, only show in desktop view -->
+  <div class="d-none d-xl-flex sidebar-section-item m-0 fadeable-left fadeable-top">
+    <div class="fadeinable">
+      <div class="py-2 mx-1 border-b-1 brc-white-tp9">
+          <a class="navbar-brand text-140">
+            <i class="fa fa-leaf text-success-l3"></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="fadeable w-100 ">
+      <div class="py-25 d-flex mx-3 border-b-1 brc-white-tp9">
+
+
+        <a class="navbar-brand text-140 text-white-tp1 py-0 " href="#">
+          <i class="fa fa-leaf mr-1 text-success-l3"></i>
+          ACE <span>App</span>
+        </a>
+
+        <button type="button" class="d-style ml-auto btn btn-burger bgc-h-white-tp9 px-2px align-self-center align-middle d-none d-xl-inline-flex" data-toggle="sidebar" data-target="#sidebar1" aria-controls="sidebar1" aria-expanded="true" aria-label="Toggle sidebar">
+          <span class="bars"></span>
+          <i class="v-n-collapsed fa fa-caret-left position-l text-75 ml-2px text-orange-l3"></i>
+          <i class="v-collapsed fa fa-caret-right position-r text-75 mr-2px text-orange-l3"></i>
+        </button>
+      </div>
+    </div>
+  </div><!-- /.sidebar-section-item  -->
+
+  <nav aria-label="Main" class="pt-2 flex-grow-1 ace-scroll" data-ace-scroll="{}">
+      <div class="d-xl-none text-right pr-1 h-1 pos-rel" style="z-index: 10;">
+        <button type="button" class="btn collapsed btn-light-primary border-0" data-toggle-mobile="sidebar" data-target="#sidebar1" aria-controls="sidebar1" aria-expanded="false" aria-label="Toggle sidebar">
+          <i class="fa fa-times"></i>
+        </button><!-- mobile sidebar toggler button -->
+      </div>
+
+      <ul class="nav flex-column mt-2 has-active-border has-active-arrow active-on-top">
+      {{#each sidebarItems}}
+        {{> layout/_commons/sidebar-item}}
+      {{/each}}
+      </ul>
+
+  </nav><!-- /.ace-scroll -->
+
+</div>

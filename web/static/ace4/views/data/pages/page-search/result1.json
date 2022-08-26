@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Thumbnail label",
+        "rating": 724,
+        "star4": true
+    },
+    {
+        "title": "Thumbnail label",
+        "rating": 316,
+        "star5": true
+    },
+    {
+        "title": "Thumbnail label",
+        "rating": 98,
+        "star3_5": true
+    },
+    {
+        "title": "Thumbnail label",
+        "rating": 150,
+        "star4": true
+    }
+]

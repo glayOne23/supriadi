@@ -1,0 +1,104 @@
+<div class="pos-abs" id="scroll-down"></div>
+
+<nav class="navbar navbar-fixed navbar-expand-lg navbar-white">
+ <div class="navbar-inner shadow-sm border-b-1 brc-grey-l2">
+  <div class="container">
+
+
+    <button type="button" class="navbar-toggler btn btn-burger burger-times static collapsed d-flex d-lg-none ml-2" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="bars text-dark-tp3"></span>
+    </button><!-- mobile navbar toggler button -->
+
+
+    <div class="navbar-intro justify-content-xl-between w-auto border-0">
+        <a class="navbar-brand text-dark-tp3 text-180" href="#">
+            <i class="fa fa-plane rotate-n45 text-105 text-blue-m1 mr-1"></i>
+            <span>ACE</span>
+            <span class="text-70">Travel</span>            
+        </a><!-- /.navbar-brand -->  
+    </div><!-- /.navbar-intro -->
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop ml-auto mr-lg-4" id="navbarMenu">
+      
+      <div class="navbar-nav">
+        <ul class="nav nav-compact-3">
+
+            <li class="nav-item dropdown dropdown-mega dropdown-hover">
+                <a class="btn btn-white btn-h-default btn-a-default dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-list-alt mr-2 d-lg-none"></i>
+                    Mega
+                    <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="p-0 dropdown-menu bgc-default-l4 brc-primary-m3 border-b-2 ace-scrollbar">
+                    {{> layout/_commons/navbar-megamenu}}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="btn btn-white btn-h-default btn-a-default" href="#">
+                    <i class="fa fa-map fa-flip-horizontal mr-1 text-green bgc-white-tp1 radius-1 p-1"></i>
+                    Explorations
+                </a>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="btn btn-white btn-h-default btn-a-default" href="#">
+                    <i class="fa fa-phone fa-flip-horizontal mr-1 text-blue bgc-white-tp1 radius-1 p-1"></i>
+                    Contact
+                </a>
+            </li>
+
+            <li class="nav-item ml-xl-2">
+                <a class="btn btn-light-green border-2 btn-brc-tp d-none d-lg-inline-flex" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fire-alt mr-2"></i>
+                    Hot Deals
+                </a>
+
+                <a class="btn btn-light-green d-lg-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fire-alt mr-2"></i>
+                    Hot Deals
+                </a>
+            </li>
+        </ul><!-- /.navbar-nav menu -->
+      </div><!-- /.navbar-nav -->
+
+    </div><!-- /.navbar-menu.navbar-collapse -->
+
+
+
+    <button type="button" class="d-style mr-2 px-4 navbar-toggler btn btn-burger static collapsed d-flex d-lg-none" data-toggle="collapse" data-target="#navbarMenu2" aria-controls="navbarMenu2" aria-expanded="false" aria-label="Toggle navbar menu">
+        <i class="fa fa-caret-down d-collapsed text-grey-m1 text-80"></i>
+        <i class="fa fa-caret-up d-n-collapsed text-grey-m1 text-80"></i>
+
+        <i class="fa fa-user text-orange-d1 ml-2"></i>        
+    </button><!-- mobile navbar toggler button -->
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop " id="navbarMenu2">
+      <div class="navbar-nav">
+        <ul class="nav">
+
+            <li class="nav-item dropdown px-lg-2 d-lg-flex flex-column justify-content-center">
+                <a class="d-none d-lg-block h-auto btn btn-outline-blue btn-bold radius-round border-2 dropdown-toggle px-2 px-xl-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    Login
+                </a>
+
+                <a class="d-lg-none nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-caret-right bgc-blue radius-round text-white py-2 px-4 mr-2"></i>
+                    Login
+                </a>
+
+                <div style="width: 20rem;" data-display="static" class="shadow radius-1 p-0 dropdown-menu dropdown-menu-right dropdown-animated animated-2 brc-primary-m3 mt-lg-n1 mr-lg-n2 dropdown-caret">
+                    {{> layout/landing-1/navbar-login}}
+                </div>
+            </li>
+
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+ </div><!-- /.navbar-inner -->
+</nav>

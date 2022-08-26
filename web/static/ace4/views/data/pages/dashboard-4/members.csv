@@ -1,0 +1,5 @@
+name,avatar,color,role,location,status,stars
+"Bob Doe","avatar1.jpg","","Moderator","London","approved",3
+"Maria Doe","avatar4.jpg","","Customer","Dubai","approved",1
+"John Smith",,"JS","Customer","Istanbul","pending",0
+"Jim Doe","avatar6.jpg","","Tester","Unknown","banned",0

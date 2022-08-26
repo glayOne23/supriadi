@@ -1,0 +1,108 @@
+/*!
+ * Ace Admin Template v4.0.0
+ * Copyright 2013-2021
+ * You need a commercial license to use this product
+ * https://bit.ly/35ciMLb
+ */
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+
+@import "ace-slim-features";
+
+@import "variables";
+@import "functions";
+
+@import "button-colors";
+@import "variables-more";
+@import "font-size";
+
+
+@import "navbar-themes-variables";
+@import "sidebar-themes-variables";
+
+@import "base";
+@import "typography";
+@import "colors-text";
+@import "colors-background";
+@import "spacing";
+@import "scrollbar";
+
+@import "navbar";
+@import "navbar-toggler";
+@import "navbar-link";
+@import "navbar-mobile";
+
+@import "sticky";
+
+@import "sidebar";
+@import "sidebar-scrollbar";
+@import "sidebar-expandable";
+@import "sidebar-hoverable";
+@import "sidebar-hideable";
+@import "sidebar-liststyle";
+@import "sidebar-mobile";
+
+@import "sidebar-horizontal";
+
+@import "sidebar-active";
+
+@import "sidebar-spaced";
+
+@import "ace-default-themes.scss";////include only the sidebar/navbar theme you want
+//@import "ace-themes.scss";//include all themes ... not recommended
+@import "sidebar-themes-extra";
+
+@import "footer";
+@import "fixed";
+
+@import "content-nav";
+
+
+@import "card";
+
+@import "pagination";//comes before buttons, so that buttons can override it
+@import "button";
+
+@import "form";
+@import "form-checkbox";
+@import "form-file";
+
+@import "badge";
+@import "dropdown";
+
+
+
+
+@import "tab";
+@import "accordion";
+
+@import "tooltip";
+@import "alert";
+@import "aside-modal";
+
+@import "table";
+
+
+@import "misc";
+
+@import "icon-animation";
+
+
+
+@import "plugins/treeview";
+@import "plugins/bootstraptable";
+@import "plugins/datatables";
+@import "plugins/jqgrid";
+@import "plugins/chosen";
+@import "plugins/select2";
+@import "plugins/wizard";
+@import "plugins/calendar";
+
+
+@import "plugins/date";
+@import "plugins/spin";
+@import "plugins/slider";
+@import "plugins/misc";//dropzone, summernote, wysiwyg, tagsinput, markdown, rating, typeahead

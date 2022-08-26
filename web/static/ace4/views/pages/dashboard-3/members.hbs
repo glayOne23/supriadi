@@ -1,0 +1,92 @@
+<div class="card bcard pt-1 pt-lg-2">
+    <div class="card-header brc-primary-l3">
+        <h5 class="card-title pl-1 text-120">
+            Latest Members
+        </h5>
+
+        <div class="card-toolbar align-self-center no-border">
+            <button type="button" class="btn border-2 btn-outline-default btn-sm">
+                View All
+            </button>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="toggle" class="card-toolbar-btn text-grey text-110">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="card-body p-0 border-0">
+        <div class="table-responsive-md">
+            <table class="table table-striped-primary table-borderless border-0 mb-0">
+                <tbody>
+                    <tr></tr>
+                    {{#each (get "members")}}
+                    <tr>
+                        <td class="text-secondary-d2 pl-2 pl-lg-4">
+                            {{#if color}}
+                                <span class="d-inline-block text-center mr-2 pt-2 w-5 h-5 radius-round bgc-primary-l2 text-primary font-bolder text-90">
+                                    <span>{{color}}</span>
+                                </span>
+                            {{/if}}
+                            {{#if avatar}}
+                            <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round border-2 p-2px brc-default-m1 mr-2 w-5 h-5" />
+                            {{/if}}
+                            {{name}}
+                        </td>
+
+                        <td class="text-secondary text-85 font-bolder">
+                            {{role}}
+                        </td>
+
+                        <td class="text-grey-m1 text-85">
+                            {{location}}
+                        </td>
+                        
+                        <td class="text-85">
+                            <i class="fa fa-star text-orange-m2"></i>
+                            <i class="fa fa-star text-orange-m2"></i>
+                            <i class="fa fa-star text-orange-m2"></i>
+                        </td>
+
+                        <td class="font-bolder text-80 text-right pr-2 pr-lg-3">
+                            {{#if approved}}
+                            <span class="badge bgc-green text-white-tp1">Approved</span>
+                            {{/if}}
+
+                            {{#if pending}}
+                            <span class="badge bgc-default text-white-tp1">Pending</span>
+                            {{/if}}
+
+                            {{#if banned}}
+                            <span class="badge bgc-red text-white-tp1">Banned</span>
+                            {{/if}}
+                        </td>
+
+                        <td class="px-2 px-lg-3 text-right" style="width:40px;">
+                            {{#if approved}}
+                                <label>
+                                    <input type="checkbox" class="ace-switch" checked />
+                                </label>
+                            {{/if}}
+
+                            {{#if pending}}
+                                <label>
+                                    <input type="checkbox" class="ace-switch" />
+                                </label>
+                            {{/if}}
+
+                            {{#if banned}}
+                                <a href="#" class="action-btn text-danger-m1 mr-1"><i class="fa fa-trash-alt text-125"></i></a>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive-md -->
+
+    </div><!-- /.card-body -->
+</div><!-- /.card -->

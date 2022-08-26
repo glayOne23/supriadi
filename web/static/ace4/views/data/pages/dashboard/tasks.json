@@ -1,0 +1,38 @@
+[
+ {
+ "color" : "purple",
+ "title" : "Answering customer questions",
+ "progress" : 35
+ } ,
+ {
+ "color" : "danger",
+ "title" : "Fixing bugs",
+ "urgent": true,
+ "toolbar" : true
+ } ,
+ {
+ "color" : "secondary",
+ "title" : "Adding new features",
+ "menu" : true,
+ "medium": true
+ } ,
+ {
+ "color" : "info",
+ "title" : "Upgrading server hardware"
+ } ,
+ {
+ "color" : "grey",
+ "title" : "Adding new skins",
+ "low": true
+ } ,
+ {
+ "color" : "success",
+ "title" : "Updating server software",
+ "urgent": true
+ } ,
+ {
+ "color" : "warning",
+ "title" : "Cleaning up",
+ "medium": true
+ }
+]

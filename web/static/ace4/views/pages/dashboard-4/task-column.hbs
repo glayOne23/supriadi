@@ -1,0 +1,98 @@
+<div class="col-12 col-sm-4 px-md-2 mb-3 mb-sm-0 px-3 px-sm-2 px-md-3">
+    <div id="task-col-{{@index}}" class="h-100 bgc-white pt-2 px-25 border-1 radius-1 brc-secondary-l2 pos-rel shadow-sm">
+        <div class="position-tl w-102 m-n1px border-t-2 brc-{{color}}"></div><!-- the colored line on top -->
+
+        <div class="d-flex align-items-center">
+            <h5 class="text-secondary-d3 m-2 mb-3 pb-1 text-120">
+                <i class="text-80 {{icon}} text-dark-tp4 mr-1"></i>
+                {{title}}
+            </h5>
+
+            {{{toolbar}}}
+        </div>
+
+        {{#each task_item}}
+         <div class="task-item mb-25 radius-3px bgc-secondary-l4 px-2 pt-3 pb-2 pos-rel">
+            {{#if progress}}
+            <div class="progress position-bl w-100 h-auto">
+                <div class="progress-bar bgc-{{color}} progress-bar-striped progress-bar-animated" role="progressbar" style="height: 6px; width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            {{/if}}
+
+            <div class="pl-1">
+                {{#if title}}
+                    <div class="text-600 text-blue-d2 text-95">
+                        {{title}}
+                    </div>
+                {{/if}}
+
+                {{#if content}}
+                    <div>
+                        {{content}}
+                    </div>
+                {{/if}}
+            </div>
+
+            <div class="d-flex">
+                <div class="mt-2 mb-1">
+                 {{#if time}}
+                    <span class="badge bgc-white border-1 brc-black-tp9 text-dark-tp4 mt-1">
+                        <i class="far fa-clock mr-2px"></i>
+                        {{time}}
+                    </span>
+                 {{/if}}
+
+                 {{#if done}}
+                    <span class="badge bgc-green text-white mt-2">
+                        <i class="fa fa-check mr-2px"></i>
+                        {{done}}
+                    </span>
+                 {{/if}}
+                </div>
+
+                <div class="ml-auto align-self-end">
+                    {{#if avatar}}
+                    <img alt="User avatar" src="assets/image/avatar/{{avatar}}" class="radius-1 brc-default-m1 w-4 h-4" />
+                    {{/if}}
+                </div>
+
+                <div class="py-1 position-tr mt-n2 mr-n1">
+                    <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                        <a class="btn btn-outline-default btn-h-outline-primary btn-brc-tp btn-xs dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </a>
+
+                        <div class="dropdown-menu mw-auto dropdown-caret dropdown-menu-right dropdown-animated animated-1 dd-appear-center dd-slide-none-md">
+                          <div class="dropdown-inner">
+                            {{#if ../markDone}}                            
+                            <a class="dropdown-item" href="#" title="Mark as done" data-toggle="tooltip" data-placement="left" data-template='<div class="tooltip" role="tooltip"><div class="arrow brc-success"></div><div class="tooltip-inner text-110 pb-2 bgc-success"></div></div>'>
+                                <i class="fa fa-check text-success-m1 mx-1"></i>
+                                <span class="d-md-none">
+                                    Mark as done
+                                </span>
+                            </a>
+                            {{/if}}
+
+                            <a class="dropdown-item" href="#" title="Delete task" data-toggle="tooltip" data-placement="left" data-template='<div class="tooltip" role="tooltip"><div class="arrow brc-danger"></div><div class="tooltip-inner text-110 pb-2 bgc-danger"></div></div>'>
+                                <i class="fa fa-trash text-danger mx-1"></i>
+                                <span class="d-md-none">
+                                    Delete task
+                                </span>
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           {{#if badge}}
+            <div class="px-1 mt-n1">
+                {{{badge}}}
+            </div>
+           {{/if}}
+
+         </div>
+        {{/each}}
+    </div>
+</div>
+

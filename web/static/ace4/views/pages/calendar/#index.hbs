@@ -1,0 +1,65 @@
+<div class="page-header border-0 mb-3">
+    <h1 class="page-title text-primary-d2 text-150">
+        Fullcalendar
+         <small class="page-info text-secondary-d4">
+            <i class="fa fa-angle-double-right text-80 opacity-1"></i>
+            with draggable &amp; editable events 
+        </small>
+    </h1>
+</div>
+
+
+<!-- message to be displayed on touch devices -->
+<div id="alert-1" class="d-none alert bgc-white border-l-4 brc-purple-m1 shadow-sm" role="alert">
+  Touch a date slot and hold down to add a new event
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 col-md-9" id='calendar-container'>
+    <div class="card acard">
+      <div class="card-body p-lg-4">
+        <div id='calendar' class="text-blue-d1"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-12 col-md-3 mt-3 mt-md-4" id='external-events'>
+    <div class="bgc-secondary-l4 border-1 brc-secondary-l2 shadow-sm p-35 radius-1">
+        <p class="text-120 text-primary-d2">
+            Draggable Events
+        </p>
+
+        <p id="alert-2" class="alert bgc-white border-none border-l-4 brc-purple-m1">
+          Drag and drop the following events or click on a date slot to add a new event
+        </p>
+
+        <div>
+          <div class='fc-event badge bgc-blue-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-blue-d1 text-white text-95">
+            My Event 1
+          </div>
+          <div class='fc-event badge bgc-green-d2 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-green-d2 text-white text-95">
+            My Event 2
+          </div>
+          <div class='fc-event badge bgc-red-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-red-d1 text-white text-95">
+            My Event 3
+          </div>
+          <div class='fc-event badge bgc-purple-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-purple-d1 text-white text-95">
+            My Event 4
+          </div>
+          <div class='fc-event badge bgc-orange-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-orange-d1 text-white text-95">
+            My Event 5
+          </div>
+        </div>
+
+        <label class="mt-2">
+          <input type="checkbox" id='drop-remove' class="mr-1" />
+          Remove after drop
+        </label>
+    </div>
+
+  </div>
+</div>
+

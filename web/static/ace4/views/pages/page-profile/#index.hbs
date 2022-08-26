@@ -1,0 +1,100 @@
+<div class="row mt-2 mt-md-4">
+
+    <!-- the left side profile picture and other info -->
+    <div class="col-12 col-md-4">
+        {{> page/profile-left}}
+    </div><!-- .col -->
+
+
+    <!-- the right side profile tabs -->
+    <div class="col-12 col-md-8 mt-3 mt-md-0">
+        <div class="card dcard h-100">
+            <div class="card-body p-0">
+                <div class="sticky-nav">
+                    <div class="position-tr w-100 border-t-4 brc-blue-m2 radius-2 d-md-none"></div>
+          
+                    <ul id="profile-tabs" class="nav nav-tabs-scroll is-scrollable nav-tabs nav-tabs-simple p-1px pl-25 bgc-secondary-l4 border-b-1 brc-dark-l3 radius-t-1" role="tablist">
+                        <li class="nav-item mr-2 mr-lg-3">
+                            <a class="d-style nav-link active px-2 py-35 brc-primary-tp1" data-toggle="tab" href="#profile-tab-overview" role="tab" aria-controls="profile-tab-overview" aria-selected="true">
+                                <span class="d-n-active text-dark-l1">1. Overview</span>
+                                <span class="d-active text-dark-m3">1. Overview</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mr-2 mr-lg-3">
+                            <a class="d-style nav-link px-2 py-35 brc-primary-tp1 pr-45" data-toggle="tab" href="#profile-tab-activity" role="tab" aria-controls="profile-tab-activity" aria-selected="false">
+                                <span class="d-n-active text-dark-l1">2. Activity</span>
+                                <span class="d-active text-dark-m3">2. Activity</span>
+                                <span class="pos-abs ml-15 badge bgc-red-d2 text-white radius-3 text-85">5</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mr-2 mr-lg-3">
+                            <a class="d-style nav-link px-2 py-35 brc-primary-tp1" data-toggle="tab" href="#profile-tab-timeline" role="tab" aria-controls="profile-tab-timeline" aria-selected="false">
+                                <span class="d-n-active text-dark-l1">3. Timeline</span>
+                                <span class="d-active text-dark-m3">3. Timeline</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mr-2 mr-lg-3">
+                            <a class="d-style nav-link px-2 py-35 brc-primary-tp1" data-toggle="tab" href="#profile-tab-edit" role="tab" aria-controls="profile-tab-edit" aria-selected="false">
+                                <span class="d-n-active text-dark-l1">4. Edit Info</span>
+                                <span class="d-active text-dark-m3">4. Edit Info</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /.sticky-nav-md -->
+
+
+                <div class="tab-content px-0 tab-sliding flex-grow-1 border-0">
+
+                    <!-- overview tab -->
+                    <div class="tab-pane active show px-1 px-md-2 px-lg-4" id="profile-tab-overview">
+                        {{> page/about-me}}                        
+                    </div><!-- /.tab-pane -->
+
+
+
+                    <!-- activity tab -->
+                    <div class="tab-pane px-1 px-md-2 px-lg-3" id="profile-tab-activity">
+                        <div>
+                            <div class="d-flex m-3">
+                                <h4 class="text-dark-tp4 text-130 p-0 m-0">
+                                    Latest Activity
+                                </h4>
+
+                                <button type="button" class="ml-auto btn btn-sm btn-light-primary btn-brc-tp btn-bold border-1">
+                                    View All
+                                </button>
+                            </div>
+
+                            <hr class="border-dotted mx-3" />
+
+                            <div class="px-lg-3">
+                                {{> page/activity}}
+                            </div>
+                        </div>
+                    </div><!-- /.tab-pane -->
+
+
+
+                    <!-- timeline tab -->
+                    <div class="tab-pane px-1 px-md-2 px-lg-3" id="profile-tab-timeline">
+                        {{> page/timeline}}
+                    </div><!-- /.tab-pane -->
+
+
+
+                    <!-- profile edit tab -->
+                    <div class="tab-pane px-1 px-md-2 px-lg-4" id="profile-tab-edit">
+                        {{> page/edit}}
+                    </div><!-- /.tab-pane -->
+
+                </div><!-- /.tab-content -->
+
+            </div>
+        </div><!-- /.card -->
+
+    </div>
+</div>
+

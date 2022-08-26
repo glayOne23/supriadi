@@ -1,0 +1,103 @@
+[
+   {
+      "title": "Todo",
+      "color": "orange-m1",
+      "icon": "fa fa-list",
+      "toolbar": "<button type='button' class='ml-auto btn btn-outline-default btn-xs btn-bold'><i class='fa fa-plus mr-1'></i> New Task </button>",
+      "task_item": [
+         {
+            "color" : "purple",
+            "title" : "Answer customer questions",
+            "badge" : "<span class='badge badge-danger'>urgent</span>"
+         } ,
+         {
+            "color" : "danger",
+            "content" : "Fix compatibility issues"
+         } ,
+         {
+            "color" : "blue",
+            "content" : "Clean up"
+         } ,
+         {
+            "color" : "secondary",
+            "content" : "Set up board meeting"
+         } ,
+         {
+            "color" : "default",
+            "title" : "Follow up on clients",
+            "badge" : "<span class='badge badge-warning'>important</span>"
+         }
+      ]
+   },
+
+   {
+      "title": "Doing",
+      "color": "blue-m1",
+      "icon": "fa fa-hourglass-half",
+      "toolbar": "<span class='ml-auto text-grey-d1 text-95'><span class='text-600 text-dark-l1'>75%</span> progress</span>",
+      "markDone": true,
+      "task_item": [
+         {
+            "color" : "success",
+            "content" : "Add new features",
+            "avatar": "avatar1.jpg",
+            "progress": 70,
+            "time": "1h"
+        } ,
+        {
+            "color" : "danger",
+            "title" : "Upgrade everything",
+            "avatar": "avatar2.jpg",
+            "progress": 30,
+            "time": "2d"
+        } ,
+        {
+            "color" : "blue",
+            "content" : "Purchase new hardware",
+            "avatar": "avatar3.jpg",
+            "progress": 55,
+            "time": "6h"
+        } ,
+        {
+            "color" : "purple",
+            "content" : "Follow up on clients",
+            "avatar": "avatar2.jpg",
+            "progress": 40,
+            "time": "2d"
+        }
+      ]
+   },
+
+
+   {
+      "title": "Done",
+      "color": "green-m1",
+      "icon": "fa fa-hourglass-end",
+      "task_item": [
+         {
+            "color" : "grey",
+            "content" : "Add new skins",
+            "avatar": "avatar6.jpg",
+            "done": "3d ago"
+         } ,
+         {
+               "color" : "success",
+               "content" : "Update server software up",
+               "avatar": "avatar4.jpg",
+               "done": "4h ago"
+         } ,
+         {
+               "color" : "warning",
+               "title" : "Purchase new hardware",
+               "avatar": "avatar1.jpg",
+               "done": "1d ago"
+         },
+         {
+               "color" : "warning",
+               "content" : "Design new logo",
+               "avatar": "avatar3.jpg",
+               "done": "21h ago"
+         }
+      ]
+   }
+]

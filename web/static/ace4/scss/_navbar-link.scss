@@ -1,0 +1,318 @@
+.navbar {
+    //.nav-link styles
+    .nav > .nav-item > .nav-link:not(.disabled) {
+        border-radius: 0;
+        @include transition(background-color $navlink-transition-duration, color $navlink-transition-duration);
+    }
+
+    .navbar-nav .nav .dropdown-toggle::after {
+        display: none;//hide bootstrap's caret
+    }
+
+    .nav > .nav-item > .nav-link {
+        padding-top: 0;//so that links don't get out of navbar area when navbar's height is small
+        padding-bottom: 0;
+    }
+
+    @include media-breakpoint-up($navbar-desktop-min-width) {
+        .navbar-menu.navbar-collapse {
+            height: 100%;
+            flex-grow: 0;
+        }
+
+        .navbar-nav {
+            height: 100%;
+            align-items: center;
+            > .nav {
+                height: 100%;
+            }   
+
+            @at-root .navbar-inner.container .navbar-nav .nav > .nav-item:last-of-type {
+                &, &::after {
+                    border-right-width: 0;
+                }
+            }
+
+            > .nav > .nav-item {
+                height: 100%;
+            }
+       
+            > .nav > .nav-item > .nav-link , > .nav > .nav-item > .btn {
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+
+                position: relative;
+
+                > .caret {
+                    margin: 0 0.25rem 0 0.5rem;
+                }
+
+                .badge {
+                    position: absolute;
+                    top: 0.5rem;
+                    right: 0.5rem;
+                }
+                .badge-dot {
+                    top: -0.125rem;
+                    right: -0.125rem;
+                }
+                .badge-tr {//topright
+                    top: 0;
+                    right: 0;
+                }
+            }
+            > .nav > .nav-item > .btn {
+                border-width: 0;
+                border-radius: 0;
+            }
+
+
+            > .nav.has-active-border {
+                > .nav-item > .nav-link:not(.disabled) , > .nav-item > .btn:not(.disabled) {
+                    position: relative;
+                    &::before {
+                        content: "";
+
+                        position: absolute;        
+                        bottom: 1px;
+                        left:  map-get($navbar-common, 'link-show-border-offset');
+                        right: map-get($navbar-common, 'link-show-border-offset');
+        
+                        margin-left: auto;
+                        margin-right: auto;
+        
+                        width: 0;
+                        @include transition(width $navlink-transition-duration);
+        
+                        height: map-get($navbar-common, 'link-show-border-height');
+                        border-radius: map-get($navbar-common, 'link-show-border-height');
+
+                        background-color: map-get($navbar-common, 'link-show-border');
+                    }
+                }
+
+                > .nav-item.show > .nav-link:not(.disabled) , > .nav-item.show > .btn:not(.disabled) {
+                    position: relative;
+                    &::before {
+                        width: calc(100% - #{2 * map-get($navbar-common, 'link-show-border-offset')});
+                    }
+                }
+            }
+
+            
+            > .nav > .nav-item > .nav-link {
+                padding-left: map-get($navbar-common, 'link-padding');
+                padding-right: map-get($navbar-common, 'link-padding');
+                &:focus {
+                    outline: none;
+                }
+            }
+
+
+            > .nav.nav-compact {
+                height: 80%;
+                min-height: 3.5rem;
+            }
+            > .nav.nav-compact-2 {
+                height: 65%;
+                min-height: 3rem;
+            }
+            > .nav.nav-compact-3 {
+                height: 55%;
+                min-height: 2.5rem;
+            }
+            > .nav.nav-compact, > .nav.nav-compact-2, > .nav.nav-compact-3 {
+                > .nav-item {
+                    border-width: 0 !important;
+                    max-height: 100%;
+                    
+                    > .nav-link, > .btn {
+                        border-radius: 0.25rem;
+                    }
+                }
+            }
+
+            //no divider border between nav-items
+            > .nav.border-0 {
+                > .nav-item {
+                    border-width: 0 !important;
+                    > .nav-link::after {
+                        display: none;
+                    }
+                }
+            }
+            
+            //no active highlight border for a specific nav-item
+            > .nav.has-active-border {
+                > .nav-item.border-0 {
+                    > .nav-link , > .btn {
+                        &::before {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+
+
+            .dropdown-menu {
+                max-height: calc(100vh - #{map-get($navbar-common, 'height')} - 0.25rem);//max-height, so that it doesn't go below viewable area
+                max-height: calc(100vh - var(--navbar-height) - 0.25rem);
+        
+                overflow: hidden auto;
+
+                margin-top: 0;//1px;
+            }
+            .dropdown-menu.dropdown-caret {
+                overflow: visible;
+            }
+
+            //the caret displayed when dropdown menu is displayed
+            > .nav:not(.has-active-border):not([class*="nav-compact"]) {               
+                .dropdown-caret:not(.dropdown-menu) {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    z-index: 1001;
+    
+                    left: calc(50% - 0.25rem);
+                    bottom: -1px;
+      
+                    border-width: 0 0.5rem 0.5rem;
+                    border-style: solid;
+                    border-bottom-color: #fff;
+                    border-right-color: transparent !important;
+                    border-left-color: transparent !important;
+    
+                    opacity: 0;
+                    background-color: transparent;
+    
+                    transform-origin: bottom center;    
+                    transform: scale(0);
+                    
+                    @include transition(all $navlink-transition-duration);
+                }
+    
+                > .nav-item.show .dropdown-caret:not(.dropdown-menu) {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+           
+        }//navbar-nav
+
+
+        .navbar-menu .navbar-links {
+            > .nav > .nav-item > .btn {
+                border-bottom-width: 3px;
+                border-radius: 0;
+            }
+        }
+    }//media desktop up
+
+
+    @include media-breakpoint-up($navbar-desktop-min-width) {
+        .nav-user-name {
+            display: block;
+            max-width: 100px;
+            
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    
+    }
+
+    .dropdown-mega {
+        > .dropdown-menu {
+            width: 100%;
+            left: 0;
+            right: 0;
+            // border-width: 0 0 2px 0;
+
+            padding: 1.5rem;
+        }
+
+        > .dropdown-lg {
+            width: 48rem;
+            max-width: calc(100vw - 1rem);
+            right: 0;
+            left: auto;
+        }
+
+        > .dropdown-md {
+            width: 36rem;
+            max-width: calc(100vw - 1rem);
+            right: 0;
+            left: auto;
+        }
+
+        > .dropdown-sm {
+            width: 28rem;
+            max-width: calc(100vw - 1rem);
+            right: 0;
+            left: auto;
+        }
+
+        > .dropdown-xs {
+            width: 20rem;
+            max-width: calc(100vw - 1rem);
+            right: 0;
+            left: auto;
+        }
+
+        > .dropdown-xxs {
+            width: 16rem;
+            max-width: calc(100vw - 1rem);
+            right: 0;
+            left: auto;
+        }
+
+        &.pos-rel {
+            > .dropdown-lg.dropdown-center {
+                left: calc(-24rem + 50%);
+            }
+
+            > .dropdown-md.dropdown-center {
+                left: calc(-18rem + 50%);
+            }
+
+            > .dropdown-sm.dropdown-center {
+                left: calc(-14rem + 50%);
+            }
+
+            > .dropdown-xs.dropdown-center {
+                left: calc(-10rem + 50%);
+            }
+
+            > .dropdown-xxs.dropdown-center {
+                left: calc(-8rem + 50%);
+            }
+        }
+
+        &.pos-rel > .dropdown-menu-right {
+            left: auto;
+            right: -2rem;
+        }
+    }
+
+    .dropdown.dropdown-mega {
+        position: static;
+    }
+
+
+    .navbar-input {
+        font-size: map-get($navbar-common, 'input-font-size');
+    
+        &::placeholder {
+            $input-font-size: map-get($navbar-common, 'input-font-size');
+            @if $input-font-size != null {
+                font-size: $input-font-size * 0.95;
+            }
+        }
+    }
+
+}//.navbar
+
+

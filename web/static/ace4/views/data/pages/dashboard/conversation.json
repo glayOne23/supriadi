@@ -1,0 +1,67 @@
+[
+    {
+       "left": true,
+       "name" : "Max",
+       "avatar" : "avatar1.jpg",
+       "status": "success",
+       "messages" : [
+         {
+            "content" : "Raw denim you probably haven't heard of actively? So lorem ipsum indeed! <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+            "time" : "10:21"
+         },
+         {
+            "content" : "Tell you what, dolor sit amet forever!",
+            "time" : "10:23"
+         }
+       ]
+    } ,
+    {
+       "right": true,
+       "name" : "Mia",
+       "avatar" : "avatar7.jpg",
+       "status": "orange",
+       "messages" : [
+         {
+            "content": "Consectetur adipiscing elit, quis nostrud exercitation.",
+            "time" : "10:25"
+         },
+         {
+            "content": "So count me in!  <i class='fa fa-thumbs-up text-orange-m1 text-125 ml-1'></i>",
+            "time" : "10:25"
+         }
+       ]
+    } ,
+    {
+       "left": true,
+       "name" : "Max",
+       "avatar" : "avatar1.jpg",
+       "status": "success",
+       "messages" : [
+         {
+            "content": "Heard of them jean shorts Austin! Fusce dapibus, tellus ac cursus commodo, tortor mauris",
+            "time" : "10:26"
+         },
+         {
+            "content": "<div class='d-flex'> <div class='border-1 radius-2 mx-1 brc-primary-l1 shadow-sm d-style overflow-hidden'><img alt='Heedphones' src='assets/image/product/wireless-headphone.jpg' width='64' class='d-zoom-2' /></div>  <div class='border-1 radius-2 mx-1 brc-primary-l1 shadow-sm d-style overflow-hidden'><img alt='Speakers' src='assets/image/product/smart-speaker.jpg' class='d-zoom-2' width='64' /></div> <div class='border-1 radius-2 mx-1 brc-primary-l1 shadow-sm d-style overflow-hidden'><img alt='Shoes' src='assets/image/product/running-shoes.jpg' class='d-zoom-2' width='64' /></div></div>",
+            "time" : "10:26",
+            "unstyled": true
+         }
+       ]
+    } ,
+    {
+       "right": true,
+       "name" : "Mia",
+       "avatar" : "avatar7.jpg",
+       "status": "orange",
+       "messages" : [
+         {
+            "content": "Are you sure fusce dapibus tellus ac cursus commodo??? <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-grin-alt text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+            "time" : "10:49"
+         },
+         {
+            "content": "Considering donec id elit non mi porta gravida at eget metus is undermined",
+            "time" : "10:50"
+         }
+       ]
+    }
+]

@@ -1,0 +1,45 @@
+<div class="col-12 col-sm-6 col-lg-3 p-0 p-md-2 my-2 my-sm-0">
+ <div class="px-1 pt-2 pb-25 d-flex align-items-center bgc-{{color}} radius-2">
+
+	<div class="flex-grow-1 pl-3">
+		{{#if number}}
+		 <div class="d-flex align-items-center justify-content-between justify-content-md-start">
+			<span class="text-white text-180 mr-2">{{number}}</span>
+			{{#if stat-success}}
+			 <div class="text-white text-95 radius-1 px-1 py-0 font-bolder">
+				{{stat-success}}
+				<i class="fas fa-level-up-alt text-180"></i>
+			 </div>
+			{{/if}}
+
+			{{#if stat-important}}
+			 <div class="text-yellow-l4 text-95 radius-1 px-1 py-0 font-bolder">
+				{{stat-important}}
+				<i class="fas fa-long-arrow-alt-down text-180 text-yellow-l4"></i>
+			</div>
+			{{/if}}
+		 </div>
+		{{/if}}
+
+		{{#if text}}
+		 <div class="text-blue-d2 text-105">{{text}}</div>
+		{{/if}}
+
+		{{#if content}}{{! sometimes we have two content texts like in smaller infoboxes, so use a loop }}
+		 <div class="text-nowrap text-white-tp1 text-600 text-100">{{#each content}}{{{this}}}{{/each}}</div>
+		{{/if}}
+	</div>
+
+
+	{{#if icon}}
+	 <div class="pl-1 mr-1">
+		<span class="d-inline-block p-2 radius-round text-center">
+        	<span class="text-200 ml-1 p-2 radius-2">
+				<i class="{{icon}} text-dark-tp5 text-160 opacity-3 w-6 pos-abs mt-n1 ml-n5"></i>
+			</span>
+        </span>
+	 </div>
+	{{/if}}
+
+ </div>
+</div>

@@ -1,0 +1,310 @@
+@import "variables";
+
+@mixin navbar-colors($theme, $navbar) {
+ .navbar-#{$theme} {
+    $navbar-background: map-get($navbar, 'background');
+    background-color: $navbar-background;
+
+    $border: map-get($navbar, 'border');
+    $shadow: map-get($navbar, 'shadow');
+    .navbar-inner {
+        @if $border != null {
+            border-bottom: 1px solid $border;
+        }
+    }
+
+    .navbar-brand {
+        color: map-get($navbar, 'brand-color');
+    }
+
+
+    .navbar-toggler {
+        &:hover , &:focus {
+            background-color: map-get($navbar, 'toggler-hover-color');
+            background-color: map-get($navbar, 'toggler-hover-background');
+        }
+        &[aria-expanded="true"] {
+            @if map-get($navbar, 'toggler-active-background') != null or lightness(map-get($navbar, 'background')) < 90 {
+                background-color: map-get($navbar, 'toggler-active-color');
+                background-color: map-get($navbar, 'toggler-active-background');
+            }
+            @else {
+                background-color: desaturate(darken(map-get($navbar, 'background') , 2%), 8%);
+            }
+        }
+    }
+
+    .navbar-nav {
+        > .nav > .nav-item > .nav-link:not(.disabled) {
+            color: map-get($navbar, 'link-color');
+            background-color: map-get($navbar, 'link-background');
+        }
+
+        @if $sidebar-focus-highlight == true {
+            > .nav > .nav-item:hover > .nav-link:not(.disabled) , > .nav > .nav-item > .nav-link:not(.disabled):focus {
+                color: map-get($navbar, 'link-hover-color');
+                background-color: map-get($navbar, 'link-hover-background');
+            }
+        }
+        @else {
+            > .nav > .nav-item:hover > .nav-link:not(.disabled) {
+                color: map-get($navbar, 'link-hover-color');
+                background-color: map-get($navbar, 'link-hover-background');
+            }
+        }
+
+        > .nav > .nav-item > .nav-link:active:not(.disabled) {
+            color: map-get($navbar, 'link-active-color');
+            background-color: map-get($navbar, 'link-active-background');
+        }    
+        
+        > .nav.has-active-border > .nav-item > .nav-link:not(.disabled)::before {
+            // border-bottom-color: map-get($navbar, 'link-show-border');
+            background-color: map-get($navbar, 'link-show-border');
+        }
+
+        > .nav > .nav-item.show > .nav-link:not(.disabled) {
+            color: map-get($navbar, 'link-show-color');
+            background-color: map-get($navbar, 'link-show-background');
+        }
+
+        > .nav > .nav-item > .nav-link.disabled {
+            color: map-get($navbar, 'link-disabled-color');
+            background-color: map-get($navbar, 'link-disabled-background');
+        }
+    }
+
+
+
+    @include media-breakpoint-up($navbar-desktop-min-width) {
+        
+        .navbar-intro {
+            $intro-background: map-get($navbar, 'intro-background');
+            @if $intro-background != null {
+                background-color: $intro-background;
+            }
+            @else if lightness($navbar-background) < 60 {
+                background-color: shade($navbar-background, 9%);
+            }            
+        }
+
+        @at-root .body-container > .navbar-#{$theme} .navbar-intro {
+            $intro-border: map-get($navbar, 'intro-border');
+            @if $intro-border {
+                border-right: 1px solid $intro-border;
+            }
+        }
+
+        .navbar-nav {
+
+            $item-border: map-get($navbar, 'item-border');
+            @if $item-border != null {
+                > .nav > .nav-item {
+                    border: 0px solid $item-border;
+                }
+                > .nav > .nav-item {
+                    border-width: 0 0 0 1px;
+                }
+                > .nav > .nav-item:last-of-type {
+                    border-width: 0 1px;
+                }
+
+                > .nav > .nav-item.show,
+                > .nav > .nav-item.show + .nav-item {
+                    border-color: map-get($navbar, 'item-active-border');
+                }
+            }
+           
+            //small (not full height) item borders
+            $item-border-sm: map-get($navbar, 'item-border-sm');
+            @if $item-border-sm != null {
+                > .nav > .nav-item {
+                    border-width: 0 !important;                    
+                    margin-left: 3px;
+                    
+                    > .nav-link {
+                        position: relative;
+                        &::after {
+                            content: "";
+                            display: block;
+                            position: absolute;
+
+                            top: 20%;
+                            bottom: 20%;
+                            right: -2px;
+                            
+                            border-width: 0;
+                            border-left: 1px solid $item-border-sm;
+                        }
+                    }
+                }
+                > .nav > .nav-item:last-of-type > .nav-link::after {
+                    display: none;
+                }
+            }
+            @else {
+                > .nav > .nav-item > .nav-link::after {
+                    content: none;
+                }
+            }
+        }
+    }//@media desktop
+
+
+
+    //mobile view
+    @include media-breakpoint-down($navbar-mobile-max-width) {
+
+        //for light navbars, navbar becomes white in mobile view
+        @if lightness( map-get($navbar, 'background') ) > 80 {
+            &.navbar {
+                background-color: #fff;
+            }
+            .navbar-inner {
+                box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.075) !important; //override shadow-md, etc classes
+                $border-color: map-get($navbar, 'border');
+                @if $border-color == null {
+                    $border-color: #e6eaed;
+                }
+                border-bottom: 1px solid $border-color;
+            }
+            .navbar-intro {
+                background-color: #fff !important;
+            }
+
+            //.navbar-collapse {
+                //border-width: 0 !important;
+                //padding-top: 2px;
+                //box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.15), 0 5px 5px 0 rgba(0, 0, 0, 0.15);
+            //}
+        }
+
+
+        .navbar-input {
+            border-bottom-color: map-get($navbar, 'input-focus-border');
+        }
+   
+
+        .navbar-collapse {
+            //box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.1);
+            $border-mobile: map-get($navbar, 'mobile-menu-border');
+            @if $border-mobile {
+                border: 0px solid $border-mobile;
+                border-width: 1px 0;
+            }
+
+            > .navbar-nav > .nav > .nav-item {
+                border-bottom: 1px solid map-get($navbar, 'mobile-nav-item-border');
+   
+                &.dropdown.show {
+                    @if lightness(map-get($navbar, 'background')) > 80 {
+                        $nav-item-bg: map-get($navbar, 'mobile-nav-item-background');
+                        @if $nav-item-bg != null {
+                            background-color: $nav-item-bg;    
+                        }
+                        @else {
+                            background-color: map-get($navbar, 'background');
+                        }
+
+                        .dropdown-menu {
+                            border: 1px solid rgba(0, 0, 0, 0.09) !important;
+                            margin-top: 1px;
+                        }
+                    }
+                    @else {
+                        background-color: map-get($navbar, 'mobile-nav-item-background');
+                    }
+                }
+
+                ////////////////////
+                > .nav-link.active {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+
+                //for light navbars
+                @if lightness(map-get($navbar, 'background')) > 80 {
+                    @if $sidebar-focus-highlight == true {
+                        > .nav-link:hover , > .nav-link:focus {
+                            background-color: map-get($navbar, 'background');
+                            color: map-get($navbar, 'link-color');
+                        }
+                    }
+                    @else {
+                        > .nav-link:hover {
+                            background-color: map-get($navbar, 'background');
+                            color: map-get($navbar, 'link-color');
+                        }
+                    }
+                }
+
+                &.show > .nav-link {
+                    background-color: transparent;
+                    @if lightness(map-get($navbar, 'background')) > 80 {
+                        color: map-get($navbar, 'link-color');
+                    }
+                }
+            }  
+        }
+
+    }//@media mobile
+
+
+
+    //fixed
+    @include media-breakpoint-up($navbar-desktop-min-width) {
+        .navbar-fixed > .navbar-inner {
+           box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1), inset 1px -1px 0px 0px rgba(0,0,0,0.05);
+        }
+        .navbar-fixed.container {
+           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+       
+           .navbar-inner {
+               left: auto;
+               right: auto;
+           }
+        }
+    }//@media desktop
+
+
+
+    .navbar-input {
+        $input-color: map-get($navbar, 'input-color');
+        color: $input-color;
+
+        background-color: map-get($navbar, 'input-background');
+                
+        border-width: map-get($navbar, 'input-border-width');
+        border-style: solid;
+        border-color:  map-get($navbar, 'input-border');
+
+        &:focus {
+            border-color: map-get($navbar, 'input-focus-border');
+            background-color: map-get($navbar, 'input-focus-background');
+        }
+        &:not(:focus):hover {
+            border-color: map-get($navbar, 'input-hover-border');
+            background-color: map-get($navbar, 'input-hover-background');
+        }
+
+        $placeholder: map-get($navbar, 'input-placeholder');
+        @if $placeholder != null {
+            &::placeholder {
+                color: rgba($placeholder, 0.8);
+            }
+            &::-moz-placeholder {
+                color: $placeholder;
+            }
+        }
+        @else {
+            &::placeholder {
+                color: rgba($input-color, 0.8);
+            }
+            &::-moz-placeholder {
+                color: $input-color;
+            }
+        }
+    }
+
+
+ }//.navbar-theme
+}

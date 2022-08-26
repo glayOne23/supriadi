@@ -1,0 +1,37 @@
+<div class="card pt-2 border-0 h-100">
+	<div class="card-header bg-transparent border-0 brc-primary-l1 pl-1">
+		<h5 class="card-title text-primary-d2">
+			Popular Pages
+		</h5>
+	</div>
+
+	<div class="card-body p-0 d-flex flex-column">
+		<div class="flex-grow-1 table-responsive-sm overflow-hidden">
+			<table class="table table-borderless table-striped-light border-0">
+				<tbody>
+					{{#each (get "domains")}}
+					<tr>
+						<td class="text-dark-m1 px-1 px-xl-2">
+							<span class="d-inline-block w-1 h-1 p-15 radius-round bgc-{{color}} mr-1"></span>
+							{{name}}
+						</td>
+
+						<td class="px-0">
+							<span class="text-truncate d-inline-block col-9">
+								<a href="#" class="px-0 align-middle text-primary">{{url}}</a>
+							</span>
+							<a href="#" class="text-90 fa fa-external-link-alt text-secondary-d1 align-middle bgc-h-warning-l1 text-center p-1"></a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="my-25 mx-4 text-center">
+			<button type="button" class="btn w-50 btn-sm btn-bold btn-lighter-purple border-1">
+				More Pages
+			</button>
+		</div>
+	</div>
+</div>

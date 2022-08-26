@@ -1,0 +1,131 @@
+<nav class="navbar navbar-sm navbar-fixed-xl navbar-expand-lg navbar-white">
+ <div class="navbar-inner shadow-md">
+  <div class="container container-plus">
+
+
+    <div class="navbar-intro justify-content-xl-start bgc-transparent pr-lg-3 w-auto">
+
+        <button type="button" class="btn btn-burger burger-arrowed static collapsed ml-2 d-flex d-xl-none btn-h-white" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+           <span class="bars text-dark-tp5"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <button type="button" class="btn btn-burger burger-compact align-self-center ml-2 d-none d-xl-flex btn-h-light-primary" data-toggle="sidebar" data-toggle-class="collapsed-h" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+            <span class="bars text-dark-tp5"></span>
+        </button><!-- sidebar toggler button -->
+
+        <a class="navbar-brand text-dark-l1 ml-lg-1" href="#">
+            <i class="fa fa-leaf text-success"></i>
+            <span>Ace</span>
+            <span>App</span>
+        </a><!-- /.navbar-brand -->
+
+    </div><!-- /.navbar-intro -->
+
+
+    <!-- breadcrumbs -->
+    <div class="navbar-content d-none d-xl-flex">
+        <ol class="breadcrumb pl-2 ml-3">
+            {{#each breadcrumbs}}
+                {{#if @last}}<li class="breadcrumb-item active text-dark-l4">{{title}}</li>
+                {{else}}<li class="breadcrumb-item"><a class="text-dark-l1" href="{{getPageLink link}}">{{title}}</a></li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    </div>
+
+
+    <div class="navbar-content flex-grow-0 ml-auto">
+        <button type="button" id="id-nav-post-btn" class="btn btn-sm px-2 btn-outline-grey btn-h-outline-green btn-h-text-grey btn-a-outline-green btn-bold btn-brc-tp mx-lg-2">
+            <i class="fa fa-plus bgc-green radius-round w-3 h-3 text-center mr-lg-1 text-white pt-15 text-95"></i>
+            <span class="d-none d-lg-inline">Create New</span>
+        </button>
+    </div>
+
+
+    <!-- mobile #navbarMenu toggler button -->
+    <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="pos-rel">
+            <img class="radius-3px mr-1 brc-grey-m2 border-1" width="36" src="assets/image/avatar/avatar6.jpg" alt="Jason's Photo">
+            <span class="badge badge-dot bgc-orange-d1 position-tr mr-1px mt-n1"></span>
+        </span>
+    </button>
+
+    
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+      
+      <div class="navbar-nav">
+        <ul class="nav nav-compact has-active-border">
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle px-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-bell text-110 icon-animated-bell mr-lg-2"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Notifications</span><!-- show only on mobile -->
+                    <span class="d-none d-lg-block badge badge-dot bgc-danger position-tr mt-3 mr-35"></span>
+                    <span class="d-lg-none w-1 h-1 radius-round bgc-danger ml-2"></span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none ml-auto"></i>
+                </a>
+                <div class="dropdown-menu dropdown-sm dropdown-animated p-0 bgc-white brc-primary-m3 border-b-2 shadow">
+                    {{> layout/_commons/navbar-notifmenu}}
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a href="#" class="nav-link pl-lg-3 pr-lg-4 pos-rel">
+                    <i class="far fa-envelope text-110 icon-animated-vertical"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Messages</span><!-- show only on mobile -->
+                    <span class="d-none d-lg-block text-600 text-orange-d3 text-85 position-tr mt-15 mr-2">+2</span>
+                    <span class="d-lg-none text-600 text-orange-d3 text-90 ml-2">(+2)</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item dropdown order-first order-lg-last dropdown-hover">
+               <a class="nav-link dropdown-toggle px-lg-2 ml-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="assets/image/avatar/avatar6.jpg" height="42" alt="Jason's Photo">
+    
+                    <span class="d-inline-block d-lg-none">Welcome, Jason</span><!-- show only on mobile -->
+
+                    <i class="caret fa fa-ellipsis-v d-none d-xl-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dropdown-menu-right brc-primary-m3">
+                    <div class="d-none d-lg-block">
+                        <div class="dropdown-header">
+                            Welcome, Jason
+                        </div>
+                        <div class="dropdown-divider"></div>
+                    </div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-light-blue btn-a-light-primblueary" href="{{getPageLink 'page-profile'}}">
+                        <i class="fa fa-user text-primary-m1 text-105 mr-1"></i>
+                        Profile
+                    </a>
+                    
+                    <a class="dropdown-item btn btn-outline-grey btn-h-light-green btn-a-light-green" href="#" data-toggle="modal" data-target="#id-ace-settings-modal">
+                        <i class="fa fa-cog text-success-m1 text-105 mr-1"></i>
+                        Settings
+                    </a>
+
+                    <div class="dropdown-divider brc-secondary-l2"></div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-light-orange btn-a-light-orange" href="{{getPageLink 'page-login'}}">
+                        <i class="fa fa-power-off text-orange-d2 text-105 mr-1"></i>
+                        Logout
+                    </a>
+                </div>
+            </li><!-- /.nav-item:last -->
+
+        </ul><!-- /.navbar-nav menu -->
+      </div><!-- /.navbar-nav -->
+
+   </div><!-- /.navbar-menu.navbar-collapse -->
+
+
+  </div><!-- /.container -->
+ </div><!-- /.navbar-inner -->
+</nav>

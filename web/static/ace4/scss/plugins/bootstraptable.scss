@@ -1,0 +1,108 @@
+$bsTableSelectedBg: bgc-color('success', 'l3');
+$bsTableToolbarBg: bgc-color('primary', 'l4');
+$bsTableFooterBg: bgc-color('primary', 'l4');
+
+$bsTableToolbarBorder: bgc-color('grey', 'l2');
+$bsTableFooterBorder: bgc-color('grey', 'l2');
+
+@if $plugin-bootstraptable == true {
+
+    .fixed-table-pagination, .fixed-table-toolbar {
+        border-style: solid;
+        border-width: 1px 0;
+        padding: 0.25rem 1.25rem;
+    }
+    .fixed-table-toolbar {
+        background-color: $bsTableToolbarBg;
+        margin-bottom: -1px;
+        border-color: $bsTableToolbarBorder;
+    }
+    .fixed-table-pagination {
+        background-color: $bsTableFooterBg;
+        margin-top: -1px;
+        border-color: $bsTableFooterBorder;
+    }
+
+
+    .bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
+        border-bottom-width: 0;
+    }
+    .bootstrap-table .fixed-table-container {
+        position: static; //the default `relative` value causes problems in border, etc
+    }
+
+    .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+        background-color: $bsTableSelectedBg;
+    }
+
+
+    //card view
+    .bootstrap-table .fixed-table-container .table tbody tr .card-view .card-view-title {
+        width: 7.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        padding-right: 0.5rem;
+        font-weight: $font-semibold;
+    }
+    .bootstrap-table .fixed-table-container .table tbody tr .card-view {
+        margin-bottom: 0.625rem;
+    }
+    .bootstrap-table .fixed-table-container .table tbody tr .card-view > label {
+        margin-bottom: 0;
+    }
+
+
+    // the caret sorting icons in table header
+    @if $plugin-bootstraptable-sorticonsize != null {
+
+        $sort-caret-size: $plugin-bootstraptable-sorticonsize;
+        .bootstrap-table th .sortable {
+            background-image: none !important;
+            position: relative;
+            
+            &::before, &::after {
+                display: block;
+                content: "";
+
+                width: 0;
+                height: 0;
+
+                position: absolute;
+                right:  1.5 * $sort-caret-size;
+
+                top: 50%;
+                bottom: auto;
+
+                opacity: 0.3;
+
+                color: inherit;
+
+                border-right: $sort-caret-size solid transparent;
+                border-left: $sort-caret-size solid transparent;
+            }
+
+            &::before {
+                border-bottom: $sort-caret-size solid currentColor;
+                border-top: none;    
+                
+                margin-top: -$sort-caret-size;
+            }
+
+            &::after {
+                border-top: $sort-caret-size solid currentColor;
+                border-bottom: none;    
+                
+                margin-top: 0.125rem;//2px
+            }
+            
+            &.asc::before, &.desc::after {
+                opacity: 1;
+            }
+        }
+
+    }//$plugin-bootstraptable-sorticonsize
+
+
+}//@if plugin

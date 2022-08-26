@@ -1,0 +1,163 @@
+//custom animated icons
+@if $animated-icons == true {
+
+.icon-animated-bell {
+  display: inline-block;
+  animation: ringing 2.0s 5 ease 1.0s;
+  transform-origin: 50% 0%;
+}
+@keyframes ringing {
+  0% { transform: rotate(-15deg);}
+  2% { transform: rotate(15deg);}
+  4% { transform: rotate(-18deg);}
+  6% { transform: rotate(18deg);}
+  8% { transform: rotate(-22deg);}
+  10% { transform: rotate(22deg);}
+  12% { transform: rotate(-18deg);}
+  14% { transform: rotate(18deg);}
+  16% { transform: rotate(-12deg);}
+  18% { transform: rotate(12deg);}
+  20% { transform: rotate(0deg);}
+}
+
+
+
+.icon-animated-vertical  {
+  display: inline-block;
+  animation: vertical 2.0s 5 ease 2.0s;
+}
+@keyframes vertical {
+  0% { transform: translate(0,-3px);}
+  4% { transform: translate(0,3px);}
+  8% { transform: translate(0,-3px);}
+  12% { transform: translate(0,3px);}
+  16% { transform: translate(0,-3px);}
+  20% { transform: translate(0,3px);}
+  22% { transform: translate(0,0);}
+}
+
+
+
+.icon-animated-hand-pointer  {
+  display: inline-block;
+  animation: hand-pointer 2.0s 4 ease 2.0s;
+}
+@keyframes hand-pointer {
+  0% { -moz-transform: translate(0,0);}
+  6% { -moz-transform: translate(5px,0);}
+  12% { -moz-transform: translate(0,0);}
+  18% { -moz-transform: translate(5px,0);}
+  24% { -moz-transform: translate(0,0);}
+  30% { -moz-transform: translate(5px,0);}
+  36% { -moz-transform: translate(0,0);}
+}
+
+
+
+
+.icon-animated-wrench {
+  display: inline-block;
+  animation: wrenching 2.5s 4 ease;
+  transform-origin: 90% 35%;
+}
+@keyframes wrenching {
+  0% { transform: rotate(-12deg);}
+  8% { transform: rotate(12deg);}
+
+  10% { transform: rotate(24deg);}
+  18% { transform: rotate(-24deg);}
+    
+  20% { transform: rotate(-24deg);}
+  28% { transform: rotate(24deg);}
+ 
+  30% { transform: rotate(24deg);}
+  38% { transform: rotate(-24deg);}
+
+  40% { transform: rotate(-24deg);}
+  48% { transform: rotate(24deg);}
+
+  50% { transform: rotate(24deg);}
+  58% { transform: rotate(-24deg);}
+
+  60% { transform: rotate(-24deg);}
+  68% { transform: rotate(24deg);}
+
+  75% { transform: rotate(0deg);}
+}
+
+
+@keyframes blinking {
+  0% { opacity: 1;}
+  40% { opacity: 0;}
+  80% { opacity: 1;}
+}
+
+@keyframes pulsating {
+  0% { transform: scale(1);}
+  5% { transform: scale(0.75);}
+  10% { transform: scale(1);}
+  15% { transform: scale(1.25);}
+  20% { transform: scale(1);}
+  25% { transform: scale(0.75);}
+  30% { transform: scale(1);}
+  35% { transform: scale(1.25);}
+  40% { transform: scale(1);}
+}
+
+////////
+
+@keyframes blinkAndpulse
+{
+    50%
+    {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
+
+.typing-dots {
+  color: #aaa;
+  visibility: hidden;
+  display: inline-block;
+  line-height: 0;
+
+  letter-spacing: -0.1875rem;
+
+  white-space: nowrap;
+
+  .typing-dot {
+    visibility: visible;
+    position: relative;
+    display: inline-block;
+
+    color: inherit;
+ 
+    opacity: 0.4;
+
+    //border-radius: 0.5rem;
+    //width: 0.25rem;
+    min-height: 0.625rem;
+
+    vertical-align: middle;
+
+    animation: 1.5s blinkAndpulse infinite 0.5s;
+
+    &:nth-child(2) {
+      animation-delay: 1s;
+    }
+    &:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+@if $enable-prefers-reduced-motion-media-query {
+  @media (prefers-reduced-motion: reduce) {
+    [class*="icon-animated"], .typing-dot {
+      animation: none !important;
+    }
+  }
+}
+
+}

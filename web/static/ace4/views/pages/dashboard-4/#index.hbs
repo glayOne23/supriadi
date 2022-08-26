@@ -1,0 +1,120 @@
+<div class="page-header border-0">
+    <h1 class="page-title text-primary-d2 text-160">
+        {{title}}
+        <small class="page-info text-secondary-d3">
+            <i class="fa fa-angle-double-right text-80"></i>
+            overview &amp; stats
+        </small>
+    </h1>
+
+    <div class="page-tools d-flex align-items-end btn-group">
+        <button type="button" class="btn px-25 py-2 text-95 btn-text-purple btn-lighter-default btn-h-lighter-purple btn-a-lighter-purple border-b-2">
+            <i class="fa fa-save text-120"></i>
+        </button>
+        
+        <button type="button" class="btn px-25 py-2 text-95 btn-text-success btn-lighter-default btn-h-lighter-success btn-a-lighter-success border-b-2">
+            <i class="fa fa-undo text-110"></i>
+        </button>
+
+        <div class="btn-group dropdown dd-backdrop dd-backdrop-none-md">
+			<button type="button" class="btn px-25 py-2 text-95 btn-text-info btn-lighter-default btn-h-lighter-info btn-a-lighter-info dropdown-toggle border-b-2" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-search text-110"></i>
+			</button>
+			<div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated animated-2 dd-slide-up dd-slide-none-md">
+             <div class="dropdown-inner">
+				<a class="dropdown-item" href="#">Action</a>
+				<a class="dropdown-item" href="#">Another action</a>
+				<a class="dropdown-item" href="#">Something else here</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Separated link</a>
+			 </div>
+            </div>
+		</div>
+    </div>
+</div>
+
+
+
+
+
+<div class="px-2">
+    <div class="row">
+      {{> page/infobox}}
+    </div>
+</div>
+
+
+
+
+<hr class="mx-n3 mt-45 mb-0 brc-secondary-l2 opacity-2" />
+
+
+
+
+<div class="row px-3">
+    <div class="col-12 col-lg-6 pb-25 pt-35">
+        {{> page/revenue-expense-chart}}
+    </div>
+
+
+    <div class="col-12 col-lg-6 pt-35 pb-25 pos-rel">
+        <div class="d-none d-lg-block position-tl h-100 border-r-1 brc-secondary-l3"></div><!-- the border line between two columns (in desktop) -->
+        <div class="d-lg-none position-tl w-100 border-b-1 brc-secondary-l3"></div><!-- the border line between two rows (in mobile) -->
+
+        <!-- page views -->
+        {{> page/page-views-chart}}
+
+        <div class="w-100 border-t-2 brc-secondary-l3 mt-1"></div> <!-- the 2px line separating pageviews chart and piecharts -->
+
+        <!-- Pie charts -->
+        {{> page/traffic-pie-charts}}
+    </div>
+</div>
+
+
+
+
+<hr class="mx-n3 mt-0 brc-secondary-l opacity-2" />
+
+
+
+
+<div class="row mt-45">
+    <!-- task board -->
+    <div class="col-12 col-xl-8">
+        {{> page/tasks}}
+    </div>
+
+
+    <!-- chat -->
+    <div class="col-12 col-xl-4 mt-2 mt-xl-0">
+        {{> page/conversation}}
+    </div>
+</div>
+
+
+
+
+<hr class="mx-n3 mt-5 mb-0 brc-secondary-l2 opacity-2" />
+
+
+
+
+<div class="row">
+    <div class="col-lg-4 border-r-1 brc-secondary-l3">
+        {{> page/pages}}
+
+        <div class="d-lg-none position-bl w-100 border-b-1 brc-secondary-l3"></div><!-- the border line between sections in mobile -->
+    </div>
+
+
+    <div class="col-lg-4 border-r-1 brc-secondary-l3">
+        {{> page/activity}}
+        <div class="d-lg-none position-bl w-100 border-b-1 brc-secondary-l3"></div><!-- the border line between sections in mobile -->
+    </div>
+    
+
+    <div class="col-lg-4">
+        {{> page/members}}
+    </div>
+</div><!-- /.row -->

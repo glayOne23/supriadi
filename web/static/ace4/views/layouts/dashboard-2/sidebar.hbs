@@ -1,0 +1,24 @@
+<div class="sidebar-inner">
+
+  <div class="ace-scroll flex-grow-1 mt-1px" data-ace-scroll="{}">
+    <!-- all sidebar header is inside scrollable area -->
+    {{> layout/dashboard-2/sidebar-header}}
+  
+
+    <!-- optional `nav` tag -->
+    <nav aria-label="Main">
+      <ul class="nav flex-column mt-2 has-active-border active-on-top">
+      {{#each sidebarItems}}
+        {{> layout/_commons/sidebar-item}}
+      {{/each}}
+      </ul>
+    </nav>
+
+  </div><!-- /.ace-scroll -->
+
+
+  <div class="sidebar-section">
+    {{> layout/dashboard-2/sidebar-footer}}
+  </div>
+
+</div>

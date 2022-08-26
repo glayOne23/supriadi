@@ -1,0 +1,136 @@
+.navbar {
+	padding: 0;
+	flex: 0 0 auto;
+	
+	height: map-get($navbar-common, 'height');
+	height: var(--navbar-height);
+
+	visibility: hidden;
+
+	z-index: $zindex-navbar + 2;//to be above horizontal sidebar
+}
+.main-content .navbar {
+    z-index: $zindex-navbar - 2;//because .main-container .sidebar-fixed is 'zindex-navbar - 1'
+}
+.main-content .navbar-open {
+    z-index: $zindex-navbar - 1;//to appear above settings, etc
+}
+
+.navbar-open {
+	z-index: $zindex-navbar + 3;//to appear above .sidebar and .asides
+}
+.navbar-modal {
+    z-index: $zindex-navbar + 4 !important;//to appear above .sidebar and .asides
+}
+
+@include media-breakpoint-down($sidebar-mobile-max-width) {
+    .main-content .navbar {
+        z-index: $zindex-navbar - 1;//to appear above settings, etc
+    }
+}
+
+
+@if map-get($navbar-common, 'sm-height') != null {
+  .navbar-sm {
+	height: map-get($navbar-common, 'sm-height');
+	height: var(--navbar-sm-height);
+  }
+}
+
+
+// navbar mobile height is applied when sidebar becomes mobile view (i.e. hidden)
+@if map-get($navbar-common, 'mobile-height') != null {
+	@include media-breakpoint-down($sidebar-mobile-max-width) { 
+		.navbar {
+			height: map-get($navbar-common, 'mobile-height');
+			height: var(--navbar-mobile-height);
+		}
+	}
+}
+
+
+.navbar-inner {
+	height: inherit;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+
+	background-color: inherit;
+
+	visibility: visible;
+}
+.navbar.container > .navbar-inner {
+	max-width: inherit;
+
+	//margin-left: auto;
+	//margin-right: auto;
+}
+.navbar-inner.container {
+	padding: 0;
+	flex-wrap: nowrap;
+}
+.navbar-inner > .container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	align-items: stretch;
+
+	padding: 0;	
+	height: 100%;
+
+	background-color: inherit;
+
+	position: relative;
+}
+
+
+.navbar-brand {
+	margin-left: 0.875rem;
+	font-size: map-get($navbar-common, 'brand-font-size');
+}
+
+.navbar-intro {
+	display: flex;
+	align-items: center;
+
+	height: 100%;
+}
+.body-container > .navbar .navbar-intro {
+	width: map-get($sidebar-common, 'width');
+    width: var(--sidebar-width);
+}
+
+.navbar-content {
+	display: flex;
+	align-items: center;
+	height: 100%;
+
+	flex: 1 0 auto;//flex grow
+}
+
+.navbar-toggler {
+	&:focus {
+		outline: none;
+	}
+}
+
+
+.navbar-input {
+	outline: none;
+	width: 320px;
+	max-width: 100%;
+	@include transition(all $transition-general);
+}
+
+
+//mobile view
+@include media-breakpoint-down($navbar-mobile-max-width) {
+	.navbar-content {
+		//justify-content: end;
+		margin-left: auto;
+		background-color: inherit;//takes the color of navbar
+
+		flex: 0 0 auto;
+	}
+}

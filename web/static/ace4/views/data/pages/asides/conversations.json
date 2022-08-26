@@ -1,0 +1,22 @@
+[
+ {
+   "name" : "Bob Doe",
+   "avatar" : "BD",
+   "color": "purple",
+   "time" : "4 sec",
+   "message" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis."
+ },
+ {
+   "name" : "Alex",
+   "avatar" : "avatar2.jpg",
+   "time" : "3 min",
+   "message" : "Raw denim you probably haven't heard of them jean shorts Austin."
+ },
+ {
+   "name" : "Bob Doe",
+   "avatar" : "BD",
+   "color": "purple",
+   "time" : "38 sec",
+   "message" : "Raw denim you probably haven't heard of them jean shorts Austin."
+ }
+]

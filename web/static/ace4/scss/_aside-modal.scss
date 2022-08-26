@@ -1,0 +1,1130 @@
+$keepBodyScrollbars: true; // Body scrollbars won't be hidden when a modal is opened but user still can't scroll body using MouseWheel
+$modalWiggle: 0.25rem; // if $keepBodyScrollbars is true, when scrolling body using MouseWheel, there's `0.25rem` wiggling for the modal
+                       // which you can adjust (MINIMUM is 1px)
+
+
+.modal-header {  
+    border-bottom-color: $modal-header-border;
+}
+.modal-footer {    
+    border-top-color: $modal-header-border;
+    background-color: $modal-footer-bg;
+}
+//.modal-content {
+    //@include iefix(width, auto, flex-grow, 1);//for IE10
+//}
+
+
+@if $custom-asides == true {
+
+ //handle z-index of non blocking asides and modals
+ .ace-aside {
+    @include transition(z-index 0s $aside-duration);
+
+    &.aside-hover {
+        transition-delay: $aside-hover-delay-out + $aside-duration;
+    }
+    &.show, &.aside-hover:hover {
+        transition-delay: 0s;
+    }
+ }
+
+ .ace-aside.modal-nb {
+    pointer-events: none;
+    z-index: $zindex-navbar - 4;
+
+    &.show, &.aside-hover:hover {
+        // a displayed aside should be above others (by z-index) and z-index should go back to previous value after it is totally hidden
+        z-index: $zindex-navbar - 2;//to appear above `.main-content .navbar and .sidebar`
+    }
+ }
+
+ .ace-aside.aside-below-nav {
+    &.show, &.aside-hover:hover {
+        z-index: $zindex-navbar - 3;//always below .navbar
+    }
+ }
+
+ .ace-aside.aside-above-nav {//for example .aside-top's button should be above navbar to be visible        
+    z-index: $zindex-navbar + 2;
+    &.show, &.aside-hover:hover {
+        z-index: $zindex-navbar + 3;
+    }
+ }
+
+ .ace-aside.aside-above-nav-max {//for example .aside-top's button should be above navbar to be visible in mobile view when navbar dropdowns are opened     
+    z-index: $zindex-navbar + 4;
+    &.show, &.aside-hover:hover {
+        z-index: $zindex-navbar + 4;
+    }
+ }
+
+ .ace-aside.aside-shown-above-nav {// above nav only when shown      
+    &.show, &.aside-hover:hover {
+        z-index: $zindex-navbar + 3;
+    }
+ }
+
+ //blockig asides (z-index same as modals)
+ .ace-aside:not(.modal-nb) {
+    z-index: $zindex-navbar - 4;
+    &.show, &.aside-hover:hover {
+        z-index: $zindex-modal;
+    }
+ }
+
+
+
+ //blocking asides
+ .ace-aside:not(.modal-nb) {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+
+    &.aside-bottom {
+        //display: flex !important;
+        //align-items: flex-end;
+        
+        &:not(.aside-r):not(.aside-l):not(.aside-c) {
+            .modal-dialog {
+                //width: 100%;
+            }
+        }
+    }
+ }
+
+
+
+
+ //aside
+ .ace-aside {
+    display: block !important;    
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    width: auto;
+    height: auto;
+
+    visibility: hidden;//not visible by default
+
+    &.modal-nb {
+        overflow: visible !important;
+    }
+
+    
+    //for blocking modals, become visible again to respond to click events, etc
+    &.show:not(.modal-nb) {
+        visibility: visible;
+    }
+    &.aside-hover:not(.modal-nb):hover {
+        visibility: visible;
+    }
+
+
+    //don't apply 'fade' effect to asides
+    &.fade {
+        opacity: 1;
+
+        .modal-dialog {
+            transition-duration: $aside-duration;
+        }
+    }
+
+    
+    .modal-dialog {
+        margin: 0 auto;
+
+        display: flex;
+       
+        @include transition(transform $aside-duration);
+
+        max-width: none;
+
+        //aside header is used for buttons, etc to trigger asides
+        .aside-header {
+            pointer-events: all;
+
+            position: relative;
+
+            z-index: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            z-index: 2;
+        }
+    }
+
+    &.show .modal-dialog {
+        visibility: visible;//override parent .modal's `visibility:hidden`
+    }
+
+
+    //aside top and bottom
+    &.aside-top, &.aside-bottom {
+        left: 0;
+        right: 0;
+        width: 100%; //IE needs this
+
+        .modal-dialog {
+            align-items: center;
+            transform: translateY(0);
+        }
+        
+        .aside-header {
+            height: $aside-header;
+        }
+    }
+
+    &.aside-top {
+        top: 0;
+        bottom: auto;
+        height: auto;
+
+        display: flex !important;// so that .modal-dialog's `max-height: 100%` is applied
+        max-height: 100%;
+
+        .modal-dialog {
+            transform: translateY(-100%);
+            flex-direction: column;
+
+            margin-top: 0;
+
+            max-height: 100%;
+            width: 100%;
+        }
+
+        .modal-content {
+            border-width: 0 0 1px 0;
+            max-height: 100%;
+        }
+        .aside-header + .modal-content , .aside-header + .modal-body {
+            order: -1;
+        }
+
+        &.aside-offset .modal-dialog {//leave .aside-header visible out in the window
+            transform: translateY(-100%) translateY($aside-header);
+        }
+
+        &.show, &.aside-hover:hover {
+            .modal-dialog {
+                transform: translateY(0);
+            }
+
+            &.margin-1 .modal-dialog {
+                transform: translateY(0.25rem);
+            }
+            &.margin-2 .modal-dialog {
+                transform: translateY(0.5rem);
+            }
+            &.margin-3 .modal-dialog {
+                transform: translateY(1rem);
+            }
+            &.margin-4 .modal-dialog {
+                transform: translateY(1.5rem);
+            }
+            &.margin-5 .modal-dialog {
+                transform: translateY(3rem);
+            }
+        }
+    }
+
+    &.aside-bottom {
+        bottom: 0;
+        top: auto;
+
+        display: flex !important;// so that .modal-dialog's `max-height: 100%` is applied
+        max-height: 100%;
+
+        .modal-dialog {
+            transform: translateY(100%);
+            flex-direction: column;
+
+            margin-bottom: 0;
+
+            max-height: 100%;
+            width: 100%;
+        }
+
+        .modal-content {
+            border-width: 1px 0 0 0;
+            max-height: 100%;
+        }
+        .modal-content + .aside-header , .modal-body + .aside-header {
+            order: -1;
+        }
+
+        &.aside-offset .modal-dialog {//leave .aside-header visible out in the window
+            transform: translateY(100%) translateY(-$aside-header);
+        }
+
+        &.show, &.aside-hover:hover {
+            .modal-dialog {
+                transform: translateY(0);
+            }
+            &.margin-1 .modal-dialog {
+                transform: translateY(-0.25rem);
+            }
+            &.margin-2 .modal-dialog {
+                transform: translateY(-0.5rem);
+            }
+            &.margin-3 .modal-dialog {
+                transform: translateY(-1rem);
+            }
+            &.margin-4 .modal-dialog {
+                transform: translateY(-1.5rem);
+            }
+            &.margin-5 .modal-dialog {
+                transform: translateY(-3rem);
+            }
+        }
+    }
+
+    //topleft, topright, topcenter ... bottomleft, bottomright, bottomcenter
+    //only in combination with .aside-top and .aside-bottom
+    &.aside-l, &.aside-r, &.aside-c {
+        .modal-dialog {
+            width: $aside-width;
+            max-width: $aside-maxwidth;
+        }
+    }
+    &.aside-l {
+        .modal-dialog {
+            margin-left: 0;
+        }
+    }
+    &.aside-r {
+        .modal-dialog {
+            margin-right: 0;
+        }
+    }
+
+
+    //aside right and left
+    &.aside-right, &.aside-left {
+        top: 0;
+        bottom: 0;
+        height: auto;// override *height: 100%* of `.ace-aside:not(.modal-nb)`
+
+        .modal-dialog {
+            align-items: center;
+  
+            width: $aside-width;
+            max-width: $aside-maxwidth;
+
+            height: 100%;
+            max-height: 100%;
+     
+            .modal-content {
+                height: 100%;
+            }
+
+            .aside-header {
+                width: $aside-header;    
+                flex: 0 0 auto;
+
+                word-break: break-all;
+            }
+        }
+    }
+
+    &.aside-right {
+        right: 0;
+        left: auto;
+
+        .modal-dialog {
+            transform: translateX(100%);
+            flex-direction: row;
+
+            margin-right: 0;
+        }
+
+        .modal-content {
+            border-width: 0 0 0 1px;
+        }
+
+        .modal-content + .aside-header, .modal-body + .aside-header {
+            order: -1;
+        }
+
+        &.aside-offset .modal-dialog {//leave .aside-header visible out in the window
+            transform: translateX(100%) translateX(-$aside-header);
+        }
+
+        &.show, &.aside-hover:hover {
+            .modal-dialog {
+                transform: translateX(0);
+            }
+
+            &.margin-1 .modal-dialog {
+                transform: translateX(-0.25rem);
+            }
+            &.margin-2 .modal-dialog {
+                transform: translateX(-0.5rem);
+            }
+            &.margin-3 .modal-dialog {
+                transform: translateX(-1rem);
+            }
+            &.margin-4 .modal-dialog {
+                transform: translateX(-1.5rem);
+            }
+            &.margin-5 .modal-dialog {
+                transform: translateX(-3rem);
+            }
+        }
+    }
+    &.aside-left {
+        left: 0;
+        right: auto;
+
+        .modal-dialog {
+            transform: translateX(-100%);
+            flex-direction: row;
+
+            margin-left: 0;
+        }
+
+        .modal-content {
+            border-width: 0 1px 0 0;
+        }
+
+        .aside-header + .modal-content , .aside-header + .modal-body {
+            order: -1;
+        }
+
+        &.aside-offset .modal-dialog {//leave .aside-header visible out in the window
+            transform: translateX(-100%) translateX($aside-header);
+        }
+
+        &.show, &.aside-hover:hover {
+            .modal-dialog {
+                transform: translateX(0);
+            }
+
+            &.margin-1 .modal-dialog {
+                transform: translateX(0.25rem);
+            }
+            &.margin-2 .modal-dialog {
+                transform: translateX(0.5rem);
+            }
+            &.margin-3 .modal-dialog {
+                transform: translateX(1rem);
+            }
+            &.margin-4 .modal-dialog {
+                transform: translateX(1.5rem);
+            }
+            &.margin-5 .modal-dialog {
+                transform: translateX(3rem);
+            }
+        }
+    }
+
+
+
+    //only in combination with .aside-right & .aside-left
+    //aside middle
+    &.aside-m {
+        margin-top: auto;
+        margin-bottom: auto;
+
+        .modal-dialog {
+            max-height: calc(100% - 2rem);
+            height: 400px;
+            
+            //to center align it
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+    
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        
+    }
+
+
+    ////////
+
+    &.aside-center {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        display: flex !important;
+        visibility: hidden;
+        align-items: center;
+        justify-content: center;
+
+        .modal-dialog {
+            width: $aside-width;
+            max-width: $aside-maxwidth;
+
+            max-height: calc(100% - #{map-get($navbar-common, 'navbar-height')});
+            max-height: calc(100% - var(--navbar-height));
+        }
+    }
+
+
+    ///////
+    // aside below navbar
+
+    &.aside-below-nav {
+        padding-top: map-get($navbar-common, 'height');
+        padding-top: var(--navbar-height);
+    }
+
+
+    @if map-get($navbar-common, 'sm-height') != null {
+        @include media-breakpoint-up($sidebar-desktop-min-width) {
+            @at-root .navbar-sm ~ div .ace-aside.aside-below-nav {
+                padding-top: map-get($navbar-common, 'sm-height');
+                padding-top: var(--navbar-sm-height);
+            }
+        }
+    }
+    @if map-get($navbar-common, 'mobile-height') != null {
+        @include media-breakpoint-down($sidebar-mobile-max-width) {
+            &.aside-below-nav {
+                padding-top: map-get($navbar-common, 'mobile-height');
+                padding-top: var(--navbar-mobile-height);
+            }
+        }
+    }
+    
+
+    //and hide content when out of view (to hide shadows, etc)    
+    .modal-content , &:not(.aside-offset) .aside-header {
+        visibility: hidden;
+        transition: visibility 0s $aside-duration;
+        
+    }
+    &.show, &.aside-hover:hover {
+        .modal-content , &:not(.aside-offset) .aside-header {
+            visibility: visible;
+            transition-delay: 0s; 
+        }
+    }
+ }
+
+
+
+
+ //make body or content scrollable in long asides
+ .ace-aside {
+    /**
+    .modal-content.scroll-body {
+        max-height: 100%;
+        overflow: hidden;
+
+        .modal-body {
+            overflow: hidden auto;
+            flex: 2 1 auto;
+        }
+    }
+    */
+
+    .modal-content.scroll-content {
+        max-height: 100%;
+        overflow: hidden auto;
+    }
+ }
+
+
+
+ //////////////
+ //aside inside container
+ //only when .container is applied
+ @include media-breakpoint-up($container-min-width-allowed) {
+    .container {
+        .aside-right.container, .aside-left.container {
+            transform: none;
+            
+            right: 0;
+            left: 0;    
+            width: 100%;           
+
+            //&:not(.show) {
+            //   overflow: hidden !important;//use clip-path instead to preserve shadows, etc
+            //}
+
+            clip-path: inset(-30px 0px -30px 0px);//so that shadows above and below .modal-content are visible but beyond .container are not
+        }
+
+        .aside-right.container {
+            .modal-dialog {
+                margin-right: 0;
+            }
+        }
+        .aside-left.container {
+            .modal-dialog {
+                margin-left: 0;
+            }
+        }
+
+
+        //blocking aside inside container from left or right
+        .container:not(.modal-nb) {
+            &.aside-left, &.aside-right {
+                min-width: 100%;
+                max-height: none;
+
+                .modal-dialog {
+                    max-width: inherit;
+    
+                    width: auto;
+                    margin: auto;
+                    justify-content: flex-end;
+                    align-items: center;
+    
+                    .modal-content {
+                        width: $aside-width;
+                        max-width: $aside-maxwidth;
+                    }
+                }
+            }
+
+            &.aside-top, &.aside-bottom {
+                min-width: 100%;
+
+                .modal-dialog {
+                    max-width: inherit;    
+                    width: 100%;
+
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            &.aside-r, &.aside-l, &.aside-c {
+                .modal-content {
+                    width: $aside-width;
+                    max-width: $aside-maxwidth;
+                }
+            }
+            &.aside-l .modal-dialog {
+                align-items: flex-start;
+            }
+            &.aside-r .modal-dialog {
+                align-items: flex-end;
+            }
+        }
+  
+
+        .aside-m.container:not(.modal-nb) {
+            .modal-dialog {
+                max-height: calc(100% - 2rem);
+
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+
+    }//.container
+
+ }//@media
+
+
+
+ //aside fade effect
+ .ace-aside.aside-fade {
+    &.aside-offset {
+        opacity: 1;
+    }
+    
+   .modal-dialog {
+       transform: none !important;
+       visibility: hidden;
+    }
+
+  .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+
+    @include transition(transform $aside-duration 0s, opacity $aside-duration 0s, visibility 0s $aside-duration);
+
+    z-index: 2;
+  }
+  .aside-header {
+      z-index: 1;
+      visibility: visible;
+
+      &.fade {
+          opacity: 1;
+          @include transition(all $aside-duration);
+      }
+  }
+
+  &.show, &.aside-hover:hover {
+    .modal-content {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+
+        transition-delay: 0s;
+    }
+
+    //with .fade class .aside-header will fade out when .modal-content is shown
+    .aside-header.fade {
+        transform: scale(0.75);
+        opacity: 0;
+    }
+  }
+
+  ///////////////
+
+  &.aside-right {
+    .modal-content, .aside-header {
+        transform-origin: right center;
+    }
+  }
+  &.aside-left {
+    .modal-content, .aside-header {
+        transform-origin: left center;
+    }
+  }
+
+  &.aside-top {
+    .modal-content, .aside-header {
+        transform-origin: top center;
+    }
+    &.aside-r {
+        .modal-content, .aside-header {
+            transform-origin: top right;
+        }
+    }
+    &.aside-l {
+        .modal-content, .aside-header {
+            transform-origin: top left;
+        }
+    }
+  }
+
+  &.aside-bottom {
+    .modal-content, .aside-header {
+        transform-origin: bottom center;
+    }
+    &.aside-r {
+        .modal-content, .aside-header {
+            transform-origin: bottom right;
+        }
+    }
+    &.aside-l {
+        .modal-content, .aside-header {
+            transform-origin: bottom left;
+        }
+    }
+  }  
+
+ }
+
+
+
+ //aside-hover
+ //aside display on hover
+ .aside-hover {
+    .modal-dialog {
+        transition-delay: $aside-hover-delay-out;
+    }
+
+    &:hover .modal-dialog {
+        transition-delay: $aside-hover-delay-in;
+    }
+ }
+
+
+
+ //adjustsments because of modal padding and body.modal-open , etc
+ //$modal-padding: 17px;//for IE, etc
+ body.modal-open:not(.scrollbar-w0):not(.modal-blur) {
+    &.modal-nb {
+        overflow-y: auto;
+        padding-right: 0 !important;
+    }
+
+    @include media-breakpoint-up($container-min-width-allowed) {
+     &:not(.modal-nb) {
+        @if $sticky-navbar != true {
+            .navbar-fixed:not(.container) .navbar-inner {
+                //padding-right: $modal-padding;
+                padding-right: var(--modal-padding);
+                //or
+                //right: var(--modal-padding);
+            }
+        }
+        .container .footer-fixed .footer-inner {
+            //left: -1 * $modal-padding;
+            left: calc(-1 * var(--modal-padding));
+        }
+     }
+    }
+ }
+
+
+ body.modal-open:not(.modal-nb):not(.scrollbar-w0):not(.modal-blur) {
+    .aside-top, .aside-bottom {
+        //padding-right: $modal-padding !important;
+        padding-right: var(--modal-padding) !important;
+
+        //&.show:not(.modal-nb) {
+            //padding-right: 0 !important;
+        //}
+    }
+    .aside-center .modal-dialog {
+        //right: $modal-padding;
+        right: var(--modal-padding);
+    }
+ }
+
+
+ body.modal-open.modal-scroll:not(.modal-nb):not(.scrollbar-w0):not(.modal-blur) {
+    .aside-right {
+        //padding-right: $modal-padding !important;
+        padding-right: var(--modal-padding) !important;
+    }
+    .aside-right.aside-m {
+        //right: $modal-padding !important;
+        right: var(--modal-padding) !important;
+    }
+ }
+
+ //without .modal-scroll, right asides like settings dialog, don't move anymore
+ //if you uncomment the following, right asides like settings dialog, don't move anymore when another modal is opened
+ //.modal-open:not(.modal-nb) {
+ //    .aside-right {
+ //        padding-right: var(--modal-padding) !important;
+ //    }
+ //    .aside-right.aside-m {
+ //        right: var(--modal-padding) !important;
+ //    }
+ //}
+
+ @include media-breakpoint-down($container-max-width-not-allowed) {
+    body.modal-open.modal-scroll:not(.modal-nb):not(.scrollbar-w0):not(.modal-blur) {
+        @if $sticky-navbar != true {
+            .navbar-fixed .navbar-inner {
+                padding-right: var(--modal-padding);
+            }
+        }
+    }
+ }//media
+
+
+ @include media-breakpoint-up($container-min-width-allowed) {
+    body.modal-open.modal-scroll:not(.modal-nb):not(.scrollbar-w0):not(.modal-blur) {
+        @if $sticky-navbar != true {
+            .navbar-fixed .navbar-inner.container {
+                right: var(--modal-padding);
+                padding-right: 0;
+            }
+        }
+    }
+    body.modal-open:not(.modal-nb):not(.scrollbar-w0):not(.modal-blur) .container {
+        .ace-aside.container {
+            
+            &.aside-top,
+            &.aside-bottom {
+                //left: -1 * $modal-padding;
+                left: calc(-1 * var(--modal-padding));
+                padding-right: 0 !important;//override above rule
+            }
+
+            //&.aside-r,
+            &.aside-right {
+                //padding-right: ($modal-padding / 2) !important;
+                padding-right: calc( var(--modal-padding) / 2 ) !important;
+
+                clip-path: inset(-30px calc( var(--modal-padding) / 2 ) -30px 0px);//so that shadows outside container are clipped
+            }
+
+
+            &.aside-left {
+                //left: -1 * $modal-padding;
+                left: calc(-1 * var(--modal-padding));
+            }
+
+        }
+    }
+ }//media
+
+
+
+
+ //if browser supports "overscroll-behavior" then let's not hide body scrollbars and use CSS features instead to disable scroll chaining
+ //so that our elements are not unnecessarily moved and body scrollbars remain visible (which is prettier)
+ //first condition only targets webkit, and second one only new versions of firefox that support scrollbar-width: none as well
+ @if $keepBodyScrollbars == true {
+  @supports ((overscroll-behavior: none) and (-webkit-appearance: none) and (-webkit-box-reflect: above)) or ((overscroll-behavior: none) and (scrollbar-width: none)) {
+    body.modal-open:not(.modal-nb):not(.modal-scroll):not(.scrollbar-w0):not(.modal-blur) {
+        .aside-top, .aside-bottom {
+            padding-right: 0 !important;
+        }
+        .aside-center .modal-dialog {
+            right: 0;
+        }
+
+        @include media-breakpoint-up($container-min-width-allowed) {
+            @if $sticky-navbar != true {
+                .navbar-fixed:not(.container) .navbar-inner {
+                    padding-right: 0;
+                }
+            }
+
+            .container .footer-fixed .footer-inner {
+                left: 0;
+            }
+
+            .container {
+               .ace-aside.container {
+                   
+                   &.aside-top,
+                   &.aside-bottom {
+                       left: 0;
+                       padding-right: 0 !important;//override above rule
+                   }
+           
+                   //&.aside-r,
+                   &.aside-right {
+                       padding-right: 0 !important;
+           
+                       //clip-path: inset(-30px calc( var(--modal-padding) / 2 ) -30px 0px);//so that shadows outside container are clipped
+                   }
+           
+           
+                   &.aside-left {
+                       left: 0;
+                   }
+           
+               }
+            }//.container
+        }
+    }
+
+
+    body.modal-open:not(.modal-nb):not(.modal-scroll):not(.scrollbar-w0):not(.modal-blur) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow-y: auto;
+        
+        .modal[aria-modal=true] {
+            overscroll-behavior: none;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            overflow-y: auto;
+            
+            //scrollbar-color: transparent transparent;
+            scrollbar-width: none;            
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0px;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1px;
+                height: calc(100% + #{$modalWiggle});//a little wiggling
+                
+                pointer-events: none;
+            }
+        }
+        .ace-aside[aria-modal=true]::before {
+            height: calc(100% + 1px);
+        }
+
+
+        .modal-dialog-scrollable .modal-body {
+            overscroll-behavior: none;
+        }
+
+        .container  {
+            .ace-aside.container {
+                &.aside-top,
+                &.aside-bottom {
+                    left: 0;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+
+  }//@supports (overscroll-behavior: none)
+ }//$keepBodyScrollbars
+
+ .aside-fs {
+    &, .modal-dialog, .modal-content {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    $duration: $aside-duration * 1.5;
+    &.fade {
+        &, .modal-dialog {
+            transition-duration: $duration;
+        }
+        &:not(.show) .modal-content {
+            transition-delay: $duration;
+        }
+    }
+
+    .modal-dialog, .modal-content {
+        max-width: none !important;
+        max-height: none !important;
+    }
+ }
+
+
+ //fullscreen modal
+ .modal-fs {
+    padding-right: 0 !important;
+
+    .modal-dialog {
+        width: 100%;
+        height: 100%;
+
+        max-width: calc(100vw - #{$modal-dialog-margin * 2});
+        max-height: calc(100vh - #{$modal-dialog-margin * 2});
+
+        .modal-content {
+            min-height: 100%;
+        }
+
+        @include media-breakpoint-up(sm) {
+            max-width: calc(100vw - #{$modal-dialog-margin-y-sm-up * 2});
+            max-height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
+        }
+    }
+ }
+
+ //lg & xl
+ @include media-breakpoint-up(lg) {
+    .modal-lg,
+    .modal-xl {
+        max-width: none;
+        .modal-dialog {
+            max-width: $modal-lg;
+        }
+    }
+ }
+
+ @include media-breakpoint-up(xl) {
+    .modal-xl { 
+        max-width: none;
+        .modal-dialog {
+            max-width: $modal-xl;
+        }
+    }
+ }
+
+
+
+ //static modal with to moving
+ .modal-dialog-static {
+    transform: none !important; 
+ }
+
+ //fade in from bottom
+ .modal-dialog-bottom {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 auto;
+
+    transform: none !important;
+
+    height: calc(100% - #{$modal-dialog-margin});
+
+    @include media-breakpoint-up(sm) {
+        height: calc(100% - #{$modal-dialog-margin-y-sm-up});
+    }
+ }
+
+ //blurred background
+ @supports (filter: none) {
+    body.modal-blur .body-container {
+        filter: blur(2.5px);
+        overflow: hidden;
+    }
+
+    @include media-breakpoint-down(xs) {
+        .modal[data-blur] .modal-dialog {
+            max-width: calc(100vw - 1rem);
+        }
+    }
+ }
+ @supports (backdrop-filter: none) {
+    .modal-backdrop.modal-blur {
+        backdrop-filter: blur(10px);
+    }
+ }
+
+
+ //static modals/asides
+ @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  
+        .modal-off#{$infix} {
+            position: relative;
+            overflow: visible;
+            opacity: 1 !important;
+
+            display: block !important;
+            display: contents !important;
+
+            z-index: auto !important;
+
+            
+            &:not(.modal-nb) {//for sticky elements
+                overflow: visible !important;
+            }
+            &.ace-aside.aside-below-nav {
+                padding-top: 0;
+            }
+
+            .modal-dialog-scrollable {
+                .modal-content, .modal-body {
+                    overflow: visible;
+                    max-height: none;
+                }
+            }
+
+
+            &::before {
+                display: none;
+            }
+
+            .modal-dialog {
+                visibility: visible;
+                transform: none !important;
+                transition: none;
+
+                max-width: none !important;
+                width: auto !important;
+
+                height: auto !important;
+                //max-height: none !important;
+
+                display: unset;
+            }
+            
+            .modal-content {
+                visibility: visible;
+                transition: none;
+            }
+        }
+    }
+ }
+
+}//@if $custom-asides

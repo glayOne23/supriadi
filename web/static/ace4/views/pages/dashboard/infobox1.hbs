@@ -1,0 +1,58 @@
+<div class="row h-100 mx-n425">
+{{#each (get "stats1")}}
+
+ <div class="col-12 col-sm-4 p-0 pos-rel mt-3 mt-sm-0 pt-0 pt-sm-0 text-center">
+ 	<div class="ccard h-100 d-flex flex-column mx-2 px-2 py-3">
+		<div class="d-flex text-center">
+			<div class="flex-grow-1 mb-3">
+				{{#if text}}
+					<div class="text-nowrap text-100 text-dark-l2">
+						{{text}}
+					</div>
+				{{/if}}
+
+				{{#if content}}
+					<div class="text-nowrap text-125 text-secondary-d3">{{{content}}}</div>
+				{{/if}}
+
+				{{#if number}}
+				<div>
+					{{#if dollar-sign}}<span class="text-150 text-secondary-d1 mr-n1">$</span>{{/if}}
+					<span class="text-170 text-secondary-d4">
+						{{number}}
+					</span>
+
+					{{#if stat-success}}
+					<span class="text-blue text-nowrap ml-n1">
+						+{{stat-success}}
+						<i class="fa fa-caret-up"></i>
+					</span>
+					{{/if}}
+				</div>
+				{{/if}}
+			</div>
+		</div>
+
+
+		{{#if progress}}
+		<div class="align-self-center pos-rel text-{{textColor}}">
+			<canvas class="infobox-progress-chart" style="width: 180px;" data-percent="{{progress}}"></canvas>
+			<span class="position-center text-600 text-110 text-dark-tp4">
+				{{progress}}%
+			</span>
+		</div>
+
+		{{else if chart}}	 
+		<div class="align-self-center w-95">
+			<canvas class="infobox-line-chart ml-n15 mt-n2" style="height: 64px; width: 100%;" data-values="[{{chart}}]"></canvas>
+		</div>
+		{{/if}}
+
+		{{#if button}}
+		 {{{button}}}
+		{{/if}}
+	</div><!-- /.ccard -->
+ </div><!-- /.col -->
+
+{{/each}}
+</div><!-- /.row -->

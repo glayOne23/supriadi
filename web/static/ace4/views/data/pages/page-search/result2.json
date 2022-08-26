@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Thumbnail label",
+        "location": "New York",
+        "time": "30 min ago",
+        "price": 109,
+        "premium": true,
+        "sale": true
+    },
+    {
+        "title": "Thumbnail label",
+        "location": "London",
+        "price": 99,
+        "time": "1 hour ago",
+        "new": true
+    },
+    {
+        "title": "Thumbnail label",
+        "location": "Dubai",
+        "time": "2 hour ago",
+        "price": 45,
+        "urgent": true
+    },
+    {
+        "title": "Thumbnail label",
+        "location": "Mumbai",
+        "price": 64,
+        "time": "1 day ago"
+    }
+]

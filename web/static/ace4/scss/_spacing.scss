@@ -1,0 +1,446 @@
+
+.mw-auto {
+    min-width: auto !important;  
+}
+.mw-none {
+    max-width: none !important;
+}
+.mh-auto {
+    min-height: auto !important;  
+}
+.mh-none {
+    max-height: none !important;
+}
+.minh-100 {
+    min-height: 100% !important;
+}
+.minw-100 {
+    min-width: 100% !important;
+}
+
+.w-inherit {
+    width: inherit !important;
+}
+.h-inherit {
+    height: inherit !important;
+}
+
+.w-90 {
+    width: 90% !important;
+}
+.h-90 {
+    height: 90% !important;
+}
+.w-95 {
+    width: 95% !important;
+}
+.h-95 {
+    height: 95% !important;
+}
+
+.w-98 {
+    width: calc(100% - 2px) !important;
+}
+.h-98 {
+    height: calc(100% - 2px) !important;
+}
+
+.w-101 {
+    width: calc(100% + 1px) !important;
+}
+.h-101 {
+    height: calc(100% + 1px) !important;
+}
+.w-102 {
+    width: calc(100% + 2px) !important;
+}
+.h-102 {
+    height: calc(100% + 2px) !important;
+}
+
+
+.w-1 {
+    width: 0.5rem;
+}
+.w-2 {
+    width: 1rem;
+}
+.w-3 {
+    width: 1.5rem;
+}
+.w-4 {
+    width: 2rem;
+}
+.w-5 {
+    width: 2.5rem;
+}
+.w-6 {
+    width: 3rem;
+}
+.h-1 {
+    height: 0.5rem;
+}
+.h-2 {
+    height: 1rem;
+}
+.h-3 {
+    height: 1.5rem;
+}
+.h-4 {
+    height: 2rem;
+}
+.h-5 {
+    height: 2.5rem;
+}
+.h-6 {
+    height: 3rem;
+}
+
+
+
+ //1px, 2px, etc margins and paddings
+ @for $i from 1 through 3 {
+    .m-#{$i}px {
+        margin: #{$i}px !important;
+    }
+    .m-n#{$i}px {
+        margin: -#{$i}px !important;
+    }
+
+    .mx-#{$i}px , .ml-#{$i}px {
+        margin-left: #{$i}px !important;
+    }
+    .mx-#{$i}px, .mr-#{$i}px {
+        margin-right: #{$i}px !important;
+    }
+    .mx-n#{$i}px , .ml-n#{$i}px {
+        margin-left: -#{$i}px !important;
+    }
+    .mx-n#{$i}px, .mr-n#{$i}px {
+        margin-right: -#{$i}px !important;
+    }
+
+    .my-#{$i}px , .mt-#{$i}px {
+        margin-top: #{$i}px !important;
+    }
+    .my-#{$i}px, .mb-#{$i}px {
+        margin-bottom: #{$i}px !important;
+    }
+    .my-n#{$i}px , .mt-n#{$i}px {
+        margin-top: -#{$i}px !important;
+    }
+    .my-n#{$i}px, .mb-n#{$i}px {
+        margin-bottom: -#{$i}px !important;
+    }
+
+
+    .p-#{$i}px {
+        padding: #{$i}px !important;
+    }
+    .px-#{$i}px , .pl-#{$i}px {
+        padding-left: #{$i}px !important;
+    }
+    .px-#{$i}px, .pr-#{$i}px {
+        padding-right: #{$i}px !important;
+    }
+    .py-#{$i}px , .pt-#{$i}px {
+        padding-top: #{$i}px !important;
+    }
+    .py-#{$i}px, .pb-#{$i}px {
+        padding-bottom: #{$i}px !important;
+    }
+
+}
+
+
+$_spacers:(
+    15: 0.375rem, //sits between m-1 and m-2
+    25: 0.75rem, //sits between m-2 and m-3
+    35: 1.25rem, //sits between m-3 and m-4
+    425: 1.75rem, //sits between m-4 and m-5
+    45: 2rem, //sits between m-4 and m-5
+    475: 2.5rem //sits between m-4 and m-5
+);
+//@each $breakpoint in map-keys($grid-breakpoints) {
+//    @include media-breakpoint-up($breakpoint) {
+      $infix: '';//breakpoint-infix($breakpoint, $grid-breakpoints);
+  
+      @each $prop, $abbrev in (margin: m, padding: p) {
+        @each $size, $length in $_spacers {
+          .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+          .#{$abbrev}t#{$infix}-#{$size},
+          .#{$abbrev}y#{$infix}-#{$size} {
+            #{$prop}-top: $length !important;
+          }
+          .#{$abbrev}r#{$infix}-#{$size},
+          .#{$abbrev}x#{$infix}-#{$size} {
+            #{$prop}-right: $length !important;
+          }
+          .#{$abbrev}b#{$infix}-#{$size},
+          .#{$abbrev}y#{$infix}-#{$size} {
+            #{$prop}-bottom: $length !important;
+          }
+          .#{$abbrev}l#{$infix}-#{$size},
+          .#{$abbrev}x#{$infix}-#{$size} {
+            #{$prop}-left: $length !important;
+          }
+        }
+      }
+  
+      @each $size, $length in $_spacers {
+        @if $size != 0 {
+          .m#{$infix}-n#{$size} { margin: -$length !important; }
+          .mt#{$infix}-n#{$size},
+          .my#{$infix}-n#{$size} {
+            margin-top: -$length !important;
+          }
+          .mr#{$infix}-n#{$size},
+          .mx#{$infix}-n#{$size} {
+            margin-right: -$length !important;
+          }
+          .mb#{$infix}-n#{$size},
+          .my#{$infix}-n#{$size} {
+            margin-bottom: -$length !important;
+          }
+          .ml#{$infix}-n#{$size},
+          .mx#{$infix}-n#{$size} {
+            margin-left: -$length !important;
+          }
+        }
+      }
+  
+      
+//    }
+//}
+
+
+
+
+
+
+//d-style = dynamic styling
+
+.d-style:not(.active ) .d-active,
+.d-style.active .d-n-active,
+
+.d-style:not(.collapsed ) .d-collapsed,
+.d-style.collapsed .d-n-collapsed,
+
+.d-style:not(:hover ) .d-hover,
+.d-style:hover .d-n-hover,
+
+.d-style:not(.show ) .d-show,
+.d-style.show .d-n-show {
+    display: none !important;
+}
+
+
+.v-active , .v-n-active,
+.v-show, .v-n-show,
+.v-collapsed, .v-n-collapsed,
+.v-hover , .v-n-hover {
+    @include transition(opacity $d-style-transition, visibility 0ms);
+    transition-delay: 0ms;
+}
+
+.d-style:not(.active ) .v-active,
+.d-style.active .v-n-active,
+
+.d-style:not(.collapsed ) .v-collapsed,
+.d-style.collapsed .v-n-collapsed,
+
+.d-style:not(.show ) .v-show,
+.d-style.show .v-n-show,
+
+.d-style:not(:hover ) .v-hover,
+.d-style:hover .v-n-hover {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0ms, $d-style-transition;
+}
+
+
+//moves when mouse is hovered or unhovered
+.mb-hover, .mb-n-hover,
+.mt-hover, .mt-n-hover,
+.mr-hover, .mr-n-hover,
+.ml-hover, .ml-n-hover {
+    @include transition(transform $d-style-transition, visibility 0ms);
+    transition-delay: 0ms;
+}
+.d-style:not(:hover) .mb-hover,
+.d-style:hover .mb-n-hover {
+    transform: translateY(100%);
+    visibility: hidden;
+    transition-delay: 0ms, $d-style-transition;
+}
+.d-style:not(:hover) .mt-hover,
+.d-style:hover .mt-n-hover {
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition-delay: 0ms, $d-style-transition;
+}
+.d-style:not(:hover) .mr-hover,
+.d-style:hover .mr-n-hover {
+    transform: translateX(100%);
+    visibility: hidden;
+    transition-delay: 0ms, $d-style-transition;
+}
+.d-style:not(:hover) .ml-hover,
+.d-style:hover .ml-n-hover {
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition-delay: 0ms, $d-style-transition;
+}
+
+
+.d-zoom-1, .d-zoom-2, .d-zoom-3, .dh-zoom-1, .dh-zoom-2, .dh-zoom-3 {
+    @include transition(transform $d-style-transition * 1.5);
+}
+.d-style:hover .d-zoom-1, .dh-zoom-1:hover {
+    transform: scale(1.06);
+}
+.d-style:hover .d-zoom-2, .dh-zoom-2:hover {
+    transform: scale(1.12);
+}
+.d-style:hover .d-zoom-3, .dh-zoom-3:hover {
+    transform: scale(1.18);
+}
+
+
+.v-active , .v-n-active,
+.v-show, .v-n-show,
+.v-collapsed, .v-n-collapsed,
+.v-hover , .v-n-hover {
+    @include transition(opacity $d-style-transition, visibility 0ms);
+    transition-delay: 0ms;
+}
+
+
+.d-style:not(:hover ) .f-n-hover,
+.d-style:hover .f-hover {
+    opacity: 0.86;
+    @include transition(opacity $d-style-transition);
+}
+.d-style:not(:hover ) .f-n-hover-2,
+.d-style:hover .f-hover-2 {
+    opacity: 0.74;
+    @include transition(opacity $d-style-transition);
+}
+.d-style:not(:hover ) .f-n-hover-3,
+.d-style:hover .f-hover-3 {
+    opacity: 0.63;
+    @include transition(opacity $d-style-transition);
+}
+
+
+
+//positionting
+.pos-rel {
+    position: relative !important;
+}
+.pos-abs {
+    position: absolute !important;
+}
+
+.position-tr,
+.position-tl,
+.position-br,
+.position-bl,
+.position-rc,
+.position-lc,
+.position-tc,
+.position-bc,
+.position-r,
+.position-l,
+.position-t,
+.position-b,
+.position-center {
+    position: absolute !important;
+    display: block;
+}
+
+.position-center {    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.position-tr {
+    right: 0;
+    top: 0;
+}
+.position-tl {
+    left: 0;
+    top: 0;
+}
+.position-br {
+    right: 0;
+    bottom: 0;
+}
+.position-bl {
+    left: 0;
+    bottom: 0;
+}
+.position-lc {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.position-rc {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.position-tc {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.position-bc {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.position-r {
+    right: 0;
+}
+.position-l {
+    left: 0;
+}
+.position-t {
+    top: 0;
+}
+.position-b {
+    bottom: 0;
+}
+
+.pos-fixed {
+    position: fixed !important;
+}
+.pos-sticky {
+    position: sticky !important;
+}
+
+//some extra ones
+.rotate-45 {
+    transform: rotate(45deg);
+}
+.rotate-n45 {
+    transform: rotate(-45deg);
+}
+
+.align-sub {
+    vertical-align: sub !important;
+}
+
+.overflow-visible {
+    overflow: visible !important;
+}
+
+.flex-equal > * {
+    flex: 1 1 auto;
+}
+.flex-fill > * {
+    flex-grow: 1;
+    flex-basis: 0;
+}

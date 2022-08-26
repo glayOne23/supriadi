@@ -1,0 +1,121 @@
+.sidebar {
+    flex: 0 0 auto;
+
+    width: map-get($sidebar-common, 'width');
+    width: var(--sidebar-width);
+    --active-border-offset-right: 0px;
+
+
+    position: relative;
+    z-index: $zindex-navbar;
+
+    visibility: hidden;
+
+    @at-root .navbar ~ .main-container > .sidebar:not(.sidebar-fixed) {
+        z-index: $zindex-sidebar;
+    }
+
+
+    .sidebar-inner {
+        width: inherit;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;//for IE10+ not to show scrollbars
+
+        padding: inherit;
+        visibility: visible;
+
+        display: flex;
+        flex-direction: column;
+    }
+    
+    //.sidebar-nav,
+    .ace-scroll,
+    .sidebar-section {
+        width: map-get($sidebar-common, 'width');
+        width: var(--sidebar-width);
+
+        white-space: nowrap;
+    }
+    
+
+    .fadeable {
+        @include transition(opacity $expandable-transition-duration 0s , visibility 0s $expandable-transition-duration);
+    }
+    .fadeinable {   
+        position: absolute;
+        left: 0;
+
+        width: map-get($sidebar-common, 'collapsed-width');
+        width: var(--sidebar-collapsed-width);
+        min-height: map-get($sidebar-common, 'fadeinable-height');
+    
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+
+        opacity: 0;
+        visibility: hidden;
+
+        @include transition(opacity $expandable-transition-duration 0s , visibility 0s 0s);
+        @include iefix(top, 0);
+    }    
+}
+
+
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+ .sidebar-right {
+    direction: rtl;
+    order: 10;
+    .sidebar-inner {
+        direction: ltr;
+    }
+ }
+
+ .sidebar {
+    // will-change: width;
+    @include transition(width $expandable-transition-duration);
+
+    &.toggling {
+        overflow: hidden;
+
+        &.collapsed .fadeable {
+            transition-delay: 0s , $expandable-transition-duration;//when collapsing, delay visibility:hidden
+        }
+        &:not(.collapsed) .fadeable {
+            transition-delay: 0s;//when uncollapsing, don't delay visibility:visible
+        }
+    }
+
+
+    &.collapsed {
+        width: map-get($sidebar-common, 'collapsed-width');
+        width: var(--sidebar-collapsed-width);
+
+        .fadeable {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .fadeinable {
+            opacity: 1;
+            visibility: visible;
+    
+            transition-delay: 0s, $expandable-transition-duration;
+        }
+    }
+
+
+    &.no-transition {
+        &, .sidebar-inner, .fadeable, .fadeinable, .hideable {
+            transition: none !important;
+        }
+    }
+
+ }//sidebar
+
+}//media
+
+

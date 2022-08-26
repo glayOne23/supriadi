@@ -1,0 +1,57 @@
+<div class="bcard card pt-1 pt-lg-2 h-100">
+    <div class="card-header bg-transparent brc-default-l3">
+        <h5 class="card-title text-dark-m2 pl-1 text-110">
+            Latest Activity
+        </h5>
+
+        <div class="card-toolbar align-self-center no-border">
+            <a href="#" class="btn btn-xs btn-lighter-default btn-h-light-warning btn-a-light-warning text-600 px-3 radius-round">
+                See all
+            </a>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="reload" class="card-toolbar-btn text-blue text-110">
+                <i class="fa fa-sync-alt"></i>
+            </a>
+            <a href="#" data-action="close" class="card-toolbar-btn text-danger-m1 text-110 ml-25">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body p-3 border-0">
+        {{#each (get "activity")}}
+            <div class="text-grey-m1 text-95">
+                <div class="d-flex">
+                    <div class="minh-100 pos-rel">
+                        <!-- the vertical line connecting activity icons -->
+                        {{#unless @last}}<div class="position-tl ml-4 h-100 border-l-3 brc-secondary-l1"></div>{{/unless}}
+
+                        <!-- the icon with white border to cover the above line -->
+                        <div class="pos-rel text-center pt-2 mx-2px w-6 h-6 border-4 brc-white radius-round bgc-{{color}} text-white">
+                            {{{icon}}}
+                        </div>
+                    </div>
+
+                    <div class="mx-2 flex-grow-1">
+                        <div>
+                            <a href="#" class="font-bolder btn-text-dark btn-h-text-danger">
+                                {{name}}
+                            </a>
+                            <div class="text-85 text-secondary ml-auto text-nowrap">
+                                {{time}}
+                            </div>
+                        </div>
+
+                        <div class="text-grey-d3 text-95 mt-15 pos-rel">
+                            {{summary}}
+                        </div>
+
+                        {{#unless @last}}<hr class="brc-secondary-l3" />{{/unless}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

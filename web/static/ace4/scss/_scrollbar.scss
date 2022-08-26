@@ -1,0 +1,209 @@
+// always scrollbars for mobile devices
+.ace-scroll-mob {
+    overflow-y: auto;
+}
+
+// simple scrollbars
+.ace-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb $scrollbar-track;
+
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+   
+    &::-webkit-scrollbar {
+        width: 8px;
+        //height: 8px; // for horizontal scrollbars
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $scrollbar-thumb;
+        border-right: 1px solid #fff;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: $scrollbar-track;
+        border-right: 1px solid #fff;
+    }
+
+    &.ace-scroll-grey:not(.ace-scroll-wrap) {
+        scrollbar-color: $scrollbar-grey-thumb $scrollbar-grey-track;
+        &::-webkit-scrollbar-thumb {
+            background-color: $scrollbar-grey-thumb;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: $scrollbar-grey-track;
+        }
+    }
+}
+
+@media (hover: hover) {
+ .ace-scrollbar:not(.ace-scroll-mob) {
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb $scrollbar-track;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px; // for horizontal scrollbars
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $scrollbar-thumb;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: $scrollbar-track;
+    }
+
+    &.ace-scroll-grey {
+        scrollbar-color: $scrollbar-grey-thumb $scrollbar-grey-track;
+        &::-webkit-scrollbar-thumb {
+            background-color: $scrollbar-grey-thumb;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: $scrollbar-grey-track;
+        }
+    }
+ }
+}
+
+.ace-scroll {
+    overflow-y: hidden;    
+
+    &:hover , &.is-always-on {
+        overflow-y: auto;//scroll;
+        overflow-y: overlay;
+    }
+}
+
+.ace-scroll-lock {
+    overscroll-behavior-y: none;
+    -ms-scroll-chaining: none;
+}
+
+
+
+//smooth scrollbars
+//.ace-scroll.ace-scroll-wrapp
+//it has a wrapper inside it (.ace-scroll-inner) ... in `JS` before adding this class to .ace-scroll we pass its `color` to .ace-scroll-inner
+
+.ace-scroll-wrap {
+    overflow-x: hidden;
+}
+
+//for webkit
+@supports (-webkit-appearance: none) and (overflow: overlay) {
+    .ace-scroll-wrap {
+        overflow-y: overlay;
+
+        color: transparent;
+        @include transition(color $scrollbar-transition-duration $scrollbar-transition-delay);
+
+        //display: flex;
+        //flex-direction: column;//so that .ace-scroll-inner's height is 100% (using flex-grow)
+
+        &.is-always-on {
+            color: $scrollbar-thumb;
+            transition: none;
+        }
+        &:hover {
+            color: $scrollbar-thumb;
+            transition-delay: $scrollbar-transition-delay2;
+        }
+
+        &.ace-scroll-grey {
+            &.is-always-on, &:hover {
+                color: $scrollbar-grey-thumb;
+            }
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: currentColor;//i.e. .ace-scroll-wrap's "color"
+            border-radius: 0.5rem;
+            border: 1px solid $scrollbar-background;
+            background-clip: content-box;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: $scrollbar-background;//default background color of ace-scroll, which should be updated somehow, if it's not white
+        }
+    }
+}
+
+//for firefox
+@supports (-moz-appearance: none) and (scrollbar-width: none) {
+    :root {
+        --moz-scrollbar-thin: 8px;
+    }
+    
+    .ace-scroll-wrap {
+        overflow-y: scroll;
+
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+        @include transition(scrollbar-color $scrollbar-transition-duration $scrollbar-transition-delay);
+
+        > .ace-scroll-inner {
+            min-width: calc(100% + var(--moz-scrollbar-thin));
+        }
+
+        &.is-always-on {
+            scrollbar-color: $scrollbar-thumb $scrollbar-background;
+            transition: none; 
+        }
+    
+        &:hover {
+            overflow-y: scroll;//required
+
+            scrollbar-color: $scrollbar-thumb $scrollbar-background;
+            transition-delay: $scrollbar-transition-delay2;
+        }
+
+        &.ace-scroll-grey {
+            &.is-always-on , &:hover {
+                scrollbar-color: $scrollbar-grey-thumb $scrollbar-background;
+            }
+        }
+    }
+
+    .ace-scroll:not(.ace-scroll-wrap):not(.is-always-on) {
+        overflow-x: hidden;//to hide horizontal scrollbars when we increase width of its children
+        &:hover {
+            > div, > p {
+                min-width: calc(100% + var(--moz-scrollbar-thin));//increase .ace-scroll's children's width (as much as size of thin scrollbar) so that content is not pushed when scrollbars become visible
+            }
+        }
+    }
+    //exclude sidebar
+    .sidebar .ace-scroll:not(.ace-scroll-wrap) {
+        &:hover {
+            > div , > p {
+                min-width: auto;
+            }
+        }
+    }
+}
+
+
+//older firefox in which custom scrollbars aren't supported
+@supports (-moz-appearance: none) and (not(scrollbar-width: none)) {
+    :root {
+        --moz-scrollbar-thin: 17px;// will be overwritten in `JS`
+    }
+    .ace-scroll:not(.is-always-on) {
+        overflow-x: hidden;//to hide horizontal scrollbars when we increase width of its children
+        &:hover {
+            overflow-y: scroll;
+            > div, > p > , table , .moz-scroll-block {
+                min-width: calc(100% + var(--moz-scrollbar-thin));//increase .ace-scroll's children's width (as much as size of thin scrollbar) so that content is not pushed when scrollbars become visible
+            }
+        }
+    }
+    //exclude sidebar
+    .sidebar .ace-scroll {
+        &:hover {
+            overflow-y: auto;
+            > div, > p > , table , .moz-scroll-block {
+                min-width: auto;
+            }
+        }
+    }
+}

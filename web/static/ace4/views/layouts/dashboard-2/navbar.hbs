@@ -1,0 +1,147 @@
+<nav class="navbar navbar-sm navbar-expand-lg navbar-fixed navbar-white">
+ <div class="navbar-inner shadow-md">
+
+    <button type="button" class="btn btn-burger align-self-center ml-25 mr-2 d-none d-xl-flex btn-h-lighter-blue" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+        <span class="bars text-default"></span>
+    </button><!-- sidebar toggler button -->
+
+
+    <div class="d-flex h-100 justify-content-xl-between align-items-center">
+        <button type="button" class="btn btn-burger burger-arrowed static collapsed ml-2 d-flex d-xl-none btn-h-lighter-blue" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+            <span class="bars text-default"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <a class="navbar-brand d-xl-none mx-1 text-dark-m3 text-130" href="#">
+            <i class="fa fa-leaf mr-2px text-success-m2 text-105"></i>
+            ACE App
+        </a>
+
+        <!-- the small Dashboard selection menu -->
+        <div class="d-inline-flex">
+            <h2 class="d-none d-xl-inline-block text-140 text-dark-m2 mb-0 pb-1">Dashboard</h2>
+
+            <div class="dropdown dropdown-hover dropdown-mega pos-rel ml-1 ml-sm-2 dd-backdrop dd-backdrop-none-md align-self-center">
+                <button type="button" class="btn btn-outline-lightgrey btn-h-primary btn-a-primary btn-xs border-b-2 px-15 py-2px dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-chevron-down text-85"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-xxs shadow-sm dropdown-center brc-secondary-l1 radius-1 p-0 dd-slide-up dd-slide-none-md">
+                 <div class="dropdown-inner">
+                    <div class="dropdown-header dropdown-clickable text-600 text-primary-d2 px-3 border-b-1 brc-secondary-l2 letter-spacing">
+                        Navigate to
+                    </div>
+
+                    <a class="d-style dropdown-item m-1px px-3 py-2 btn btn-outline-grey btn-bgc-tp border-l-4 btn-brc-tp radius-0 btn-h-outline-primary btn-a-outline-primary text-95" href="{{getPageLink 'dashboard'}}">
+                        <i class="w-3 f-n-hover fa fa-tachometer-alt"></i>
+                        Dashboard 1
+                    </a>
+
+                    <a class="d-style dropdown-item m-1px px-3 py-2 btn btn-outline-grey btn-bgc-tp border-l-4 btn-brc-tp radius-0 btn-h-outline-primary btn-a-outline-primary text-95" href="{{getPageLink 'dashboard-2'}}">
+                        <i class="w-3 f-n-hover fa fa-home"></i>
+                        Dashboard 2
+                        <span class="badge bgc-purple radius-round text-white text-85 float-right mt-15">2+</span>
+                    </a>
+
+                    <a class="d-style dropdown-item m-1px px-3 py-2 btn btn-outline-grey btn-bgc-tp border-l-4 btn-brc-tp radius-0 btn-h-outline-primary btn-a-outline-primary text-95" href="{{getPageLink 'dashboard-4'}}">
+                        <i class="w-3 f-n-hover fa fa-globe"></i>
+                        Dashboard 4
+                    </a>
+                 </div><!-- /.dropdown-inner -->
+                </div>
+            </div><!-- /.dropdown -->
+        </div>
+    </div>
+
+
+
+
+    <!-- search box for MOBILE view only -->
+    <div class="d-lg-none navbar-content flex-grow-0 ml-auto">
+        {{> layout/dashboard-2/navbar-search-mobile}}
+    </div>
+
+
+
+
+    <!-- #navbarMenu2 toggler -->
+    <button class="navbar-toggler mx-1 p-2 px-sm-3" type="button" data-toggle="collapse" data-target="#navbarMenu2" aria-controls="navbarMenu2" aria-expanded="false" aria-label="Toggle navbar menu 2">
+        <i class="fa fa-ellipsis-v text-secondary-m2"></i>
+    </button>
+
+
+    <div class="ml-auto navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu2">
+        {{> layout/dashboard-2/navbar-top-links}}
+    </div>
+
+
+
+
+    <!-- #navbarMenu toggler -->
+    <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu 1">
+        <img class="radius-round border-2 brc-primary-tp3 p-1px" src="assets/image/avatar/avatar3.jpg" width="36" alt="Natalie's Photo">
+    </button>
+
+
+    <div class="ml-auto mr-xl-3 navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+
+      <div class="navbar-nav">
+        <ul class="nav has-active-border">
+            
+            <!-- search box for DESKTOP view only -->
+            <li class="d-none d-lg-inline nav-item dd-backdrop dropdown dropdown-mega">
+                {{> layout/dashboard-2/navbar-search-desktop}}
+            </li>
+
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle mr-1px" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-list-alt mr-2 d-lg-none"></i>
+                    Mega
+                    <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="p-0 dropdown-menu dropdown-animated brc-primary-m3 border-b-2 ml-1 mr-1px w-auto bgc-default-l4">     
+                    {{> layout/_commons/navbar-megamenu}}
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell text-110 icon-animated-bell mr-lg-2"></i>
+                    <span class="d-inline-block d-lg-none ml-2">Notifications</span>
+                    <span id="id-navbar-badge1" class="badge badge-info radius-round text-75">3</span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+
+                <div class="shadow dropdown-menu dropdown-animated dropdown-sm p-0 brc-primary-m3 border-b-2 bgc-white">
+                    {{> layout/_commons/navbar-notifmenu}}
+                </div>
+            </li>
+
+            
+            <li class="nav-item dd-backdrop dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-flask text-110 icon-animated-vertical mr-lg-1"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Tasks</span><!-- show only on mobile -->
+                    <span id="id-navbar-badge2" class="badge badge-sm text-90 text-danger-m2">+2</span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                    <div class="dropdown-caret brc-warning-l2"></div>
+                </a>
+                <div class="shadow dropdown-menu dropdown-animated animated-1 dropdown-xs p-0 bg-white brc-warning-l1">             
+                    {{> layout/_commons/navbar-tasks}}
+                </div>
+            </li>
+
+
+        </ul>
+      </div>
+
+   </div>
+
+ 
+ </div>
+</nav>

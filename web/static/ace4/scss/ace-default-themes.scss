@@ -1,0 +1,29 @@
+//compile and include only the theme you want
+
+@import "navbar-theme-maker";
+@import "sidebar-theme-maker";
+
+$my-navbar-themes: (
+    "blue": $navbar-blue
+);
+$my-sidebar-themes: (
+    "light": $sidebar-light
+);
+
+/**
+// If you want to use a dark sidebar like "purple", you should also include "sidebar-color".
+// Except for `.sidebar-dark` and `.sidebar-dark2`
+$my-sidebar-themes: (
+    "color": $sidebar-color, // include before 'purple'
+    "purple": $sidebar-purple
+);
+*/
+
+@each $theme-name, $theme-values in $my-navbar-themes {
+    @include navbar-colors($theme-name, $theme-values);
+}
+
+@each $theme-name, $theme-values in $my-sidebar-themes {
+    @include sidebar-colors($theme-name, $theme-values);
+}
+

@@ -1,0 +1,262 @@
+$light-color-count: 5;
+$medium-color-count: 4;
+$dark-color-count: 3;
+
+$transparent-color-count: 4;
+$dark-borders: true;
+
+$border-size-count: 6;
+$border-radius-count: 5;
+
+@mixin background-color($name, $value) {
+    .bgc-#{$name} {
+        background-color: $value !important;
+    }
+    .brc-#{$name} {
+        border-color: $value !important;
+    }
+
+    @if not($name == 'black' or $name == 'white') {
+        @for $i from 1 through $transparent-color-count {
+            .bgc-#{$name}-tp#{$i} {//transparency
+                background-color: rgba($value, 1 - ($i*0.075)) !important;
+            }
+            .brc-#{$name}-tp#{$i} {//transparency
+                border-color: rgba($value, 1 - ($i*0.075)) !important;
+            }
+        }
+
+
+        @for $i from 1 through $dark-color-count {
+            $_value: bgc-color($name, 'd' + $i);
+
+            .bgc-#{$name}-d#{$i} {
+                background-color: $_value !important;
+            }
+            @if $dark-borders == true {
+                .brc-#{$name}-d#{$i} {
+                    border-color: $_value !important;
+                }
+            }
+        }
+
+
+        @for $i from 1 through $medium-color-count {
+            $_value: bgc-color($name, 'm' + $i);
+
+            @if lightness($_value) < 95 {//skip bgc-white-m3, etc ...
+                .bgc-#{$name}-m#{$i} {
+                    background-color: $_value !important;
+                }
+                .brc-#{$name}-m#{$i}, .brc-h-#{$name}-m#{$i}:hover {
+                    border-color: $_value !important;
+                }
+            }
+        }
+
+        @for $i from 1 through $light-color-count {
+            $_value: bgc-color($name, 'l' + $i);
+
+            @if lightness($_value) < 100 {//skip bgc-light-l4, etc ...
+                .bgc-#{$name}-l#{$i}, .bgc-h-#{$name}-l#{$i}:hover {
+                    background-color: $_value !important;
+                }
+                .brc-#{$name}-l#{$i} {
+                    border-color: $_value !important;
+                }
+            }
+        }
+    }
+}
+
+
+.bgc-current { background-color: currentColor !important; }
+.brc-current { border-color: currentColor !important; }
+
+.bgc-inherit { background-color: inherit !important; }
+.brc-inherit { border-color: inherit !important; }
+
+//generate color classes
+@each $name, $value in $background-colors {
+    @include background-color($name, $value);
+}
+
+
+
+.bgc-transparent {
+    background-color: transparent !important;
+}
+.brc-transparent {
+    border-color: transparent !important;
+}
+
+.brc-black { border-color: #000 !important; }
+.brc-white { border-color: #fff !important; }
+
+
+@for $i from 1 through 10 {
+    .bgc-black-tp#{$i} , .bgc-h-black-tp#{$i}:hover {
+        background-color: rgba(#000, 1 - ($i*0.091)) !important;
+    }
+    .brc-black-tp#{$i} {
+        border-color: rgba(#000, 1 - ($i*0.091)) !important;
+    }
+}
+@for $i from 1 through 10 {    
+    .bgc-white-tp#{$i} , .bgc-h-white-tp#{$i}:hover {
+        background-color: rgba(#fff, 1 - ($i*0.0925)) !important;
+    }
+    .brc-white-tp#{$i} {
+        border-color: rgba(#fff, 1 - ($i*0.0925)) !important;
+    }
+}
+.brc-black-tp11 {
+    border-color: rgba(0, 0, 0, 0.05) !important;
+}
+.bgc-black-tp11 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+
+
+.bgc-dark-grad {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.33) 100%);
+}
+.bgc-light-grad {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.33) 100%);
+}
+.bgc-white-grad {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.87) 0%, rgba(255, 255, 255, 0.33) 50%, rgba(255, 255, 255, 0.87) 100%);
+}
+
+
+.bg-none {
+    background-image: none !important;
+}
+
+
+
+[class*="bgc-h-"] {
+    transition: background-color $transition-general;
+}
+[class*="brc-h-"] {
+    transition: border-color $transition-general;
+}
+
+
+
+
+
+.border-0 {//override bootstrap's
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: transparent;
+}
+.border-none {
+    border-width: 0px !important;
+    border-style: solid;
+    border-color: transparent;
+}
+
+
+@for $i from 1 through $border-size-count {
+    .border-#{$i} {
+        border-width: $i*1px !important;
+        border-style: solid !important;
+        border-color: transparent;
+    }
+}
+
+@for $i from 0 through $border-size-count {
+    .border-t-#{$i} , .border-y-#{$i} {
+        border-top-width: $i*1px !important;        
+        border-top-style: solid !important;
+        border-top-color: transparent;
+    }
+    .border-b-#{$i} , .border-y-#{$i} {
+        border-bottom-width: $i*1px !important;
+        border-bottom-style: solid !important;
+        border-bottom-color: transparent;
+    }
+    .border-r-#{$i} , .border-x-#{$i} {
+        border-right-width: $i*1px !important;
+        border-right-style: solid !important;
+        border-right-color: transparent;
+    }
+    .border-l-#{$i} , .border-x-#{$i} {
+        border-left-width: $i*1px !important;
+        border-left-style: solid !important;
+        border-left-color: transparent;
+    }
+}
+
+.border-solid {
+    border-style: solid !important;
+}
+.border-dotted {
+    border-style: dotted !important;
+}
+.border-double {
+    border-style: double !important;
+}
+.border-dashed {
+    border-style: dashed !important;
+}
+////////
+
+
+@for $i from 0 through 5 {
+    .radius-#{$i} {
+      border-radius: ($i*0.25)*1rem !important;
+    }
+}
+@for $i from 1 through 3 {
+    .radius-#{$i}px {
+      border-radius: ($i)*1px !important;
+    }
+}
+@for $i from 0 through $border-radius-count {
+    .radius-l-#{$i} {
+        border-top-left-radius: ($i*0.25)*1rem !important;
+        border-bottom-left-radius: ($i*0.25)*1rem !important;
+    }
+    .radius-t-#{$i} {
+        border-top-left-radius: ($i*0.25)*1rem !important;
+        border-top-right-radius: ($i*0.25)*1rem !important;
+    }
+    .radius-r-#{$i} {
+        border-bottom-right-radius: ($i*0.25)*1rem !important;
+        border-top-right-radius: ($i*0.25)*1rem !important;
+    }
+    .radius-b-#{$i} {
+        border-bottom-left-radius: ($i*0.25)*1rem !important;
+        border-bottom-right-radius: ($i*0.25)*1rem !important;
+    }
+}
+
+.radius-round {
+    border-radius: 4rem !important;
+}
+.radius-l-round {
+    border-top-left-radius: 4rem !important;
+    border-bottom-left-radius: 4rem !important;
+}
+.radius-t-round {
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+}
+.radius-r-round {
+    border-bottom-right-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+}
+.radius-b-round {
+    border-bottom-left-radius: 4rem !important;
+    border-bottom-right-radius: 4rem !important;
+}
+
+.radius-50 {
+    border-radius: 50% !important;
+}
+.radius-100 {
+    border-radius: 100% !important;
+}

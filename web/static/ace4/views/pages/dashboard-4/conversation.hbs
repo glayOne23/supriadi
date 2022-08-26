@@ -1,0 +1,35 @@
+<div class="card border-0 h-100">
+    <div class="card-header bg-transparent border-0 pl-0">
+        <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+            <i class="far fa-comment-dots text-green-m1 mr-1 text-105"></i>
+            Live Chat
+        </h5>
+    </div>
+
+    <div id="conversations" class="card-body border-1 border-b-0 brc-secondary-l1 radius-t-1 bgc-secondary-l3 p-0">
+        <div class="px-1px" data-ace-scroll='{"height": 390, "smooth":true, "color": "grey"}'>
+            {{#each (get "conversations")}}
+             {{> page/conversation-item}}
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="card-footer p-0 bgc-white border-1 border-t-1 brc-secondary-l1 radius-b-1">
+        <div class="p-3">
+            <div class="input-group">
+                <input type="text" class="shadow-none form-control form-control-lg  pl-1 text-105 border-0" placeholder="Type your message ..." />
+                <div class="input-group-append">
+                    <button class="btn btn-white border-0 btn-sm radius-3px py-2 px-2 ml-2" type="button">
+                        <span class="fa-stack w-auto">
+                            <i class="fas fa-circle text-dark fa-stack-1x text-140"></i>
+                            <i class="fas fa-smile text-warning-m3 text-160 fa-stack-1x pos-rel"></i>
+                        </span>
+                    </button>
+                    <button class="btn btn-outline-info btn-sm radius-3px p-2 ml-2" type="button">
+                        <i class="fa fa-paper-plane text-150 w-3"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.card-footer -->
+</div><!-- /.card -->

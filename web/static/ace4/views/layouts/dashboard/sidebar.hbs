@@ -1,0 +1,22 @@
+<div class="sidebar-inner">
+
+ <div class="ace-scroll flex-grow-1" data-ace-scroll="{}">
+  
+  <div class="sidebar-section my-2">
+   {{> layout/dashboard/sidebar-header}}
+  </div>
+
+  <ul class="nav has-active-border active-on-right">
+   {{#each sidebarItems}}
+     {{> layout/_commons/sidebar-item}}
+   {{/each}}
+  </ul>
+
+ </div><!-- /.sidebar scroll -->
+
+ 
+ <div class="sidebar-section">
+   {{> layout/dashboard/sidebar-footer}}
+ </div>
+
+</div>

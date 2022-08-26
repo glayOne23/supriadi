@@ -1,0 +1,82 @@
+<!-- we could use '.card' here as well -->
+<div class="bcard radius-2 h-100 d-flex flex-column py-35 px-2 px-lg-4">
+    <div class="d-flex mb-4">
+        <h4 class="text-secondary-d1 text-120 ml-1">
+            Quick Stats
+        </h4>
+
+        <div class="ml-auto d-flex align-items-center">
+            <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a class="btn btn-light-blue btn-bgc-white btn-bold radius-2 px-3 btn-xs dropdown-toggle" href="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    This Week
+                </a>
+
+                <div class="dropdown-menu shadow-sm dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md radius-1 brc-secondary-l1">
+                    <div class="dropdown-inner">
+                    <a class="dropdown-item active btn btn-a-lighter-primary btn-a-bold mx-1" href="#">This Week</a>
+                    <a class="dropdown-item btn btn-a-lighter-primary text-secondary mx-1" href="#">Last Week</a>
+                    <a class="dropdown-item btn btn-a-lighter-primary text-secondary mx-1" href="#">This Month</a>
+                    <a class="dropdown-item btn btn-a-lighter-primary text-secondary mx-1" href="#">Last Month</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ml-1">
+                <a class="btn btn-outline-secondary btn-brc-tp btn-bold radius-round btn-xs dropdown-toggle" href="#">
+                    <i class="fa fa-ellipsis-h"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-3 mx-1 px-1">
+        <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
+            <span class="text-grey-m1 ml-1">
+                revenue
+            </span>
+
+            <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+4% <i class="fas fa-caret-up"></i></span>
+
+            <div class="d-sm-block flex-grow-1 text-right text-sm-left">
+                <span class="text-130 opacity-2">$</span>
+                <span class="text-secondary-d3 text-160">
+                    46,220
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
+            <span class="text-grey-m1 ml-1">
+                expense
+            </span>
+
+            <span class="text-orange ml-2 mt-2 text-600 text-95 order-last">+1% <i class="fas fa-caret-down"></i></span>
+
+            <div class="d-sm-block flex-grow-1 text-right text-sm-left">
+                <span class="text-130 opacity-2">$</span>
+                <span class="text-secondary-d3 text-160">
+                    3,500
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-4 px-0 d-flex justify-content-between d-sm-block">
+            <span class="text-grey-m1 ml-1">
+                customers
+            </span>
+
+            <span class="text-success ml-2 mt-2 text-600 text-95 order-last">+5% <i class="fas fa-caret-up"></i></span>
+
+            <div class="d-sm-block flex-grow-1 text-right text-sm-left">
+                <span class="text-secondary-d3 text-160">
+                    315
+                </span>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <div>
+        <canvas id="quickstats-chart" height="120" class="mt-lg-4"></canvas>
+    </div>
+</div>

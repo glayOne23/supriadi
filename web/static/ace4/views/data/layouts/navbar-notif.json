@@ -1,0 +1,31 @@
+[
+	{
+		"title": "Followers" ,
+		"icon": "fab fa-twitter" ,
+		"icon-color": "bgc-blue-tp1" ,
+		"badge" : "- 4" ,
+		"badge-color" : "badge-danger"
+	},
+
+	{
+		"title": "New Comments" ,
+		"icon": "fa fa-comment" ,
+		"icon-color": "bgc-pink-tp1" ,
+		"badge" : "+12" ,
+		"badge-color" : "badge-info"
+	},
+
+	{
+		"title": "New Orders" ,
+		"icon": "fa fa-shopping-cart" ,
+		"icon-color": "bgc-success-tp1" ,
+		"badge" : "+8" ,
+		"badge-color" : "badge-success"
+	},
+ 
+	{
+		"title": "Finished processing data!" ,
+		"icon": "far fa-clock" ,
+		"icon-color": "bgc-purple-tp1"
+	}
+]

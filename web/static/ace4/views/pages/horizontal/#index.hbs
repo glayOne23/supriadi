@@ -1,0 +1,93 @@
+<div class="page-header mt-2 pb-4 mx-lg-n2 border-0 justify-content-start flex-wrap flex-md-nowrap">
+    <h1 class="text-dark-m3 pb-0 mb-3 mb-md-0 text-130">
+        {{title}}
+    </h1>
+
+    <div class="ml-2 d-none d-xl-inline-block">
+        <div class="dropdown dropdown-hover">
+            <a data-display="static" href="#" class="mt-1 btn dropdown-toggle text-600 text-90 border-0 btn-outline-default py-1 px-2 btn-h-light-primary btn-a-light-primary radius-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                ( Click For Settings <i class="fa fa-cog text-110"></i> )
+            </a>
+
+            <form autocomplete="off" style="width: 18rem; max-width: 90vw;" class="dropdown-menu shadow pt-3 mr-lg-n2 dropdown-caret">
+                <h3 class="pl-3 text-125 text-orange-d2 mb-1">
+                    Menu Options
+                </h3>
+
+                <div class="p-1 dropdown-clickable list-group">
+                    <label class="list-group-item px-3 py-2 mb-0 bgc-h-default-l3 border-0">
+                        <input type="checkbox" id="id-full-width" class="mr-1 align-sub" checked />
+                        Full Width
+                    </label>
+
+                    <label class="list-group-item px-3 py-2 mb-0 bgc-h-default-l3 border-0">
+                        <input type="checkbox" id="id-flip-highlight" class="mr-1 align-sub" />
+                        Flip Highlight Border
+                    </label>
+
+                    <label class="list-group-item px-3 py-2 mb-0 bgc-h-default-l3 border-0">
+                        <input type="checkbox" id="id-sm-highlight" class="mr-1 align-sub" checked />
+                        Smaller Highlight Border
+                    </label>
+                </div>
+            </form>
+        </div><!-- /.dropdown -->
+    </div>
+
+    <!-- search box -->
+    <div class="ml-auto d-flex">
+        <div class="d-flex align-items-center px-lg-0">
+            <i class="fa fa-search text-blue mr-n3"></i>
+            <input type="text" placeholder="Search ..." class="form-control brc-blue-m1 brc-on-focus border-none border-b-2 radius-0 shadow-none bgc-transparent pl-35 mr-1" />
+        </div>
+
+        <div class="text-right">
+            <button class="btn btn-outline-secondary btn-bold radius-1 pl-0 py-0 text-nowrap">
+                <span class="d-inline-block bgc-secondary-m3 shadow-sm h-4 px-2 pt-1 mr-15">
+                    <i class="fa fa-clipboard-check text-dark-tp5 text-110 mt-3px"></i>
+                </span>
+                <span>
+                    <span class="d-none d-sm-inline">View </span>Report
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row" id="infobox-row">
+ {{> page/infobox}}
+</div>
+
+
+
+
+
+<div class="row mt-45">
+    <div class="col-lg-7 col-12 pl-lg-0 pr-lg-2">
+        {{> page/sale-stats}}
+    </div>
+
+    <div class="col-lg-5 col-12 pr-lg-0 mt-3 mt-lg-0">
+        {{> page/tasks}}
+    </div>
+</div>
+
+
+
+
+
+<div class="row mt-4 mt-lg-5">
+    <div class="col-12 px-lg-0">
+        <h4 class="text-dark-m3 pb-0 mb-3 text-140 pl-2">
+            Calendar and Events
+        </h4>
+
+        <div class="bgc-white shadow-sm p-3 p-lg-4 radius-2">            
+            <div id='calendar' class="text-dark-l1"></div>
+        </div>
+    </div>
+</div>

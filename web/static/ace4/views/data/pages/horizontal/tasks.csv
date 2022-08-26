@@ -1,0 +1,6 @@
+title,status,progress,textColor
+"Perform analysis",done,100,green
+"Team meeting",doing,70,blue
+"Office redesign",pending,40,orange-d2
+"Unnecessary task",cancelled,20,danger
+"Customer followup",done,95,green

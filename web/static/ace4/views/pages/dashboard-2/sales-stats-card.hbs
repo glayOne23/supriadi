@@ -1,0 +1,42 @@
+<div class="bcard card h-100">
+    <div class="card-header border-b-1 brc-grey-l3 pb-2">
+        <h5 class="card-title font-normal text-120 text-dark-m1 pl-1">
+            Sales Stats
+        </h5>
+        
+        <!-- the dropdowns -->
+        <div class="card-toolbar no-border">
+            <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a class="btn btn-light-blue btn-bold btn-xs btn-brc-tp" href="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    Monthly
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md">
+                    <div class="dropdown-inner">
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-blue text-grey-m1 mx-1" href="#">Weekly</a>
+                        <a class="dropdown-item active btn btn-h-light-grey btn-a-lighter-blue btn-a-bold mx-1" href="#">Monthly</a>
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-blue text-grey-m1 mx-1" href="#">Quarterly</a>
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-blue text-grey-m1 mx-1" href="#">Yearly</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a class="btn btn-light-green btn-bold btn-xs btn-brc-tp ml-1" href="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    USA
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-slide-up dd-slide-none-md">
+                    <div class="dropdown-inner">
+                        <a class="dropdown-item active btn btn-h-light-grey btn-a-lighter-green btn-a-bold mx-1" href="#">USA</a>
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-green text-grey-m1 mx-1" href="#">Canada</a>
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-green text-grey-m1 mx-1" href="#">UK</a>
+                        <a class="dropdown-item btn btn-h-light-grey btn-a-lighter-green text-grey-m1 mx-1" href="#">Australia</a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.card-toolbar -->
+    </div>
+
+    <div class="card-body h-100 d-flex flex-column justify-content-center py-3 px-2 px-md-4">
+        <canvas id="sales-chart" class="mx-n1 mx-md-0 mw-100" style="height: 280px;"></canvas>
+    </div>
+</div><!-- /.card -->

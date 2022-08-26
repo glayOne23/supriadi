@@ -1,0 +1,140 @@
+<nav class="navbar navbar-expand-lg navbar-fixed navbar-skyblue">
+ <div class="navbar-inner">
+
+    <div class="navbar-intro justify-content-xl-between">
+
+        <button type="button" class="btn btn-burger burger-arrowed static collapsed ml-2 d-flex d-xl-none" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+           <span class="bars"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <a class="navbar-brand text-white" href="#">
+            <i class="fa fa-leaf"></i>
+            <span>Ace</span>
+            <span>App</span>
+        </a><!-- .navbar-brand -->
+
+        <button type="button" class="btn btn-burger mr-2 d-none d-xl-flex" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+            <span class="bars"></span>
+        </button><!-- sidebar toggler button -->
+
+    </div><!-- .navbar-intro -->
+
+
+    <div class="navbar-content">
+
+        <button class="navbar-toggler py-2" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle navbar search">
+            <i class="fa fa-search text-white text-90 py-1"></i>
+        </button>
+
+        <div class="collapse navbar-collapse navbar-backdrop" id="navbarSearch">
+            <form class="d-flex align-items-center pl-45 py-2 ml-lg-4 pl-lg-1" data-submit="dismiss">
+                <i class="fa fa-search text-white text-105 mr-n45"></i>
+                <input type="text" class="navbar-input pr-2 pl-475 py-2 radius-1 autofocus" placeholder="Search for something ..." aria-label="Search" />
+            </form>
+        </div>
+
+    </div><!-- .navbar-content -->
+
+
+    <!-- mobile #navbarMenu toggler button -->
+    <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="pos-rel">
+            <img class="border-2 brc-white-tp1 radius-round" width="36" src="assets/image/avatar/avatar6.jpg" alt="Jason's Photo">
+            <span class="bgc-warning radius-round border-2 brc-white p-1 position-tr mr-1px mt-1px"></span>
+        </span>
+    </button>
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+
+      <div class="navbar-nav">
+        <ul class="nav border-0 has-active-border">
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-list-alt mr-2 d-lg-none"></i>
+                    Mega
+                    <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="p-0 dropdown-menu dropdown-animated bgc-default-l4 brc-primary-m2 border-t-0 border-b-2 ace-scrollbar">
+                    {{> layout/_commons/navbar-megamenu}}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell text-110 icon-animated-bell mr-lg-2"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Notifications</span><!-- show only on mobile -->
+                    <span id="id-navbar-badge1" class="badge badge-sm bgc-warning radius-round text-85 border-1 brc-white-tp3">3</span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                    <div class="dropdown-caret brc-white"></div>
+                </a>
+                <div class="dropdown-menu dropdown-sm dropdown-animated p-0 bg-white brc-primary-m3 border-b-2 shadow">
+                    {{> layout/_commons/navbar-notifmenu}}
+                </div>
+            </li>
+
+            <li class="nav-item dd-backdrop dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-flask text-110 icon-animated-vertical mr-lg-1"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Tasks</span><!-- show only on mobile -->
+                    <span id="id-navbar-badge2" class="badge badge-sm text-95 text-white">+2</span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                    <div class="dropdown-caret brc-warning-l2"></div>
+                </a>
+                <div class="dropdown-menu dropdown-xs dropdown-animated animated-1 p-0 bgc-white brc-warning-l1 shadow">             
+                    {{> layout/_commons/navbar-tasks}}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown order-first order-lg-last dropdown-hover">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-round border-2 brc-white-tp1 mr-2 w-6" src="assets/image/avatar/avatar6.jpg" alt="Jason's Photo">
+                    <span class="d-inline-block d-lg-none d-xl-inline-block">
+                        <span class="text-90" id="id-user-welcome">Welcome,</span>
+                        <span class="nav-user-name">Jason</span>
+                    </span>
+
+                    <i class="caret fa fa-angle-down d-none d-xl-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dropdown-menu-right dropdown-animated brc-primary-m3">
+                    <div class="d-none d-lg-block d-xl-none">
+                        <div class="dropdown-header">
+                            Welcome, Jason
+                        </div>
+                        <div class="dropdown-divider"></div>
+                    </div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-primary btn-a-lighter-primary" href="{{getPageLink 'page-profile'}}">
+                        <i class="fa fa-user text-primary-m1 text-105 mr-1"></i>
+                        Profile
+                    </a>
+                    
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-success btn-a-lighter-success" href="#" data-toggle="modal" data-target="#id-ace-settings-modal">
+                        <i class="fa fa-cog text-success-m1 text-105 mr-1"></i>
+                        Settings
+                    </a>
+
+                    <div class="dropdown-divider brc-primary-l2"></div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-secondary btn-a-lighter-secondary" href="{{getPageLink 'page-login'}}">
+                        <i class="fa fa-power-off text-warning-d1 text-105 mr-1"></i>
+                        Logout
+                    </a>
+                </div>
+            </li><!-- .nav-item:last -->
+
+        </ul><!-- .navbar-nav menu -->
+      </div><!-- .navbar-nav -->
+
+   </div><!-- .navbar-menu.navbar-collapse -->
+
+ </div>
+</nav>

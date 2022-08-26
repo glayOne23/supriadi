@@ -1,0 +1,82 @@
+{% extends 'home/layouts/base.html' %}
+{% load static %}
+
+{% block title %} Beranda {% endblock %}
+
+{% block extendcss %}
+    <style>
+        #banner {
+            background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({% static 'spectral/images/bg2.jpg' %});
+            background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({% static 'spectral/images/bg2.jpg' %});
+            /* background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({% static 'spectral/images/bg2.jpg' %}); */
+            background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({% static 'spectral/images/bg2.jpg' %});			
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}            
+    <body class="landing is-preload">
+
+    <!-- Page Wrapper -->
+        <div id="page-wrapper">
+
+            <!-- Banner -->
+                <section id="banner">
+                    <div class="inner">
+                        <h2>Supriadi</h2>
+                        <p> aplikasi pendeteksi pengguna twitter secara real time <br /> yang mengirim cuitan mengandung muatan bunuh diri </p>							
+                        <ul class="actions special">
+                            <li><a href="{% url 'home.register' %}" class="button primary">Daftar</a></li>
+                            <li><a href="{% url 'home.login' %}" class="button primary">Masuk</a></li>
+                        </ul>
+                    </div>
+                    <a href="#three" class="more scrolly">Lihat Lebih Lanjut</a>
+                </section>
+
+
+            <!-- Three -->
+                <section id="three" class="wrapper style3 special">
+                    <div class="inner">
+                        <header class="major">
+                            <h2>Bagaimana Cara Kerja Supriadi</h2>
+                            {% comment %} <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
+                            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p> {% endcomment %}
+                        </header>
+                        <ul class="features">
+                            <li class="icon fa-paper-plane">
+                                <h3>Arcu accumsan</h3>
+                                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                            </li>
+                            <li class="icon solid fa-laptop">
+                                <h3>Ac Augue Eget</h3>
+                                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                            </li>
+                            <li class="icon solid fa-code">
+                                <h3>Mus Scelerisque</h3>
+                                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                            </li>
+                            <li class="icon solid fa-headphones-alt">
+                                <h3>Mauris Imperdiet</h3>
+                                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                            </li>								
+                        </ul>
+                    </div>
+                </section>
+
+
+            <!-- Footer -->
+            <footer id="footer">						
+                <ul class="copyright">
+                    <li>&copy; Supriadi</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
+        </div>
+
+    </body>
+{% endblock %}

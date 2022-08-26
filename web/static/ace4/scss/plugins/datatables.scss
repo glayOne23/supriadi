@@ -1,0 +1,217 @@
+$dataTablesHeaderBg: bgc-color('default', 'l5');
+$dataTablesFooterBg: bgc-color('default', 'l5');
+$dataTablesFooterBorder: bgc-color('default', 'l3');
+$dataTablesSelectedBg: bgc-color('success', 'l4');
+
+@if $plugin-datatables == true {
+
+    .table.dataTable {
+        margin: auto !important;
+    }
+
+    .dataTables_wrapper {
+        > .row:first-of-type {
+            padding: 1.25rem 0.5rem 0.75rem;
+            margin: auto;
+            background-color: $dataTablesHeaderBg;
+        }
+
+        > .row:last-of-type {
+            padding: 0.75rem 0.5rem 1.25rem;
+            margin: auto;
+            background-color: $dataTablesFooterBg;
+            //border-bottom: 1px solid $dataTablesFooterBorder;
+        }
+
+        div.dataTables_length select.form-control {
+            width: 4rem;
+            margin: 0 0.125rem;
+        }
+    }
+
+
+    .dataTable tr.selected {
+        background-color: $dataTablesSelectedBg;
+    }
+
+    //the "`n` row(s) selected" text
+    .dataTables_info .select-item {
+        font-size: 0.9em;
+        opacity: 0.9;
+        margin-left: 0.5rem;
+    }
+
+
+
+    // floating table, dragged with the mouse
+    table.DTCR_clonedTable.dataTable {
+        position: absolute !important;
+        background-color:transparent;
+        z-index: 202;
+    }
+    div.DTCR_pointer{
+        width: 0.125rem;//2px
+        background-color: bgc-color('primary');
+        z-index: 201;
+    }
+
+
+    // colvis dropdown
+    .buttons-colvis ~ .dt-button-collection {
+        top: 100% !important;
+        left: auto !important;
+        right: 0;
+
+        .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+    }
+
+
+    // the caret sorting icons in table header
+    @if $plugin-datatables-sorticonsize != null {
+
+        $sort-caret-size: $plugin-datatables-sorticonsize;
+        .dataTable th {
+            &::after, &::before {
+                content: "" !important;
+                right:  1.5 * $sort-caret-size !important;
+            }
+        }
+        .dataTable th[class*=sorting]:not(.sorting_disabled) {
+            &::before, &::after {
+                width: 0;
+                height: 0;
+
+                color: inherit;
+
+                border-right: $sort-caret-size solid transparent;
+                border-left: $sort-caret-size solid transparent;
+
+                top: 50% !important;
+                bottom: auto !important;
+            }
+
+            &::before {
+                border-bottom: $sort-caret-size solid currentColor;
+                border-top: none;    
+                
+                margin-top: -$sort-caret-size;
+            }
+
+            &::after {
+                border-top: $sort-caret-size solid currentColor;
+                border-bottom: none;
+                
+                margin-top: 0.125rem;//2px
+            }
+        }
+
+    }// $plugin-datatables-sorticonsize
+
+
+    // hide the `toggle` button in non-collapsed (desktop) mode
+    body:not(.dt-print-view) {
+        .dataTable.dtr-inline , .dataTable.dtr-table {
+            &:not(.collapsed) {
+                td.dtr-control , thead > tr > th:first-child {
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+    /////////////////////////////////
+    $dtr-caret-down-color: text-color('blue');
+    $dtr-caret-down-path: "M2,3 L6,7 L10,3";
+    $dtr-caret-down:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$dtr-caret-down-color}' d='#{$dtr-caret-down-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+    $dtr-caret-up-color: text-color('blue');
+    $dtr-caret-up-path: "M2,7 L6,3 L10,7";
+    $dtr-caret-up:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$dtr-caret-up-color}' d='#{$dtr-caret-up-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+    .dtr-inline.collapsed > tbody > tr > .dtr-control {
+        background: $dtr-caret-down center no-repeat;
+        background-size: 1.075rem;
+        background-position-x: calc(50% + 4px);
+    }
+    .dtr-inline.collapsed > tbody > tr.parent > .dtr-control {
+        background-image: $dtr-caret-up;
+    }
+
+
+    ///////////////////////////
+    $dtr-plus-color: text-color('blue');
+    $dtr-plus-path: "M1,6 L11,6 M6,1 L6,11";
+    $dtr-plus-icon:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$dtr-plus-color}' d='#{$dtr-plus-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+    $dtr-minus-color: text-color('blue');
+    $dtr-minus-path: "M1,6 L11,6";
+    $dtr-minus-icon:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke-width='1.5px' stroke='#{$dtr-minus-color}' d='#{$dtr-minus-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+    .dtr-plus.dtr-inline.collapsed > tbody > tr > .dtr-control {
+        background-image: $dtr-plus-icon;
+    }
+    .dtr-plus.dtr-inline.collapsed > tbody > tr.parent > .dtr-control {
+        background-image: $dtr-minus-icon;
+    }
+
+
+    /////////////////////
+    .dataTable tr.child {
+        background-color: #fff;
+        td.child {
+            padding: 0.25rem 0;
+            border-bottom: 1px solid bgc-color('secondary', 'l2');
+        }
+        + tr > td {
+            border-top-width: 0;
+        }
+        ul.dtr-details {
+            list-style: none;
+            padding-left: 1rem;
+
+            > li {
+                margin: 1rem 0;
+                color: text-color('grey', 'd3');
+        
+                > .dtr-title {
+                    font-weight: $font-semibold;
+                    
+                    display: inline-block;
+                    min-width: 90px;
+                    padding-right: 0.5rem;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space : nowrap;
+
+                    vertical-align: middle;
+                }
+                > .dtr-data {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+
+    //
+    @include media-breakpoint-down(md) {
+        .dataTables_info {
+            margin-bottom: 1rem;
+            .select-info {
+                display: block;
+            }
+        }
+    }
+
+    //
+    div.dt-button-info {
+        z-index: $zindex-navbar + 3;
+    }
+
+}//@if plugin

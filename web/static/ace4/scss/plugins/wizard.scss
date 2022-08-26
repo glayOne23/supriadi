@@ -1,0 +1,283 @@
+$wizard-theme-circles: true;
+
+
+$wizard-step-circle-bg: #fff;
+
+$wizard-step-circle-border: bgc-color('secondary', 'm4');
+$wizard-step-circle-border-width: 5px;
+
+$wizard-step-circle-active-border: bgc-color('primary');
+
+$wizard-step-circle-text: text-color('dark', 'm3');
+
+$wizard-step-circle-hover-border-width: 4px;
+
+$wizard-progressbar-height: 0.25rem;
+$wizard-progressbar-transition: 150ms;
+
+$wizard-steps-size: 75%;
+
+
+@if $plugin-wizard == true {
+
+ //form wizard
+ .sw-main > ul.step-anchor > li.wizard-progressbar {
+    position: absolute;
+    z-index: 2;
+
+    top: calc(50% - #{$wizard-progressbar-height/2});
+    bottom: 0;
+   
+    //left:  auto;//calculate in js according to step count
+    //right: auto;
+
+    height: $wizard-progressbar-height;
+    max-width: 0;
+            
+    background-color: $wizard-step-circle-active-border;
+    @include transition(all $wizard-progressbar-transition);    
+    
+    &::before, &::after {
+      display: none !important;
+    }
+ }
+
+ @if $wizard-theme-circles == true {
+
+  .sw-theme-circles > ul.step-anchor {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+    
+    width: $wizard-steps-size;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      margin-bottom: 3.5rem;
+    }
+  
+    &::before {
+      display: none;
+    }
+  
+    > li {
+      display: inline-block;
+
+      margin-left: 0;
+      flex-grow: 1;
+
+      position: relative;
+      z-index: auto;
+  
+      border: 0px solid;
+      & ,  &.active ~ li.done {
+        border-color: $wizard-step-circle-border;//li::before & li > a will inherit its border color
+      }
+      &.active, &.done {
+        border-color: $wizard-step-circle-active-border;
+      }
+
+      //!important to override .brc-* classes on "li" and .text-* classes on ".step-title" elements
+      &:not(.active):not(.done) , &.active ~ li.done {
+        border-color: $wizard-step-circle-border !important;
+        .step-title {
+          color: $wizard-step-circle-text !important;
+        }
+        .step-description {
+          color: lighten($wizard-step-circle-text, 5%) !important;
+        }
+      }
+    
+      
+      //the line connecting step circles
+      &::before {
+        display: block;
+        content: "";
+
+        width: 100%;
+        height: 0;
+
+        overflow: hidden;
+        border-top: $wizard-progressbar-height solid;
+        border-color: inherit;
+  
+        position: absolute;        
+        top: calc(50% - #{$wizard-progressbar-height/2});
+        z-index: 0;
+      }
+      //the last line's width is 50%
+      &:last-child::before {
+        left: 0;
+        width: 50%;
+      }
+    }
+
+    //the first line starts from center and width is 50%
+    > li:first-child::before , > li.wizard-progressbar + li::before {
+      left: 50%;
+      width: 50%;
+    }
+  
+
+    //we don't want it to (inherit), because it will instantly become ($wizard-step-circle-active-border) and aniamted progressbar will not be visible
+    > li.wizard-progressbar ~ li::before {
+      border-color: $wizard-step-circle-border;      
+    }
+    
+
+    //step elements (the circles)
+    > li.nav-item > a,
+    > li.nav-item.active ~ li.done > a {
+      position: relative;
+      z-index: 3;
+
+      margin: 0 auto;//center align
+      padding: 0;
+  
+      width: 4rem;
+      height: 4rem;
+   
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      color: $wizard-step-circle-text;
+      font-size: $wizard-step-circle-text-size;
+  
+      background-color: $wizard-step-circle-bg;
+      border: $wizard-step-circle-border-width solid;
+      border-color: inherit !important;
+      border-radius: 50%;
+      
+      box-shadow: none !important;  
+
+      @include media-breakpoint-down(xs) {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-width: $wizard-step-circle-border-width * 0.8;
+      }
+    }
+
+    > li.nav-item.active > a, > li.nav-item.done > a {
+        background-color: $wizard-step-circle-bg;
+        color: $wizard-step-circle-text;
+  
+        border-color: inherit !important;
+    }
+
+    > li.wizard-progressbar ~ li > a , > li.wizard-progressbar.active ~ li.done > a {
+        @include transition(border-color $wizard-progressbar-transition/2, border-width $wizard-progressbar-transition, font-size $wizard-progressbar-transition);
+        transition-delay: 0ms;
+    }
+
+    > li.wizard-progressbar ~ li.active > a, > li.wizard-progressbar ~ li.done > a {
+        transition-delay: $wizard-progressbar-transition / 2;
+        transition-duration: $wizard-progressbar-transition;
+    }
+    
+    > li:not(.done) > a:hover {
+      cursor: default;//a step that has not been visited before is not clickable
+    }
+  
+    > li > a:hover , > li > a:focus {
+       border-width: $wizard-step-circle-border-width;
+       background-color: $wizard-step-circle-bg;
+       color: $wizard-step-circle-text;
+       border-color: inherit;
+    }
+    > li.done > a:hover , > li.active ~ li.done > a:hover {
+       border-width: $wizard-step-circle-hover-border-width;
+       font-size: $wizard-step-circle-hover-text-size;
+    }
+  
+
+    //hide/show step's text
+    > li .step-title-done {
+       display: none;
+    }
+    > li.done {
+      .step-title {
+        display: none;
+      }
+      .step-title-done {
+        display: inline-block;
+      }
+    }
+    > li.active ~ li.done {
+      .step-title {
+        display: inline-block;
+      }
+      .step-title-done {
+        display: none;
+      }
+    }
+  
+    > li .step-description {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+
+   }
+
+   //expand steps (good when step count is 3)
+   .sw-theme-circles.wizard-steps-expand > ul.step-anchor {
+    > li:first-child , > li.wizard-progressbar + li {
+        > a {
+            margin: 0 !important;
+        }
+        &::before {
+            left: 0;
+            width: 100%;
+        }
+        &::after {
+            display: none !important;
+        }
+    }
+
+    > li:last-child {
+        > a {
+            margin: 0 0 0 auto !important;
+        }
+        &::before {
+            left: 0;
+            width: 100%;
+        }
+        &::after {
+            display: none !important;
+        }
+    }
+
+   }
+
+
+   .sw-theme-circles .sw-toolbar {
+    padding-left: 0;
+    padding-right: 0;
+   }
+   
+
+
+   .sw-theme-circles > .sw-container {
+    padding: 1rem;
+    border-width: 1px 0;
+    border-style: dotted;
+   }
+
+ }//@if $wizard-theme-circles
+
+
+ ///////////////////////////
+ //finish button
+ .sw-btn-finish , .sw-btn-next.sw-btn-hide.disabled {
+    display: none;
+ }
+ .sw-btn-next.disabled ~ .sw-btn-finish {
+    display: inline-block
+ }
+
+
+}//@if $plugin-wizard

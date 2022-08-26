@@ -1,0 +1,149 @@
+
+.alert {
+    border-radius: 0.1875rem;
+    color: $alert-text-color;
+}
+
+.alert-collapse.collapsing {
+    transition-duration: $alert-collapse-transition;
+}
+
+.alert-link {
+    font-weight: $font-semibold;
+}
+
+//////////
+//toast and notifications
+.ace-toaster-container {
+    position: fixed !important;
+    z-index: $zindex-navbar + 3;
+
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    //topright, bottomright, rightcenter
+    &.position-tr , &.position-br, &.position-rc  {
+        right: 1rem;
+        align-items: end;
+    }
+    &.position-tr {
+        top: 1rem;
+    }
+    &.position-br {
+        bottom: 1rem;
+    }
+  
+
+    //topleft, bottomleft, leftcenter
+    &.position-tl , &.position-bl, &.position-lc  {
+        left: 1rem;
+        align-items: start;
+    }
+    &.position-tl {
+        top: 1rem;
+    }
+    &.position-bl {
+        bottom: 1rem;
+    }
+
+    > .toast-wrapper:not(:last-child) > .toast {
+        margin-bottom: $toast-padding-x;
+    }
+
+    &.position-br , &.position-bl, &.position-bc  {
+        flex-direction: column-reverse;
+
+        > .toast-wrapper:not(:last-child) > .toast {
+            margin-bottom: 0;
+            margin-top: $toast-padding-x;
+        }
+    }
+
+
+
+    &.position-bc {
+        top: auto;
+        bottom: 1rem;
+    }
+    &.position-tc {
+        bottom: auto;
+        top: 1rem;
+    }
+
+    
+    &.toaster-below-nav {
+        margin-top: map-get($navbar-common, 'height');
+        margin-top: var(--navbar-height);
+
+        z-index: $zindex-navbar - 1;
+    }
+
+    @if map-get($navbar-common, 'mobile-height') != null {
+        @include media-breakpoint-down($sidebar-mobile-max-width) {
+            &.toaster-below-nav {
+                margin-top: map-get($navbar-common, 'mobile-height');
+                margin-top: var(--navbar-mobile-height);
+            }
+        }
+    }
+    
+
+    //////
+
+    .toast {
+        pointer-events: all;
+        position: relative;
+
+        z-index: inherit;
+
+        width: 24rem;
+        max-width: calc(100vw - 2rem);
+
+        flex-basis: auto;//override bootstrap's
+   
+        .toast-header {
+            position: relative;
+            .close {
+                align-self: flex-start;
+            }
+        }
+
+        .toast-image {
+            flex-shrink: 0;
+
+            margin-top: 0.75rem;
+            margin-left: 0.5rem;
+
+            overflow: hidden;
+            align-self: flex-start;
+
+            padding: 1px;
+
+            img {
+                border-radius: 0.1875rem;
+            }
+        }
+
+        .toast-main {
+            flex-grow: 1;
+            width: 100%;//for IE
+        }
+
+        &.collapsing {
+            transition-duration: $toast-collapse-transition;
+            margin-bottom: 0;
+        }
+
+        .toast-title {
+            margin-right: auto;
+            font-weight: $font-semibold;
+        }
+
+        .toast-progress {
+            transition: width 5s linear;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@if $plugin-touchspin == true {
+
+ //bootstrap-touchspin
+ .bootstrap-touchspin {
+    .btn-group-vertical , .input-group-btn-vertical {
+       display: flex;
+       flex-direction: column;
+
+       > .btn {
+          padding-top: 0;
+          padding-bottom: 0;
+          line-height: 0;
+
+          height: 50%;
+  
+          border-radius: 0 3px 0 0;
+  
+          &:last-child {
+            margin-top: 1px;
+            border-radius: 0 0 3px 0;
+          }
+       }
+    }
+  
+    .btn-group-inside-spinner {
+      padding-right: 2.25rem;
+    }
+
+    .btn-group-inside-spinner ~ .input-group-btn-vertical {
+      //code from bootstrap-touchspin's css
+      position: absolute;
+      right: 0;
+      height: 100%;
+      z-index: 11;
+  
+      > .btn {
+        position: absolute;
+        right: 0;
+        height: 50%;
+        padding: 0;
+        width: 2rem;
+        text-align: center;
+        line-height: 1;
+      }
+      .bootstrap-touchspin-up {
+        border-radius: 0 2px 0 0;
+        top: 0;
+      }
+      .bootstrap-touchspin-down {
+        border-radius: 0 0 2px 0;
+        bottom: 0;
+      }
+    }
+  
+  }
+
+}//@if $plugin-touchspin

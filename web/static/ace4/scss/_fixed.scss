@@ -1,0 +1,242 @@
+@if $sticky-navbar == true {
+    .navbar-fixed {
+        position: sticky;
+        top: 0;
+    }
+
+    //fixed navbar only on specific widths, e.g. .navbar-fixed-sm
+    .navbar-fixed {
+        $nw: breakpoint-max($navbar-mobile-max-width);
+        @each $breakpoint in map-keys($grid-breakpoints) {
+            $next: breakpoint-next($breakpoint, $grid-breakpoints);
+            $infix: breakpoint-infix($next, $grid-breakpoints);
+
+            @if $next != null { //and $next != 'xl'
+                &#{$infix} .navbar-inner {
+                    @include media-breakpoint-down($breakpoint) {
+                        position: fixed;
+                        top: 0;
+                        left: auto; 
+                        right: auto;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down($container-max-width-not-allowed) {
+        .navbar-fixed {
+            position: relative;
+            
+            .navbar-inner {
+                position: fixed;
+                top: 0;
+                left: auto; 
+                right: auto;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@else {
+    //fixed navbar
+    .navbar-fixed > .navbar-inner {
+        position: fixed;
+        top: 0;//IE requires this
+        left: 0;
+        right: 0;
+    }
+
+    @include media-breakpoint-up($navbar-desktop-min-width) {
+        //when inside container
+        .navbar-fixed.container {
+            .navbar-inner {
+                left: auto;
+                right: auto;
+            }
+        }
+        .main-content .navbar-fixed .navbar-inner {
+            left: 0;
+            right: 0;
+            width: auto;
+        }
+    }
+
+
+    //fixed navbar only on specific widths, e.g. .navbar-fixed-sm
+    .navbar-fixed {
+        $nw: breakpoint-max($navbar-mobile-max-width);
+        @each $breakpoint in map-keys($grid-breakpoints) {
+            $next: breakpoint-next($breakpoint, $grid-breakpoints);
+            $infix: breakpoint-infix($next, $grid-breakpoints);
+
+            @if $next != null {//and $next != 'xl' 
+                &#{$infix} > .navbar-inner {
+                    @include media-breakpoint-down($breakpoint) {
+                        position: fixed;
+                        top: 0;//IE requires this
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // if navbar is inside .main-content (like in default dashboard)
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        .sidebar ~ .main-content .navbar-fixed .navbar-inner {
+            left: map-get($sidebar-common, 'width');
+            left: var(--sidebar-width);
+
+            @include transition(left $expandable-transition-duration);
+        }
+
+        .sidebar.collapsed ~ .main-content .navbar-fixed .navbar-inner {
+            left: map-get($sidebar-common, 'collapsed-width');
+            left: var(--sidebar-collapsed-width);
+        }
+
+        @if $hideable == true {
+            .sidebar.collapsed.hideable ~ .main-content .navbar-fixed .navbar-inner {
+                left: 0;
+            }
+        }
+
+        //.sidebar-right
+        .sidebar-right ~ .main-content .navbar-fixed .navbar-inner {
+            left: 0;
+            right: map-get($sidebar-common, 'width');
+            right: var(--sidebar-width);
+
+            @include transition(right $expandable-transition-duration);
+        }
+
+        .sidebar-right.collapsed ~ .main-content .navbar-fixed .navbar-inner {
+            left: 0;
+            right: map-get($sidebar-common, 'collapsed-width');
+            right: var(--sidebar-collapsed-width);
+        }
+
+        @if $hideable == true {
+            .sidebar-right.collapsed.hideable ~ .main-content .navbar-fixed .navbar-inner {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    //////////////////////////
+    // when `.navbar-fixed` is inside 'main-content' and '.container', for correct positioning of navbar mega menus, etc make it `sticky` (if supported)
+    @include media-breakpoint-up($container-min-width-allowed) {
+        .container .main-content .navbar-fixed {
+            position: relative;// make it relative for old browsers
+            top: auto;            
+
+            .navbar-inner {
+                position: relative;
+                width: 100%;
+                padding-left: 0 !important;
+                left: auto !important;
+                right: auto !important;
+            }
+        }
+
+        @supports (position: sticky) {
+            .container .main-content .navbar-fixed {
+                position: sticky;// make it sticky
+                top: 0;
+            }
+        }
+    }
+    //////////////////////////
+
+    @include media-breakpoint-down($sidebar-mobile-max-width) {
+        .main-content .navbar-fixed  .navbar-inner ,
+        .container .main-content .navbar-fixed  .navbar-inner {
+            //so that it moves with sidebar and content as they get pushed
+            left: auto; 
+            right: auto;
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+
+// fixed sidebar
+.sidebar-fixed {
+    z-index: $zindex-navbar + 1;
+}
+.sidebar-fixed .sidebar-inner {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    height: auto;
+}
+.main-container .sidebar-fixed {
+    z-index: $zindex-navbar;
+}
+
+// if sidebar is inside .main-content (like the second menu in `two menus 1` page)
+// so that it's below `.main-content .navbar`
+.main-content .sidebar-fixed {
+    z-index: $zindex-navbar - 3;//should be -3 (1017 to appear below navbar's dropdown-hover elements)
+}
+
+@include media-breakpoint-up($sidebar-desktop-min-width) {
+    .navbar ~ .main-container .sidebar-fixed  {
+        > .sidebar-inner {
+            top: map-get($navbar-common, 'height');
+            top: var(--navbar-height);
+        }
+    }
+    @if map-get($navbar-common, 'sm-height') != null {
+        .navbar-sm ~ .main-container .sidebar-fixed  {
+            > .sidebar-inner {
+                top: map-get($navbar-common, 'sm-height');
+                top: var(--navbar-sm-height);
+            }
+        }
+    }
+}
+
+
+//mobile view
+@include media-breakpoint-down($sidebar-mobile-max-width) {
+    .sidebar-fixed {
+        z-index: $zindex-navbar;
+
+        @if map-get($navbar-common, 'mobile-height') != null {
+            @at-root .navbar ~ .main-container .sidebar-fixed > .sidebar-inner,
+                    .navbar ~ .sidebar-fixed > .sidebar-inner 
+            {
+                top: map-get($navbar-common, 'mobile-height');
+                top: var(--navbar-mobile-height);
+            }
+        }
+
+        &.sidebar-top > .sidebar-inner {
+            top: 0 !important;
+        }
+
+        //@at-root .main-content .sidebar-fixed,
+        &.sidebar-top {
+            z-index: $zindex-navbar + 4 !important;
+        }
+    }
+
+    .main-container .sidebar-fixed {
+        z-index: $zindex-navbar + 4;
+    }
+    .navbar ~ .main-container .sidebar-fixed {
+        z-index: $zindex-navbar;
+    }
+}

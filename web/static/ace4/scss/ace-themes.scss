@@ -1,0 +1,213 @@
+/*!
+ * Ace Admin Template v4.0.0
+ * Copyright 2013-2021
+ * You need a commercial license to use this product
+ * https://bit.ly/35ciMLb
+ */
+ 
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+@import "variables";
+@import "functions";
+@import "variables-more";
+@import "font-size";
+
+
+@import "ace-features";
+
+
+@import "navbar-themes-variables";
+@import "navbar-theme-maker";
+
+@import "sidebar-themes-variables";
+@import "sidebar-theme-maker";
+
+
+
+$navbar-themes: (  
+    "white": $navbar-white,
+    "white2": $navbar-white2,
+    "light": $navbar-light,
+    "lightblue": $navbar-lightblue,
+    "lightpurple": $navbar-lightpurple,
+    "lightgreen": $navbar-lightgreen,
+    "lightgrey": $navbar-lightgrey,
+    //"lightyellow": $navbar-lightyellow,
+    //"khaki": $navbar-khaki,
+
+
+    "blue": $navbar-blue,
+    "dark": $navbar-dark,
+
+    "purple": $navbar-purple,
+    "plum": $navbar-plum,
+
+    "secondary": $navbar-secondary,
+
+    "teal": $navbar-teal,
+    "darkblue": $navbar-darkblue,
+
+    "slategrey": $navbar-slategrey,
+    "green": $navbar-green,
+    "cadetblue": $navbar-cadetblue,
+    "darkgreen": $navbar-darkgreen,
+
+    "orange": $navbar-orange,
+    "brown": $navbar-brown,
+    "skyblue": $navbar-skyblue
+);
+@each $theme-name, $theme-values in $navbar-themes {
+    @include navbar-colors($theme-name, $theme-values);
+}
+
+
+$sidebar-themes: (
+    "light": $sidebar-light,
+    "white": $sidebar-white,
+    "white2": $sidebar-white2,
+    "white3": $sidebar-white3,
+    "white4": $sidebar-white4,
+    
+    "lightpurple": $sidebar-lightpurple,
+    "lightblue": $sidebar-lightblue,
+    "lightblue2": $sidebar-lightblue2,
+    
+    "color": $sidebar-color,
+    "dark": $sidebar-dark,
+    "dark2": $sidebar-dark2,
+
+    "purple": $sidebar-purple,
+    "plum": $sidebar-plum, 
+
+    "green": $sidebar-green,
+
+    "blue": $sidebar-blue,
+    "darkblue": $sidebar-darkblue,
+    "steelblue": $sidebar-steelblue,
+    "cadetblue": $sidebar-cadetblue,
+
+    "darkslateblue": $sidebar-darkslateblue,
+    "darkcrimson": $sidebar-darkcrimson,
+    "darkslategrey": $sidebar-darkslategrey,
+    //"teal": $sidebar-teal,
+
+    "gradient1": $sidebar-gradient1,
+    "gradient2": $sidebar-gradient2,
+    "gradient3": $sidebar-gradient3,
+    "gradient4": $sidebar-gradient4,
+    //"gradient5": $sidebar-gradient5
+);
+@each $theme-name, $theme-values in $sidebar-themes {
+    @include sidebar-colors($theme-name, $theme-values);
+}
+
+
+@import "sidebar-themes-extra";
+
+
+
+
+//body themes
+@if $body-bg-themes == true {
+    .body-img1 {
+        background-color: #424862;
+        background-image: url('/assets/image/body-bg-1.jpg');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        //background-size: cover;
+    }
+    .body-img2 {
+        background-color: #272f53;
+        background-image: url('/assets/image/body-bg-2.jpg');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    @if 1 == 2 {//i.e. ignore
+        .body-darkblue {
+            background-color: #465a6e;
+
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px #415366;
+            }
+        }
+        .body-darkblue2 {
+            background-color: rgba(43, 63, 69, 0.67);
+            .body-container.container {
+                //box-shadow: 0 -1px 0 1px rgba(77, 88, 91, 0.73);
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07);
+            }
+        }
+        .body-darkblue3 {
+            background-color: #45556f;
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px rgba(31, 81, 123, 0.33);
+            }
+        }
+        .body-lightblue {
+            background-color: #E1EBF0;
+            .body-container.container {
+                box-shadow: 0 0 2px 1px rgba(194, 207, 210, 0.5);
+            }
+        }
+        .body-lightblue2 {
+            background-color: #C8DBE5;
+            .body-container.container {
+                box-shadow: 0 0 0 1px rgba(111, 121, 123, 0.73);
+            }
+        }
+        .body-lightblue3 {
+            background-color: #c6cdd8;
+            .body-container.container {
+                box-shadow: 0 0 0 1px rgba(31, 81, 123, 0.1);
+            }
+        }
+        .body-lightblue4 {
+            background-color: #c0d2d0;
+            .body-container.container {
+                box-shadow: none;
+            }
+        }
+
+        .body-darkslategrey {
+            background-color: #315555;
+
+            .body-container.container {
+                box-shadow: 0 0 0 1px rgba(80, 123, 123, 0.2);
+            }
+        }
+        .body-darkplum {
+            background-color: rgba(74, 68, 74, 0.94);//rgba(80, 63, 78, 0.94);
+
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px rgba(69, 56, 68, 0.55);
+            }
+        }
+        .body-lightplum {
+            background-color: #c3c0d2;
+
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px rgba(69, 56, 68, 0.11);
+            }
+        }
+
+        .body-darkgreen {
+            background-color: #4a5440;
+
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px rgba(69, 56, 68, 0.17);
+            }
+        }
+        .body-lightgreen {
+            background-color: #c7d2c0;
+
+            .body-container.container {
+                box-shadow: 0 -1px 0 1px rgba(60, 69, 56, 0.11);
+            }
+        }
+    }
+}

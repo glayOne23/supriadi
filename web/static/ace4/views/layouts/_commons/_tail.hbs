@@ -1,0 +1,18 @@
+
+<!-- include common vendor scripts used in demo pages -->
+{{{include-js files="jquery + popper.js + bootstrap"}}}
+
+<!-- include vendor scripts used in "{{{title}}}" page. see "{{{appFolder}}}/views/{{{demoName}}}/pages/partials/{{{pageId}}}/@vendor-scripts.hbs" -->
+{{#> "include/@vendor-scripts"}}{{/ "include/@vendor-scripts"}}
+
+<!-- include ace.js -->
+{{{include-js files="dist/js/ace.js@ace"}}}
+
+
+<!-- demo.js is only for Ace's demo and you shouldn't use it -->
+{{{include-js files="app/browser/demo.js@ace"}}}
+
+
+<!-- "{{{title}}}" page script to enable its demo functionality -->
+{{{inline-js}}}
+

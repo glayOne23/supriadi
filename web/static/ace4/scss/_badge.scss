@@ -1,0 +1,183 @@
+.badge {
+    font-size: $badge-font-size;
+    font-weight: $font-semibold;
+
+    padding: 0.25rem 0.5rem;
+    line-height: 1.175;
+    
+    border-radius: 0.125rem;
+
+    position: relative;
+}
+.badge-pill {
+    border-radius: 2rem;
+}
+
+.badge-sm {
+    padding: 0.1875rem 0.425rem;
+    font-size: $badge-sm-font-size;
+    line-height: 1.125;
+}
+.badge-lg {
+    padding: 0.275rem 0.5rem;
+    font-size: $badge-lg-font-size;
+    line-height: 1.25;
+    height: 1.75rem;
+}
+
+//firefox
+@supports (-moz-appearance:none) {
+    .badge {
+        line-height: 1.15;
+    }
+    .badge-sm {
+        line-height: 1;
+    }
+}
+
+
+
+
+@if $badge-arrow == true {
+ .badge {
+    &.arrowed::before, &.arrowed-in::before,
+    &.arrowed-right::after, &.arrowed-in-right::after {
+        display: inline-block;
+        content: "";
+        position: absolute;
+        top: 0;
+        border: 1px solid transparent;
+
+        border-width: 0.675rem 0.375rem;
+    }
+
+    &.arrowed {
+        margin-left: 0.325rem;
+        &::before {
+            left: -0.7125rem;
+            border-right-color: inherit;
+        }
+    }
+    &.arrowed-right {
+        margin-right: 0.325rem;        
+        &::after {
+            right: -0.7125rem;
+            border-left-color: inherit;
+        }
+    }
+    &.arrowed-in {
+        margin-left: 0.375rem;        
+        &::before {
+            left: -0.375rem;
+            border-color: inherit;
+            border-left-color: transparent;
+        }
+    }
+    &.arrowed-in-right {
+        margin-right: 0.375rem;
+        &::after {
+            right: -0.375rem;
+            border-color: inherit;
+            border-right-color: transparent;
+        }
+    }
+
+
+
+    &.badge-sm {
+        &.arrowed {
+            margin-left: 0.3rem;            
+            &::before {
+                border-width: 0.55rem 0.325rem 0.57rem;
+                left: -0.6125rem;
+            }
+        }
+        &.arrowed-in {
+            margin-left: 0.3rem;
+            &::before {                
+                border-width: 0.55rem 0.325rem 0.575rem;
+                left: -0.325rem;
+            }
+        }
+
+        &.arrowed-right {
+            margin-right: 0.3rem;
+            &::after {
+                border-width: 0.55rem 0.325rem 0.57rem;
+                right: -0.6125rem;
+            }
+        }
+        &.arrowed-in-right {
+            margin-right: 0.3rem;
+            &::after {
+                border-width: 0.55rem 0.325rem 0.57rem;
+                right: -0.325rem;
+            }
+        }
+    }
+
+
+    &.badge-lg {
+        &.arrowed {
+            margin-left: 0.5rem;            
+            &::before {
+                border-width: 0.875rem 0.5rem;
+                left: -0.975rem;
+            }
+        }
+        &.arrowed-in {
+            margin-left: 0.5rem;
+            &::before {                
+                border-width: 0.875rem 0.5rem;
+                left: -0.5rem;
+            }
+        }
+
+        &.arrowed-right {
+            margin-right: 0.5rem;
+            &::after {
+                border-width: 0.875rem 0.5rem;
+                right: -0.975rem;
+            }
+        }
+        &.arrowed-in-right {
+            margin-right: 0.5rem;
+            &::after {
+                border-width: 0.875rem 0.5rem;
+                right: -0.5rem;
+            }
+        }
+    }
+
+ }
+
+}//@if $badge-arrow
+
+
+@mixin badge-colors($colorName) {
+    .badge-#{$colorName} {
+        color: get-btn-text($colorName);
+        background-color: get-btn-bg($colorName);
+        border-color:  get-btn-bg($colorName);
+    }
+}
+
+@if $badge-color == true {
+ @each $colorName, $value in $badge-colors {
+    @include badge-colors($colorName);
+ }
+}
+
+
+//round circle
+.badge-dot {
+    font-size: 0px !important;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 1rem;
+    padding: 0;
+
+    &:empty {
+        display: inline-block;
+    }
+}

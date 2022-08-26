@@ -1,0 +1,109 @@
+{{#each (get "stats")}}
+<div class="col-12 col-sm-6 col-lg-3 px-2 mb-2 mb-lg-0">
+
+    <div class="bcard h-100 d-flex align-items-center p-3">
+        {{#if icon}}
+        <div>
+            <span class="d-inline-block bgc-{{icon-bg}} p-3 radius-round text-center border-4 brc-{{icon-border}}">
+                <i class="{{icon}} text-white text-170 w-4 h-4"></i>
+            </span>
+        </div>
+        {{/if}}
+
+
+        {{#if piechart}}
+        <div class="text-center pos-rel ml-1">
+            <canvas class="infobox-piechart" data-value="{{piechart}}" style="height: 75px; width: 75px; max-height: 75px; max-width: 75px;"></canvas>
+            <span class="position-center text-dark-tp3 text-600">
+                {{piechart}}%
+            </span>
+        </div>
+        {{/if}}
+        
+
+        <div class="ml-3 flex-grow-1">
+            {{#if number}}
+            <div class="pos-rel">
+                {{#if dollar-sign}}
+                 <span class="text-dark-tp4 text-140 mr-n2px">
+                    $
+                 </span>
+                {{/if}}
+
+                 <span class="text-dark-tp3 text-180">
+                    {{number}}
+                 </span>
+
+                {{#if stats-up}}
+                <span class="text-blue-m1 text-600 text-90 ml-15 text-nowrap">
+                    {{stats-up}}
+                    <i class="fa fa-arrow-up"></i>
+                </span>
+                {{/if}}
+
+                {{#if stats-down}}
+                 <span class="text-danger-m2 text-600 text-90 ml-15 text-nowrap">
+                    {{stats-down}}
+                    <i class="fa fa-arrow-down"></i>
+                 </span>
+                {{/if}}
+            </div>
+            {{/if}}
+
+            {{#if title}}
+            <div>
+                <span class="text-dark-tp3 text-125">
+                    {{title}}
+                </span>
+            </div>
+            {{/if}}
+            
+            <div class="text-dark-tp4 text-110">
+                {{text}}
+            </div>
+        </div>
+
+
+        {{#if linechart}}
+        <div class="mr-auto">
+            <canvas class="infobox-line-chart" style="width: 70px;" data-values="{{linechart}}"></canvas>
+        </div>
+        {{/if}}
+
+
+
+        {{#if @first}}
+        <!-- use a dropdown with tooltips for first info box -->
+        <div class="position-tr m-1 dropdown dd-backdrop dd-backdrop-none-md">
+            <button type="button" class="btn btn-sm btn-brc-tp btn-bgc-tp btn-text-pale btn-light-default dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-h"></i>
+            </button>
+
+            <div class="dropdown-menu mw-auto dropdown-menu-right dropdown-caret dropdown-animated dd-appear-center dd-slide-none-md">
+                <div class="dropdown-inner">
+                    <a class="dropdown-item btn btn-light-grey btn-h-lighter-default btn-a-lighter-primary btn-bgc-tp px-3" href="#" title="Some action" data-toggle="tooltip">
+                        <i class="fa fa-cog mr-1 text-blue"></i>
+                        <span class="d-md-none">
+                            Some action
+                        </span>
+                    </a>
+
+                    <a class="dropdown-item btn btn-light-grey btn-h-lighter-default btn-a-lighter-primary btn-bgc-tp px-3" href="#" title="Another action" data-toggle="tooltip">
+                        <i class="fas fa-tools text-orange mr-1"></i>
+                        <span class="d-md-none">
+                            Another action
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="position-tr m-1">
+            {{> page/default-dropdown}}
+        </div>
+        {{/if}}
+
+    </div><!-- /.bcard -->
+
+</div><!-- /.col -->
+{{/each}}

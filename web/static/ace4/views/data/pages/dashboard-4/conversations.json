@@ -1,0 +1,60 @@
+[
+ {
+    "name" : "John",
+    "avatar" : "avatar.png",
+    "time" : "38 sec",
+    "time-color" : "blue",
+    "message" : "Raw denim you probably haven't heard of actively? <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+    "status": "success"
+ } ,
+ {
+    "name" : "Alexa",
+    "avatar" : "avatar3.png",
+    "time" : "4 sec",
+    "time-color" : "success",
+    "message" : "Lorem ipsum dolor sit amet",
+    "status": "success"
+ } ,
+ {
+    "name" : "Bob Doe",
+    "avatar" : "BD",
+    "color": "warning",
+    "admin" : true,
+    "time" : "2 min",
+    "time-color" : "orange",
+    "message" : "Consectetur adipiscing elit!!!",
+    "status": "warning"
+ } ,
+ {
+    "name" : "Jim",
+    "avatar" : "avatar4.png",
+    "time" : "3 min",
+    "time-color" : "grey",
+    "message" : "Heard of them jean shorts Austin! <span class='fa-stack w-auto'> <i class='fas fa-circle text-dark fa-stack-1x text-100'></i> <i class='fas fa-grin-alt text-warning-m3 text-125 fa-stack-1x pos-rel'></i> </span>",
+    "status": "info"
+ } ,
+ {
+    "name" : "John",
+    "avatar" : "avatar5.png",
+    "time" : "38 sec",
+    "time-color" : "blue",
+    "message" : "Fusce dapibus, tellus ac cursus commodo...",
+    "status": "secondary"
+ },
+ {
+    "name" : "Susan",
+    "avatar" : "avatar1.png",
+    "time" : "4 min",
+    "time-color" : "success",
+    "message" : "Fusce dapibus, tellus ac cursus commodo...",
+    "status": "secondary"
+ },
+ {
+    "name" : "Alexa",
+    "avatar" : "avatar3.png",
+    "time" : "4 min",
+    "time-color" : "success",
+    "message" : "Heard of them jean shorts Austin!",
+    "status": "info"
+ }
+]

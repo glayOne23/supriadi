@@ -1,0 +1,92 @@
+<div role="button" class="message-item d-flex align-items-start bgc-h-primary-l4 px-2 px-md-3 py-25 radius-2px d-style pos-rel">
+    <label class="mb-0 message-select-btn">
+        <input type="checkbox" class="input-sm" />
+    </label>
+
+    <a href="#" class="d-none d-md-block ml-md-3 message-star-btn">
+        {{#if starred}}
+        <i class="fa fa-star text-warning-m1"></i>
+        {{else}}
+        <i class="far fa-star text-grey-l1"></i>
+        {{/if}}
+    </a>
+
+    <a href="#" class="d-md-none position-br mr-1 mb-2px message-star-btn">
+        {{#if starred}}
+        <i class="fa fa-star text-warning-m1"></i>
+        {{else}}
+        <i class="far fa-star text-grey-l1"></i>
+        {{/if}}
+    </a>
+
+    {{#if abbr}}
+    <div class="col-auto px-0 ml-2 ml-md-3 w-5 h-5 bgc-{{color}} text-white text-90 text-600 text-center pt-15 radius-round border-2 brc-white">
+        {{abbr}}
+    </div>
+    {{/if}}
+
+    {{#if avatar}}
+    <img src="assets/image/avatar/{{avatar}}" class="col-auto px-0 ml-2 ml-md-3 w-5 h-5 radius-round border-2 brc-white" />
+    {{/if}}
+
+    <div class="ml-3 d-flex flex-column flex-lg-row align-items-lg-center">
+        <div class="message-user mb-1 mb-lg-0 col-auto px-0 text-95 {{#if unread}}text-600 text-dark-m2{{else}}text-dark-m3{{/if}}">
+            {{name}}
+            {{#if count}}
+            <span class="text-400 text-sm text-grey-m3 ml-1">{{count}}</span>
+            {{/if}}
+        </div>
+        <div class="message-text ml-lg-3 ml-lg-5 pr-1 pr-lg-0 text-90 {{#if unread}}text-600{{/if}} text-dark-m3 pos-rel">
+            {{#if tag-family}}
+            <span class="p-1 bgc-pink radius-round d-inline-block mr-1"></span>
+            {{/if}}
+            {{#if tag-work}}
+            <span class="p-1 bgc-green radius-round d-inline-block mr-1"></span>
+            {{/if}}
+            {{#if tag-friends}}
+            <span class="p-1 bgc-blue radius-round d-inline-block mr-1"></span>
+            {{/if}}
+            {{#if tag-other}}
+            <span class="p-1 bgc-orange radius-round d-inline-block mr-1"></span>
+            {{/if}}
+
+            
+
+            {{#if urgent}}
+            <span class="badge bgc-red-l2 text-danger-d2 mr-1 radius-1">Urgent</span>
+            {{/if}}
+            {{#if important}}
+            <span class="badge bgc-orange-l2 text-dark-m3 mr-1 radius-1">Important</span>
+            {{/if}}
+
+            {{title}}
+        </div>
+    </div>
+
+
+    
+    <div class="message-time d-none d-lg-flex align-items-center ml-auto pl-2 col-auto text-nowrap pr-0 pl-1 text-90{{#if unread}} text-600 text-dark-m1{{/if}}">
+        {{#if attachment}}
+        <i class="w-3 fa fa-paperclip ml-n35 {{#if unread}}text-blue-m1{{else}}text-grey-l1{{/if}}"></i>
+        {{/if}}
+        {{time}}
+    </div>
+    <div class="position-tr mt-15 w-auto message-time d-flex d-lg-none align-items-center text-nowrap  text-90{{#if unread}} text-600 text-dark-m1{{/if}}">
+        {{#if attachment}}
+        <i class="w-2 mr-2px fa fa-paperclip ml-n3 {{#if unread}}text-blue-m1{{else}}text-grey-l1{{/if}}"></i>
+        {{/if}}
+        {{time}}
+    </div>
+
+
+    <div class="message-actions position-r mr-1 v-hover p-15 bgc-white-tp1 shadow-sm radius-2px">
+        <a href="#" class="btn btn-tp border-0 btn-text-danger btn-light-danger mr-2px px-2">
+            <i class="fa fa-trash-alt text-danger-m1 w-2"></i>
+        </a>
+        <a href="#" class="btn btn-tp border-0 btn-text-info btn-light-info px-2">
+            <i class="fa fa-reply w-2"></i>
+        </a>                    
+    </div>
+</div>
+
+<hr class="brc-black-tp10 my-0" />

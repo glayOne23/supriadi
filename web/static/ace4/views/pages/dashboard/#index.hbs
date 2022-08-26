@@ -1,0 +1,93 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        {{title}}
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            overview &amp; stats
+        </small>
+    </h1>
+
+    <div class="page-tools d-inline-flex">
+        <button type="button" class="btn btn-light-green btn-h-green btn-a-green border-0 radius-3 py-2 text-600 text-90">
+            <span class="d-none d-sm-inline mr-1">
+                Save
+            </span>
+            <i class="fa fa-save text-110 w-2 h-2"></i>
+        </button>
+
+        <button type="button" class="mx-2px btn btn-light-purple btn-h-purple btn-a-purple border-0 radius-3 py-2 text-90">
+            <i class="fa fa-undo text-110 w-2 h-2"></i>
+        </button>
+
+        <div class="btn-group dropdown dd-backdrop dd-backdrop-none-md">
+			<button type="button" class="btn btn-light-primary btn-h-primary btn-a-primary border-0 radius-3 py-2 text-90 dropdown-toggle" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-search text-110 w-2 h-2"></i>
+			</button>
+
+			<div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated animated-2 dd-slide-up dd-slide-none-md">
+                <div class="dropdown-inner">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
+		</div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row mt-3">
+    <div class="col-xl-8">
+        <div class="row px-3 px-lg-4">
+            <div class="col-12">
+                {{> page/infobox1}}
+            </div>
+
+            <div class="col-12 mt-35">
+                {{> page/infobox2}}
+            </div>
+        </div><!-- /.row -->
+    </div>
+
+    <div class="col-xl-4 mt-4 mt-xl-0">
+        {{> page/traffic-piechart}}
+    </div>
+</div>
+
+
+
+
+
+<div class="row pt-3 mt-1 mt-lg-3">
+    <div class="col-lg-5 order-last order-lg-first mt-lg-3">
+        {{> page/products}}
+    </div>
+
+    <div class="col-lg-7 mb-4 mb-lg-0 mt-3">
+        {{> page/sale-stats}}
+    </div>
+</div>
+
+
+
+
+
+<div class="row mt-5 pt-lg-3">
+    <div class="col-12 col-lg-3">
+        {{> page/transfers}}
+    </div>
+
+    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+        {{> page/tasks}}
+    </div>
+
+    <div class="col-12 col-lg-5 mt-4 mt-lg-0">
+        {{> page/conversation}}
+    </div>
+</div>

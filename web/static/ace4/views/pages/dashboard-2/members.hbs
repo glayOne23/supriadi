@@ -1,0 +1,115 @@
+<div class="bcard card h-100 pt-1 pt-lg-2">
+
+    <div class="card-header brc-secondary-l3 pos-rel">
+        <h5 class="card-title text-dark-m2 pl-1 text-110">
+            Top Members
+        </h5>
+
+        <div class="card-toolbar align-self-center no-border">
+            <div data-toggle="buttons" class="btn-group btn-group-toggle">
+                <label class="mr-2px btn btn-xs btn-bold border-0 btn-outline-lightgrey btn-h-light-secondary btn-a-light-blue radius-1 active">
+                    <input name="members" type="radio" value="1" checked="" />
+                    1W
+                </label>
+
+                <label class="mr-2px btn btn-xs btn-bold border-0 btn-outline-lightgrey btn-h-light-secondary btn-a-light-blue radius-1">
+                    <input name="members" type="radio" value="2" />
+                    1M
+                </label>
+
+                <label class="btn btn-xs btn-bold border-0 btn-outline-lightgrey btn-h-light-secondary btn-a-light-blue radius-1">
+                    <input name="members" type="radio" value="3" />
+                    1Y
+                </label>
+            </div>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="reload" class="card-toolbar-btn text-success text-105"><i class="fas fa-sync-alt"></i></a>
+        </div>
+    </div>
+
+    <div class="card-body p-0 mt-n1px">
+        <div class="table-responsive-md">
+            <table class="table table-border-x brc-secondary-l4 border-0 mb-0">
+                <tbody>
+
+                    {{#each (get "members")}}
+                    <tr class="bgc-h-default-l4">
+                        <td class="pl-2 pl-lg-4">
+                            {{#if color}}
+                                <span class="d-inline-block w-5 h-5 text-center mr-2 pt-15 radius-round bgc-primary-l3 text-primary-d2 border-2 brc-white font-bolder text-90">
+                                    <span>{{color}}</span>
+                                </span>
+                            {{/if}}
+                            {{#if avatar}}
+                                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round mr-2 w-5 h-5" />
+                            {{/if}}
+
+                            <a href="#" class="text-95 btn-text-dark btn-h-text-pink">
+                                {{name}}
+                            </a>
+                        </td>
+
+                        <td class="text-secondary-d2 text-90">
+                            {{role}}
+                        </td>
+
+                        <td class=" text-dark-m3 text-85">
+                            {{location}}
+                        </td>
+
+                        <td class="font-bolder text-75 text-dark-m2 pr-2 pr-lg-3">
+                            {{#if approved}}
+                             <span class="d-inline-block bgc-green radius-1 p-1 align-middle mr-1"></span>
+                             <span>Approved</span>
+                            {{/if}}
+
+                            {{#if pending}}
+                             <span class="d-inline-block bgc-warning radius-1 p-1 align-middle mr-1"></span>
+                             <span>Pending</span>
+                            {{/if}}
+
+                            {{#if banned}}
+                             <span class="d-inline-block bgc-red radius-1 p-1 align-middle mr-1"></span>
+                             <span>Banned</span>
+                            {{/if}}
+                        </td>
+
+                        <td>
+                            <div class="dropdown dd-backdrop dd-backdrop-none-md d-inline-block">
+                                <button type="button" class="btn btn-bgc-tp btn-outline-light btn-h-default btn-a-default btn-bold btn-xs border-0 dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cog text-95"></i>
+                                </button>
+ 
+                                <div class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-appear-center dd-slide-none-md mw-auto">
+                                    <div class="dropdown-inner">
+                                        <div class="d-md-none dropdown-header border-b-1 brc-secondary-l2 text-600 text-110 text-center">
+                                            {{#if avatar}}
+                                                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="radius-round mr-2 w-5 h-5" />
+                                            {{/if}}
+                                            {{name}}
+                                        </div>
+
+                                        <a class="dropdown-item px-3" href="#">
+                                            <i class="fa fa-check mr-1 text-success w-2"></i>
+                                            Approve
+                                        </a>
+                                        <a class="dropdown-item px-3" href="#">
+                                            <i class="fa fa-times text-danger mr-1 w-2"></i>
+                                            Reject
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+
+
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive-md -->
+    </div><!-- /.card-body -->
+
+</div>

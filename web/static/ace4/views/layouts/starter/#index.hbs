@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> layout/_commons/_head}}
+  </head>
+
+  <body>
+   <div class="body-container">
+      <!-- Navbar -->
+      {{> layout/starter/navbar}}
+
+      <div class="main-container bgc-white">
+        
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar sidebar-fixed expandable sidebar-light" data-backdrop="true" data-dismiss="true" data-swipe="true">
+         {{> layout/starter/sidebar}}
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <!-- Page Content -->
+          <div class="page-content">
+            {{{body}}}
+          </div>
+
+        </div>
+
+      </div>
+
+   </div>
+
+   {{> layout/_commons/_tail}}
+
+  </body>
+</html>

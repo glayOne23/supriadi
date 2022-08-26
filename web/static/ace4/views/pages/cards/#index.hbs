@@ -1,0 +1,660 @@
+<div class="page-header border-0 pb-4">
+    <h1 class="page-title text-dark-m2 text-140">
+        Sortable cards with persistent state
+    </h1>
+
+	<div class="page-tools mt-3 mt-sm-0 mb-sm-n1">
+		<button id="reset-1" type="button" class="btn btn-sm btn-lighter-primary btn-bgc-white btn-bold px-4 radius-round">
+			<i class="fa fa-undo text-green-d1"></i>
+			Reset
+		</button>
+	</div>
+</div>
+
+
+<div id="widgets-area" class="invisible"><!-- `.invisible` at first, then we restore cards order and state, and then remove `.invisible` class -->
+
+ <div class="row">
+    <div class="col-12 col-sm-6 cards-container">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="card-title">
+                    Default Card
+                </h5>
+                
+				<div class="card-toolbar">
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="card-toolbar-btn text-blue">
+							<i class="fa fa-bars"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-caret mr-n3 dropdown-animated">
+							<a class="dropdown-item" href="#">
+								Action 1
+							</a>
+							<a class="dropdown-item" href="#">
+								Action 2
+							</a>
+							<hr class="my-1" />
+							<a class="dropdown-item" href="#">
+								Separated link
+							</a>
+						</div>
+					</div>
+
+					<a href="#" data-action="expand" class="card-toolbar-btn text-orange-d3 d-style">
+						<i class="fa fa-expand d-n-active"></i>
+						<i class="fa fa-compress d-active"></i>
+					</a>
+
+					<a href="#" data-action="reload" class="card-toolbar-btn text-green">
+						<i class="fas fa-sync-alt"></i>
+					</a>
+
+					<a href="#" data-action="toggle" class="card-toolbar-btn text-grey-d1">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+
+					<a href="#" data-action="close" class="card-toolbar-btn text-danger">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-0"><!-- to have smooth .card toggling, it should have zero padding -->
+			 <div class="p-3">
+				<p class="alert bgc-secondary-l4 brc-info-m1 border-0 border-l-4 radius-0 text-dark-tp2">
+					<i class="far fa-hand-point-right mr-1"></i>
+					You can drag and drop cards to sort them. The new position is saved and will be restored when you reload this page.
+				</p>
+				<p class="alert bgc-secondary-l4 brc-orange-m1 border-0 border-l-4 radius-0 text-dark-tp2">
+					<i class="far fa-hand-point-right mr-1"></i>
+					When you toggle or close a card, its state is saved and will be restored upon page reload.
+				</p>
+				<p class="alert bgc-secondary-l4 brc-green-m1 border-0 border-l-4 radius-0 text-dark-tp2 mb-1">
+					<i class="far fa-hand-point-right mr-1"></i>
+					You can
+					<a href="#" id="reset-2" class="text-600 text-primary-d2 bgc-h-orange-l1 px-1 ml-n1 no-underline">
+					  reset cards
+					</a>
+					back to their original position and state.
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+		</div>
+	</div>
+
+
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+        <div class="card border-0 shadow-sm radius-0">
+			<div class="card-header bgc-primary-d1">
+				<h5 class="card-title text-white">
+					<i class="fa fa-table mr-2px"></i>
+					Table
+				</h5>
+			</div>
+			
+			<div class="card-body bgc-transparent p-0 border-1 brc-primary-m3 border-t-0">
+			  <table class="table table-striped table-hover mb-0 text-danger">
+				<thead class="text-dark-l2 text-95">
+					<tr>
+						<th>
+							<i class="far fa-user text-blue mr-1px"></i>
+							User
+						</th>
+
+						<th>
+							<i class="fa fa-at text-orange-d1 mr-1px"></i>
+							Email
+						</th>
+
+						<th class="d-none d-lg-table-cell mr-1px">
+							Status
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{{> page/members}}
+				</tbody>
+			  </table>
+			</div><!-- /.card-body -->
+		</div><!-- /.card -->
+    </div><!-- /.col -->
+
+ </div>
+
+
+
+
+ <div class="row mt-475">
+    <div class="col-12 col-sm-6 cards-container">
+		<div class="card bgc-yellow-m3 shadow-sm">
+            <div class="card-header card-header-sm">
+				<h5 class="card-title text-dark-tp3 text-600 text-90 align-self-center">
+                    Small & Collapsed by Default
+                </h5>
+                
+				<div class="card-toolbar">
+					<a href="#" class="card-toolbar-btn text-blue-d3">
+						<i class="fa fa-cog"></i>
+					</a>
+
+					<a href="#" data-action="reload" class="card-toolbar-btn text-success-d3">
+						<i class="fas fa-sync-alt"></i>
+					</a>
+
+					<a href="#" data-action="toggle" class="card-toolbar-btn text-grey-d3 collapsed d-style">
+						<i class="fa fa-minus d-n-collapsed"></i>
+						<i class="fa fa-plus d-collapsed"></i>
+					</a>
+
+					<a href="#" data-action="close" class="card-toolbar-btn text-danger-d3">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body collapse bgc-white p-0">
+			 <div class="p-3">
+				<p>
+					Sapien et ligula ullamcorper malesuada proin libero.
+				</p>
+				<p class="mb-0">
+                	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+		</div><!-- /.card -->
+    </div><!-- /.col -->
+
+
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+		<div class="card ccard">
+			<div class="card-progress"><!-- the loading/progressing bar -->
+				<div class="card-progressbar bgc-blue-d2"></div>
+			</div>
+
+            <div class="card-header card-header-lg">
+				<h5 class="card-title text-130 text-dark-m3">
+                    Big Header with Progress
+                </h5>
+                
+				<div class="card-toolbar no-border">
+					<a href="#" data-action="reload" class="card-toolbar-btn btn btn-sm radius-round btn-green mx-2px">
+						<i class="fas fa-sync-alt w-2 mx-1px"></i>
+					</a>
+
+					<a href="#" data-action="toggle" class="card-toolbar-btn btn btn-sm radius-round btn-grey mx-2px">
+						<i class="fa fa-chevron-up w-2 mx-1px"></i>
+					</a>
+
+					<a href="#" data-action="close" class="card-toolbar-btn btn btn-sm radius-round btn-red mx-2px">
+						<i class="fa fa-times w-2 mx-1px"></i>
+					</a>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-0">
+			 <div class="p-3">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua!
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+		</div><!-- /.card -->
+    </div><!-- /.col -->
+ </div>
+
+
+
+
+ <div class="row mt-475">
+    <div class="col-12 col-sm-6 cards-container">
+		<div class="card dcard">
+            <div class="card-header">
+				<h5 class="card-title text-120 text-primary-d2">
+                    With Badge
+                </h5>
+                
+				<div class="card-toolbar">
+					<span class="badge badge-success badge-lg ml-2 badge-pill">
+						16%
+						<i class="fa fa-arrow-up"></i>
+					</span>
+
+					<div class="card-toolbar no-border">
+						<a href="#" data-action="reload" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-success mx-2px">
+							<i class="fas fa-sync-alt w-2 mx-1px"></i>
+						</a>
+
+						<a href="#" data-action="toggle" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-default mx-2px">
+							<i class="fa fa-angle-double-up w-2 mx-1px"></i>
+						</a>
+
+						<a href="#" data-action="close" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-danger mx-2px">
+							<i class="fa fa-times w-2 mx-1px"></i>
+						</a>
+					</div>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-0">
+			 <div class="p-3">
+				<p>
+					Est placerat in egestas erat. Arcu bibendum at varius vel pharetra vel turpis. Tristique risus nec feugiat in fermentum posuere urna nec.
+				</p>
+				<p>
+					Vel pharetra vel turpis nunc eget lorem dolor sed. Egestas purus viverra accumsan in. Amet massa vitae tortor condimentum lacinia quis vel eros donec.
+				</p>
+				<p class="mb-0">
+					Neque vitae tempus quam pellentesque nec nam!
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+        </div>
+    </div><!-- /.col -->
+
+
+    <div class="col-12 col-sm-6 cards-container mt-3 mt-sm-0">
+	  <div class="card dcard p-1 bgc-secondary-l3">
+		<div class="card-body p-1 p-sm-2 p-lg-3">
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title text-120 text-default-d3">
+						With Distance
+					</h5>
+					
+					<div class="card-toolbar no-border  align-self-center">
+						<span class="badge badge-primary px-25">
+							9%
+							<i class="fa fa-arrow-up"></i>
+						</span>
+					</div>
+
+					<div class="card-toolbar">
+						<a href="#" data-action="reload" class="card-toolbar-btn btn btn-sm radius-1 btn-light-success btn-brc-tp mx-2px">
+							<i class="fas fa-sync-alt w-2 mx-1px"></i>
+						</a>
+
+						<a href="#" data-action="toggle" class="card-toolbar-btn btn btn-sm radius-1 btn-light-default btn-brc-tp mx-2px">
+							<i class="fa fa-angle-up w-2 mx-1px"></i>
+						</a>
+
+						<a href="#" data-action="close" class="card-toolbar-btn btn btn-sm radius-1 btn-light-danger btn-brc-tp mx-2px">
+							<i class="fa fa-times w-2 mx-1px"></i>
+						</a>
+					</div>
+				</div><!-- /.card-header -->
+
+				<div class="card-body p-0">
+				 <div class="p-3">
+					<p>
+						Est placerat in egestas erat. Arcu bibendum at varius vel pharetra vel turpis. Tristique risus nec feugiat in fermentum posuere urna nec.
+					</p>
+					<p class="mb-0">
+						Neque vitae tempus quam pellentesque nec nam!
+					</p>
+				 </div>
+				</div><!-- /.card-body -->
+			</div>
+		</div>
+	  </div>
+    </div><!-- /.col -->
+ </div><!-- /.row -->
+
+
+
+
+ <div class="row mt-475">
+    <div class="col-12 col-sm-6 cards-container">
+		<div class="card border-0 shadow-sm">
+            <div class="card-header bgc-green-d3">
+				<h5 class="card-title text-110 text-white">
+                    With Toolbox
+                </h5>
+                
+				<div class="card-toolbar align-self-center">
+					<div class="progress border-1 brc-white-tp4 h-3" style="width: 80px;">
+						<div class="progress-bar bgc-yellow text-brown-d4 text-600" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+					</div>
+				</div>
+
+				<div class="card-toolbar">
+					<span class="badge bgc-green-l2 badge-lg">
+						16%
+						<i class="fa fa-arrow-up"></i>
+					</span>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-0 border-1 border-t-0 brc-green-m2">
+				<div class="bgc-secondary-l4 px-25 py-15 border-b-1 brc-secondary-l2">
+					<div class="btn-group mr-2">
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-secondary btn-h-outline-success btn-a-outline-success">
+							<i class="fa fa-check text-110 text-success-m1 mr-1"></i>
+							Approve
+						</button>
+
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-secondary btn-h-outline-danger btn-a-outline-danger">
+							<i class="fa fa-times text-110 text-danger-m1 mr-1"></i>
+							Reject
+						</button>
+					</div>
+
+					<div class="btn-group mr-2">
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-secondary btn-h-outline-info btn-a-outline-info">
+							<i class="fa fa-bold text-110"></i>
+						</button>
+
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-secondary btn-h-outline-info btn-a-outline-info">
+							<i class="fa fa-italic text-110"></i>
+						</button>
+					</div>
+
+					<div class="btn-group">
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-grey btn-h-outline-info btn-a-outline-info">
+							<i class="fa fa-align-left"></i>
+						</button>
+	
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-grey btn-h-outline-info btn-a-outline-info">
+							<i class="fa fa-align-center"></i>
+						</button>
+
+						<button type="button" class="btn btn-bold btn-xs btn-bgc-white btn-outline-grey btn-h-outline-info btn-a-outline-info">
+							<i class="fa fa-align-right"></i>
+						</button>
+					</div>
+				</div>
+
+				<div class="p-3">
+					<p class="mb-0 text-dark-m2">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur. Nulla fringilla eleifend consectetur. Etiam justo nisl, gravida id egestas eu, eleifend vel metus. Pellentesque tellus ipsum, euismod in facilisis quis, aliquet quis sem.
+					</p>
+				</div>
+			</div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div><!-- /.col -->
+
+
+
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+		<div class="card dcard overflow-hidden">
+            <div class="card-header">
+				<h5 class="card-title text-110 text-primary-d2 pt-1">
+                    With Footer
+                </h5>
+	
+				<div class="card-toolbar no-border">
+					<a href="#" data-action="reload" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-success btn-h-outline-success px-15 mx-0 btn-tp">
+						<i class="fas fa-sync-alt w-2 mx-1px"></i>
+					</a>
+					<a href="#" data-action="toggle" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-default btn-h-outline-default px-15 mx-0 btn-tp">
+						<i class="fa fa-chevron-up w-2 mx-1px"></i>
+					</a>
+					<a href="#" data-action="close" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-danger btn-h-outline-danger px-15 mx-0 btn-tp">
+						<i class="fa fa-times w-2 mx-1px"></i>
+					</a>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body bg-white p-0">
+			 <div class="p-3">
+				<p>
+					Accumsan sit amet nulla facilisi morbi tempus iaculis. Convallis a cras semper auctor neque vitae tempus quam. Ut consequat semper viverra nam libero justo.
+				</p>
+				<p>
+					Laoreet sit amet. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae.
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+			
+			<div class="card-footer bgc-white px-4 py-3 brc-dark-l3 d-flex justify-content-between">
+				<button type="button" class="btn border-2 btn-lighter-secondary btn-text-black btn-h-secondary btn-a-secondary btn-bgc-tp">
+					<i class="fa fa-arrow-left mr-2"></i>
+					I don't agree
+				</button>
+
+				<button type="button" class="btn border-2 btn-lighter-primary btn-text-black btn-h-primary btn-a-primary btn-bgc-tp">
+					I agree
+					<i class="fa fa-arrow-right ml-2"></i>
+				</button>
+			</div><!-- /.card-footer -->
+        </div><!-- /.card -->
+    </div><!-- /.col -->
+ </div><!-- /.row -->
+
+
+
+
+
+ <div class="row mt-475">
+    <div class="col-12 col-sm-6 cards-container">
+		<div class="card ccard">
+            <div class="card-header flex-wrap pb-0">
+				<h5 class="card-title text-primary-d2">
+					Tabbed
+				</h5>
+
+				<div class="card-toolbar no-border ml-auto">
+					<ul class="nav nav-tabs nav-tabs-simple nav-tabs-scroll nav-tabs-static" role="tablist">
+						<li class="nav-item mr-2">
+							<a class="active btn btn-light-lightgrey btn-brc-tp btn-h-light-dark btn-a-outline-primary bgc-white py-25 px-2 border-none border-b-4 text-95" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
+								<i class="fa fa-home mr-2px"></i>
+								Home
+							</a>
+						</li>
+
+						<li class="nav-item mr-2">
+							<a class="btn btn-light-lightgrey btn-brc-tp btn-h-light-dark btn-a-outline-primary bgc-white py-25 px-2 border-none border-b-4 text-95" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
+								<i class="fa fa-home mr-2px"></i>
+								Profile
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="btn btn-light-lightgrey btn-brc-tp btn-h-light-dark btn-a-outline-primary bgc-white py-25 px-2 border-none border-b-4 text-95" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">
+								More
+								<i class="fa fa-ellipsis-v ml-2px opacity-2"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-4">
+				<div class="tab-content border-0 p-1">
+					<div class="tab-pane show active fade" id="tab-1">
+						<p>
+							<b>1.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+
+					<div class="tab-pane fade" id="tab-2">
+						<p>
+							<b>2.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+
+					<div class="tab-pane fade" id="tab-3">
+						<p>
+							<b>3.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+			    </div>
+			</div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div><!-- /.col -->
+
+
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+		<div class="card dcard">
+            <div class="card-header flex-wrap pb-0 align-items-center">
+				<h5 class="card-title text-primary-d2 mb-2">
+					Tabbed
+				</h5>
+
+				<div class="card-toolbar no-border pt-1 pb-25 ml-auto">
+					<ul class="nav nav-tabs nav-tabs-simple nav-tabs-scroll nav-tabs-static" role="tablist">
+						<li class="nav-item mr-2">
+							<a class="active btn btn-white btn-h-light-primary btn-a-lighter-primary p-25 border-0 radius-2 text-95" data-toggle="tab" href="#tab-11" role="tab" aria-controls="tab-11" aria-selected="true">
+								<i class="fa fa-home mr-2px"></i>
+								Home
+							</a>
+						</li>
+
+						<li class="nav-item mr-2">
+							<a class="btn btn-white btn-h-light-success btn-a-lighter-success p-25 border-0 radius-2 text-95" data-toggle="tab" href="#tab-22" role="tab" aria-controls="tab-22" aria-selected="false">
+								<i class="far fa-user mr-2px"></i>
+								Profile
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="btn btn-white btn-h-light-red btn-a-lighter-red p-25 border-0 radius-2 text-95" data-toggle="tab" href="#tab-33" role="tab" aria-controls="tab-33" aria-selected="false">
+								More
+								<i class="fa fa-ellipsis-v ml-2px opacity-2"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body px-4 py-3">
+				<div class="tab-content border-0 p-1">
+					<div class="tab-pane show active fade" id="tab-11">
+						<p>
+							<b>1.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+
+					<div class="tab-pane fade" id="tab-22">
+						<p>
+							<b>2.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+
+					<div class="tab-pane fade" id="tab-33">
+						<p>
+							<b>3.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+						</p>
+						<p>
+							Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+						</p>
+						<p>
+							Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+						</p>
+					</div>
+			    </div>
+			</div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div><!-- /.col -->
+
+ </div><!-- /.row -->
+
+
+
+
+ <div class="row mt-475">
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+		<div class="card bgc-dark h-100 shadow-sm">
+            <div class="card-header">
+				<h5 class="card-title text-white text-110">
+                   Scroll Content
+                </h5>
+			</div><!-- /.card-header -->
+
+			<div class="card-body bgc-white p-0">
+				<div class="p-3 ace-scroll" data-ace-scroll='{"height": 280, "autohide":false, "color": "grey"}'>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien et ligula ullamcorper malesuada proin libero. Ut venenatis tellus in metus vulputate. Nec tincidunt praesent semper feugiat. Lobortis elementum nibh tellus molestie nunc non blandit massa enim. Sem fringilla ut morbi tincidunt augue interdum velit. In vitae turpis massa sed. Feugiat vivamus at augue eget arcu dictum. Dictum sit amet justo donec. Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Quam id leo in vitae turpis massa sed. Lorem ipsum dolor sit amet. Ut consequat semper viverra nam libero justo laoreet. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Montes nascetur ridiculus mus mauris vitae ultricies leo. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Rhoncus mattis rhoncus urna neque.</p>
+<p>Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Quis viverra nibh cras pulvinar. Netus et malesuada fames ac. Sed risus ultricies tristique nulla aliquet enim tortor at. Eu turpis egestas pretium aenean. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Egestas dui id ornare arcu odio ut sem nulla.</p>
+<p>Commodo odio aenean sed adipiscing diam donec. Libero volutpat sed cras ornare arcu dui vivamus arcu felis. Mauris a diam maecenas sed enim. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Tincidunt lobortis feugiat vivamus at augue eget arcu. Blandit cursus risus at ultrices mi tempus imperdiet. Porta nibh venenatis cras sed felis eget velit aliquet sagittis. Ultrices dui sapien eget mi. Sit amet aliquam id diam maecenas. Gravida rutrum quisque non tellus orci ac auctor augue mauris. Velit ut tortor pretium viverra suspendisse potenti. Aliquam eleifend mi in nulla posuere sollicitudin aliquam. Ultricies leo integer malesuada nunc vel risus commodo. Odio morbi quis commodo odio aenean sed adipiscing. Dignissim enim sit amet venenatis urna cursus eget. Accumsan in nisl nisi scelerisque eu ultrices vitae. Elit sed vulputate mi sit amet mauris. Varius duis at consectetur lorem donec massa. Orci sagittis eu volutpat odio facilisis mauris sit amet massa.</p>
+<p>Est placerat in egestas erat. Arcu bibendum at varius vel pharetra vel turpis. Tristique risus nec feugiat in fermentum posuere urna nec. Vel pharetra vel turpis nunc eget lorem dolor sed. Egestas purus viverra accumsan in. Amet massa vitae tortor condimentum lacinia quis vel eros donec. Nullam vehicula ipsum a arcu cursus. Vehicula ipsum a arcu cursus vitae congue. Purus ut faucibus pulvinar elementum integer enim neque. Odio ut sem nulla pharetra diam sit amet nisl. Maecenas accumsan lacus vel facilisis. Hendrerit gravida rutrum quisque non tellus. Augue eget arcu dictum varius duis at. Id diam maecenas ultricies mi eget. Nisl nunc mi ipsum faucibus.</p>
+				</div>
+			</div><!-- /.card-body -->
+        </div>
+    </div>
+
+
+
+    <div class="col-12 col-sm-6 mt-3 mt-sm-0 cards-container">
+		<div class="card bgc-primary-d3">
+            <div class="card-header">
+				<h5 class="card-title text-125 text-white pt-1">
+                    Contextual
+                </h5>
+                
+				<div class="card-toolbar no-border">
+					<span class="badge bgc-orange-m3 text-dark-tp3">
+						16%
+						<i class="fa fa-arrow-down"></i>
+					</span>
+
+                    <label class="mb-0 ml-2">
+                        <input type="checkbox" class="ace-switch align-bottom text-dark-tp5 brc-yellow-m2" />
+                    </label>
+				</div>
+
+				<div class="card-toolbar pl-1">
+					<a href="#" data-action="toggle" class="card-toolbar-btn text-white">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+
+					<a href="#" data-action="close" class="card-toolbar-btn text-dark-tp4">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div><!-- /.card-header -->
+
+			<div class="card-body p-0 text-white">
+			 <div class="p-3">
+				<p>
+                   Commodo odio aenean sed adipiscing diam donec. Libero volutpat sed cras ornare arcu dui vivamus arcu felis. Mauris a diam maecenas sed enim. 
+				</p>
+				<p>
+                   Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Tincidunt lobortis feugiat vivamus at augue eget arcu.
+				</p>
+				<p>
+					Neque vitae tempus quam pellentesque nec nam. Accumsan sit amet nulla facilisi morbi tempus iaculis. Convallis a cras semper auctor neque vitae tempus quam.
+				</p>
+				<p class="mb-0">
+                   Blandit cursus risus at ultrices mi tempus imperdiet. Porta nibh venenatis cras sed felis eget velit aliquet sagittis.
+				</p>
+			 </div>
+			</div><!-- /.card-body -->
+        </div><!-- /.card -->
+    </div><!-- /.col -->
+ </div><!-- /.row -->
+
+
+
+</div> <!-- #widgets-area -->

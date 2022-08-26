@@ -1,0 +1,142 @@
+//sidebar elements a little spaced from sides
+@if $sidebar-spaced == true {
+
+ .sidebar-spaced {
+    .nav > .nav-item {
+        width: map-get($sidebar-common, 'width') - map-get($sidebar-common, 'spaced');
+        width: calc( var(--sidebar-width) - #{map-get($sidebar-common, 'spaced')} );
+        margin-left: map-get($sidebar-common, 'spaced') * 0.5;
+
+        border-radius: map-get($sidebar-common, 'spaced-item-border-radius');
+
+        overflow: hidden;
+        margin-bottom: 0.25rem;
+
+        pointer-events: none;//so that hovering .nav-item but not .nav-link doesn't highlight borders, etc
+    }
+
+    //hide borders and highlights
+    .nav > .nav-item {
+        &::before, &::after {
+            display: none !important;
+        }
+    }
+    //.nav > .nav-item > .nav-link::before {
+       // display: none;
+    //}
+    
+    .nav > .nav-item > .nav-link,
+    .nav > .nav-item > .submenu {
+        max-width: 100%;
+        pointer-events: auto;
+    }
+
+    .nav > .nav-item {
+        > .nav-link {
+            padding-left: map-get($sidebar-common, 'spaced-link-padding-left');
+            min-height: map-get($sidebar-common, 'spaced-link-height');
+
+            > .nav-icon {
+                margin-left: 0;
+            }                
+        }
+        > .submenu {
+            border-width: 0;
+        }
+    }
+
+
+    .caret {
+        margin-right: 0.25rem;
+    }
+    .submenu .caret {
+        margin-right: 0.875rem;
+    }
+    .submenu .nav-link {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+
+    //.nav > .nav-item.active > .nav-link::before {
+        //display: none !important;
+    //}
+
+    //less border-radius for dark sidebars
+    &.sidebar-color {
+        .nav > .nav-item {
+            transition: none;
+            border-radius: 0.5rem;
+        }            
+    }
+    
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        @if $expandable == true {
+            //less space from left when collapsed
+            &.expandable.collapsed .sidebar-inner:not(.is-hover) {
+                .nav > .nav-item {
+                    margin-left: map-get($sidebar-common, 'spaced') * 0.25;
+                }
+            }
+        }
+        @if $hoverable == true {
+            //less space from left when collapsed
+            &.hoverable.collapsed {
+                .nav > .nav-item {
+                    margin-left: map-get($sidebar-common, 'spaced') * 0.33;
+                    margin-right: map-get($sidebar-common, 'spaced') * 0.33;
+                    > .submenu {
+                        border-width: 1px;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    /////////////////
+    @include media-breakpoint-up($sidebar-desktop-min-width) {
+        //.sidebar.expandable.toggling .nav-item > .nav-link > .caret {
+        // transition: none;// +important
+        //}
+    
+        &.sidebar.collapsed {
+        .sidebar-inner:not(.is-hover) {
+            .nav > .nav-item > .nav-link > .nav-icon-round {
+                margin-left: -0.625rem;
+            }
+        }
+        }
+
+        //when collapsing submenu, it's better if submenu background color isn't different from sidebar, unless it's .hoverable.collapsed
+        @if $expandable == true {
+            &.expandable .nav > .nav-item:not(.open):not(.active):not(:hover) > .submenu {
+                background-color: transparent;
+            }
+        }
+        @if $hoverable == true {
+            &.hoverable:not(.collapsed) .nav > .nav-item:not(.open):not(.active):not(:hover) > .submenu {
+                background-color: transparent;
+            }
+        }
+        @if $hideable == true {
+            &.hideable .nav > .nav-item:not(.open):not(.active):not(:hover) > .submenu {
+                background-color: transparent;
+            }
+        }
+    }
+
+    //when collapsing submenu, it's better if submenu background color isn't different from sidebar
+    @include media-breakpoint-down($sidebar-mobile-max-width) {
+        .nav > .nav-item:not(.open):not(.active):not(:hover) > .submenu {
+            background-color: transparent;
+        }
+    }
+
+
+ }//.sidebar-spaced
+
+
+}//@if $sidebar-spaced

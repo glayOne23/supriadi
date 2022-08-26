@@ -1,0 +1,279 @@
+$nouislider-bg: #ddd;
+$nouislider-disabled-bg: #e5e5e5;
+
+$nouislider-handle-shadow: 0 3px 6px -3px #bbb;
+$nouislider-handle-border: #bababa;
+
+$nouislider-handle-active-shadow: inset 0 0 1px #fff,inset 0 1px 6px #d7d7d7,0 3px 6px -3px #bbb;
+
+$nouislider-bars-color: #999;
+
+
+$slider-sizes: (
+  'default',
+  'sm',
+  'thin'
+);
+$slider-base-size: (
+  'default': 0.75rem,
+  'sm': 0.5rem,
+  'thin': 0.3125rem
+);
+$slider-handle-size: (
+  'default': 2rem,
+  'sm': 1.75rem,
+  'thin': 1.75rem
+);
+
+
+@if $plugin-nouislider == true {
+  //noUiSlider
+ .noUi-target {
+    box-shadow: none;
+    border-width: 0;
+    border-radius: 0.125rem;
+    background-color: $nouislider-bg;
+  
+    &[disabled] {
+      opacity: 0.75;
+      background-color: $nouislider-disabled-bg;
+    }
+
+    &:not([disabled]):not(.disabled) .noUi-handle {
+      cursor: pointer;
+    }
+  
+    .noUi-handle {
+      border-radius: 2px;
+      border-color: $nouislider-handle-border;
+      box-shadow: $nouislider-handle-shadow;
+  
+      &.noUi-active {
+        box-shadow: $nouislider-handle-active-shadow;
+      }
+      
+      &::before {
+        display: none;
+      }
+      &::after {
+          background-color: transparent;
+
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+
+          width: auto;
+          height: 45%;
+
+          margin: auto;
+
+          color: $nouislider-bars-color;
+
+          background-image: linear-gradient(to right, currentColor, currentColor), linear-gradient(to right, currentColor, currentColor), linear-gradient(to right, currentColor, currentColor);          
+          background-position: calc(50% - 3px) center, center, calc(50% + 3px) center;
+          background-size: 1px 100%;
+          background-repeat: no-repeat;
+      }
+
+      &.slider-bars-h::after {
+          height: auto;
+          width: 45%;
+
+          background-position: center calc(50% - 3px), center, center calc(50% + 3px);
+          background-size: 100% 1px;
+      }
+
+      &.slider-bars-none::after {
+        display: none;
+      }
+    }
+
+
+    @each $size in $slider-sizes {
+      $name : '.slider-'+$size;
+      @if $size == 'default' {
+        $name: '';
+      }
+
+      &#{$name} {
+
+        $slider-size: map-get($slider-base-size, $size);
+        $handle-size: map-get($slider-handle-size, $size);
+
+        &.noUi-horizontal {
+          height: $slider-size;
+    
+          .noUi-handle {
+            width: $handle-size;
+            height: $handle-size;
+  
+            top: -(($handle-size - $slider-size) /2);
+            right: -$handle-size/2;
+          }
+        }
+    
+        &.noUi-vertical {
+          width: $slider-size;
+    
+          .noUi-handle {
+            width: $handle-size;
+            height: $handle-size;
+  
+            right: -(($handle-size - $slider-size) /2);
+            top: -$handle-size / 2;
+          }
+        }
+
+      }//&#{$name}
+    }
+
+    &.slider-sm, &.slider-thin {
+      .noUi-handle::after {
+        padding-top: 0.125rem;
+      }
+    }
+
+  
+  
+    &.noUi-toggle-tooltip .noUi-tooltip {
+      display: none;
+    }
+    &.noUi-toggle-tooltip .noUi-active .noUi-tooltip {
+      display: block;
+    }
+  }
+  
+  .noUi-tooltip {
+    padding: 0.25rem 0.325rem;
+  }
+
+  .slider-tooltip-right .noUi-tooltip {
+    transform: translate(0,-50%);
+    top: 50%;
+    bottom: auto;
+    left: 120%;
+    right: auto;
+  }
+  .slider-tooltip-left .noUi-tooltip {
+    transform: translate(0,-50%);
+    top: 50%;
+    bottom: auto;
+    right: 120%;
+    left: auto;
+  }
+  .slider-tooltip-top .noUi-tooltip {
+    transform: translate(-50%,0);
+    left: 50%;
+    right: auto;
+    bottom: 120%;
+    top: auto;
+  }
+  .slider-tooltip-bottom .noUi-tooltip {
+    transform: translate(-50%,0);
+    left: 50%;
+    right: auto;
+  
+    top: 120%;
+    bottom: auto;
+  }
+  
+  .slider-tooltip-caret .noUi-tooltip::before {
+    display: block;
+    content: "";
+  
+    position: absolute;
+  
+    width: 0;
+    height: 0;
+  }
+  .slider-tooltip-caret.slider-tooltip-bottom .noUi-tooltip {
+    margin-top: 0.25rem;
+    &::before {
+      top: -0.5em;
+      left: calc(50% - 0.5em);
+  
+      border-bottom: 0.5em solid;
+      border-bottom-color: inherit;
+  
+      border-top: 0;
+      border-right: 0.5em solid transparent;
+      border-left: 0.5em solid transparent;
+    }
+  }
+  .slider-tooltip-caret.slider-tooltip-top .noUi-tooltip {
+    margin-bottom: 0.25rem;
+    &::before {
+      bottom: -0.5em;
+      left: calc(50% - 0.5em);
+  
+      border-top: 0.5em solid;
+      border-top-color: inherit;
+  
+      border-bottom: 0;
+      border-right: 0.5em solid transparent;
+      border-left: 0.5em solid transparent;
+    }
+  }
+  
+  .slider-tooltip-caret.slider-tooltip-left .noUi-tooltip {
+    margin-right: 0.25rem;
+    &::before {
+      right: -0.5em;
+      top: calc(50% - 0.5em);
+  
+      border-left: 0.5em solid;
+      border-left-color: inherit;
+  
+      border-right: 0;
+      border-top: 0.5em solid transparent;  
+      border-bottom: 0.5em solid transparent;
+    }
+  }
+  .slider-tooltip-caret.slider-tooltip-right .noUi-tooltip {
+    margin-left: 0.25rem;
+    &::before {
+      left: -0.5em;
+      top: calc(50% - 0.5em);
+  
+      border-right: 0.5em solid;
+      border-right-color: inherit;
+  
+      border-left: 0;
+      border-top: 0.5em solid transparent;  
+      border-bottom: 0.5em solid transparent;
+    }
+  }
+
+}//@if $plugin-nouislider
+
+
+
+@if $plugin-ionslider == true {
+
+  //ion-slider
+  .irs--flat .irs-line {
+    height: 1rem;
+    border-radius: 2px;
+  }
+  .irs--flat .irs-bar {
+    height: 1rem;
+    border-radius: 2px 0 0 2px;
+  }
+  .irs--flat .irs-handle {
+    height: 1.325rem;
+    z-index: auto;
+  }
+  .irs-from, .irs-to, .irs-single {
+    top: -0.25rem;
+  }
+  .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+    font-size: 0.875rem;
+  }
+  .irs--flat .irs-min, .irs--flat .irs-max {
+    font-size: 0.75rem;
+  }
+
+}//@if $plugin-ionslider

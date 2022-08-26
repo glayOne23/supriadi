@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-sm navbar-expand-lg navbar-fixed navbar-white2">
+    <div class="navbar-inner">
+
+
+      <div class="d-flex h-100 justify-content-xl-between align-items-center">
+
+        <button type="button" class="btn btn-burger burger-arrowed static collapsed ml-2 d-flex d-xl-none" data-toggle-mobile="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+          <span class="bars text-grey-m2"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <a class="navbar-brand d-xl-none mx-1 text-grey-d3 text-130" href="#">
+          <img src="{% static 'assets/images/profile.png' %}" style="max-width: 1.5em;" alt="">
+          Supriadi
+        </a>
+
+        <button type="button" class="btn text-grey-m2 btn-burger align-self-center mx-2 d-none d-xl-flex btn-h-light-primary" data-toggle="sidebar" data-target="#sidebar" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle sidebar">
+          <span class="bars"></span>
+        </button><!-- sidebar toggler button -->
+
+      </div>
+
+
+      <div class="navbar-content">
+
+      </div><!-- .navbar-content -->
+
+
+      <!-- #navbarMenu toggler -->
+      <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <img class="mx-0 radius-round border-2 brc-primary-tp3 p-1px" src=" {% static 'assets/images/profile.png' %} " width="36" alt="Logo UMS">
+      </button>
+
+
+      <div class="navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+
+        <div class="navbar-nav">
+          <ul class="nav has-active-border">
+
+            <li class="nav-item dropdown dropdown-mega">
+              <a class="nav-link dropdown-toggle mr-1px" href="">
+                <button class="btn btn-outline-primary btn-bold btn-sm mx-2 px-2 px-lg-3 radius-round">                  
+                  <i class="fa fa-power-off mr-2 d-lg-none"></i> <i class="fa fa-power-off mr-2 d-none d-lg-inline"></i>                   
+                    Tamu                  
+                 </button>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>

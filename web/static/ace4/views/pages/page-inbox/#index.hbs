@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-12 col-md-4 col-xl-3">
+        {{> page/inbox-sidebar}}
+    </div>
+
+    <div class="col-12 col-md-8 col-xl-9 pt-3" id="message-list">
+        {{> page/tool-menu}}
+
+        <div>
+            <hr class="brc-black-tp10 my-0" />
+
+            {{#each (get "messages")}}
+                {{> page/message-item}}
+            {{/each}}
+            
+        </div>
+
+        {{> page/inbox-footer}}
+    </div>
+
+    {{> page/message-details}}
+</div>
+
+
+
+<!-- the "compose" trigger button to show the "Compose" aside/dialog  ... only shown in small devices -->
+<div class="position-br pos-fixed mb-5 pb-3 mr-2 d-sm-none">
+    <button type="button" class="shadow ml-2 btn btn-info radius-round mw-auto px-3 py-2"  data-toggle="modal" data-target="#aside-compose">
+        <i class="fa fa-pen mr-1"></i>
+        Compose
+    </button> 
+</div>
+
+
+<!-- the "message compose" aside (dialog) -->
+{{> page/compose}}

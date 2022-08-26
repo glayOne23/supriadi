@@ -1,0 +1,27 @@
+[
+    {
+        "abbr": "SD",
+        "name": "Susan Dalek",
+        "summary": "Uploaded a new photo",
+        "time": "3 min ago"
+    },
+    {
+        "avatar": "avatar3.png",
+        "name": "River Song",
+        "summary": "Reviewed a product",
+        "time": "4 min ago"
+    },
+    {
+        "avatar": "avatar4.png",
+        "name": "Jack Alien",
+        "summary": "Won a trophy",
+        "time": "20 min ago"
+    },
+    {
+        "avatar": "avatar5.png",
+        "name": "Robin Hood",
+        "summary": "Upgraded his membership plan",
+        "time": "1 hour ago"
+    }
+
+]

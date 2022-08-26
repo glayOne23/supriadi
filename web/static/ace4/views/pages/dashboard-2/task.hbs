@@ -1,0 +1,55 @@
+<div class="bcard card h-100 pt-1 pt-lg-2 h-100">
+
+    <div class="card-header brc-default-l3">
+        <h5 class="card-title text-dark-m2 pl-1 text-110">
+            Open Tasks
+        </h5>
+
+        <div class="card-toolbar align-self-center no-border">
+            <a href="#" class="btn btn-xs btn-lighter-default btn-h-light-warning btn-a-light-warning text-600 px-3 radius-round">
+                Select all
+            </a>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a href="#" data-action="close" class="card-toolbar-btn text-danger-m1 text-110">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body p-0">
+        <form autocomplete="off" class="pos-rel px-3 py-2" id="tasks">
+            {{#each (get "tasks")}}
+                <div class="text-grey-m1 text-95 {{#unless @last}} border-b-1 brc-secondary-l3{{/unless}}">
+                    <div class="d-flex py-2 my-2 pos-rel">
+                        <div class="d-none h-75 position-lc pl-3px radius-round bgc-{{color}}-m1"></div>
+
+                        <div class="pl-1">
+                            <label class="brc-dark-l1 mb-0 d-flex align-items-center">
+                                <input onmouseenter="this.indeterminate=true" type="checkbox" class="position-lc radius-round input-lg text-90 text-blue brc-inherit brc-on-checked brc-dark-m4 brc-h-warning-m1 border-2" />
+                                <span class="ml-45">                     
+                                    <span class="task-title text-600 text-95 btn-text-dark btn-h-text-primary">
+                                        {{title}}
+                                    </span>
+                                    <br />
+                                    <span class="text-dark-m3 text-90">
+                                        <i class="far fa-bell text-dark-l1 mr-1"></i>
+                                        {{{summary}}}
+                                    </span>
+                                </span>
+                            </label>                    
+                        </div>
+
+                        <div class="ml-auto">
+                            {{{status}}}
+                        </div>       
+                    </div>
+                </div>
+            {{/each}}
+        </form>
+    </div>
+
+</div>
+
+

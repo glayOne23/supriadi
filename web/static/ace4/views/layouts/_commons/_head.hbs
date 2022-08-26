@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+{{#if staticHTML}}
+    <base href="{{baseHref}}" />
+{{/if}}
+
+<title>{{title}} - Ace Admin</title>
+
+<!-- include common vendor stylesheets & fontawesome -->
+{{{include-css files="bootstrap"}}}
+{{{include-css files="css/fontawesome.css@@fortawesome/fontawesome-free + css/regular.css@@fortawesome/fontawesome-free + css/brands.css@@fortawesome/fontawesome-free + css/solid.css@@fortawesome/fontawesome-free"}}}
+
+
+<!-- include vendor stylesheets used in "{{{title}}}" page. see "{{{appFolder}}}/views/{{{demoName}}}/pages/partials/{{{pageId}}}/@vendor-stylesheets.hbs" -->
+{{#> "include/@vendor-stylesheets"}}{{/ "include/@vendor-stylesheets"}}
+
+<!-- include fonts -->
+{{#if useCDN}}
+{{{include-css href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap"}}}
+{{else}}
+{{{include-css files="dist/css/ace-font.css@ace"}}}
+{{/if}}
+
+
+<!-- ace.css -->
+{{{include-css files="dist/css/ace.css@ace"}}}
+
+<!-- favicon -->
+<link rel="icon" type="image/png" href="./assets/favicon.png" />
+
+<!-- "{{{title}}}" page styles, specific to this page for demo only -->
+{{{inline-css}}}
+

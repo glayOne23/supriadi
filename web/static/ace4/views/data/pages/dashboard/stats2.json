@@ -1,0 +1,25 @@
+[
+ {
+  "color" : "purple",
+  "textColor": "success",
+  "icon" : "fa fa-shopping-cart",
+  "number" : "164",
+  "text" : "orders",
+  "stat-important" : "2%"
+ } ,
+ {
+  "color" : "blue",
+  "textColor": "blue",
+  "icon" : "fab fa-twitter",
+  "number" : "750",
+  "text" : "new followers",
+  "stat-success" : "8%"
+ },
+ {
+  "color" : "orange",
+  "textColor": "danger",
+  "icon" : "fa fa-bolt",
+  "number" : "16",
+  "text" : "experiments"
+ }
+]

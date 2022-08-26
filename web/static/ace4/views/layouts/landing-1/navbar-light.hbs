@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg navbar-white d-none" id="navbar-light">
+ <div class="navbar-inner">
+  <div class="container">
+
+
+    <button type="button" class="btn btn-burger burger-times static navbar-toggler collapsed d-flex d-lg-none ml-2" data-toggle="collapse" data-target="#navbarMenu1-light" aria-controls="navbarMenu1-light" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="bars text-dark-tp3"></span>
+    </button><!-- mobile navbar toggler button -->
+
+
+    <div class="navbar-intro justify-content-xl-between border-0 w-auto">
+        <a class="navbar-brand text-dark-tp3 text-180" href="#">
+            <i class="fa fa-leaf text-105 text-success-m2 mr-1"></i>
+            <span>ACE</span>
+            <span class="text-70">Application</span>            
+        </a><!-- /.navbar-brand -->  
+    </div><!-- /.navbar-intro -->
+
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop " id="navbarMenu1-light">
+      
+      <div class="navbar-nav">
+        <ul class="nav nav-compact-3">
+
+            <li class="nav-item dropdown dropdown-mega pos-rel dropdown-hover">
+                <a class="btn btn-white btn-text-dark btn-h-default btn-a-default border-0 dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-list-alt mr-2 d-lg-none"></i>
+                    Mega
+                    <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="p-0 dropdown-menu dropdown-center dropdown-lg border-0 shadow border-t-2 brc-primary-m2 radius-b-2 mt-1 mt-lg-3">
+                    {{> layout/landing-1/megamenu}}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="btn btn-white btn-text-dark btn-h-default btn-a-default border-0" href="#">
+                    <i class="fa fa-magic mr-15 opacity-1"></i> Features
+                </a>
+            </li>
+
+            <li class="nav-item dropdown mx-1px">
+                <a class="btn btn-white btn-h-default btn-a-default border-0" href="#">
+                    Contact
+                </a>
+            </li>
+
+            <li class="nav-item ml-xl-2">
+                <a class="btn btn-lighter-orange text-orange-d3 border-1 d-none d-lg-inline-flex" href="#">
+                    *Special Offer*
+                </a>
+                <a class="btn btn-lighter-orange text-orange-d3 d-lg-none" href="#">
+                    *Special Offer*
+                </a>
+            </li>
+        </ul><!-- /.navbar-nav menu -->
+      </div><!-- /.navbar-nav -->
+
+    </div><!-- /.navbar-menu.navbar-collapse -->
+
+
+
+    <button type="button" class="d-style mr-2 px-4 navbar-toggler btn btn-burger static collapsed d-flex d-lg-none" data-toggle="collapse" data-target="#navbarMenu2-light" aria-controls="navbarMenu2-light" aria-expanded="false" aria-label="Toggle navbar menu">
+        <i class="fa fa-caret-down d-collapsed text-grey-m1 text-80"></i>
+        <i class="fa fa-caret-up d-n-collapsed text-grey-m1 text-80"></i>
+
+        <i class="fa fa-user text-orange-d1 ml-2"></i>        
+    </button><!-- mobile navbar toggler button -->
+
+
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop " id="navbarMenu2-light">
+      <div class="navbar-nav">
+        <ul class="nav">
+
+            <li class="nav-item dropdown px-lg-2 d-lg-flex flex-column justify-content-center">
+                <a class="d-none d-lg-block h-auto btn btn-outline-blue btn-bold radius-round border-2 dropdown-toggle px-2 px-xl-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    Login
+                </a>
+
+                <a class="d-lg-none nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-caret-right bgc-blue radius-round text-white py-2 px-3 mr-2"></i>
+                    Login
+                </a>
+
+                <div style="width: 20rem;" data-display="static" class="dropdown-menu dropdown-menu-right overflow-hidden dropdown-animated animated-2 shadow radius-1 p-0 brc-primary-m3 mt-lg-n1 mr-lg-n2">
+                    {{> layout/landing-1/navbar-login}}
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown border-l-1 brc-secondary-l2">
+                <a href="#" class="nav-link dropdown-toggle px-lg-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="text-140 fa fa-search text-grey-m1"></i>
+                    <span class="d-lg-none ml-2 text-blue-d1">Open Search</span>
+                </a>
+                <div style="width: 20rem;" data-display="static" class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated animated-2 shadow radius-1 p-0  border-1 brc-primary-m3 mt-lg-n1 mr-lg-n2">
+                    {{> layout/landing-1/navbar-search}}
+                </div>
+            </li>
+
+
+            <li class="nav-item border-l-1 brc-secondary-l2">
+                <a href="#" class="nav-link">
+                    <i class="text-140 far fa-heart text-purple-m1"></i>
+                    <span class="d-lg-none ml-2 text-purple-d1">
+                        Bookmark
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav-item px-3 border-l-1 brc-secondary-l2">
+                <span class="d-flex h-100 align-items-center text-grey-d1 py-3">
+                    <i class="fa fa-phone fa-flip-horizontal text-125 text-success-m1 mr-1"></i>
+                    
+                    <span class="text-90 ml-1 ml-lg-0 d-lg-none d-xl-inline-block">
+                        CALL NOW
+                    </span>
+
+                    <span class="ml-1 text-600 text-grey-d3 letter-spacing-1 d-lg-none d-xl-inline-block">
+                        11-22-33
+                    </span>
+                </span>
+            </li>
+
+        </ul>
+      </div>
+    </div><!-- .navbar-menu -->
+
+
+  </div><!-- /.container -->
+ </div><!-- /.navbar-inner -->
+</nav>

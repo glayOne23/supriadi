@@ -1,0 +1,70 @@
+<div class="page-header border-0 pb-0 mb-0">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dropzone.js
+    </h1>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+
+        <form id="dropzone" action="/upload" class="dropzone bgc-white brc-dark-l3 brc-h-primary-m4 bgc-h-primary-l4 radius-1 mt-3">
+            <div class="fallback d-none">
+                <input name="file" type="file" multiple />
+            </div>
+
+            <div class="dz-default dz-message">
+                <span class="text-150  text-grey-d2">
+                    <span class="text-130 font-bolder"><i class="fa fa-caret-right text-danger-m1"></i> Drop files</span>
+                    to upload
+                    <span class="text-90 text-grey-m1">(or click)</span>
+                    <br />
+                    <i class="upload-icon fas fa-cloud-upload-alt text-blue-m1 fa-3x mt-4"></i>
+                </span>
+            </div>
+        </form>
+
+        <!-- the `html` of this element will be used by dropzone instance for previewing files/images -->
+        <div id="preview-template" class="d-none">
+            <div class="dz-preview dz-file-preview">       
+                <div class="dz-image">
+                    <img alt="Dropzone placeholder" data-dz-thumbnail="" />
+                </div>
+
+                <div class="dz-details">
+                    <div class="dz-size">
+                        <span data-dz-size=""></span>
+                    </div>
+
+                    <div class="dz-filename">
+                        <span data-dz-name=""></span>
+                    </div>
+                </div>
+
+                <div class="dz-progress progress border-1 brc-yellow-tp2" style="height: 0.75rem;">
+                    <div class="progress-bar bgc-success dz-upload " role="progressbar" data-dz-uploadprogress=""></div>
+                </div>
+
+                <div class="dz-error-message">
+                    <span data-dz-errormessage=""></span>
+                </div>                
+
+                <div class="dz-success-mark">
+                    <span class="fa-stack fa-lg text-150">
+                        <i class="fa fa-circle fa-stack-2x text-white"></i>
+                        <i class="fa fa-check fa-stack-1x fa-inverse text-success-m1"></i>
+                    </span>
+                </div>
+
+                <div class="dz-error-mark">               
+                    <span class="fa-stack fa-lg text-150">
+                        <i class="fa fa-circle fa-stack-2x text-danger-m3"></i>
+                        <i class="fas fa-exclamation fa-stack-1x fa-inverse text-white"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

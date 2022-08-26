@@ -1,0 +1,372 @@
+$base-font: ('Open Sans');
+
+$desktop-min-width: lg;
+$mobile-max-width: md;
+
+$navbar-mobile-max-width: md;
+$navbar-desktop-min-width: lg;// desktop navbar only on lg screen and above
+
+$sidebar-mobile-max-width: lg;
+$sidebar-desktop-min-width: xl;// desktop sidebar only on xl screen and above
+
+$container-max-width-not-allowed: lg;// container (boxed layout) is *not allowed* on below 'xl' screen
+$container-min-width-allowed: xl;// container (boxed layout) *only allowed* on above 'xl' screen
+
+
+$zindex-navbar: $zindex-sticky;
+$zindex-sidebar: 999;
+$zindex-footer: $zindex-sidebar - 1;
+
+
+$transition-general: .15s;
+
+
+$transition-navbar-mobile: 250ms;
+$navlink-transition-duration: 150ms;
+
+$btn-burger-transition: $transition-general;
+$navbar-toggler-hover-bg: rgba(255,255,255,0.15);
+
+
+//sidebar
+$sidebar-small-device-width: 320px;//set to false to disable. otherwise on small devices, sidebar will become 75% of screen width, max-width: 320px
+
+$expandable-hide-delay: 400ms;
+$expandable-show-delay: 80ms;
+
+$expandable-transition-duration: 150ms;
+$hoverable-transition-duration: 150ms;
+$hideable-transition-duration: 150ms;
+$sidebar-appear-transition: 300ms;
+
+$subarrow-transition-duration: 150ms;
+$submenu-delay: 600ms;//800ms;
+
+$sidebar-link-transition: 150ms;
+
+$sidebar-active-border-width: 0.25rem;
+$sidebar-h-active-border-width: 3px; //horizonal sidebar
+
+
+
+
+
+
+//body
+$body-text-color: #41464d;
+$body-background: #e4e6e9;
+$body-container-background: #fff;
+$body-container-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+
+
+
+//page content
+$page-content-background: #f2f5f8;//#f3f5f9;
+
+$page-content-padding-x: 0.875rem;
+$page-content-padding-md-x: 1.125rem;
+$page-content-padding-xl-x: 1.375rem;
+$page-content-padding-xxl-x: 1.75rem;
+$page-content-padding-xxxl-x: 2.25rem;
+
+
+$page-header-border: #e2e2e2;
+$page-header-color: #2679b5;
+$page-header-small-color: #8089a0;
+
+$breadcrumbs-height: 2.5rem;
+
+
+
+//footer
+$footer-height: 4.75rem;
+$footer-sm-height: 3.625rem;
+
+
+
+
+//scrollbars
+$scrollbar-thumb: #9dbad5;//#a0b7c6;
+$scrollbar-track: #dce3ea;//#c6d1da
+$scrollbar-hide-delay: 2s;//used for sidebar only
+//smooth scrollbars
+$scrollbar-transition-duration: 0.15s;
+$scrollbar-transition-delay: 0.4s;//delay when hiding scrollbars
+$scrollbar-transition-delay2: 0s;//delay when showing scrollbars
+$scrollbar-background: transparent;
+//theme
+$scrollbar-grey-thumb: #bbbdbf;
+$scrollbar-grey-track: #e5e6e8;
+
+
+
+//text colors
+$text-primary: darken(#2d7bd0, 4%);
+$text-blue: darken(#3299ed, 4%);
+$text-info: darken(#2daccb, 4%);
+$text-secondary: darken(#6f829d, 4%);
+$text-default: darken(#6b97af, 4%);
+$text-success: darken(#6bae47, 4%);
+$text-green: darken(#39b689, 3%);
+
+$text-danger: darken(#da3737, 4%);
+$text-warning: darken(#feb902, 4%);
+$text-orange: darken(#ff9716, 4%);
+$text-brown: darken(#c36446, 4%);
+$text-yellow: darken(#f3d61f, 4%);
+$text-purple: darken(#867dc2, 5%);
+$text-pink: darken(#d3407f, 4%);
+$text-grey: darken(#6e7074, 4%);
+$text-dark: darken(#323337, 4%);
+
+
+$text-colors: () !default;
+$text-colors: map-merge((
+  "primary" : $text-primary,
+  "blue" : $text-blue,
+  "info" : $text-info,
+
+  "secondary" : $text-secondary,
+  "default" : $text-default,
+
+  "success" : $text-success,
+  "green" : $text-green,
+
+  "danger" : $text-danger,
+  //"red" : $text-red,
+
+  "warning" : $text-warning,
+  "orange" : $text-orange,
+  "brown" : $text-brown,
+  "yellow" : $text-yellow,
+
+  "purple" : $text-purple,
+  "pink" : $text-pink,
+
+  "grey" : $text-grey,
+  "dark" : $text-dark
+), $text-colors);
+
+
+$add-contrast: true;
+
+//background colors
+$bgc-default: #619cc0;
+$bgc-primary: #2c87d3;
+$bgc-secondary: #798e9c;
+$bgc-info: #00b6e9;
+$bgc-success: #5bb15b;
+$bgc-danger: #da4e35;
+$bgc-warning: #eda630;
+$bgc-dark: #42474e;
+$bgc-light: #f8f9fb;
+$bgc-white: #fff;
+$bgc-black: #2c3034;
+$bgc-grey: #7f8083;
+
+$bgc-purple: #776cb8;
+$bgc-pink: #d53c77;
+$bgc-yellow: #f8e57d;
+$bgc-lightgrey: #91969d;
+$bgc-brown: #bc7c4f;
+$bgc-blue: #3e89e4;
+$bgc-red: #e74b4b;
+$bgc-green: #39b689;
+$bgc-orange: #ff8d03;
+
+
+
+$background-colors: () !default;
+$background-colors: map-merge((
+  "default":     $bgc-default,
+  "primary":     $bgc-primary,
+  "secondary":     $bgc-secondary,
+  "info":       $bgc-info,
+  "success":       $bgc-success,
+  "danger":      $bgc-danger,
+  "warning":     $bgc-warning,  
+  "dark":     $bgc-dark,
+  "light":     $bgc-light,
+  "white":     $bgc-white,
+  "black":     $bgc-black,
+  "grey":       $bgc-grey,
+
+  //some extras
+  "purple":     $bgc-purple,  
+  "pink":       $bgc-pink,
+  "yellow":       $bgc-yellow,
+  "lightgrey":       $bgc-lightgrey,
+
+  "brown": $bgc-brown,
+  "blue": $bgc-blue,
+  "red": $bgc-red,
+  "green": $bgc-green,
+  "orange": $bgc-orange
+
+), $background-colors);
+
+
+
+
+$button-colors: () !default;
+$button-colors: map-merge((
+  "default":     $bgc-default,
+  "primary":     $bgc-primary,
+  "secondary":     $bgc-secondary,
+  "info":       $bgc-info,
+  "success":       $bgc-success,
+  "danger":      $bgc-danger,
+  "warning":      #ffbe50,//$bgc-warning,  
+  "dark":     $bgc-dark,
+  "light":     $bgc-light,
+  "white":     $bgc-white,
+  "black":     $bgc-black,
+  "grey":       darken($bgc-grey, 3.75%),
+
+  //some extras
+  "purple":     lighten($bgc-purple, 1%),
+  "pink":       $bgc-pink,
+  "yellow":       $bgc-yellow,
+  "lightgrey":       $bgc-lightgrey,
+
+  "brown": $bgc-brown,
+  "blue": $bgc-blue,
+  "red": $bgc-red,
+  "green": $bgc-green,
+  "orange": $bgc-orange
+
+), $button-colors);
+
+
+$button-text-colors: () !default;
+$button-text-colors: map-merge((
+  "yellow": #524b21,
+  "warning": #22190b,
+  "light": darken(#757984, 10%),
+  "white": #606060
+), $button-text-colors);
+
+$button-border-colors: () !default;
+$button-border-colors: map-merge((
+  "yellow": #e1ca53,
+  "light": #d4d7dd,
+  "white": #ddd,
+), $button-border-colors);
+
+
+
+//Hover colors
+$button-hover-bgs: () !default;
+$button-hover-bgs: map-merge((
+  "light": #eaecf0,
+  "yellow": #f0db67,
+  "white": #fff,
+), $button-hover-bgs);
+
+$button-hover-text-colors: () !default;
+$button-hover-text-colors: map-merge((
+  "light": #4f5257
+), $button-hover-text-colors);
+
+$button-hover-border-colors: () !default;
+$button-hover-border-colors: map-merge((
+  "light": #cbcdd1,
+  "white": #c5c5c5
+), $button-hover-border-colors);
+
+
+//Active colors
+$button-active-bgs: () !default;
+$button-active-bgs: map-merge((
+  "white": #fff,
+  "warning": #ffaf27,
+  "yellow": #e8d257,
+  "light": #e6e8ed
+), $button-active-bgs);
+
+$button-active-text-colors: () !default;
+$button-active-text-colors: map-merge((
+  "light": #595a5e,
+  "yellow": darken(#524b21, 3%),
+  "warning": #22190b
+), $button-active-text-colors);
+
+$button-active-border-colors: () !default;
+$button-active-border-colors: map-merge((
+  "light": #b3b4b5,
+  "white": #b5b5b5
+), $button-active-border-colors);
+
+
+
+
+//outline colors
+$button-outline-text-colors: () !default;
+$button-outline-text-colors: map-merge((
+  "yellow":  #a06429,
+  "warning": #c66802,
+  "light":  #91969b,
+  "grey" : #666,
+  "lightgrey" : #81868b,
+  "white": #fff
+), $button-outline-text-colors);
+
+$button-outline-border-colors: () !default;
+$button-outline-border-colors: map-merge((
+  "warning": #e6b461,
+  "orange": #ee9b35,
+  "yellow": #ecc735,
+  "default": #a9bdc9,
+  "white": #fff,
+  "black": #414549,
+  "light": #d4d7dd,
+  "lightgrey": #d0d5da
+), $button-outline-border-colors);
+
+$button-outline-text-hover-colors: () !default;
+$button-outline-text-hover-colors: map-merge((
+  "white": #4d4d4d,
+), $button-outline-text-hover-colors);
+
+$button-outline-text-active-colors: () !default;
+$button-outline-text-active-colors: map-merge((
+  "white": #464646,
+), $button-outline-text-active-colors);
+
+$button-outline-border-hover-colors: () !default;
+$button-outline-border-hover-colors: map-merge((
+  "white": #fff,
+), $button-outline-border-hover-colors);
+
+$button-outline-border-active-colors: () !default;
+$button-outline-border-active-colors: map-merge((
+  "white": #fff,
+), $button-outline-border-active-colors);
+
+
+//exclude the light version for these
+$button-light-exclude: () !default;
+$button-light-exclude: map-merge((
+  "white": true,
+), $button-light-exclude);
+
+
+
+$badge-colors: () !default;
+$badge-colors: map-merge((
+  "default":     $bgc-default,
+  "primary":     $bgc-primary,
+  "secondary":   $bgc-secondary,
+  "info":       $bgc-info,
+  "success":       $bgc-success,
+  "danger":      $bgc-danger,
+  "warning":      $bgc-warning,
+  "dark":     $bgc-dark,
+  "light":    $bgc-light,
+), $badge-colors);
+
+
+
+//.d-style transitions
+$d-style-transition: 120ms;
+

@@ -1,0 +1,407 @@
+[
+    {
+        "type" : "caption",
+		"title" : "MAIN"
+	} ,
+
+	{
+		"id" : "dashboard",
+		"link" : "dashboard",
+		"title" : "Dashboard",
+		"icon" : "fa fa-tachometer-alt",
+		"layout" : "dashboard"
+	} ,
+
+	{
+		"id" : "layouts",
+		"link" : false,
+		"title" : "Layouts",
+		"icon" : "fa fa-cube"
+	},
+
+		{
+			"id" : "dashboard-2",
+			"parent" : "layouts",
+			"link" : "dashboard-2",
+			"title" : "Dashboard 2",
+			"layout": "dashboard-2"
+		} ,
+
+		{
+			"id" : "dashboard-3",
+			"parent" : "layouts",
+			"link" : "dashboard-3",
+			"title" : "Dashboard 3",
+			"layout": "dashboard-3"
+		} ,
+		
+		{
+			"id" : "dashboard-4",
+			"parent" : "layouts",
+			"link" : "dashboard-4",
+			"title" : "Dashboard 4",
+			"layout": "dashboard-4"
+		} ,
+
+		{
+			"id" : "horizontal",
+			"parent" : "layouts",
+			"link" : "horizontal",
+			"title" : "Horizontal Menu",
+			"layout": "horizontal"
+		} ,
+
+		{
+			"id" : "two-menus-1",
+			"parent" : "layouts",
+			"link" : "two-menus-1",
+			"title" : "Two Menus",
+			"layout": "two-menus-1"
+		} ,
+
+		{
+			"id" : "landing-page-1",
+			"parent" : "layouts",
+			"link" : "landing-page-1",
+			"title" : "Landing Page 1",
+			"layout": "landing-1"
+		} ,
+
+		{
+			"id" : "landing-page-2",
+			"parent" : "layouts",
+			"link" : "landing-page-2",
+			"title" : "Landing Page 2",
+			"layout": "landing-2"
+		} ,
+
+		{
+			"id" : "coming-soon",
+			"parent" : "layouts",
+			"link" : "coming-soon",
+			"title" : "Coming Soon",
+			"layout": "coming-soon"
+		} ,
+
+
+    {
+		"id" : "ui-elements",
+		"link" : false,
+        "title" : "UI Elements" ,
+        "icon" : "fa fa-desktop" 
+	} ,
+
+		{
+			"id" : "buttons",
+			"parent" : "ui-elements",
+			"link" : "buttons",
+			"title" : "Buttons"
+		} ,
+
+		{
+			"id" : "button-groups",
+			"parent" : "ui-elements",
+			"link" : "button-groups",
+			"title" : "Button Groups"
+		} ,
+		
+		{
+			"id" : "alerts",
+			"parent" : "ui-elements",
+			"link" : "alerts",
+			"title" : "Alerts"
+		} ,
+
+		{
+			"id" : "modals",
+			"parent" : "ui-elements",
+			"link" : "modals",
+			"title" : "Modals"
+		} ,
+
+		{
+			"id" : "asides",
+			"parent" : "ui-elements",
+			"link" : "asides",
+			"title" : "Asides"
+		} ,
+
+		{
+			"id" : "tabs",
+			"parent" : "ui-elements",
+			"link" : "tabs",
+			"title" : "Tabs"
+		} ,
+
+		{
+			"id" : "accordions",
+			"parent" : "ui-elements",
+			"link" : "accordions",
+			"title" : "Accordions"
+		} ,
+
+		{
+			"id" : "tooltips",
+			"parent" : "ui-elements",
+			"link" : "tooltips",
+			"title" : "Tooltips & Popovers"
+		} ,
+
+		{
+			"id" : "badges",
+			"parent" : "ui-elements",
+			"link" : "badges",
+			"title" : "Badges"
+		} ,
+
+		{
+			"id" : "pagination",
+			"parent" : "ui-elements",
+			"link" : "pagination",
+			"title" : "Pagination"
+		} ,
+
+		{
+			"id" : "dropdowns",
+			"parent" : "ui-elements",
+			"link" : "dropdowns",
+			"title" : "Dropdowns"
+		} ,
+
+		{
+			"id" : "icons",
+			"parent" : "ui-elements",
+			"link" : "icons",
+			"title" : "Icons"
+		} ,
+
+		{
+			"id" : "typography",
+			"parent" : "ui-elements",
+			"link" : "typography",
+			"title" : "Typography"
+		} ,
+
+		{
+			"id" : "charts",
+			"parent" : "ui-elements",
+			"link" : "charts",
+			"title" : "Charts"
+		} ,
+		
+		{
+			"id" : "treeview",
+			"parent" : "ui-elements",
+			"link" : "treeview",
+			"title" : "Treeview"
+		} ,
+		
+		{
+			"id" : "nested-links",
+			"parent" : "ui-elements",
+			"link" : false,
+			"title" : "Nested Links"
+		} ,
+			{
+				"id" : "third-level",
+				"parent" : "nested-links",
+				"link" : false,
+				"title" : "Third Level Menu",
+				"icon" : "fa fa-caret-right text-blue-l2 mr-2" 
+			} ,
+				{
+					"id" : "fourth-level",
+					"parent" : "third-level",
+					"link" : false,
+					"title" : "Fourth Level",
+					"icon" : "fa fa-leaf text-success-l2 text-90 mr-2" 
+				} ,
+
+				{
+					"id" : "fifth-level-1",
+					"parent" : "fourth-level",
+					"link" : false,
+					"title" : "5th Level",
+					"icon" : "fa fa-stop text-warning-l1 text-80 mx-2"
+				} ,
+
+				{
+					"id" : "fifth-level-2",
+					"parent" : "fourth-level",
+					"link" : false,
+					"title" : "5th Level",
+					"icon" : "fa fa-stop text-warning-l1 text-80 mx-2"
+				} ,
+
+	{
+		"id" : "tables",
+		"link" : false,
+		"title" : "Tables",
+		"icon" : "fa fa-table" 
+	} ,
+
+		{
+			"id" : "table-basic",
+			"parent" : "tables",
+			"link" : "table-basic",
+			"title" : "Basic Tables"
+		} ,
+		{
+			"id" : "table-datatables",
+			"parent" : "tables",
+			"link" : "table-datatables",
+			"title" : "DataTables"
+		},
+		{
+			"id" : "table-bootstrap",
+			"parent" : "tables",
+			"link" : "table-bootstrap",
+			"title" : "Bootstrap Table"
+		},			
+		{
+			"id" : "table-jqgrid",
+			"parent" : "tables",
+			"link" : "table-jqgrid",
+			"title" : "jqGrid"
+		},
+
+
+	{
+		"id" : "forms",
+		"link" : false,
+		"title" : "Forms",
+		"icon" : "fa fa-edit"
+	} ,
+	
+		{
+			"id" : "form-basic",
+			"parent" : "forms",
+			"link" : "form-basic",
+			"title" : "Basic Elements"
+		} ,
+
+		{
+			"id" : "form-more",
+			"parent" : "forms",
+			"link" : "form-more",
+			"title" : "More Elements"
+		} ,
+
+		{
+			"id" : "form-wizard",
+			"parent" : "forms",
+			"link" : "form-wizard",
+			"title" : "Wizard & Validation"
+		} ,
+
+		{
+			"id" : "form-upload",
+			"parent" : "forms",
+			"link" : "form-upload",
+			"title" : "File Upload"
+		},
+
+		{
+			"id" : "form-wysiwyg",
+			"parent" : "forms",
+			"link" : "form-wysiwyg",
+			"title" : "Wysiwyg & Markdown"
+		},
+
+    {
+		"id" : "cards",
+		"link" : "cards",
+		"title" : "Cards",
+		"icon" : "far fa-window-restore"
+	},
+
+    {
+		"id" : "calendar",
+		"link" : "calendar",
+		"title" : "Calendar",
+		"icon" : "far fa-calendar-alt",
+		"badge": "<i class='fas fa-exclamation-triangle text-140 text-danger-m2'></i>",
+		"badge-class": "px-1",
+		"tooltip": "2 Urgent Events"
+	},
+
+    {
+		"id" : "gallery",
+		"link" : "gallery",
+		"title" : "Gallery",
+		"icon" : "far fa-image"
+	},
+
+    {
+        "type" : "caption",
+		"title" : "OTHER"
+	},
+	
+	{
+		"id" : "more",
+		"link" : false,
+		"title" : "More Pages",
+		"icon" : "fa fa-tag",
+		"badge-class": "badge-primary py-1 radius-round text-90 mr-2px badge-sm",
+		"badge": "5"
+	} ,
+	
+		{
+			"id" : "page-profile",
+			"parent" : "more",
+			"link" : "page-profile",
+			"title" : "Profile"
+		},
+
+		{
+			"id" : "page-login",
+			"parent" : "more",
+			"link" : "page-login",
+
+			"title" : "Login",
+			"layout": "login"
+		},
+
+		{
+			"id" : "page-pricing",
+			"parent" : "more",
+			"link" : "page-pricing",
+			"title" : "Pricing"
+		},
+
+		{
+			"id" : "page-invoice",
+			"parent" : "more",
+			"link" : "page-invoice",
+			"title" : "Invoice"
+		},
+
+		{
+			"id" : "page-inbox",
+			"parent" : "more",
+			"link" : "page-inbox",
+			"title" : "Inbox"
+		},
+		
+		{
+			"id" : "page-search",
+			"parent" : "more",
+			"link" : "page-search",
+			"title" : "Search Results"
+		},
+
+		{
+			"id" : "page-error",
+			"parent" : "more",
+			"link" : "page-error",
+			"title" : "Error"
+		},
+
+		{
+			"id" : "starter",
+			"parent" : "more",
+			"link" : "starter",
+			"title" : "Starter",
+			"layout": "starter"
+		}
+]

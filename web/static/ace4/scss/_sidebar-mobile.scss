@@ -1,0 +1,167 @@
+@include media-breakpoint-down($sidebar-mobile-max-width) {
+    .sidebar {
+        max-width: 0;
+        visibility: hidden;
+
+        .sidebar-inner {
+            visibility: visible;
+            transform: translateX(-100%) translateX(-1px);
+            //or use margin?
+            //margin-left: -1 * map-get($sidebar-common, 'width');
+            //margin-left: calc(-1 * var(--sidebar-width));
+            
+            @include transition(transform $sidebar-appear-transition);
+        }
+
+        &:not(.sidebar-fixed) {
+            .sidebar-inner {
+                position: relative;    
+                top: 0;
+
+                overflow-y: auto;
+                height: auto;
+                max-height: 0;
+                //we set it to '0' so that it doesn't take up extra vertical space when it's hidden
+                //so that .main-content is not stretched along with it and footer is not pushed down
+
+                @include transition(transform $sidebar-appear-transition 0ms, max-height 0ms $sidebar-appear-transition);
+            }
+        }
+        .ace-scroll,
+        .sidebar-section-item {
+            width: auto;//inherit;//so that scrollbars in some browsers, don't push content
+        }
+    }
+
+          
+    .sidebar-visible .sidebar-inner {
+        transform: translateX(0);
+    }
+
+
+    //non fixed sidebar
+    .sidebar-visible:not(.sidebar-fixed) .sidebar-inner {
+        transition-delay: 0s !important;
+        max-height: 1000vh;
+    }    
+
+    .sidebar-push:not(.sidebar-fixed) .sidebar-inner {
+        height: 100%;//so that it's as tall as content
+        max-height: none;
+    }
+
+    
+    .sidebar:not(.sidebar-push) .sidebar-inner {
+        .nav-item:last-child::after {//the nav item border
+            display: none;
+        }
+    }
+
+    
+    //main-content being pushed
+    .sidebar-push {
+        @include transition(max-width $sidebar-appear-transition);
+
+        &.sidebar-visible {
+            max-width: map-get($sidebar-common, 'width');
+            max-width: var(--sidebar-width);
+
+            ~ .main-content {
+                min-width: 100vw;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+        }        
+    }
+ 
+
+
+    .sidebar-backdrop::before {
+        content: "";
+
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: #000;
+        opacity: 0;
+
+        display: block;
+        pointer-events: none;
+        visibility: hidden;//override .sidebar's
+
+        @include transition(opacity $sidebar-appear-transition/2 0ms, visibility 0ms $sidebar-appear-transition/2);
+    }
+    .sidebar-visible.sidebar-backdrop::before ,
+    .sidebar-visible .sidebar-backdrop::before {
+        visibility: visible;
+        pointer-events: all;
+        opacity: $backdrop-opacity;
+
+        transition-delay: 0s;
+    }
+
+    //
+    .sidebar.sidebar-spaced .nav > .nav-item {
+        width: auto;
+        margin-right: map-get($sidebar-common, 'spaced') * 0.5;
+    }
+
+
+    //
+    //for sidebar-backdrop
+    body.mob-sidebar-body , body.mob-sidebarswipe-body {
+        overflow-y: hidden;
+
+        .body-container {// so that no scrolling is done
+            overflow: hidden;
+        }
+    }
+
+    // in js we disable clickability of sidebar togglers when data-dismiss is true
+    // but shouldn't do that for togglers inside the sidebar
+    .sidebar-visible [data-toggle-mobile="sidebar"] {
+        pointer-events: auto !important;
+    }
+}
+
+
+
+@if $sidebar-small-device-width != false {
+ @include media-breakpoint-down(md) {
+    .sidebar.sidebar-push {
+        // we give .sidebar back its width, so that .main-content gets pushed
+        max-width: 0;
+        min-width: 0;
+        width: 0;
+        
+        @include transition(width $sidebar-appear-transition, min-width $sidebar-appear-transition, max-width $sidebar-appear-transition);
+
+        &.sidebar-visible {
+            width: 75vw;
+            max-width: $sidebar-small-device-width;
+            min-width: map-get($sidebar-common, 'width');
+            min-width: var(--sidebar-width);
+        }
+    }
+
+    .sidebar .sidebar-inner {
+        width: 75vw;
+        max-width: $sidebar-small-device-width;
+        min-width: map-get($sidebar-common, 'width');
+        min-width: var(--sidebar-width);
+
+        // .sidebar-nav,
+        .ace-scroll,
+        .sidebar-section,
+        .sidebar-search-input {
+            width: auto;                       
+        }
+        .sidebar-search-input {
+            max-width: calc( 100% - 1rem );
+        }
+    }  
+ }
+}

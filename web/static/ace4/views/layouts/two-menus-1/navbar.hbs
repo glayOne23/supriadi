@@ -1,0 +1,135 @@
+<nav class="navbar navbar-sm navbar-fixed-xl navbar-expand-lg navbar-slategrey">
+ <div class="navbar-inner">
+
+    <div class="navbar-intro justify-content-xl-start bg-transparent pr-lg-3 pos-rel">
+        <div class="position-tr h-100 border-r-1 brc-white-tp7 d-none d-lg-block"></div>
+
+        <button type="button" class="btn burger-arrowed static collapsed ml-2 d-flex d-xl-none btn-h-dark btn-burger" data-toggle-mobile="sidebar" data-target="#sidebar1" aria-controls="sidebar1" aria-expanded="false" aria-label="Toggle sidebar">
+           <span class="bars bgc-white-tp1"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <a class="navbar-brand d-xl-none mx-1 text-white-tp1 text-130" href="#">
+            <i class="fa fa-leaf mr-2px text-success-l4"></i>
+            ACE 
+            <span class="d-none d-sm-inline-block">App</span>
+        </a>    
+
+        <button type="button" class="btn burger-dots static collapsed ml-2 d-flex d-xl-none btn-h-dark btn-burger" data-toggle-mobile="sidebar" data-target="#sidebar2" aria-controls="sidebar2" aria-expanded="false" aria-label="Toggle sidebar">
+           <span class="bars bgc-white-tp1"></span>
+        </button><!-- mobile sidebar toggler button -->
+
+        <button id="hide-sidebar" type="button" class="d-none d-xl-inline-block d-style btn btn-burger px-2 ml-2 align-middle border-0">
+          <i class="fa fa-angle-double-left text-120 d-n-collapsed"></i>
+          <i class="fa fa-angle-double-right text-120 d-collapsed"></i>
+        </button>
+          
+    </div><!-- /.navbar-intro -->
+
+    <div class="navbar-content d-xl-flex flex-grow-0 flex-lg-grow-1 ml-auto mr-2">
+        <button class="navbar-toggler h-75" type="button" data-toggle="collapse" data-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle navbar search">
+            <i class="fa fa-search text-white text-90"></i>
+        </button>
+
+        <div class="collapse navbar-collapse navbar-backdrop" id="navbarSearch">
+            <div class="d-flex align-items-center pl-4 py-1 py-lg-0">
+                <i class="d-none d-lg-block fa fa-search text-white text-85 pos-rel"></i>
+                <input type="text" class="navbar-input pl-45 pr-3 py-3 py-lg-2 ml-n3 ml-lg-n4 bgc-black-tp7 radius-round border-0 w-100 h-auto autofocus" placeholder="SEARCH ..." aria-label="Search" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="navbar-content flex-grow-0 ml-0">
+        <button type="button" id="id-nav-post-btn" class="btn btn-white btn-bold border-0 btn-sm mx-lg-2 px-2">
+            <i class="bgc-green radius-round w-3 h-3 text-center fa fa-plus mr-lg-1 text-white pt-15 text-95"></i>
+            <span class="d-none d-lg-inline">Create New</span>
+        </button>
+    </div>
+
+
+    <!-- mobile #navbarMenu toggler button -->
+    <button class="navbar-toggler ml-1 mr-2 px-1" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+        <span class="pos-rel">
+            <img class="radius-3px mr-1 brc-grey-m2 border-1" width="36" src="assets/image/avatar/avatar6.jpg" alt="Jason's Photo" />
+            <span class="bgc-warning radius-round border-2 brc-white p-1 position-tr mr-1px mt-n15"></span>
+        </span>
+    </button>
+
+    
+    <div class="navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+      
+      <div class="navbar-nav">
+        <ul class="nav nav-compact has-active-border">
+
+            <li class="nav-item dropdown dropdown-mega">
+                <a class="nav-link dropdown-toggle px-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-bell text-110 icon-animated-bell mr-lg-2"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Notifications</span><!-- show only on mobile -->
+                    <span class="d-none d-lg-block p-1 radius-round bgc-danger position-tr mt-25 mr-25 border-1 brc-white-tp2"></span>
+                    <span class="d-lg-none p-1 radius-round bgc-danger border-1 brc-white-tp2 ml-2"></span>
+
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+                <div class="shadow dropdown-menu dropdown-animated dropdown-sm p-0 bg-white brc-primary-m3 border-1 border-b-2">
+                    {{> layout/_commons/navbar-notifmenu}}
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a href="#" class="nav-link pl-lg-3 pr-lg-4 pos-rel">
+                    <i class="far fa-envelope text-110 icon-animated-vertical"></i>
+
+                    <span class="d-inline-block d-lg-none ml-2">Messages</span><!-- show only on mobile -->
+                    <span class="d-none d-lg-block text-600 text-warning-l2 text-80 mt-2 mr-2 position-tr">+2</span>
+                    <span class="d-lg-none text-600 text-warning-l2 text-90 ml-2">(+2)</span>
+                </a>
+            </li>
+
+
+
+            <li class="nav-item dropdown order-first order-lg-last dropdown-hover">
+               <a class="nav-link dropdown-toggle px-lg-2 ml-lg-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">          
+                    <img id="id-navbar-user-image" class="d-none d-lg-inline-block radius-3px mr-1 brc-grey-m2 border-1" src="assets/image/avatar/avatar6.jpg" height="42" alt="Jason's Photo" />
+    
+                    <span class="d-inline-block d-lg-none">Welcome, Jason</span><!-- show only on mobile -->
+
+                    <i class="caret fa fa-ellipsis-v d-none d-xl-block"></i>
+                    <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-caret dropdown-menu-right brc-primary-m3">
+                    <div class="d-none d-lg-block">
+                        <div class="dropdown-header">
+                            Welcome, Jason
+                        </div>
+                        <div class="dropdown-divider"></div>
+                    </div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-primary btn-a-lighter-primary" href="{{getPageLink 'page-profile'}}">
+                        <i class="fa fa-user text-primary-m1 text-105 mr-1"></i>
+                        Profile
+                    </a>
+                    
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-success btn-a-lighter-success" href="#" data-toggle="modal" data-target="#id-ace-settings-modal">
+                        <i class="fa fa-cog text-success-m1 text-105 mr-1"></i>
+                        Settings
+                    </a>
+
+                    <div class="dropdown-divider brc-primary-l2"></div>
+
+                    <a class="dropdown-item btn btn-outline-grey btn-h-lighter-secondary btn-a-lighter-secondary" href="{{getPageLink 'page-login'}}">
+                        <i class="fa fa-power-off text-warning-d1 text-105 mr-1"></i>
+                        Logout
+                    </a>
+                </div>
+            </li><!-- /.nav-item:last -->
+
+        </ul><!-- /.navbar-nav menu -->
+      </div><!-- /.navbar-nav -->
+
+   </div><!-- /.navbar-menu.navbar-collapse -->
+
+ </div><!-- /.navbar-inner -->
+</nav>

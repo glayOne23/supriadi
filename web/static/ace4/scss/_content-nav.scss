@@ -1,0 +1,37 @@
+.content-nav {
+    position: relative;
+    min-height: $breadcrumbs-height;
+
+    margin: 0.75rem 1rem;
+    padding: 0 0.5rem;
+
+    border-radius: 0.325rem;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    background-color: transparent;
+}
+.breadcrumb-item {
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 1.25em;    
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    position: absolute;
+    left: 0.425em;
+    top: -2px;
+
+    content: "\203A";
+    font-size: 1.25em;
+    opacity: 0.88;    
+}
+.breadcrumb-item[class*="text-"]::before {
+    color: inherit !important;    
+}
+.breadcrumb-nosep .breadcrumb-item::before {
+    display: none;
+}

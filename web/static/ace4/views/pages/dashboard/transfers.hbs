@@ -1,0 +1,46 @@
+<div class="card ccard radius-t-0 h-100">
+    <div class="position-tl w-102 border-t-3 brc-primary-tp3 ml-n1px mt-n1px"></div><!-- the blue line on top -->
+
+    <div class="card-header pb-3 brc-secondary-l3">
+        <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+            Transfers
+        </h5>
+
+        <div class="card-toolbar no-border pl-0 pl-md-2">
+            <a href="#" class="btn btn-sm btn-lighter-grey btn-bgc-white btn-h-light-orange btn-a-light-orange text-600 px-2 py-1 radius-round">
+                <i class="fa fa-arrow-down text-90 mx-1px"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body pt-2 pb-1">
+
+        {{#each (get "transfers")}}
+        <div role="button" class="d-flex flex-wrap align-items-center my-2 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 p-25 d-style">
+            <span class="mr-25 w-4 h-4 overflow-hidden text-center border-1 brc-secondary-m2 radius-round shadow-sm d-zoom-2">
+                <img alt="{{name}}'s avatar" src="assets/image/avatar/{{avatar}}" class="h-4 w-4" />
+            </span>
+
+            <span class="text-default-d3 text-90 text-600">
+                {{name}}
+            </span>
+
+            <span class="ml-auto text-dark-l2 text-nowrap">
+                {{amount}}
+                <span class="text-80">
+                    {{currency}}
+                </span>
+            </span>
+
+            <span class="ml-2">
+                {{#if in}}
+                    <i class="fa fa-arrow-up text-green-m1 text-95"></i>
+                {{else}}
+                    <i class="fa fa-arrow-down text-danger-m1 text-95"></i>
+                {{/if}}
+            </span>
+        </div>
+        {{/each}}
+
+    </div>
+</div>

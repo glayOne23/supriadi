@@ -1,0 +1,101 @@
+{% load static %}
+<div id="sidebar" class="sidebar sidebar-white sidebar-fixed sidebar-backdrop expandable" data-swipe="true" data-dismiss="true">
+    <div class="sidebar-inner">
+
+        <!-- .navbar-brand inside sidebar, only show in desktop view -->
+        <div class="d-none d-xl-flex sidebar-section-item m-0 fadeable-left fadeable-top">
+          <div class="fadeinable">
+            <div class="py-2 mx-1 border-b-1 brc-secondary-l3" id="sidebar-header-brand1">
+              <a class="navbar-brand text-140">
+                <i class="fa fa-leaf text-success-m2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="fadeable w-100 ">
+            <div class="py-2 text-center mx-3 border-b-1 brc-secondary-l3" id="sidebar-header-brand2">
+
+              <a class="navbar-brand ml-n2 text-140 text-grey-d2" href="#">
+                <img alt="" src="{% static 'assets/images/profile.png' %} " width="30" class="p-2px border-2 brc-primary-tp2 radius-round" />
+                Supriadi
+              </a>
+
+            </div>
+          </div>
+        </div><!-- /.sidebar-section-item  -->
+
+
+        <div class="pt-2 flex-grow-1 ace-scroll" data-ace-scroll="{}">
+          <!-- some part of sidebar header (brand) is outside scrollable area ^ -->
+          <div class="sidebar-section-item fadeable-left fadeable-top">
+            <div class="fadeinable">
+              <img alt="" src="{% static 'assets/images/profile.png' %} " width="48" class="p-2px border-2 brc-primary-tp2 radius-round" />
+            </div>
+
+            <div class="fadeable hideable">
+
+              <div class="py-2 d-flex flex-column align-items-center">
+                <div>
+                  <img alt="" src="{% static 'assets/images/profile.png' %} " width="60" class="p-2px border-2 brc-primary-tp2 radius-round" />
+                </div>
+
+                <div class="text-center mt-1" id="id-user-info">
+                  <a href="#id-user-menu" class="d-style pos-rel collapsed text-blue-d2 accordion-toggle no-underline bgc-h-primary-l2 px-1 py-2px" data-toggle="collapse" aria-expanded="false">                    
+                    <span class="text-95 font-bolder">                      
+                        Tamu                    
+                    </span>
+                    <i class="fa fa-caret-down text-90 d-collapsed"></i>
+                    <i class="fa fa-caret-up text-90 d-n-collapsed"></i>
+                  </a>
+                  <div class="text-muted text-85">                    
+                  </div>
+                </div><!-- /#id-user-info -->
+
+              </div>
+
+            </div>
+          </div>
+          <!-- optional `nav` tag -->
+          <nav aria-label="Main">
+            <ul class="nav flex-column mt-2 has-active-border">
+
+
+              <!-- home -->
+              <li class="nav-item {% if 'home' == request.resolver_match.url_name %} active {%endif%}">
+                <a href="" class="nav-link">                  
+                  <i class="nav-icon fa fa-cube nav-icon-round bgc-primary-tp1"></i>
+                  <span class="nav-text fadeable">
+                    <span>Dashboard</span>
+                  </span>
+                </a>
+                <b class="sub-arrow"></b>
+              </li>
+          
+              
+            </ul>
+          </nav>
+
+        </div><!-- /.ace-scroll -->
+
+
+        <div class="sidebar-section">
+          <div class="sidebar-section-item fadeable-left fadeable-top">
+            <div class="fadeinable">
+              <button type="button" class="btn btn-primary btn-bold radius-1">
+                <i class="fa fa-cloud"></i>
+              </button>
+            </div>
+
+            <div id="sidebar-footer" class="fadeable text-center border-t-1 brc-secondary-l3 w-95">
+              <div class="py-2">
+                <a href="" class="btn btn-primary px-5 btn-bold radius-1">
+                  <i class="fa fa-power-off mr-2 d-none d-lg-inline"></i>       
+                    Tamu                  
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>

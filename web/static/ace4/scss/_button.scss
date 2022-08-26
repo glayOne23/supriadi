@@ -1,0 +1,1043 @@
+@import "function-contrast.scss";
+
+$btn-text-pale: text-color('secondary', 'l2');
+$btn-faded-opacity: 0.8;
+
+$btn-focus-width : 2px;
+$btn-focus-alpha: 0.4;
+@function btn-shadow($bcolor) {
+  @return 0 0 1px $btn-focus-width rgba($bcolor, $btn-focus-alpha);
+}
+
+
+.btn {
+  cursor: pointer;
+  position: relative;
+  z-index: auto;
+
+  border-radius: 0.175rem;  
+  @include transition($btn-transition);
+
+  //button sizing
+  &.btn-xs {
+    padding: 0.25rem 0.5rem 0.275rem;
+    line-height: 1.25;
+    font-size: 0.9rem;
+  }
+}
+
+
+@if $desktop-button-click-effect == true {
+  @media (hover: hover) {
+    //when :active move button when it's a <button> element
+    button.btn:active:not(.disabled):not(.static) {
+      transform: translateY(2px);//or 3px?
+    }  
+  }
+}
+@if $mobile-button-press-effect == true {
+  @media (hover: none) {
+    //when :active move button when it's a <button> element
+    button.btn {
+      @include transition($btn-transition, transform .14s);
+    }
+    button.btn:active:not(.disabled):not(.static) {
+      transform: scale(0.95);
+    }
+  }
+}
+
+
+
+//no shadows
+.btn:focus, .btn.focus,
+.show > .btn.dropdown-toggle:focus,
+.btn:not(:disabled):not(.disabled):active:focus,
+.btn:not(:disabled):not(.disabled).active:focus {
+  box-shadow: none;
+}
+
+
+
+.btn[class*="btn-h-light"].fs--shadow:hover:focus,
+.btn[class*="btn-h-light"]:not(:disabled):not(.disabled):active,
+.btn[class*="btn-h-light"]:not(:disabled):not(.disabled).active,
+.show > .btn[class*="btn-h-light"].dropdown-toggle  {
+  box-shadow: none;
+}
+
+
+
+
+
+@mixin button-colors($name) {
+    $bg: get-btn-bg($name);
+    $border: get-btn-border($name);
+
+    .btn-#{$name} {
+      color: get-btn-text($name);
+      background-color: $bg;
+      border-color: $border;
+
+      &:hover
+      {
+        color: get-btn-hover-text($name);
+        background-color: get-btn-hover-bg($name);
+        border-color: get-btn-hover-border($name);
+      }
+
+      //focus state
+      &:focus, &.focus
+      {
+        color: get-btn-active-text($name);
+
+        background-color: lighten(get-btn-active-bg($name), 3%);
+        border-color: lighten(get-btn-active-border($name), 3%);        
+
+        &.fs--shadow
+        {
+          box-shadow: btn-shadow($border);
+        }
+      }      
+      
+
+      //active state
+      @at-root .show > .btn.btn-#{$name}.dropdown-toggle,
+      &:not(:disabled):not(.disabled):active,
+      &:not(:disabled):not(.disabled).active {
+          background-color: get-btn-active-bg($name); 
+          border-color: get-btn-active-border($name);
+          color: get-btn-active-text($name);
+      }
+
+      //disabled state
+      &.disabled, &:disabled {
+        background-color: $bg;
+        border-color: $border;
+      }
+
+   }//Default buttons
+
+
+
+   //Outline Buttons
+   $outline-text: get-outline-text($name);
+   $outline-border: get-outline-border($name);
+    
+  .btn-outline-#{$name} {
+      color: $outline-text;
+      border-color: $outline-border;
+      background-color: transparent;
+
+      // hover state
+      &:hover
+      {
+        color: get-outline-hover-text($name);// because of 'white' color
+        background-color: get-btn-bg($name);
+        border-color:  get-outline-hover-border($name);// because of 'white' color
+      }
+
+      // focus state
+      &:focus, &.focus
+      {
+        &.fs--shadow {
+          box-shadow: btn-shadow($border);
+        }
+      }
+
+      // active state
+      @at-root .show > .btn.btn-outline-#{$name}.dropdown-toggle,
+      &:not(:disabled):not(.disabled):active,
+      &:not(:disabled):not(.disabled).active
+      {
+        color: get-outline-active-text($name);// because of 'white' color
+        background-color: get-btn-bg($name);
+        border-color: get-outline-active-border($name);// because of 'white' color
+  
+        &.fs--shadow:focus {
+          box-shadow: btn-shadow($border);
+        }
+      }
+
+      // disabled state
+      &.disabled, &:disabled {
+        border-color: $outline-border;
+        color: $outline-text;
+      }
+   }// Outline buttons
+
+
+   @if $btn-light-style == true and map-get($button-light-exclude, $name) != true {
+
+    // Light Buttons
+    .btn-light-#{$name} {
+      color: get-light-text($name);
+      background-color: get-light-bg($name);
+      border-color: get-light-border($name);
+      
+      &:hover {
+        color: get-light-hover-text($name);
+        background-color: get-light-hover-bg($name);
+        border-color: get-light-hover-border($name);
+      }
+
+      &:focus, &.focus {
+        color: mix(get-light-hover-text($name), get-light-active-text($name));
+        background-color: mix(get-light-hover-bg($name), get-light-active-bg($name));
+        border-color: mix(get-light-hover-border($name), get-light-active-border($name));
+      }
+
+      @at-root .show > .btn.btn-light-#{$name}.dropdown-toggle,
+      &:not(:disabled):not(.disabled):active,
+      &:not(:disabled):not(.disabled).active { 
+        color: get-light-active-text($name);
+        background-color: get-light-active-bg($name);
+        border-color: get-light-active-border($name);
+      }
+    }
+
+
+    .btn-lighter-#{$name} {
+      color: get-lighter-text($name);
+      background-color: get-lighter-bg($name);
+      border-color: get-lighter-border($name);
+
+      &:hover
+      {
+        color: get-lighter-hover-text($name);
+        background-color: get-lighter-hover-bg($name);
+        border-color: get-lighter-hover-border($name);
+      }
+
+      &:focus, &.focus
+      {
+        color: mix(get-lighter-hover-text($name), get-lighter-active-text($name));
+        background-color: mix(get-lighter-hover-bg($name), get-lighter-active-bg($name));
+        border-color: mix(get-lighter-hover-border($name), get-lighter-active-border($name));
+      }
+
+      @at-root .show > .btn.btn-lighter-#{$name}.dropdown-toggle,
+      &:not(:disabled):not(.disabled):active,
+      &:not(:disabled):not(.disabled).active { 
+        color: get-lighter-active-text($name);
+        background-color: get-lighter-active-bg($name);
+        border-color: get-lighter-active-border($name);
+      }
+    }
+   }//@if $btn-light 
+
+}
+
+
+
+
+@mixin button-hover-colors($name) {
+  $text: get-btn-text($name);
+  $bg: get-btn-bg($name);
+  $border: get-btn-border($name);
+
+  // button becomes $color only on hover
+  .btn-h-#{$name} {
+    &:hover {
+      background-color: $bg;
+      border-color: $border;
+      color: $text;
+
+      &.fs--shadow {
+        &.focus, &:focus {
+          box-shadow: btn-shadow($border);
+        }
+      }
+    }
+  }//.btn-h-#{$name}
+
+  // Outline Buttons
+  $outline-text: get-outline-text($name);
+  $outline-border: get-outline-border($name, 28%);
+
+  .btn-h-outline-#{$name} {
+    &:hover
+    {
+      color: $outline-text;
+      border-color: $outline-border;
+      background-color: transparent;
+
+      &.fs--shadow:focus {
+        box-shadow: btn-shadow($outline-border);
+      }
+    }
+
+    // when the button is already an outline button, on hover make background a little colorful
+    &[class*="btn-outline-"]
+    {
+      &:hover {
+        background-color: rgba($bg, 0.0625);
+        @if lightness($outline-text) < 80 {
+          //and darken the text
+          color: darken($outline-text, 1.5%);
+        }
+      }
+    }
+  }
+
+
+  @if $btn-light-style == true and map-get($button-light-exclude, $name) != true {
+    .btn-h-light-#{$name}:hover {
+      color: get-light-text($name);
+      background-color: get-light-bg($name);
+      border-color: get-light-border($name);
+    }
+    //if the button is already another `light` button get the `hover` version for darker colors
+    .btn-h-light-#{$name}[class*="btn-light-"]:hover {
+      color: get-light-hover-text($name);
+      background-color: get-light-hover-bg($name);
+      border-color: get-light-hover-border($name);
+    }
+
+    // actually we should use the following rules to make sure `btn-h-light-*` doesn't override `btn-h-text-*`, etc
+    // but we add an overriding rule in `btn-h-text-*` section
+    //.btn-h-light-#{$name}[class*="btn-light-"]:not([class*="btn-h-text-"]):hover {
+    //  color: get-light-hover-text($name);
+    //}
+    //.btn-h-light-#{$name}[class*="btn-light-"]:not([class*="btn-h-bgc-"]):hover {
+    //  background-color: get-light-hover-bg($name);
+    //}
+    //.btn-h-light-#{$name}[class*="btn-light-"]:not([class*="btn-h-brc-"]):hover {
+    //  border-color: get-light-hover-border($name);
+    //}
+
+
+    .btn-h-lighter-#{$name}:hover {
+      color: get-lighter-text($name);
+      background-color: get-lighter-bg($name);
+      border-color: get-lighter-border($name);
+    }
+    .btn-h-lighter-#{$name}[class*="btn-lighter-"]:hover {
+      color: get-lighter-hover-text($name);
+      background-color: get-lighter-hover-bg($name);
+      border-color: get-lighter-hover-border($name);
+    }
+  }
+
+}
+
+
+
+@mixin button-active-colors($name) {
+  $border: get-btn-hover-border($name);
+  $bg: get-btn-hover-bg($name);
+
+  //for .btn-a-* : active state , use :hover colors, :active is a bit dark
+  .btn-a-#{$name}:not(:disabled):not(.disabled):active,
+  .btn-a-#{$name}:not(:disabled):not(.disabled).active,
+  .show > .btn.btn-a-#{$name}.dropdown-toggle
+  {
+    color: get-btn-text($name);;
+    background-color: $bg;
+    border-color: $border;
+
+    &.fs--shadow:focus {
+      box-shadow: btn-shadow($border);
+    }
+  }
+
+
+  // Outline Buttons
+  $outline-text: get-outline-text($name);
+  $outline-border: get-outline-border($name, 24%);
+  
+  .btn-a-outline-#{$name}:not(:disabled):not(.disabled):active,
+  .btn-a-outline-#{$name}:not(:disabled):not(.disabled).active,
+  .show > .btn.btn-a-outline-#{$name}.dropdown-toggle {
+    color: $outline-text;
+    border-color: $outline-border;
+    background-color: transparent;
+
+    // when the button is already an outline button, on active make background a little colorful
+    &[class*="btn-outline-"]
+    {
+      background-color: rgba($bg, 0.085);
+      @if lightness($outline-text) < 90 {
+        color: darken($outline-text, 2.25%);
+      }
+    }
+
+    &.fs--shadow:focus {
+      box-shadow: btn-shadow($outline-border);      
+    }
+  }
+
+
+  @if $btn-light-style == true and map-get($button-light-exclude, $name) != true {
+  .btn-a-light-#{$name} {
+    //active state
+    @at-root .show > .btn.btn-a-light-#{$name}.dropdown-toggle,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      color: get-light-hover-text($name);
+      background-color: get-light-hover-bg($name);
+      border-color: get-light-hover-border($name);
+    }
+  }
+
+  .btn-a-lighter-#{$name} {
+    @at-root .show > .btn.btn-a-lighter-#{$name}.dropdown-toggle,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      color: get-lighter-hover-text($name);
+      background-color: get-lighter-hover-bg($name);
+      border-color: get-lighter-hover-border($name);
+    }
+  }
+ }
+
+}
+
+
+// button colors
+@each $colorName, $value in $button-colors {
+  @include button-colors($colorName);
+}
+
+// button with different hover state color
+@each $colorName, $value in $button-colors {
+  @include button-hover-colors($colorName);
+}
+
+// button with different active state color
+@each $colorName, $value in $button-colors {
+  @include button-active-colors($colorName);
+}
+
+
+
+// button with different text color
+@each $name, $value in $button-colors {
+  $outline-text: get-outline-text($name);
+
+  .btn-text-#{$name},
+  .btn-text-#{$name}:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+  .btn-h-text-#{$name}:hover,
+  .btn.btn-h-text-#{$name}:hover,// to override .btn-h-light-*[class*="btn-light-"]:hover etc
+  .btn-a-text-#{$name}:not(.disabled):not(:disabled):active,
+  .btn-a-text-#{$name}:not(.disabled):not(:disabled).active
+  {
+    color: $outline-text;
+  }
+
+  // to override .btn-a-outline-*[class*="btn-h-outline-"]
+  .btn-a-text-#{$name}[class*="btn-a-outline-"]:not(.disabled):not(:disabled):active,
+  .btn-a-text-#{$name}[class*="btn-a-outline-"]:not(.disabled):not(:disabled).active
+  {
+    @if lightness($outline-text) < 80 {
+      color: darken($outline-text, 2%);
+    }
+  }
+}
+
+
+.btn-text-pale,
+.btn-text-pale:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn-h-text-pale:hover,
+.btn.btn-h-text-pale:hover,// to override .btn-h-light-*[class*="btn-light-"]:hover etc
+.btn.btn-f-text-pale:focus,
+.btn-a-text-pale:not(.disabled):not(:disabled):active,
+.btn-a-text-pale:not(.disabled):not(:disabled).active,
+.btn-a-text-pale[class*="btn-a-outline-"]:not(.disabled):not(:disabled):active,
+.btn-a-text-pale[class*="btn-a-outline-"]:not(.disabled):not(:disabled).active
+{
+  color: $btn-text-pale;
+}
+
+.btn-faded:not(:hover):not(:active):not(.active),
+.btn-h-faded:hover,
+.btn.btn-f-faded:focus,
+.btn-a-faded:not(.disabled):not(:disabled):active,
+.btn-a-faded:not(.disabled):not(:disabled).active
+{
+  opacity: $btn-faded-opacity;
+}
+
+
+// transparent border
+.btn-brc-tp,
+.btn-brc-tp:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn.btn-f-brc-tp:focus,
+.btn-h-brc-tp:hover,
+.btn.btn-h-brc-tp:hover,// to override .btn-h-light-*[class*="btn-light-"]:hover etc
+// .btn-a-brc-tp:not(.disabled):not(:disabled):active,
+.btn-a-brc-tp:not(.disabled):not(:disabled).active
+{
+  border-color: transparent;
+}
+.btn-brc-white,
+.btn-brc-white:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn.btn-f-brc-white:focus,
+.btn-h-brc-white:hover,
+.btn.btn-h-brc-white:hover,// to override .btn-h-light-*[class*="btn-light-"]:hover etc
+.btn-a-brc-white:not(.disabled):not(:disabled):active,
+.btn-a-brc-white:not(.disabled):not(:disabled).active
+{
+  border-color: #fff;
+}
+
+
+// transparent background
+.btn-bgc-tp,
+.btn-bgc-tp:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn.btn-f-bgc-tp:focus,
+.btn-h-bgc-tp:hover,
+.btn.btn-h-bgc-tp:hover,//to override .btn-h-light-*[class*="btn-light-"]:hover etc
+.btn-a-bgc-tp:not(.disabled):not(:disabled):active,
+.btn-a-bgc-tp:not(.disabled):not(:disabled).active,
+.btn-a-bgc-tp[class*="btn-a-outline-"]:not(.disabled):not(:disabled):active,
+.btn-a-bgc-tp[class*="btn-a-outline-"]:not(.disabled):not(:disabled).active
+{
+  background-color: transparent;
+}
+.btn-bgc-white,
+.btn-bgc-white:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn.btn-f-bgc-white:focus,
+.btn-h-bgc-white:hover,
+.btn.btn-h-bgc-white:hover,//to override .btn-h-light-*[class*="btn-light-"]:hover etc
+.btn-a-bgc-white:not(.disabled):not(:disabled):active,
+.btn-a-bgc-white:not(.disabled):not(:disabled).active,
+.btn-a-bgc-white[class*="btn-a-outline-"]:not(.disabled):not(:disabled):active,
+.btn-a-bgc-white[class*="btn-a-outline-"]:not(.disabled):not(:disabled).active
+{
+  background-color: #fff;
+}
+
+
+.btn-tp,
+.btn-tp:focus:not(:hover):not(:active):not(.active):not(.dropdown-toggle),
+.btn.btn-f-tp:focus,
+.btn-h-tp:hover,
+.btn.btn-h-tp:hover,
+.btn-a-tp:not(.disabled):not(:disabled):active,
+.btn-a-tp:not(.disabled):not(:disabled).active,
+.btn-a-tp[class*="btn-a-outline-"]:not(.disabled):not(:disabled):active,
+.btn-a-tp[class*="btn-a-outline-"]:not(.disabled):not(:disabled).active
+{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+///////////////
+.btn.btn-bold {
+  border-width: 2px;
+  font-weight: $font-semibold;
+  font-size: $btn-bold-font-size;
+  letter-spacing: 0.5px;// 1px;
+  text-transform: uppercase;
+}
+
+.btn-h-bold:hover,
+.btn-f-bold:focus,
+.btn-a-bold.active:not(.disabled):not(:disabled) {
+  font-weight: $font-semibold;
+}
+
+
+.btn-a-b2.active:not(.disabled):not(:disabled) {
+  border-width: 2px;
+}
+.btn-a-bb2.active:not(.disabled):not(:disabled) {
+  border-bottom-width: 2px;
+}
+.btn-a-bt2.active:not(.disabled):not(:disabled) {
+  border-top-width: 2px;
+}
+
+
+@if $btn-focus-states == true {
+ $dotted-outline-white-color:  rgba(255, 255, 255, 0.75);
+ $dotted-outline-black-color:  rgba(0, 0, 0, 0.4);
+
+ $solid-outline-white-color:  rgba(255, 255, 255, 0.6);
+ $solid-outline-black-color:  rgba(0, 0, 0, 0.27);
+
+//btn focus alternatives
+.btn.fs--outline {
+  &:focus {
+    outline-color: $dotted-outline-white-color;
+    outline-width: 1px ;
+    outline-style: dotted;
+    outline-offset: -3px;
+  }
+
+  &[class*="btn-outline-"],
+  &[class*="btn-light"]
+  {
+    &:focus {
+      outline-color: $dotted-outline-black-color;
+    }
+  }
+  
+  &[class*="btn-h-"]:not([class*="btn-h-outline"]):not([class*="btn-h-light"]):hover
+  {
+    &:focus {
+      outline-color: $dotted-outline-white-color;
+    }
+  }
+  
+  &[class*="btn-h-outline-"],
+  &[class*="btn-h-light"]
+  {
+    &:focus {
+      &:hover {
+        outline-color: $dotted-outline-black-color;
+     }
+    }
+  }
+
+  &[class*="btn-a-"]
+  {
+    &:not(.disabled):not(:disabled):active,
+    &:not(.disabled):not(:disabled).active {
+      &:focus {        
+        outline-color: $dotted-outline-white-color;
+     }
+    }
+  }
+
+  &[class*="btn-a-outline-"],
+  &[class*="btn-a-light"]
+  {
+    &:not(.disabled):not(:disabled):active,
+    &:not(.disabled):not(:disabled).active {
+      &:focus {        
+        outline-color: $dotted-outline-black-color;
+     }
+    }
+  }
+  
+}
+
+//solid outline
+.btn.fs--solid {
+  &:focus {
+    outline-color: $solid-outline-white-color;
+    outline-width: 1px ;
+    outline-style: solid;
+    outline-offset: -3px;
+  }
+
+  &[class*="btn-outline-"],
+  &[class*="btn-light"]
+  {
+    &:focus {
+      outline-color: $solid-outline-black-color;
+    }
+  }
+  
+  &[class*="btn-h-"]:not([class*="btn-h-outline"]):not([class*="btn-h-light"]):hover
+  {
+    &:focus {
+      outline-color: $solid-outline-white-color;
+    }
+  }
+
+  &[class*="btn-h-"]:not([class*="btn-a-outline"]):not([class*="btn-a-light"]):active
+  {
+    &:focus {
+      outline-color: $solid-outline-black-color;
+    }
+  }
+
+
+  &[class*="btn-h-outline-"],
+  &[class*="btn-h-light"]
+  {
+    &:focus {
+      &:hover {
+        outline-color: $solid-outline-black-color;
+      }
+    }
+  }
+
+  &[class*="btn-a-"]
+  {
+    &:not(.disabled):not(:disabled):active,
+    &:not(.disabled):not(:disabled).active {
+      &:focus {        
+        outline-color: $solid-outline-white-color;
+     }
+    }
+  }
+
+  &[class*="btn-a-outline-"],
+  &[class*="btn-a-light"]
+  {
+    &:not(.disabled):not(:disabled):active,
+    &:not(.disabled):not(:disabled).active {
+      &:focus {
+        outline-color: $solid-outline-black-color;
+      }
+    }
+  }
+}
+
+
+//dashed outline
+.btn.fs--dashed {
+  &:focus {
+    outline-width: 1px ;
+    outline-style: dashed;
+    outline-offset: -1px;
+    outline-color: $solid-outline-white-color;
+  }
+
+  &[class*="btn-outline-"] {
+    &.border-0, &.btn-brc-tp {
+      &:focus {
+        outline-color: $solid-outline-black-color;
+      }
+    }
+  }
+}
+
+//raised effect
+.btn.fs--raised {
+  &:focus, &.focus {
+    box-shadow: $btn-raised-shadow !important;
+  }
+}
+
+}//@if $btn-focus-states
+
+
+
+
+
+
+
+
+
+
+
+
+
+//disabled button
+.btn {
+  &.disabled, &:disabled {
+    opacity: 0.55;
+    pointer-events: none;
+   
+    &:not(.btn-bgc-tp):not(.btn-bgc-white):after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      border-radius: inherit;
+
+      left: -1px;
+      right: -1px;
+      top: -1px;
+      bottom: -1px;
+
+      background-color: rgba(0, 0, 0, 0.07);      
+    }
+  }
+  
+}
+
+//link button
+.btn-link {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+//raised button effect
+.btn.btn-raised,
+.btn.btn-h-raised:hover,
+.btn.btn-a-raised:not(.disabled):not(:disabled):active,
+.btn.btn-a-raised:not(.disabled):not(:disabled).active {
+  box-shadow: $btn-raised-shadow;
+}
+
+
+
+
+//big app buttons
+@if $btn-app == true {
+.btn.btn-app {
+    display: inline-block;
+    min-width: 7.5rem;
+    line-height: 2rem;
+   
+    font-size: 1.325rem;
+    font-weight: $font-normal;
+    
+    text-align: center;
+    
+    border-radius: 0.825rem;
+    
+    padding: 1rem 0 0.75rem;  
+   
+    position: relative;
+
+
+    &.btn-sm {
+      line-height: 1.675rem;
+      min-width: 6.25rem;
+      font-size: 1.175rem;
+
+      padding: 0.875rem 0 0.675rem;
+    }
+
+    &.btn-xs {
+      line-height: 1.25rem;
+      min-width: 5.25rem;
+      font-size: 1rem;
+      padding: 0.75rem 0 0.625rem;
+    }
+}
+
+
+
+@each $colorName, $value in $button-colors {
+   $bg: get-btn-bg($colorName);
+  .btn-app.btn-#{$colorName} {
+    @include gradient-y(saturate(lighten($bg, 6%), 4%), saturate(darken($bg, 6%), 4%));
+    &:hover {
+      @include gradient-y(saturate(lighten($bg, 1%), 4%), saturate(darken($bg, 11%), 4%));
+    }
+  }
+}
+
+}//@if $btn-app
+
+
+
+
+//button groups
+.btn-group > .btn-app + .btn-app.dropdown-toggle {
+  min-width: auto;
+}
+//.btn-group > .btn.active:not(:active) {
+  //top: auto;
+//}
+//.btn-group:not(.btn-group-vertical) > .btn:not(:last-child) {
+  //margin-right: 2px;
+//}
+//.btn-group.btn-group-vertical > .btn {
+  //margin-top: 1px;
+//}
+
+.btn-group > .btn-app + .btn-app.dropdown-toggle {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+
+.btn-group-vertical > .btn:first-child:not(.dropdown-toggle), .btn-group-vertical > .btn-group:first-child {
+  margin-left: -1px;
+}
+
+.btn-group-faded {
+  .btn {
+      &:not(.active):not(:hover) {
+          opacity: 0.77;
+      }
+  }
+}
+
+
+//action buttons
+.action-buttons a , .action-btn {
+  display: inline-block;
+  opacity: 0.88;
+  margin: 0 0.125rem;  
+ 
+  @include transition(all $action-btn-transition);
+
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+
+
+
+@if $btn-sliding-text == true {
+
+  //button with sliding text
+  .btn-text-slide {
+    position: relative;
+    overflow: hidden;
+    .btn-text-1 , .btn-text-2 {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      @include transition(transform $btn-slide-transition, opacity $btn-slide-transition);
+      transition-delay: .1s;
+    }
+
+
+    .btn-text-2 {
+      transition-delay: 0s;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      
+      line-height: inherit;
+      padding-top: inherit;
+      padding-bottom: inherit;
+    }
+
+
+    &:hover .btn-text-1 {
+      transition-delay: 0s;
+      transform: translateY(100%);    
+      opacity: 0;
+      
+      &.move-up {
+        transform: translateY(-100%);
+      }
+      &.move-down {
+        transform: translateY(100%);
+      }
+      &.move-right {
+        transform: translateX(120%);
+      }
+      &.move-left {
+        transform: translateX(-120%);
+      }
+    }
+
+    
+    .btn-text-2 {
+      transform: translateY(-100%);
+
+      &.move-down {
+        transform: translateY(-100%);
+      }
+      &.move-up {
+        transform: translateY(100%);
+      }   
+      &.move-left {
+        transform: translateX(100%);
+      }
+      &.move-right {
+        transform: translateX(-100%);
+      }     
+    }
+    &:hover .btn-text-2 {
+      transform: none;
+      transition-delay: 0.1s;
+    }
+
+  }
+
+
+
+  .btn-text-slide-x {
+    position: relative;
+    overflow: hidden;
+    //display: inline-flex;
+    //align-items: center;
+
+    .btn-text-2 {
+      @include transition(all $btn-slide2-transition);
+    }
+
+    .btn-text-2 {    
+      opacity: 0;
+      letter-spacing: -0.5rem;
+      max-width: 0%;
+      white-space: nowrap;
+      word-break: normal;
+
+      display: inline-block;
+
+      &.move-right {
+        transform: translateX(-100%);
+      }
+      &.move-left {
+        transform: translateX(100%);
+      }
+    }
+    
+    &:not(:hover) .btn-text-2 {//to override .ml-* .mr-* classes
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      border-left-width: 0 !important;
+      border-right-width: 0 !important;
+    }
+    &:hover .btn-text-2 {
+        opacity: 1;
+        letter-spacing: 0;
+        max-width: 100%;
+        transform: none;
+    }
+  }
+
+
+
+  .btn-text-slide-y {
+    position: relative;
+    overflow: hidden;
+
+    .btn-text-1 , .btn-text-2 {
+      display: block;
+      @include transition(all $btn-slide-transition ease-in-out);    
+    }
+
+    .btn-text-2 {
+      transform: translateY(100%);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    &:not(:hover) .btn-text-2 {
+      margin: 0 !important;
+    }  
+    &:hover .btn-text-1 {
+      transform: translateY(-30%) scale(0.8);
+    }  
+    &:hover .btn-text-2 {
+      transform: none;
+    }
+  
+    &.direction-reverse {
+      .btn-text-2 {
+        transform: translateY(-100%);
+        top: 0;
+        bottom: auto;
+      }
+
+      &:hover .btn-text-1 {
+        transform: translateY(30%) scale(0.8);
+      }
+      &:hover .btn-text-2 {
+        transform: none;//translateY(0%);
+      }
+    }
+
+      
+    .btn-text-fade {
+      transform: none !important;
+      opacity: 0 !important;
+      transition-delay: 0s;
+      transition-duration: 50ms;
+    }
+    &:hover .btn-text-fade {
+      transition-delay: 0.1s;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+  }
+
+}//@if $btn-sliding-text

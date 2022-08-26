@@ -1,0 +1,221 @@
+html {
+    --navbar-height: #{map-get($navbar-common, 'height')};
+    --navbar-sm-height: #{map-get($navbar-common, 'sm-height')};
+    --navbar-mobile-height: #{map-get($navbar-common, 'mobile-height')};
+    
+    --sidebar-width: #{map-get($sidebar-common, 'width')};
+    --sidebar-collapsed-width: #{map-get($sidebar-common, 'collapsed-width')};
+
+    @if $horizontal == true {
+        --sidebar-horizontal-height: #{map-get($sidebar-common, 'horizontal-height')};
+        --sidebar-horizontal-collapsed-height: #{map-get($sidebar-common, 'horizontal-collapsed-height')};
+    }
+
+    //so that it will be flipped by RTLCSS for RTL layout
+    direction: ltr;
+    text-align: left;
+}
+
+html, body {
+    height: 100%;//remove for sticky navbar
+    font-family: $base-font, Arial, sans-serif;
+}
+
+
+:focus {
+    // for webkit
+    outline: none;
+}
+
+
+body {
+    overflow-x: hidden;
+
+    background-color: $body-background;
+    color: $body-text-color;
+}
+
+body:not(.is-document-loaded) * {
+    // on page load, some mobile browsers show the transition of sidebar, settings box etc
+    // so we disable them until loading is done
+    transition: none !important;
+    animation: none !important;
+}
+
+.body-container {
+    background-color: $body-container-background;
+    
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+ 
+    &.container {
+        padding: 0;
+        box-shadow: $body-container-shadow;
+    }
+    &:not(.container) {
+        max-width: 100vw;
+    }
+}
+
+
+// content area
+.main-container {
+    flex: 1 0 auto;
+    display: flex;
+    position: relative;
+
+    max-width: 100vw;
+    // overflow-x: hidden;//by setting it to `hidden` , sticky elements won't work
+
+    background-color: $page-content-background;
+}
+.main-content {
+    // width: 100%;//not working in IE10
+    max-width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    @include iefix(min-height, 100vh);
+}
+
+
+
+//boxed layout
+@media (min-width: 1200px) {
+    .container {
+       max-width: calc(100% - 1rem);
+    }
+}
+@media (min-width: 1440px) {
+    .container {
+       max-width: 1408px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container.container-plus {
+       max-width: 1536px;
+    }
+}
+
+//mobile view
+@include media-breakpoint-down($container-max-width-not-allowed) {
+    body {
+        background-color: $page-content-background;
+    }
+
+    .container {
+        max-width: none;
+    }
+
+    .body-container {
+        max-width: 100vw;
+        overflow: hidden;//should be `visible` for sticky elements to work
+    }
+}
+
+
+
+//.page-content
+.page-content {
+    flex: 1 0 auto;
+    padding: 1rem $page-content-padding-x 0.625rem;
+}
+@include media-breakpoint-up(md) {
+    .page-content {
+        padding: 1.25rem $page-content-padding-md-x 0.625rem;
+    }
+}
+@include media-breakpoint-up(xl) {
+   .page-content {
+        padding: 1.25rem $page-content-padding-xl-x 0.625rem;
+    }
+}
+@media (min-width: 1400px) {
+    .page-content {
+        padding: 1.25rem $page-content-padding-xxl-x 0.625rem;
+    }
+}
+@media (min-width: 1600px) {
+    .page-content {
+        padding: 1.25rem $page-content-padding-xxxl-x 0.625rem;
+    }
+}
+
+@media (min-width: 1640px) {
+    // we don't need extra padding, because of .container which is limiting width already
+    .page-content.container:not(.container.container-plus) {
+        padding: 1.25rem $page-content-padding-xl-x 0.625rem;
+    }
+}
+@media (min-width: 1840px) {
+    // we don't need extra padding, because of .container-plus which is limiting width already
+    .page-content.container-plus {
+        padding: 1.25rem $page-content-padding-xl-x 0.625rem;
+    }
+}
+
+
+
+.page-header {
+	margin: 0 0;	
+	padding-bottom: 1rem;
+    padding-top: 0.5rem;
+
+    //border-bottom:1px dotted $page-header-border;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .page-tools {
+        align-self: flex-end;
+    }
+}
+
+
+.page-title {
+    padding: 0;
+    margin: 0;
+    
+    font-size: 1.75rem;
+    font-weight: $font-normal;
+
+
+    .page-info {
+      margin: 0 0.25rem;
+      font-size: 1.0625rem;
+      font-weight: $font-normal;
+
+      display: block;
+    }
+}//h1
+
+
+@include media-breakpoint-up(md) {
+    .page-header .page-info {
+        display: inline-block;
+    }
+}
+
+
+// print
+@media print {
+    .body-container, .main-container, .main-content {
+        display: block;
+    }
+    .sidebar, .navbar {
+        display: none;
+    }
+    .page-content {
+        //padding: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        min-width: auto !important;
+    }
+}

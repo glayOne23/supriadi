@@ -1,0 +1,228 @@
+@include media-breakpoint-down($navbar-mobile-max-width) {
+ .navbar {
+    
+    .dropdown-caret:not(.dropdown-menu) ,
+    .dropdown-caret.dropdown-menu::before ,
+    .dropdown-caret.dropdown-menu::after {
+        display: none !important;
+    }
+    
+    .navbar-intro {
+        width: auto;
+    }
+    
+    .navbar-toggler {
+        align-self: center;
+    }
+
+    .navbar-collapse {
+        $bottom: 3rem;// why 3rem? because in mobile devices, when browser addresbar is visible, addresbar's height is included in 100vh
+
+        position: absolute;
+        z-index: $zindex-navbar;
+        transition-duration: $transition-navbar-mobile;
+        
+        top: 100%;
+        right: 0;
+        width: 100%;
+
+        @if map-get($navbar-common, 'mobile-height') != null {
+            max-height: calc(100vh - #{map-get($navbar-common, 'mobile-height')} - #{$bottom});//max-height, so that it doesn't go below viewable area
+            max-height: calc(100vh - var(--navbar-mobile-height) - #{$bottom});
+        }
+        @else {
+            max-height: calc(100vh - #{map-get($navbar-common, 'height')} - #{$bottom});
+            max-height: calc(100vh - var(--navbar-height) - #{$bottom});
+
+            
+            @if map-get($navbar-common, 'sm-height') != null {
+                @at-root .navbar-sm .navbar-collapse {
+                    max-height: calc(100vh - #{map-get($navbar-common, 'sm-height')} - #{$bottom});
+                    max-height: calc(100vh - var(--navbar-sm-height) - #{$bottom});
+                }
+            }
+        }
+
+        overflow: hidden auto;
+        overscroll-behavior: none;
+
+        border-radius: 0;
+        background-color: inherit;
+
+        > * {
+            background-color: inherit;
+        }
+    }
+
+    &.navbar-fixed .navbar-collapse {
+        $bottom: 0.5rem;
+        // change 100vh to 100% because in mobile browsers when address bar is visible, 100vh > 100%
+        position: fixed;
+
+        @if map-get($navbar-common, 'mobile-height') != null {
+            top: map-get($navbar-common, 'mobile-height');
+            top: var(--navbar-mobile-height);
+
+            max-height: calc(100% - #{map-get($navbar-common, 'mobile-height')} - #{$bottom});//max-height, so that it doesn't go below viewable area
+            max-height: calc(100% - var(--navbar-mobile-height) - #{$bottom});
+        }
+        @else {
+            top: map-get($navbar-common, 'height');
+            top: var(--navbar-height);
+
+            max-height: calc(100% - #{map-get($navbar-common, 'height')} - #{$bottom});
+            max-height: calc(100% - var(--navbar-height) - #{$bottom});
+
+            @if map-get($navbar-common, 'sm-height') != null {
+                @at-root .navbar-fixed.navbar-sm .navbar-collapse {
+                    top: map-get($navbar-common, 'sm-height');
+                    top: var(--navbar-sm-height);
+
+                    max-height: calc(100% - #{map-get($navbar-common, 'sm-height')} - #{$bottom});
+                    max-height: calc(100% - var(--navbar-sm-height) - #{$bottom});
+                }
+            }
+        }
+    }
+
+
+    .navbar-backdrop::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: auto;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, $backdrop-opacity);
+        z-index: -1;            
+    }
+
+    .navbar-menu {
+        &.navbar-hw {//half width
+            min-width: 50%;
+            max-width: 100%;
+        }
+
+        .navbar-nav > .nav {
+            flex-direction: column;//nav links stacked vertically in mobile view
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+
+            > .nav-item {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+
+                > .nav-link ,  > .btn {                    
+                    display: flex;
+                    align-items: center;
+                    text-align: left;
+
+                    padding: 0.75rem 0.75rem 0.75rem 1rem;
+                    border-radius: 0;
+                    border-width: 0;//
+
+                    > .badge {
+                        margin-left: auto;
+                        margin-right: 0.75rem;
+                        top: auto;
+                    }
+                    
+                    > .caret {
+                        margin-left: auto;
+                        margin-right: 0.25rem;
+            
+                        @include transition(transform $navlink-transition-duration);
+                    }
+
+                    > .badge ~ .caret {
+                        margin-left: 0;
+                    }
+                }
+                &.show > .nav-link > .caret , &.show > .btn > .caret {
+                    transform: rotate(-180deg);
+                }
+                &.show > .nav-link > .caret[class*="-left"] , &.show > .btn > .caret[class*="-left"] {
+                    transform: rotate(-90deg);
+                }
+                &.show > .nav-link > .caret[class*="-right"] , &.show > .btn > .caret[class*="-right"] {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+
+        .navbar-nav > .nav {
+
+            //disable transforms and transitions on dropdowns
+            .dropdown-menu {
+                transform: none !important;
+                visibility: visible;
+                opacity: 1;
+
+                display: none;
+
+                margin: 0.25rem 0.5rem 0.5rem !important;
+                border-width: 0;
+
+                max-width: calc(100vw - 1rem);
+                width: auto !important;// to override inline styles
+
+                box-shadow: none !important;
+                animation: none !important;
+                transition: none !important;
+            }
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-divider {
+                margin: 0.5rem 1rem;
+            }
+        }
+
+    }//.navbar-menu.navbar-collapse
+
+    //.navbar-links  (the menu inside navbar in Dashboard 1)
+    .navbar-menu .navbar-links {
+        > .nav > .nav-item > .btn {            
+            border-width: 0 0 0 0.25rem;
+            border-radius: 0;
+            margin-left: 1px;
+        }
+    }
+
+ }//.navbar
+
+ 
+ .navbar-menu.navbar-collapse .dropdown[class*="backdrop"]::before {
+    display: none;
+ }
+
+
+ .navbar-collapse [class*="icon-animated"] {
+    animation: none !important;
+ }
+
+ 
+ // for navbar-backdrop
+ body.mob-navbar-body, body.mob-dropdown-body {
+    overflow-y: hidden;
+ }
+ body.mob-navbar-body .navbar-fixed {
+    z-index: $zindex-navbar + 4;// like .navbar-modal
+ }
+
+}//media
+
+
+@include media-breakpoint-down(sm) {
+ .navbar {    
+    .navbar-menu.navbar-collapse {
+        .navbar-nav > .nav .dropdown-menu {
+            margin: 0.25rem !important;
+            max-width: calc(100vw - 0.5rem);
+        }
+    }
+ }
+}

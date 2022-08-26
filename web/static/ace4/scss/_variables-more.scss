@@ -1,0 +1,305 @@
+//pagination
+$pagination-color: bgc-color('primary', 'd3');
+$pagination-bg: mix(bgc-color('primary', 'l5'), #fff);
+$pagination-border-color: bgc-color('primary', 'l2');
+
+$pagination-hover-color: bgc-color('primary', 'd3');
+$pagination-hover-bg: bgc-color('blue', 'l4');
+$pagination-hover-border-color: bgc-color('primary', 'l1');
+
+$pagination-active-color: #fff;
+$pagination-active-bg: bgc-color('primary', 'd1');
+$pagination-active-border-color: bgc-color('primary', 'd2');
+
+$pagination-disabled-color: bgc-color('secondary', 'm1');
+$pagination-disabled-bg: #fff;
+$pagination-disabled-border-color: bgc-color('secondary', 'l1');
+
+
+
+//!unused
+//## Define colors for form feedback states and, by default, alerts.
+//$state-success-text:             #3c763d;
+//$state-success-bg:               #dff0d8;
+//$state-success-border:           scale-color($state-success-bg, $lightness: -5%);
+
+//$state-info-text:                #31708f;
+//$state-info-bg:                  #d9edf7;
+//$state-info-border:              scale-color($state-info-bg, $lightness: -7%);
+
+//$state-warning-text:             #8a6d3b;
+//$state-warning-bg:               #fcf8e3;
+//$state-warning-border:           scale-color($state-warning-bg, $lightness: -5%);
+
+//$state-danger-text:              #a94442;
+//$state-danger-bg:                #f2dede;
+//$state-danger-border:            scale-color($state-danger-bg, $lightness: -5%);
+
+
+
+//form elements
+$input-border: #d3d5d7;
+$input-bg: #fff;
+$input-color: #51575d;//#858585;
+$input-radius: 0.125rem;
+
+$input-hover-border: #b5b5b5;
+
+$input-focus-border: #f59942;
+$input-focus-bg: #fff;
+$input-focus-color: #696969;
+
+$input-placeholder-color: #999;
+$input-readonly-color: #939192;
+$input-readonly-bg: #f5f5f5;
+$input-readonly-focus-border: #aaa;
+$input-readonly-focus-bg: #f9f9f9;
+
+$input-disabled-color: #848484;
+$input-disabled-bg: #eee;
+
+
+//form
+$transition-form-control: 120ms;
+
+
+//custom select boxes
+$custom-select-caret-size: 0.375rem;
+$custom-select-double-caret-size:  0.3125rem;
+$custom-select-caret-margin: 0.75rem;
+$custom-select-sep-color: rgba(0,0,0,0.2);
+$custom-select-border: #eee;
+$custom-select-option-text: $body-text-color;
+
+
+//valid/invalid form element state colors
+$valid-border-color: bgc-color('success', 'm1');
+$valid-text-color: text-color('success');
+
+$invalid-border-color: bgc-color('danger', 'm1');
+$invalid-text-color: text-color('danger');
+
+$floating-label-focus-size: 0.8em;
+
+
+
+//checkbox and switch
+$custom-control-bg: #fff;
+$custom-control-border: #adb8c0;
+
+$custom-control-radius: 0.125rem;//~2px
+
+$custom-control-hover-border: #ff893c;
+$custom-control-focus-border: desaturate(lighten(#ff893c, 5%), 10%);
+
+$custom-control-active-border: #ff893c;
+$custom-control-active-shadow: null;// 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+$custom-control-disabled-border: #ccc;
+$custom-control-disabled-bg: #eee;
+
+$custom-control-transition: 80ms;
+
+
+$custom-control-checked-color: bgc-color('blue');//checked color for default radio and checkbox elements
+
+//custom checkbox
+$custom-checkbox-svg-icon-path: "M 7.5,1.75 l -3.5,4 -2,-1.5 L 1,5.5 4,8.5 9,2.5 z";
+$custom-checkbox-icon-checked:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='#{$custom-control-checked-color}' d='#{$custom-checkbox-svg-icon-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+//checkbox bgc-*
+$custom-control-checked-color2: #fff;
+$custom-checkbox-icon-checked-bgc: str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='#{$custom-control-checked-color2}' d='#{$custom-checkbox-svg-icon-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+//checkbox text-*
+$custom-checkbox-text-fill: #fff;
+$custom-checkbox-icon-text-color: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cmask id='mask'%3E%3Crect fill='white' width='100%25' height='100%25' fill-opacity='1' stroke-width='0' /%3E%3Cpath d='#{$custom-checkbox-svg-icon-path}' /%3E%3C/mask%3E%3Crect mask='url(%23mask)' fill='white' width='100%25' height='100%25' fill-opacity='1'/%3E%3C/svg%3E");
+
+//disabled checkbox
+$custom-control-disabled-color: #aaa;
+$custom-checkbox-icon-checked-disabled:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='#{$custom-control-disabled-color}' d='#{$custom-checkbox-svg-icon-path}'/%3e%3c/svg%3e"), "#", "%23");
+
+
+//custom switch
+$custom-switch-bg: bgc-color('secondary', 'm2');
+$custom-switch-checked-bg: bgc-color('primary', 'd1');
+
+$custom-switch-knob-bg: #fff;
+
+$custom-switch-bars-color: #999;
+$custom-switch-disabled-bars-color: #bbb;
+
+$custom-switch-disabled-bg:#d0d0d0;
+$custom-switch-checked-disabled-bg:#c6c6c6;
+
+$custom-switch-icon-color: #fff;
+$custom-switch-icon-check:  $custom-checkbox-icon-checked-bgc;//str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1792 1792'%3e%3cpath fill='#{$custom-switch-icon-color}' d='M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z'/%3e%3c/svg%3e"), "#", "%23");
+$custom-switch-icon-times:  str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='none' stroke='#{$custom-switch-icon-color}' stroke-width='1.75px' d='M 2.5,2.5 L 7.5,7.5  M 7.5,2.5 L 2.5,7.5'/%3e%3c/svg%3e"), "#", "%23");//str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1792 1792'%3e%3cpath fill='#{$custom-switch-icon-color}' d='M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z'/%3e%3c/svg%3e"), "#", "%23");
+
+
+
+$switch-sizes: (
+  'default',
+  'lg',
+  'sm'
+);
+$switch-width: (
+  'default': 2.75rem,
+  'lg': 4.25rem,
+  'sm': 2.25rem
+);
+$switch-height: (
+  'default': 1.5rem,
+  'lg': 2rem,
+  'sm': 1.25rem
+);
+$switch-knob: (
+  'default': 1.125rem,
+  'lg': 1.5rem,
+  'sm': 0.875rem
+);
+$switch-border-width: 0.125rem;//2px
+
+
+// custom file input
+$file-input-name-color:#888;
+$file-input-selected-name-color:#666;
+
+$file-input-disabled-bg: #eee;
+$file-input-disabled-border: #d5d5d5;
+$file-list-border: bgc-color('secondary', 'l1');
+
+
+//buttons
+$btn-transition:  color .15s, background-color .15s, border-color .15s, box-shadow .15s, opacity .15s;
+$action-btn-transition: .12s;
+$btn-slide-transition: .12s;
+$btn-slide2-transition: .225s;
+
+$btn-raised-shadow: inset 0px -2px 1px 0px rgba(0,0,0,0.15);
+
+
+//dropdown
+$dropdown-transition: 150ms;
+
+$dropdown-text: get-lighter-text('dark');
+
+$dropdown-hover-bg: get-lighter-hover-bg('primary');
+$dropdown-hover-text:  get-light-hover-text('primary');
+
+$dropdown-active-bg: get-lighter-active-bg('primary');
+$dropdown-active-text:  get-light-active-text('primary');
+
+
+$dropdown-hover-transition: 150ms;
+$dropdown-hover-delay: 350ms;
+
+$backdrop-opacity: 0.4;
+
+//cards
+$card-expanding-transition: .2s;
+$toolbar-btn-transition: .15s;
+$card-header-color: text-color('primary', 'd2');
+
+
+
+
+//modal & aside
+$modal-footer-border: #e4e9ee;
+$modal-footer-bg: #eff3f8;
+$modal-header-border: #e4e9ee;
+$modal-header-bg: #eff3f8;
+
+$aside-width: 500px;
+$aside-maxwidth: calc(100vw - 1rem);
+
+$aside-duration: 250ms;
+$aside-header: 3rem;
+
+$aside-hover-delay-out: 500ms;
+$aside-hover-delay-in: 100ms;
+
+
+// tables
+$table-border: rgba(0, 0, 0, 0.075);
+$table-hover-text: text-color('dark', 'm1');
+$table-hover-bg: rgba(0, 0, 0, 0.05);
+$table-header-text: text-color('grey', 'd1');
+
+
+
+$table-striped: mix(bgc-color('grey', 'l4') , bgc-color('grey', 'l5'));
+$table-striped-primary: mix(bgc-color('primary', 'l4') , bgc-color('primary', 'l5'));
+$table-striped-secondary: mix(bgc-color('secondary', 'l4') , bgc-color('secondary', 'l5'));
+$table-striped-default: mix(bgc-color('default', 'l4') , bgc-color('default', 'l5'));
+$table-striped-blue: mix(bgc-color('blue', 'l4') , bgc-color('blue', 'l5'));
+$table-striped-danger: mix(bgc-color('danger', 'l4') , bgc-color('danger', 'l5'));
+$table-striped-success: mix(bgc-color('success', 'l4') , bgc-color('success', 'l5'));
+$table-striped-warning: mix(bgc-color('warning', 'l4') , bgc-color('warning', 'l5'));
+$table-striped-info: mix(bgc-color('info', 'l4') , bgc-color('info', 'l5'));
+
+$table-responsive-bg: bgc-color('primary', 'm2');
+
+
+
+//Tabs
+$tab-border-color: #d7dbda;
+$tab-text-color: text-color('dark', 'm2');
+$tab-bg-color: bgc-color('grey', 'l5');
+
+$tab-link-font-size: 0.925rem; 
+
+$tab-hover-bg-color: #fff;
+$tab-hover-border-color: tint($tab-border-color, 20%);
+
+$tab-active-highlight-border-color: bgc-color('primary', 'm1');
+$tab-active-border-color: $tab-border-color;
+$tab-active-text-color: text-color('dark');
+$tab-active-bg-color: #fff;
+
+$nav-tab-border-color: bgc-color('secondary', 'l2');
+
+//simple tabs
+$simple-tabs-text-color: $tab-text-color;
+$simple-tabs-hover-text-color: text-color('grey', 'd3');
+
+$simple-tabs-active-text-color: text-color('dark');
+$simple-tabs-active-bg: transparent;
+
+$simple-tabs-active-highlight-border-color: bgc-color('primary', 'm1');
+$double-tabs-active-bg: rgba(255, 255, 255, 0.87);
+
+
+
+$tab-link-transition: 120ms;
+$tab-highlight-width: 3px;
+
+$sliding-tab-duration: 300ms;//350ms;
+
+
+
+
+
+
+//accordion
+$accordion-border-color: transparent;//bgc-color('grey', 'l1');
+$accordion-text-color: #fff;
+$accordion-bg-color: bgc-color('primary', 'd2');
+
+$accordion-collapsed-text-color: text-color('grey', 'd2');
+$accordion-collapsed-bg-color: mix(bgc-color('grey', 'l3') , bgc-color('grey', 'l4'), 70%);
+
+$accordion-hover-text-color: #fff;
+$accordion-hover-bg-color: bgc-color('primary', 'd1');
+
+$accordion-collapsed-hover-text-color: #fff;
+$accordion-collapsed-hover-bg-color: bgc-color('primary', 'd1');
+
+$accordion-toggle-transition: $transition-general;
+
+
+//alert
+$alert-text-color: text-color('dark', 'm2');
+
+$alert-collapse-transition: 150ms;
+$toast-collapse-transition: 250ms;

@@ -1,0 +1,76 @@
+<div class="bgc-white shadow-sm radius-2 pt-35 px-0 px-lg-4">
+	<div class="d-flex mb-2">
+		<h4 class="text-secondary-d1 text-120 px-3 px-lg-0">
+			Task Overview
+		</h4>
+
+		<div class="ml-auto d-flex align-items-center">
+			<a class="btn btn-light-secondary btn-bgc-white btn-bold radius-2 px-3 btn-xs text-nowrap" href="#">
+				See All
+			</a>
+
+			<div class="ml-1 mr-2">
+				<a class="btn btn-outline-secondary btn-brc-tp btn-bold radius-round btn-xs dropdown-toggle" href="#">
+					<i class="fa fa-ellipsis-h"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="card border-0">
+		<div class="card-body px-0 px-sm-1 px-lg-0 border-t-1 brc-default-l3 table-responsive-sm">
+			<table class="table brc-grey-l4 mb-2">
+				<thead class="bgc-transparent">
+					<tr>
+						<th class="border-0 text-secondary-m2">
+							Title
+						</th>
+						<th class="border-0 text-secondary-m2">
+							Status
+						</th>
+						<th class="border-0 text-secondary-m2">
+							Progress
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					{{#each (get "tasks")}}
+					<tr class="bgc-h-default-l4" role="button">
+						<td class="text-dark-tp3 text-95">
+							{{title}}
+						</td>
+						<td>
+							{{#if done}}
+							<span class="badge text-80 border-l-3 brc-black-tp8 bgc-green text-white">complete</span>
+							{{/if}}
+
+							{{#if doing}}
+							<span class="badge text-80 border-l-3 brc-black-tp8 bgc-blue text-white">in progress</span>
+							{{/if}}
+
+							{{#if pending}}
+							<span class="badge text-80 border-l-3 brc-black-tp8 bgc-orange text-white">pending</span>
+							{{/if}}
+
+							{{#if cancelled}}
+							<span class="badge text-80 border-l-3 brc-black-tp8 bgc-red text-white">cancelled</span>
+							{{/if}}
+						</td>
+						<td class="text-dark-m1 w-6">
+							<div class="align-self-center pos-rel text-{{textColor}}">
+								<canvas class="task-progress" height="50" width="80" data-percent="{{progress}}"></canvas>
+								<span class="position-center text-80">
+									{{progress}}%
+								</span>
+							</div>
+						</td>
+					</tr>
+					{{/each}}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

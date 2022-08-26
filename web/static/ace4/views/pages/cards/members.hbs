@@ -1,0 +1,22 @@
+{{#each (get "members")}}
+ <tr>
+	<td class="text-dark-m2">{{name}}</td>
+	<td>
+		<a href="#" class="text-primary-d2">{{email}}</a>
+	</td>
+	<td class="d-none d-lg-table-cell">
+	{{#pending}}
+	<span class="badge badge-warning">Pending</span>
+	{{/pending}}
+	{{#approved}}
+	<span class="badge badge-success">Approved</span>
+	{{/approved}}
+	{{#blocked}}
+	<span class="badge badge-dark">Blocked</span>
+	{{/blocked}}
+	{{#online}}
+	<span class="badge badge-info">Online</span>
+	{{/online}}
+	</td>
+ </tr>
+{{/each}}

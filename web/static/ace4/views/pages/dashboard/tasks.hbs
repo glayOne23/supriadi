@@ -1,0 +1,58 @@
+<div class="card ccard radius-t-0 h-100">
+    <div class="position-tl w-102 border-t-3 brc-primary-tp3 ml-n1px mt-n1px"></div><!-- the blue line on top -->
+
+    <div class="card-header brc-secondary-l3 pb-3">
+        <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+            Todo List
+            <span class="text-sm">
+                (Sortable)
+            </span>
+        </h5>
+
+        <div class="card-toolbar no-border pl-0 pl-md-2">
+            <a href="#" class="btn btn-sm btn-lighter-grey btn-bgc-white btn-h-light-orange btn-a-light-orange text-600 px-25 radius-round">
+                View all
+                <i class="fa fa-arrow-right ml-2 text-90"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body bgc-white p-0 pb-15" >
+        <form autocomplete="off" id="tasks" class="mt-n1px">
+            {{#each (get "tasks")}}
+            <div class="task-item d-flex align-items-center border-t-1 bgc-h-green-l3 brc-secondary-l3 px-2">
+                <label class="checkbox">
+                    <input type="checkbox" class="align-middle input-sm ml-2 mr-25" id="task-item-{{@index}}" />
+                </label>
+
+                <label class="flex-grow-1 mr-3 py-3" for="task-item-{{@index}}">
+                    <span class="align-middle">
+                        {{title}}
+                    </span>
+                    {{#if urgent}}
+                        <i class="fa fa-exclamation-circle text-danger-m2 text-110 align-middle ml-1"></i>
+                    {{/if}}
+                </label>
+
+                {{#if urgent}}
+                <span class="badge bgc-danger-l3 border-r-2 radius-r-0 brc-danger-m2 text-danger-d1 ml-1 mr-2">
+                    urgent
+                </span>
+                {{/if}}
+
+                {{#if medium}}
+                <span class="badge bgc-success-l3 border-r-2 radius-r-0 brc-success-m2 text-dark-tp3 ml-1 mr-2">
+                    normal
+                </span>
+                {{/if}}
+
+                {{#if low}}
+                <span class="badge bgc-blue-l3 border-r-2 radius-r-0 brc-blue-m2 text-dark-tp3 ml-1 mr-2">
+                    low
+                </span>
+                {{/if}}
+            </div>
+            {{/each}}
+        </form>
+    </div><!-- /.card-body -->
+</div>

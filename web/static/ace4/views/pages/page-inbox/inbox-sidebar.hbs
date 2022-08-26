@@ -1,0 +1,111 @@
+
+<!-- .modal-off-md will turn off modal features in md+ view. So .modal is displayed without needing to toggle it -->
+<div id="aside-menu" class="modal fade modal-off-md ace-aside aside-left">
+    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 280px;">
+        <div class="modal-content brc-dark-l4 border-y-0 border-l-0 radius-l-0">
+        
+            <div class="modal-header d-md-none position-tr mt-n25 mr-n2 border-0" style="z-index: 111;"><!-- .hide header in lg+ view -->
+                <button type="button" class="btn btn-brc-tp btn-white btn-xs btn-h-red btn-a-red text-xl" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body pt-lg-1 px-2 px-md-1 ace-scrollbar text-right">
+                <div class="pr-2 px-lg-3 pt-lg-4">
+
+                    <div class="text-center mb-4">
+                        <a href="#aside-compose" data-toggle="modal" class="btn btn-blue px-45 py-2 text-105 radius-2">
+                            <i class="fa fa-pencil-alt mr-1"></i>
+                            Compose
+                        </a>
+                    </div>
+                    
+
+                    <form autocomplete="off" class="btn-group btn-group-toggle btn-group-vertical d-flex" data-toggle="buttons">
+                        <a href="#" class="d-style mb-1 active btn py-25 btn-outline-dark btn-h-outline-blue btn-a-outline-blue btn-a-bold w-100 btn-brc-tp border-none border-l-4 radius-l-0 radius-r-round text-left">
+                            <i class="fa fa-inbox w-3 f-n-hover"></i>
+                            Inbox
+                            <span class="badge badge-pill px-3 badge-danger float-right">4</span>
+
+                            <input type="radio" name="inbox" checked />
+                        </a>
+
+                        <a href="#" class="d-style mb-1 btn py-25 btn-outline-dark btn-h-outline-blue btn-a-outline-blue btn-a-bold w-100 btn-brc-tp border-none border-l-4 radius-0 text-left">
+                            <i class="fa fa-star text-orange-d1 w-3 f-n-hover"></i>
+                            Starred
+
+                            <input type="radio" name="inbox" />
+                        </a>
+
+                        <a href="#" class="d-style mb-1 btn py-25 btn-outline-dark btn-h-outline-blue btn-a-outline-blue btn-a-bold w-100 btn-brc-tp border-none border-l-4 radius-0 text-left">
+                            <i class="fa fa-paper-plane w-3 f-n-hover"></i>
+                            Sent
+
+                            <input type="radio" name="inbox" />
+                        </a>
+
+                        <a href="#" class="d-style mb-1 btn py-25 btn-outline-dark btn-h-outline-blue btn-a-outline-blue btn-a-bold w-100 btn-brc-tp border-none border-l-4 radius-0 text-left">
+                            <i class="fa fa-edit w-3 f-n-hover"></i>
+                            Draft
+                            <span class="badge badge-pill px-3 bgc-primary-l2 text-primary-d1 float-right">2</span>
+
+                            <input type="radio" name="inbox" />
+                        </a>
+
+                        <a href="#" class="d-style mb-1 btn py-25 btn-outline-dark btn-h-outline-blue btn-a-outline-blue btn-a-bold w-100 btn-brc-tp border-none border-l-4 radius-0 text-left">
+                            <i class="fa fa-trash w-3 f-n-hover"></i>
+                            Trash
+
+                            <input type="radio" name="inbox" />
+                        </a>
+                    </form>
+
+                    <hr class="brc-secondary-l3 mt-3 mb-4" />
+                    <div class="d-flex mb-2">
+                        <h3 class="text-105 text-secondary-d3 pl-2 text-600">
+                            Tags
+                        </h3>
+
+                        <a href="#" class="ml-auto btn btn-xs btn-info radius-round text-120 text-600 py-0">
+                            +
+                        </a>
+                    </div>
+
+                    <div class="p-2 d-flex align-items-center bgc-h-pink-l4 radius-1" role="button">
+                        <span class="d-inline-block w-2 h-2 border-3 brc-pink radius-round mr-3"></span>
+                        Family
+                    </div>
+                    
+                    <div class="p-2 d-flex align-items-center bgc-h-blue-l3 radius-1" role="button">
+                        <span class="d-inline-block w-2 h-2 border-3 brc-blue radius-round mr-3"></span>
+                        Friends
+                    </div>
+
+                    <div class="p-2 d-flex align-items-center bgc-h-green-l3 radius-1" role="button">
+                        <span class="d-inline-block w-2 h-2 border-3 brc-green radius-round mr-3"></span>
+                        Work
+                    </div>
+
+                    <div class="p-2 d-flex align-items-center bgc-h-orange-l3 radius-1" role="button">
+                        <span class="d-inline-block w-2 h-2 border-3 brc-orange radius-round mr-3"></span>
+                        Other
+                    </div>
+
+
+                    <hr class="brc-secondary-l3 mt-3 mb-4" />
+
+                    <div class="text-center mb-3">
+                        <a href="#" class="py-15 px-4 btn btn-light-secondary btn-h-default btn-a-default btn-brc-tp" role="button">
+                            <i class="fa fa-cog w-3"></i>
+                            Settings
+                        </a>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+</div>
