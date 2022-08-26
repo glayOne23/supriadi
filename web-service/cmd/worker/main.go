@@ -19,13 +19,7 @@ func main() {
 	fmt.Println("Starting Stream")
 	cfg := config.Load()
 
-	dbConn, err := datastore.NewDatabase(
-		cfg.DatabaseUser,
-		cfg.DatabasePassword,
-		cfg.DatabaseHost,
-		cfg.DatabasePort,
-		cfg.DatabaseName,
-	)
+	dbConn, err := datastore.NewDatabase(cfg.DatabaseURL)
 	exception.PanicIfNeeded(err)
 
 	ctx := context.Background()

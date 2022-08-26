@@ -22,13 +22,7 @@ import (
 func main() {
 	cfg := config.Load()
 
-	dbConn, err := datastore.NewDatabase(
-		cfg.DatabaseUser,
-		cfg.DatabasePassword,
-		cfg.DatabaseHost,
-		cfg.DatabasePort,
-		cfg.DatabaseName,
-	)
+	dbConn, err := datastore.NewDatabase(cfg.DatabaseURL)
 	exception.PanicIfNeeded(err)
 
 	locationRepo := mysql.NewMysqlLocationRepository(dbConn)
