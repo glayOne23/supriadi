@@ -17,6 +17,8 @@ type Config struct {
 	ContextTimeout        int
 	TwitterConsumerKey    string
 	TwitterConsumerSecret string
+	ClassificationBaseURL string
+	ClassificationApiKey  string
 }
 
 func Load() (config Config) {
@@ -29,6 +31,8 @@ func Load() (config Config) {
 	contextTimeout, _ := strconv.Atoi(os.Getenv("CONTEXT_TIMEOUT"))
 	twitterConsumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
 	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
+	classificationBaseURL := os.Getenv("CLASSIFICATION_BASE_URL")
+	classificationApiKey := os.Getenv("CLASSIFICATION_API_KEY")
 
 	config = Config{
 		Port:                  port,
@@ -40,6 +44,8 @@ func Load() (config Config) {
 		ContextTimeout:        contextTimeout,
 		TwitterConsumerKey:    twitterConsumerKey,
 		TwitterConsumerSecret: twitterConsumerSecret,
+		ClassificationBaseURL: classificationBaseURL,
+		ClassificationApiKey:  classificationApiKey,
 	}
 
 	return
