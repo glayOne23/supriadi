@@ -12,4 +12,8 @@ wordcloud==1.8.2.2
 # pandas
 keras
 neattext
-Flask==1.1.1
+Flask==1.1.4
+itsdangerous==1.1.0
+keras==2.9.0
+tensorflow==2.5.0
+MarkupSafe==1.1.1

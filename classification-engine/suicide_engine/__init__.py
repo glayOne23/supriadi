@@ -7,7 +7,7 @@ from typing import Tuple
 import neattext.functions as nfx
 from keras.preprocessing.sequence import pad_sequences
 
-model = keras.models.load_model('ai_resources/model')
+model = keras.models.load_model('/home/ubuntu/supriadi/classification-engine/suicide_engine/ai_resources/model')
 
 def clean_text(texts: list) -> Tuple[list, list]:
     """
@@ -30,7 +30,7 @@ def prediction(data: list) -> bool:
     """
     cleaned_text, _ = clean_text(data)
 
-    with open('ai_resources/tokenizer.pickle', 'rb') as handle:
+    with open('/home/ubuntu/supriadi/classification-engine/suicide_engine/ai_resources/tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     test_text_seq=tokenizer.texts_to_sequences(cleaned_text)
