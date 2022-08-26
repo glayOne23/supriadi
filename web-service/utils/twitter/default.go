@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	twitterstream "github.com/fallenstedt/twitter-stream"
+	"github.com/fallenstedt/twitter-stream/rules"
 	"github.com/fallenstedt/twitter-stream/stream"
 )
 
@@ -64,4 +65,27 @@ func (s *twitterService) FetchTweets(ctx context.Context) stream.IStream {
 	}
 
 	return api
+}
+
+func (s *twitterService) CreateTwitterStreamRule(ctx context.Context, rule string, tag string) (res *rules.TwitterRuleResponse, err error) {
+	tok, err := s.GetTwitterToken(ctx)
+	if err != nil {
+		panic(err)
+	}
+
+	api := twitterstream.NewTwitterStream(tok)
+	rules := twitterstream.NewRuleBuilder().AddRule(rule, tag).Build()
+
+	res, err = api.Rules.Create(rules, false)
+
+	if err != nil {
+		return
+	}
+
+	if res.Errors != nil && len(res.Errors) > 0 {
+		err = fmt.Errorf("received an error from twitter: %v", res.Errors)
+		return
+	}
+
+	return
 }

@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `locations`(
     `id` INT UNSIGNED AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
+    `rule_id` VARCHAR(100) NOT NULL, -- from twitter stream rule
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`)
