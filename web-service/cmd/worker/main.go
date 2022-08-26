@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"supriadi/config"
 	"supriadi/entity"
@@ -9,6 +10,7 @@ import (
 	"supriadi/infra/datastore"
 	"supriadi/repository/mysql"
 	"supriadi/utils/classification"
+	"supriadi/utils/pushnotif"
 	"supriadi/utils/twitter"
 )
 
@@ -29,9 +31,14 @@ func main() {
 
 	suicidalRepo := mysql.NewMysqlSuicidalRepository(dbConn)
 	locationRepo := mysql.NewMysqlLocationRepository(dbConn)
+	userRepo := mysql.NewMysqlUserRepository(dbConn)
+	pnRepo := pushnotif.NewWhatsAppWrapperRepository(&pushnotif.WaWrapperConfig{
+		Host: cfg.WaWrapperHost},
+	)
 
 	twitterSvc := twitter.NewTwitterService(cfg.TwitterConsumerKey, cfg.TwitterConsumerSecret)
 	classificationSvc := classification.NewClassificationService(cfg.ClassificationBaseURL, cfg.ClassificationApiKey)
+	pnSvc := pushnotif.NewNotificationService(userRepo, pnRepo)
 
 	api := twitterSvc.FetchTweets(ctx)
 	for tweet := range api.GetMessages() {
@@ -40,6 +47,7 @@ func main() {
 			api.StopStream()
 			continue
 		}
+
 		result := tweet.Data.(twitter.StreamResponse)
 
 		go func() {
@@ -50,6 +58,9 @@ func main() {
 			}
 
 			if cls.IsSuicide {
+				resultStr, _ := json.Marshal(result)
+				fmt.Println(string(resultStr))
+
 				loc, err := locationRepo.GetBy(ctx, map[string]interface{}{
 					"rule_id": result.MatchingRules[0].ID,
 				})
@@ -58,6 +69,12 @@ func main() {
 					fmt.Println(err.Error())
 					return
 				}
+
+				pnMessage := fmt.Sprintf(
+					"Eh ada yang mau bunuh diri nich https://twitter.com/%s/status/%s",
+					result.Includes.Users[0].Username, result.Data.ID)
+
+				go pnSvc.CreateNotificationByLocationID(ctx, loc.ID, pnMessage)
 
 				err = suicidalRepo.Create(ctx, &entity.Suicidal{
 					TwitterUsername:  result.Includes.Users[0].Username,
