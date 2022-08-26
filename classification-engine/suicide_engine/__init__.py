@@ -7,7 +7,7 @@ from typing import Tuple
 import neattext.functions as nfx
 from keras.preprocessing.sequence import pad_sequences
 
-model = keras.models.load_model('ai_resources//model')
+model = keras.models.load_model('ai_resources/model')
 
 def clean_text(texts: list) -> Tuple[list, list]:
     """
