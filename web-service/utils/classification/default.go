@@ -32,7 +32,7 @@ func (s *classificationService) PredictSuicideTweet(ctx context.Context, text st
 	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonReq))
 
 	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("X-Api-Key", s.apiKey)
+	req.Header.Add("x-api-key", s.apiKey)
 
 	if err != nil {
 		return
