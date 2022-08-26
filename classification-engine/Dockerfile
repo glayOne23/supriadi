@@ -12,6 +12,8 @@ RUN export LC_ALL=C
 
 RUN pip install --upgrade pip
 
+RUN pip install -r requirements.txt
+
 RUN make install
 
 ENV PORT=3000
