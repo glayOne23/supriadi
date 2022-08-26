@@ -31,7 +31,7 @@ def predict():
 
     current_app.logger.info(f"Predict response: {result}")
 
-    return jsonify()
+    return jsonify(result)
 
 
 @app_bp.errorhandler(404)
