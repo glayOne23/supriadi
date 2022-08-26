@@ -48,5 +48,7 @@ func (u *notificationService) CreateNotificationByLocationID(ctx context.Context
 
 	}
 
+	wg.Wait()
+
 	return
 }
