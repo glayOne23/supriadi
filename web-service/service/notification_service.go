@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"log"
 	"supriadi/entity"
 	"supriadi/repository/mysql"
 	whatsapp_repo "supriadi/repository/whatsapp"
@@ -36,10 +37,13 @@ func (u *notificationService) CreateNotificationByLocationID(ctx context.Context
 
 		wg.Add(1)
 		go func(wg *sync.WaitGroup, user *entity.User) {
-			u.whatsappRepo.Send(ctx, &entity.WhatsappMessage{
+			err := u.whatsappRepo.Send(ctx, &entity.WhatsappMessage{
 				RecepientNumber: user.Phone,
 				Message:         message,
 			})
+
+			log.Println(err)
+
 			wg.Done()
 		}(wg, &user)
 

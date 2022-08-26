@@ -6,5 +6,5 @@ import (
 )
 
 type WhatsappRepository interface {
-	Send(ctx context.Context, user *entity.WhatsappMessage) (err error)
+	Send(ctx context.Context, msg *entity.WhatsappMessage) (err error)
 }

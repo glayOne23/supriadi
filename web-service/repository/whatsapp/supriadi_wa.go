@@ -10,7 +10,7 @@ import (
 type WhatsappWrapperRepository struct {
 }
 
-func NewPgsqlAppRepository(db *gorm.DB) WhatsappRepository {
+func NewWhatsAppWrapperRepository(db *gorm.DB) WhatsappRepository {
 	return &WhatsappWrapperRepository{}
 }
 
