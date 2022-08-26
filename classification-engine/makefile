@@ -5,6 +5,6 @@ cover:
 dev:
 	export FLASK_ENV=development && python3 wsgi.py
 start:
-	export FLASK_ENV=production && gunicorn --bind 0.0.0.0:${PORT} wsgi:app --capture-output
+	export FLASK_ENV=production && gunicorn --bind 0.0.0.0:3003 wsgi:app --capture-output
 install:
-	python3 -m pip install -r requirements.txt
+	pip install -r requirements.txt
