@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"time"
+	"supriadi/utils/twitter"
 
 	twitterstream "github.com/fallenstedt/twitter-stream"
 	"github.com/fallenstedt/twitter-stream/stream"
@@ -12,26 +12,6 @@ import (
 
 func main() {
 	initiateStream()
-}
-
-type StreamResponse struct {
-	Data struct {
-		Text      string    `json:"text"`
-		ID        string    `json:"id"`
-		CreatedAt time.Time `json:"created_at"`
-		AuthorID  string    `json:"author_id"`
-	} `json:"data"`
-	Includes struct {
-		Users []struct {
-			ID       string `json:"id"`
-			Name     string `json:"name"`
-			Username string `json:"username"`
-		} `json:"users"`
-	} `json:"includes"`
-	MatchingRules []struct {
-		ID  string `json:"id"`
-		Tag string `json:"tag"`
-	} `json:"matching_rules"`
 }
 
 // This will run forever
@@ -60,7 +40,7 @@ func initiateStream() {
 			api.StopStream()
 			continue
 		}
-		result := tweet.Data.(StreamResponse)
+		result := tweet.Data.(twitter.StreamResponse)
 
 		// Here I am printing out the text.
 		// You can send this off to a queue for processing.
@@ -83,7 +63,7 @@ func fetchTweets() stream.IStream {
 
 	// On Each tweet, decode the bytes into a StreamDataExample struct
 	api.SetUnmarshalHook(func(bytes []byte) (interface{}, error) {
-		data := StreamResponse{}
+		data := twitter.StreamResponse{}
 		if err := json.Unmarshal(bytes, &data); err != nil {
 			fmt.Printf("failed to unmarshal bytes: %v", err)
 		}
