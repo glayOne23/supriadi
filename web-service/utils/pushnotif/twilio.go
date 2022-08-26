@@ -1,4 +1,4 @@
-package mysql
+package pushnotif
 
 import (
 	"context"
@@ -7,15 +7,14 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
-	"supriadi/config"
 	"supriadi/entity"
 )
 
 type TwilioWhatsAppRepository struct {
-	twilioConfig config.TwilioApiConfig
+	twilioConfig TwilioApiConfig
 }
 
-func NewTwilioRepositoryRepository(twilioConfig *config.TwilioApiConfig) WhatsappRepository {
+func NewTwilioRepositoryRepository(twilioConfig *TwilioApiConfig) WhatsappRepository {
 	return &TwilioWhatsAppRepository{
 		twilioConfig: *twilioConfig,
 	}
