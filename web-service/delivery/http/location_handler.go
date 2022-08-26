@@ -1,6 +1,7 @@
 package http
 
 import (
+	validation "github.com/go-ozzo/ozzo-validation"
 	"net/http"
 	"supriadi/delivery/middleware"
 	"supriadi/entity"
@@ -37,9 +38,10 @@ func (h *locationHandler) CreateLocation(c echo.Context) error {
 	}
 
 	if err = location.Validate(); err != nil {
+		errVal := err.(validation.Errors)
 		return c.JSON(
 			http.StatusBadRequest,
-			exception.NewBadRequestError("invalid input data"),
+			exception.NewInvalidInputError(errVal),
 		)
 	}
 
