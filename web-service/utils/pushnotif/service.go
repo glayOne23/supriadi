@@ -2,6 +2,7 @@ package pushnotif
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"supriadi/entity"
 	"supriadi/repository/mysql"
@@ -35,16 +36,17 @@ func (u *notificationService) CreateNotificationByLocationID(ctx context.Context
 	for _, user := range users {
 
 		wg.Add(1)
-		go func(wg *sync.WaitGroup, user *entity.User) {
+		go func(wg *sync.WaitGroup, usr entity.User) {
+			fmt.Println("send to", usr.Phone)
 			err := u.whatsappRepo.Send(ctx, &entity.WhatsappMessage{
-				RecepientNumber: user.Phone,
+				RecepientNumber: usr.Phone,
 				Message:         message,
 			})
 
 			log.Println(err)
 
 			wg.Done()
-		}(wg, &user)
+		}(wg, user)
 
 	}
 
