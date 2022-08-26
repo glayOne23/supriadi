@@ -20,9 +20,10 @@ from main_frontend.views import dashboard_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', home_views.HomeView.as_view(), name='home.main'),
     path('register/', home_views.RegisterView.as_view(), name='home.register'),
     path('login/', home_views.LoginView.as_view(), name='home.login'),
+    path('logout/', home_views.LogoutView.as_view(), name='home.logout'),
     path('dashboard/', dashboard_views.MainView.as_view(), name='dashboard.main'),
 ]

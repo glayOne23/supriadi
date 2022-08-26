@@ -1,0 +1,42 @@
+{% extends 'dashboard/layouts/base.html' %}
+{% load static %}
+
+{% block title %} Beranda {% endblock %}
+
+
+{% block content %} 
+
+<div class="row mt-3 mt-lg-4">
+    <!-- chart -->
+    <div class="col-12 col-lg-12">
+      <div class="bcard card h-100">
+        <div class="card-header border-b-1 brc-grey-l3 pb-2">
+          <h5 class="card-title font-normal text-120 text-dark-m1 pl-1">
+            Statistik
+          </h5>
+        </div>
+
+        <div class="card-body h-100 d-flex flex-column justify-content-center py-3 px-2 px-md-4">
+          <canvas id="sales-chart" class="mx-n1 mx-md-0 mw-100" style="height: 280px;"></canvas>
+        </div>
+      </div><!-- /.card -->
+    </div>
+
+    <!-- tabel -->
+    <div class="col-12 col-lg-12 mt-4">
+        <div class="bcard card h-100">
+          <div class="card-header border-b-1 brc-grey-l3 pb-2">
+            <h5 class="card-title font-normal text-120 text-dark-m1 pl-1">
+              Tabel
+            </h5>
+          </div>
+  
+          <div class="card-body h-100 d-flex flex-column justify-content-center py-3 px-2 px-md-4">
+            <canvas id="sales-chart" class="mx-n1 mx-md-0 mw-100" style="height: 280px;"></canvas>
+          </div>
+        </div><!-- /.card -->
+      </div>    
+
+</div>
+
+{% endblock %}
