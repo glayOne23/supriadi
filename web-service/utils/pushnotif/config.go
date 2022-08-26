@@ -5,3 +5,7 @@ type TwilioApiConfig struct {
 	AuthToken    string
 	SenderNumber string
 }
+
+type WaWrapperConfig struct {
+	Host string
+}
