@@ -1,0 +1,14 @@
+.project
+.pydevproject
+.DS_Store
+db.sqlite3
+*.pyc
+__pycache__/*
+*/__pycache__/*
+settings.py
+main_frontend/settings.py
+.idea/*
+media/*
+# static/ace4
+!media/index.html
+main_frontend/media/*
