@@ -19,6 +19,7 @@ type Config struct {
 	TwitterConsumerSecret string
 	ClassificationBaseURL string
 	ClassificationApiKey  string
+	AdminToken            string
 }
 
 func Load() (config Config) {
@@ -33,6 +34,7 @@ func Load() (config Config) {
 	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
 	classificationBaseURL := os.Getenv("CLASSIFICATION_BASE_URL")
 	classificationApiKey := os.Getenv("CLASSIFICATION_API_KEY")
+	adminToken := os.Getenv("ADMIN_TOKEN")
 
 	config = Config{
 		Port:                  port,
@@ -46,6 +48,7 @@ func Load() (config Config) {
 		TwitterConsumerSecret: twitterConsumerSecret,
 		ClassificationBaseURL: classificationBaseURL,
 		ClassificationApiKey:  classificationApiKey,
+		AdminToken:            adminToken,
 	}
 
 	return

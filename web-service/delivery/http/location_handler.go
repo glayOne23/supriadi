@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"supriadi/delivery/middleware"
 	"supriadi/entity"
 	"supriadi/exception"
 	"supriadi/service"
@@ -13,13 +14,13 @@ type locationHandler struct {
 	locationSvc service.LocationService
 }
 
-func NewLocationHandler(e *echo.Echo, locationSvc service.LocationService) {
+func NewLocationHandler(e *echo.Echo, middleware *middleware.Middleware, locationSvc service.LocationService) {
 	handler := &locationHandler{
 		locationSvc: locationSvc,
 	}
 
 	apiV1 := e.Group("/api/v1")
-	apiV1.POST("/locations", handler.CreateLocation)
+	apiV1.POST("/locations", handler.CreateLocation, middleware.AdminAuth())
 	apiV1.GET("/locations", handler.FetchLocation)
 }
 
