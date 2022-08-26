@@ -3,9 +3,11 @@ package pushnotif
 import (
 	"context"
 	b64 "encoding/base64"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 	"supriadi/entity"
 )
@@ -22,15 +24,19 @@ func NewTwilioRepositoryRepository(twilioConfig *TwilioApiConfig) WhatsappReposi
 
 func (wa *TwilioWhatsAppRepository) Send(ctx context.Context, msg *entity.WhatsappMessage) (err error) {
 
-	url := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%s/Messages.json", wa.twilioConfig.AccountSID)
+	apiUrl := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%s/Messages.json", wa.twilioConfig.AccountSID)
 	method := "POST"
 
+	fromNumber := url.QueryEscape(fmt.Sprintf("whatsapp:+%s", wa.twilioConfig.SenderNumber))
+	toNumber := url.QueryEscape(fmt.Sprintf("whatsapp:+%s", msg.RecepientNumber))
+	msgBody := url.QueryEscape(msg.Message)
+
 	payload := strings.NewReader(
-		fmt.Sprintf("From=whatsapp:+%s&Body=%s&To=whatsapp:+%s", wa.twilioConfig.SenderNumber, msg.Message, msg.RecepientNumber),
+		fmt.Sprintf("From=%s&Body=%s&To=%s", fromNumber, msgBody, toNumber),
 	)
 
 	client := &http.Client{}
-	req, err := http.NewRequest(method, url, payload)
+	req, err := http.NewRequest(method, apiUrl, payload)
 
 	if err != nil {
 		return
@@ -45,9 +51,13 @@ func (wa *TwilioWhatsAppRepository) Send(ctx context.Context, msg *entity.Whatsa
 	}
 	defer res.Body.Close()
 
-	_, err = ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return
+	}
+
+	if res.StatusCode != 200 {
+		return errors.New(fmt.Sprintf("Twilio API Failed %s", string(body)))
 	}
 
 	return
