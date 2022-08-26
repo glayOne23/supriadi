@@ -1,5 +1,7 @@
 package classification
 
 type ClassificationTweetResponse struct {
-	IsSuicide bool `json:"is_suicide"`
+	Status    int    `json:"status"`
+	IsSuicide bool   `json:"is_suicide"`
+	Message   string `json:"message"`
 }

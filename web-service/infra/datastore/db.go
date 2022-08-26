@@ -2,14 +2,27 @@ package datastore
 
 import (
 	"database/sql"
+	"fmt"
+	"net/url"
 	"time"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-func NewDatabase(dsn string) (gormDB *gorm.DB, err error) {
-	sqlDB, err := sql.Open("pgx", dsn)
+func NewDatabase(user, pass, host, port, name string) (gormDB *gorm.DB, err error) {
+	connection := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s",
+		user, pass, host, port, name,
+	)
+
+	val := url.Values{}
+	val.Add("parseTime", "1")
+	val.Add("loc", "Asia/Jakarta")
+
+	dsn := fmt.Sprintf("%s?%s", connection, val.Encode())
+
+	sqlDB, err := sql.Open("mysql", dsn)
 	if err != nil {
 		return
 	}

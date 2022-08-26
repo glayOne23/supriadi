@@ -15,7 +15,7 @@ type mysqlSuicidalRepository struct {
 	db *gorm.DB
 }
 
-func NewSuicidalRepository(db *gorm.DB) SuicidalRepository {
+func NewMysqlSuicidalRepository(db *gorm.DB) SuicidalRepository {
 	return &mysqlSuicidalRepository{
 		db: db,
 	}
