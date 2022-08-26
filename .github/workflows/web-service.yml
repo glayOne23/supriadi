@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker Image Web Service
+      run: docker build -t localhost:8888/supriadi/web-service:latest ./supriadi/web-service/
+    - name: push image to registry Web Service
+      run: docker image push localhost:8888/supriadi/web-service:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - name: deploy latest image
+      run: docker service update --image localhost:8888/supriadi/web-service:latest supriadi_web_service_supriadi_web_api
+      
+      
+      
