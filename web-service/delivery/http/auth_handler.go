@@ -20,10 +20,11 @@ func NewAuthHandler(e *echo.Echo, middleware *middleware.Middleware, authSvc ser
 	}
 
 	apiV1 := e.Group("/api/v1")
-	apiV1.POST("/auth/signup", handler.Signup)
+	apiV1.POST("/auth/signup", handler.SignUp)
+	apiV1.POST("/auth/signin", handler.SignIn)
 }
 
-func (h *authHandler) Signup(c echo.Context) error {
+func (h *authHandler) SignUp(c echo.Context) error {
 	ctx := c.Request().Context()
 
 	var user entity.User
@@ -35,7 +36,7 @@ func (h *authHandler) Signup(c echo.Context) error {
 		)
 	}
 
-	if err = user.Validate(); err != nil {
+	if err = user.ValidateSignUp(); err != nil {
 		errVal := err.(validation.Errors)
 		return c.JSON(
 			http.StatusBadRequest,
@@ -49,4 +50,34 @@ func (h *authHandler) Signup(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, user)
+}
+
+func (h *authHandler) SignIn(c echo.Context) error {
+	ctx := c.Request().Context()
+
+	var user entity.User
+	err := c.Bind(&user)
+	if err != nil {
+		return c.JSON(
+			http.StatusUnprocessableEntity,
+			exception.NewUnprocessableEntityError(err.Error()),
+		)
+	}
+
+	if err = user.ValidateSignIn(); err != nil {
+		errVal := err.(validation.Errors)
+		return c.JSON(
+			http.StatusBadRequest,
+			exception.NewInvalidInputError(errVal),
+		)
+	}
+
+	accessToken, err := h.authSvc.SignIn(ctx, &user)
+	if err != nil {
+		return c.JSON(exception.ParseHttpError(err))
+	}
+
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"access_token": accessToken,
+	})
 }

@@ -15,12 +15,20 @@ type User struct {
 	UpdatedAt  time.Time `json:"updated_at"`
 }
 
-func (u User) Validate() error {
+func (u User) ValidateSignUp() error {
 	return validation.ValidateStruct(
 		&u,
 		validation.Field(&u.Username, validation.Required),
 		validation.Field(&u.Password, validation.Required),
 		validation.Field(&u.Phone, validation.Required),
 		validation.Field(&u.LocationID, validation.Required),
+	)
+}
+
+func (u User) ValidateSignIn() error {
+	return validation.ValidateStruct(
+		&u,
+		validation.Field(&u.Username, validation.Required),
+		validation.Field(&u.Password, validation.Required),
 	)
 }

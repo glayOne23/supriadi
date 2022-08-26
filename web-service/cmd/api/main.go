@@ -8,6 +8,7 @@ import (
 	"supriadi/repository/mysql"
 	"supriadi/service"
 	"supriadi/utils/crypto"
+	"supriadi/utils/jwt"
 	"supriadi/utils/twitter"
 	"time"
 
@@ -35,10 +36,11 @@ func main() {
 
 	twitterSvc := twitter.NewTwitterService(cfg.TwitterConsumerKey, cfg.TwitterConsumerSecret)
 	cryptoSvc := crypto.NewCryptoService()
+	jwtSvc := jwt.NewJWTService(cfg.JwtSecretKey)
 
 	ctxTimeout := time.Duration(cfg.ContextTimeout) * time.Second
 	locationSvc := service.NewLocationService(locationRepo, twitterSvc, ctxTimeout)
-	authSvc := service.NewAuthService(userRepo, locationRepo, cryptoSvc, ctxTimeout)
+	authSvc := service.NewAuthService(userRepo, locationRepo, cryptoSvc, jwtSvc, ctxTimeout)
 
 	appMidd := appMiddleware.NewMiddleware(cfg.AdminToken)
 

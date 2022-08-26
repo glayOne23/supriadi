@@ -20,6 +20,7 @@ type Config struct {
 	ClassificationBaseURL string
 	ClassificationApiKey  string
 	AdminToken            string
+	JwtSecretKey          string
 }
 
 func Load() (config Config) {
@@ -35,6 +36,7 @@ func Load() (config Config) {
 	classificationBaseURL := os.Getenv("CLASSIFICATION_BASE_URL")
 	classificationApiKey := os.Getenv("CLASSIFICATION_API_KEY")
 	adminToken := os.Getenv("ADMIN_TOKEN")
+	jwtSecretKey := os.Getenv("JWT_SECRET_KEY")
 
 	config = Config{
 		Port:                  port,
@@ -49,6 +51,7 @@ func Load() (config Config) {
 		ClassificationBaseURL: classificationBaseURL,
 		ClassificationApiKey:  classificationApiKey,
 		AdminToken:            adminToken,
+		JwtSecretKey:          jwtSecretKey,
 	}
 
 	return
