@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker Image Web Service
-      run: docker build -t localhost:8888/supriadi/web-service:latest web-service/docker/api.Dockerfile
+      run: docker build -t localhost:8888/supriadi/web-service:latest -f web-service/docker/api.Dockerfile ./web-service
     - name: push image to registry Web Service
       run: docker image push localhost:8888/supriadi/web-service:latest
 
