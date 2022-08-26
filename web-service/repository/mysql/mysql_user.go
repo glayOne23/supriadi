@@ -16,7 +16,7 @@ type mysqlUserRepository struct {
 	db *gorm.DB
 }
 
-func NewPgsqlAppRepository(db *gorm.DB) UserRepository {
+func NewMysqlUserRepository(db *gorm.DB) UserRepository {
 	return &mysqlUserRepository{db}
 }
 
