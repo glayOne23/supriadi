@@ -40,9 +40,11 @@ class RegisterView(RegisterLoginAksesMixin, View):
         hasil, register = services.supriadi.post_no_auth(request, '/v1/auth/signup', data=data)        
         if hasil:            
             hasil, login = services.supriadi.post_no_auth(request, '/v1/auth/signin', data=data)                    
-            request.session['api_access_token'] = login['access_token']
+            # request.session['api_access_token'] = login['access_token']
+            url = redirect('dashboard.main')            
+            url.set_cookie('api_access_token', login['access_token'])
             messages.success(request, 'Selamat! Anda berhasil melakukan registrasi dan masuk laman dashboard')
-            return redirect('dashboard.main')            
+            return url
         return redirect('home.register')        
 
 
