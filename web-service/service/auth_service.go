@@ -98,6 +98,14 @@ func (s *authService) SignIn(c context.Context, user *entity.User) (accessToken 
 		return
 	}
 
-	accessToken, err = s.jwtSvc.GenerateToken(ctx, u.ID)
+	loc, err := s.locationRepo.GetBy(ctx, map[string]interface{}{
+		"id": u.LocationID,
+	})
+	
+	if err != nil {
+		return
+	}
+
+	accessToken, err = s.jwtSvc.GenerateToken(ctx, u.ID, loc.Name)
 	return
 }
