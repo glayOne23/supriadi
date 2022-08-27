@@ -1,5 +1,6 @@
 {% extends 'dashboard/layouts/base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %} Beranda {% endblock %}
 
@@ -31,7 +32,8 @@
                 <div class="bcard card h-100 pt-1 pt-lg-2">
 
                   <div class="card-header border-0">
-                    <h5 class="card-title text-dark-m2 pl-1 text-110">
+                    <h5 class="card-title text-dark-m2 pl-1 text-110">                                            
+                      <!-- Lokasi Cuitan <span class="text-green">{{request.COOKIES.}}</span>   -->
                       Tabel
                     </h5>                           
                   </div>
@@ -57,9 +59,12 @@
                               <tr class="bgc-h-secondary-l4">
                                 <td class="pl-2 pl-lg-4">{{analitic.twitter_username}}</td>
                                 <td class="text-dark-m2 text-85">{{analitic.twitter_text}}</td>                        
-                                <td class=" text-dark-m2 text-85">{{analitic.twitter_created_at}}</td>
+                                <td class=" text-dark-m2 text-85">{{analitic.twitter_created_at|date_formater}}</td>
                                 <td class=" text-dark-m2 text-85">
-                                  <a href="{{analitic.twitter_link}}" class="btn btn-sm btn-primary m-1">Menuju Cuitan</a>                                  
+                                  <a href="{{analitic.twitter_link}}" class="btn btn-sm btn-primary m-1" target="_blank">
+                                    Menuju Cuitan
+                                    <i class="fab fa-twitter"></i>
+                                  </a>                                  
                                 </td>
                               </tr>
                             {% endfor %}

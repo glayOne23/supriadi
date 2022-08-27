@@ -101,7 +101,7 @@ func (s *authService) SignIn(c context.Context, user *entity.User) (accessToken 
 	loc, err := s.locationRepo.GetBy(ctx, map[string]interface{}{
 		"id": u.LocationID,
 	})
-	
+
 	if err != nil {
 		return
 	}
