@@ -11,6 +11,11 @@ type UserRepositoryMock struct {
 	mock.Mock
 }
 
+func (_m *UserRepositoryMock) GetBy(ctx context.Context, query map[string]interface{}) (user entity.User, err error) {
+	//TODO implement me
+	panic("implement me")
+}
+
 func (_m *UserRepositoryMock) Create(ctx context.Context, user *entity.User) (err error) {
 	return
 }

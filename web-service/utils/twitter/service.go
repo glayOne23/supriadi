@@ -9,7 +9,6 @@ import (
 
 type Service interface {
 	GetTwitterToken(ctx context.Context) (token string, err error)
-	GetTwitterStreamApi(ctx context.Context, token string) stream.IStream
-	FetchTweets(ctx context.Context) stream.IStream
+	FetchTweets(ctx context.Context) (stream.IStream, error)
 	CreateTwitterStreamRule(ctx context.Context, rule string, tag string) (res *rules.TwitterRuleResponse, err error)
 }
