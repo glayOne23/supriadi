@@ -14,25 +14,30 @@
                         <div class="inner">
 
                             <section>
+
+                                <!-- messages -->
+                                {% include "home/layouts/messages.html" %}
+                                <!-- end messages -->
+
                                 <h4>Registrasi</h4>
-                                <form method="post" action="#">
+                                <form method="post" action="{% url 'home.register' %}">
+                                    {% csrf_token %}
                                     <div class="row gtr-uniform">
                                         <div class="col-6 col-12-xsmall">
-                                            <input type="text" name="nama" id="nama" value="" placeholder="Nama" />
+                                            <input type="text" required name="nama" id="nama" value="" placeholder="Nama" />
                                         </div>
                                         <div class="col-6 col-12-xsmall">
-                                            <input type="password" name="password" id="password" value="" placeholder="Password" />
+                                            <input type="password" required name="password" id="password" value="" placeholder="Password" />
                                         </div>
                                         <div class="col-6 col-12-xsmall">
-                                            <input type="text" name="nomor" id="nomor" value="" placeholder="Nomor Whatspp" />
+                                            <input type="text" required name="phone" id="phone" value="" placeholder="Nomor Whatspp" />
                                         </div>
                                         <div class="col-6 col-12-xsmall">
-                                            <select name="lokasi" id="lokasi">
-                                                <option value="">- Kota -</option>
-                                                <option value="1">Manufacturing</option>
-                                                <option value="1">Shipping</option>
-                                                <option value="1">Administration</option>
-                                                <option value="1">Human Resources</option>
+                                            <select name="location_id" id="location_id" required>
+                                                <option value="">- Wilayah -</option>
+                                                {% for location in locations %}
+                                                    <option value="{{location.id}}">{{location.name}}</option>
+                                                {% endfor %}                                                                                                
                                             </select>
                                         </div>                                                                                
                                         <div class="col-12">

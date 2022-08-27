@@ -6,7 +6,7 @@
 
 {% block content %} 
 
-<div class="row mt-3 mt-lg-4">
+<div class="row">
     <!-- chart -->
     <div class="col-12 col-lg-12">
       <div class="bcard card h-100">
@@ -15,10 +15,13 @@
             Statistik
           </h5>
         </div>
-
+        {% if analitics_len == 0 %}
+          <p class="m-2 text-center" style="background-color: #DCF8DB;">Yai! tidak ditemukan pengguna twitter yang memiliki cuitan berbahaya</p>
+        {% else %}
         <div class="card-body h-100 d-flex flex-column justify-content-center py-3 px-2 px-md-4">
           <canvas id="sales-chart" class="mx-n1 mx-md-0 mw-100" style="height: 280px;"></canvas>
         </div>
+        {% endif %}
       </div><!-- /.card -->
     </div>
 
@@ -35,27 +38,33 @@
 
 
                   <div class="card-body p-0">
-                    <div class="table-responsive-md">
-                      <table class="table table-border-x brc-secondary-l3 mb-0">
-                        <thead>
-                          <tr class="text-80 text-default-d3 bgc-default-l4">
-                            <th class="pl-2 pl-lg-4">Akun Twitter</th>
-                            <th>Cuitan</th>
-                            <th>Waktu Cuitan</th>
-                          </tr>
-                        </thead>
+                    {% if analitics_len == 0 %}
+                      <p class="m-2 text-center" style="background-color: #DCF8DB;">Yai! tidak ditemukan pengguna twitter yang memiliki cuitan berbahaya</p>
+                    {% else %}
+                      <div class="table-responsive-md">
+                        <table class="table table-border-x brc-secondary-l3 mb-0">
+                          <thead>
+                            <tr class="text-80 text-default-d3 bgc-default-l4">
+                              <th class="pl-2 pl-lg-4">Akun Twitter</th>
+                              <th>Cuitan</th>
+                              <th>Waktu Cuitan</th>
+                            </tr>
+                          </thead>
 
-                        <tbody>
+                          <tbody>
+                            {% for analitic in analitics %}                            
+                              <tr class="bgc-h-secondary-l4">
+                                <td class="pl-2 pl-lg-4">{{analitic.twitter_username}}</td>
+                                <td class="text-dark-m2 text-85">{{analitic.twitter_text}}</td>                        
+                                <td class=" text-dark-m2 text-85">{{analitic.twitter_created_at}}</td>
+                              </tr>
+                            {% endfor %}
 
-                          <tr class="bgc-h-secondary-l4">
-                            <td class="pl-2 pl-lg-4">Anto Kewer</td>
-                            <td class="text-dark-m2 text-85">Bunuh diri kuy</td>                        
-                            <td class=" text-dark-m2 text-85">Hari ini</td>
-                          </tr>
+                          </tbody>
+                        </table>
+                      </div><!-- /.table-responsive-md -->
+                    {% endif %}
 
-                        </tbody>
-                      </table>
-                    </div><!-- /.table-responsive-md -->
 
                   </div><!-- /.card-body -->
                 </div>

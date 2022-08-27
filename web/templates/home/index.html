@@ -29,13 +29,17 @@
                 <section id="banner">
                     <div class="inner">
                         <h2>Supriadi</h2>                        
-                        <p> Bersama-sama, mari kita lindungi sekitar kita </p>							
+                        <p> Bersama-sama, mari lindungi sekitar kita </p>							
                         <ul class="actions special">
-                            <li><a href="{% url 'home.register' %}" class="button primary">Daftar</a></li>
-                            <li><a href="{% url 'home.login' %}" class="button primary">Masuk</a></li>
+                            {% if request.session.api_access_token  %}                            
+                                <li><a href="{% url 'dashboard.main' %}" class="button primary">Dashboard</a></li>
+                            {% else %}
+                                <li><a href="{% url 'home.register' %}" class="button primary">Registrasi</a></li>
+                                <li><a href="{% url 'home.login' %}" class="button primary">Masuk</a></li>                                                        
+                            {% endif %}                            
                         </ul>
                     </div>
-                    <a href="#three" class="more scrolly">Lihat Lebih Lanjut</a>
+                    <a href="#two" class="more scrolly">Lihat Lebih Lanjut</a>
                 </section>
 
                 <!-- Two -->
@@ -43,7 +47,7 @@
                     <section class="spotlight">
                         <div class="image"><img src="{% static 'spectral/images/bg4.jpeg' %}" alt="" /></div><div class="content">                            
                             <h2>Apa itu Supriadi?</h2>
-                            <p> Supriadi (Suicide Prevention for Indonesian) adalah aplikasi pendeteksi pengguna twitter secara real time yang mengirim cuitan mengandung muatan bunuh diri </p>							
+                            <p> Supriadi (Suicide Prevention for Indonesians) adalah aplikasi pendeteksi pengguna twitter yang mengirim cuitan mengandung muatan bunuh diri secara real time </p>
                         </div>
                     </section>
                 </section>
