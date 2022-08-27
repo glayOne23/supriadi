@@ -1,4 +1,5 @@
 # misc
+import jwt
 from django.shortcuts import render
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
@@ -43,6 +44,8 @@ class RegisterView(RegisterLoginAksesMixin, View):
             # request.session['api_access_token'] = login['access_token']
             url = redirect('dashboard.main')            
             url.set_cookie('api_access_token', login['access_token'])
+            token = jwt.decode(login['access_token'], options={"verify_signature": False})
+            url.set_cookie('api_location', token['location'])
             messages.success(request, 'Selamat! Anda berhasil melakukan registrasi dan masuk laman dashboard')
             return url
         return redirect('home.register')        
@@ -63,6 +66,8 @@ class LoginView(RegisterLoginAksesMixin, View):
             url = redirect('dashboard.main')
             # request.session['api_access_token'] = user['access_token']
             url.set_cookie('api_access_token', user['access_token'])
+            token = jwt.decode(user['access_token'], options={"verify_signature": False})
+            url.set_cookie('api_location', token['location'])
             messages.success(request, 'Selamat! Anda berhasil masuk laman dashboard')
             return url 
         return redirect('home.login')
@@ -74,4 +79,5 @@ class LogoutView(View):
         # del request.session['api_access_token']
         url = redirect('home.main')
         url.delete_cookie('api_access_token')
+        url.delete_cookie('api_location')
         return url
