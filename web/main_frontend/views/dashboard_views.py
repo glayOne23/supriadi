@@ -21,6 +21,6 @@ class MainView(DashboardAksesMixin, View):
         context = {}
         hasil, data = services.supriadi.get(request, '/v1/suicidals', request.COOKIES.get('api_access_token'))                        
         if hasil:            
-            context['analitics'] = data
+            context['analitics'] = reversed(data)
             context['analitics_len'] = len(data)
         return render(request, 'dashboard/index.html', context)
