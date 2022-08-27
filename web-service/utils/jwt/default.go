@@ -19,9 +19,10 @@ func NewJWTService(secretKey string) Service {
 	}
 }
 
-func (s *jwtService) GenerateToken(ctx context.Context, userID int64) (token string, err error) {
+func (s *jwtService) GenerateToken(ctx context.Context, userID int64, location string) (token string, err error) {
 	claims := &jwtCustomClaims{
 		userID,
+		location,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),
 			Issuer:    s.issuer,
