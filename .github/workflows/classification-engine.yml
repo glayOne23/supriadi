@@ -21,8 +21,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-    - name: deploy latest image
-      run: docker service update --image localhost:8888/supriadi/classification-engine:latest classification_engine_supriadi_classification_engine
+    - name: update deployment
+      run: kubectl rollout restart deployment/classification-engine
       
       
       

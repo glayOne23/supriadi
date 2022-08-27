@@ -1,0 +1,25 @@
+name: Docker Image Web FE
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker Image
+      run: docker build -t localhost:8888/supriadi/web-fe:latest -f web/Dockerfile ./web
+    - name: push image to registry
+      run: docker image push localhost:8888/supriadi/web-fe:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - name: update deployment
+      run: kubectl rollout restart deployment/web-fe

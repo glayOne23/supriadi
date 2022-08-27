@@ -23,8 +23,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-    - name: deploy latest image
-      run: docker service update --image localhost:8888/supriadi/twitter-worker:latest twitter_worker_supriadi_twitter_worker
+    - name: update deployment
+      run: kubectl rollout restart deployment/twitter-worker
       
       
       
