@@ -1,0 +1,35 @@
+{% load static %}
+
+<!-- messages -->
+{% if messages %}              
+    {% for message in messages %}              
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div role="alert" class="alert">            
+            <span class="closebtn">&times;</span>  
+            <strong style="color: white">{{ message|safe }}</strong>            
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <div role="alert" class="alert warning">            
+            <span class="closebtn">&times;</span>  
+            <strong style="color: white">{{ message|safe }}</strong>            
+        </div>                  
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <div role="alert" class="alert info">            
+            <span class="closebtn">&times;</span>  
+            <strong style="color: white">{{ message|safe }}</strong>            
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div role="alert" class="alert success">            
+            <span class="closebtn">&times;</span>  
+            <strong style="color: white">{{ message|safe }}</strong>            
+        </div>        
+        {% else %}
+        <div role="alert" class="alert">            
+            <span class="closebtn">&times;</span>  
+            <strong style="color: white">{{ message|safe }}</strong>            
+        </div>                    
+        {% endif %}                                    
+    </li>
+    {% endfor %}              
+{% endif %}
+<!-- end messages -->

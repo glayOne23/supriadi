@@ -1,0 +1,97 @@
+{% extends 'home/layouts/base.html' %}
+{% load static %}
+
+{% block title %} Beranda {% endblock %}
+
+{% block extendcss %}
+    <style>
+        #banner {
+            background-image: -moz-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url({% static 'spectral/images/bg3.jpg' %});
+            background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url({% static 'spectral/images/bg3.jpg' %});
+            /* background-image: -ms-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url({% static 'spectral/images/bg3.jpg' %}); */
+            background-image: linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url({% static 'spectral/images/bg3.jpg' %});			
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}            
+    <body class="landing is-preload">
+
+    <!-- Page Wrapper -->
+        <div id="page-wrapper">
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="inner">
+                        <h2>Supriadi</h2>                        
+                        <p> Bersama-sama, mari lindungi sekitar kita </p>							
+                        <ul class="actions special">
+                            {% if request.COOKIES.api_access_token  %}                            
+                                <li><a href="{% url 'dashboard.main' %}" class="button primary">Dashboard</a></li>
+                            {% else %}
+                                <li><a href="{% url 'home.register' %}" class="button primary">Registrasi</a></li>
+                                <li><a href="{% url 'home.login' %}" class="button primary">Masuk</a></li>                                                        
+                            {% endif %}                            
+                        </ul>
+                    </div>
+                    <a href="#two" class="more scrolly">Lihat Lebih Lanjut</a>
+                </section>
+
+                <!-- Two -->
+                <section id="two" class="wrapper alt style2">
+                    <section class="spotlight">
+                        <div class="image"><img src="{% static 'spectral/images/bg4.jpeg' %}" alt="" /></div><div class="content">                            
+                            <h2>Apa itu Supriadi?</h2>
+                            <p> Supriadi (Suicide Prevention for Indonesians) adalah aplikasi pendeteksi pengguna twitter yang mengirim cuitan mengandung muatan bunuh diri secara real time </p>
+                        </div>
+                    </section>
+                </section>
+
+
+                <!-- Three -->
+                <section id="three" class="wrapper style3 special">
+                    <div class="inner">
+                        <header class="major">
+                            <h2>Bagaimana Menggunakan Supriadi?</h2>                            
+                        </header>
+                        <ul class="features">
+                            <li class="icon fa-paper-plane">
+                                <h3>Pertama</h3>
+                                <p>Pengguna melakukan registrasi. Jika berhasil, maka akan diarahkan pada laman dashboard.</p>
+                            </li>
+                            <li class="icon solid fa-laptop">
+                                <h3>Kedua</h3>
+                                <p>Pada laman dashboard, pengguna dapat melihat akun-akun twitter yang memiliki cuitan mengandung muatan bunuh diri dalam bentuk statistik maupun tabel sesuai lokasi yang dimasukkan pengguna saat registrasi.</p>
+                            </li>
+                            <li class="icon solid fa-code">
+                                <h3>Ketiga</h3>
+                                <p>Pengguna juga diberi notifikasi melalui pesan Whatspp jika ditemukan cuitan yang mengandung muatan bunuh diri.</p>
+                            </li>
+                            <li class="icon solid fa-headphones-alt">
+                                <h3>Keempat</h3>
+                                <p>Jika sudah melakukan registrasi, pengguna dapat masuk dengan memasukkan nama dan password sesuai saat registrasi.</p>
+                            </li>								
+                        </ul>
+                    </div>
+                </section>
+
+
+            <!-- Footer -->
+            <footer id="footer">	
+                <ul class="copyright">                    
+                    <li><a href="https://www.freepik.com/free-photo/young-asia-lady-using-phone-with-positive-expression-dressed-casual-cloth-yellow-wall_16681332.htm#page=2&query=people&position=47&from_view=search">Image by tirachardz</a> on Freepik</li>                    
+                </ul>					
+                <ul class="copyright">                    
+                    <li>&copy; Supriadi</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
+        </div>
+
+    </body>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load static %}
+
+<!-- messages -->
+{% if messages %}              
+    {% for message in messages %}              
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div role="alert" class="alert alert-danger bgc-danger-l4 brc-danger-m3 border-2 d-flex align-items-center">
+            <i class="fas fa-exclamation-triangle mr-3 fa-2x text-danger"></i>
+            <div class="text-dark-tp2"> {{ message|safe }} </div>
+            <button type="button" class="close align-self-start ml-auto text-danger-d2 text-150" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <div role="alert" class="alert alert-warning bgc-warning-l4 brc-warning-m3 border-2 d-flex align-items-center">
+            <i class="fas fa-exclamation-circle mr-3 fa-2x text-warning"></i>
+            <div class="text-dark-tp2"> {{ message|safe }} </div>
+            <button type="button" class="close align-self-start ml-auto text-warning-d2 text-150" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>                  
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <div role="alert" class="alert alert-info bgc-info-l4 brc-info-m3 border-2 d-flex align-items-center">
+            <i class="fas fa-info-circle mr-3 fa-2x text-info"></i>
+            <div class="text-dark-tp2"> {{ message|safe }} </div>
+            <button type="button" class="close align-self-start ml-auto text-info-d2 text-150" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div role="alert" class="alert alert-success bgc-success-l4 brc-success-m3 border-2 d-flex align-items-center">
+            <i class="fas fa-check mr-3 fa-2x text-success"></i>
+            <div class="text-dark-tp2"> {{ message|safe }} </div>
+            <button type="button" class="close align-self-start ml-auto text-success-d2 text-150" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>        
+        {% else %}
+        <div role="alert" class="alert alert-secondary bgc-secondary-l4 brc-secondary-m3 border-2 d-flex align-items-center">
+            <i class="fas fa-exclamation-circle mr-3 fa-2x text-secondary"></i>
+            <div class="text-dark-tp2"> {{ message|safe }} </div>
+            <button type="button" class="close align-self-start ml-auto text-secondary-d2 text-150" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>                    
+        {% endif %}                                    
+    </li>
+    {% endfor %}              
+{% endif %}
+<!-- end messages -->

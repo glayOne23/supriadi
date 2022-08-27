@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{% block title %}{% endblock %} - Aplikasi Supriadi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'spectral/assets/css/main.css' %} " />
+		<noscript><link rel="stylesheet" href="{% static 'spectral/assets/css/noscript.css' %}" /></noscript>
+
+        <style>
+            .alert {
+              padding: 20px;
+              background-color: #f44336;
+              color: white;
+              opacity: 1;
+              transition: opacity 0.6s;
+              margin-bottom: 15px;
+            }
+            
+            .alert.success {background-color: #04AA6D;}
+            .alert.info {background-color: #2196F3;}
+            .alert.warning {background-color: #ff9800;}
+            
+            .closebtn {
+              margin-left: 15px;
+              color: white;
+              font-weight: bold;
+              float: right;
+              font-size: 22px;
+              line-height: 20px;
+              cursor: pointer;
+              transition: 0.3s;
+            }
+            
+            .closebtn:hover {
+              color: black;
+            }
+        </style>        
+	</head>
+
+    {% block extendcss %}{% endblock %}   
+
+    {% block content %}{% endblock %}
+
+    <!-- Scripts -->
+    <script src="{% static 'spectral/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/util.js' %}"></script>
+    <script src="{% static 'spectral/assets/js/main.js' %}"></script>        
+
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+        
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+    </script>    
+</html>
