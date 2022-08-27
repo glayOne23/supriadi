@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'https://supriadi.xyz/']
 
+CSRF_TRUSTED_ORIGINS = ['https://supriadi.xyz/']
 
 # Application definition
 
