@@ -23,3 +23,4 @@ worker:
 	migration-up
 	migration-down
 	server
+	worker
