@@ -90,7 +90,9 @@ func main() {
 					LocationID:       loc.ID,
 				})
 
-				fmt.Println(err.Error())
+				if err != nil {
+					fmt.Println(err.Error())
+				}
 			}
 		}()
 	}
