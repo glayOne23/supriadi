@@ -31,3 +31,4 @@ RUN pip install  --no-cache-dir  --no-warn-script-location -r requirements.txt
 # CMD exec uvicorn mykurikulum.asgi:application --root-path=/app --host=0.0.0.0 --port=8000
 # CMD exec uwsgi --http :8000 --module mykurikulum.wsgi --static-map /static=/app/static --static-map /media=/app/media --mime-file /app/mime.types -p 4 -t 900 --buffer-size=32768
 
+CMD python manage.py runserver 0.0.0.0:8000
