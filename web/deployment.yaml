@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: web-fe
+    namespace: supriadi
+spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: web-fe
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+    template:
+      metadata:
+        labels:
+          app: web-fe
+      spec:
+        containers:
+          - name: web-fe
+            image: localhost:8888/supriadi/web-fe:latest
+            imagePullPolicy: "Always"
+            ports:
+              - containerPort: 3000
+            env:
+              - name: TRACE_URL
+                value: "http:/hello"
+            resources:
+              requests:
+                cpu: '0'
+                memory: '0'
+              limits:
+                cpu: '256'
+                memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: web-fe
+    namespace: supriadi
+spec:
+    type: LoadBalancer
+    ports:
+      - targetPort: 3000
+        name: webhttp
+        port: 5005
+    selector:
+      app: web-fe

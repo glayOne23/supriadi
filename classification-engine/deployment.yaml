@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: classification-engine
+    namespace: supriadi
+spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: classification-engine
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+    template:
+      metadata:
+        labels:
+          app: classification-engine
+      spec:
+        containers:
+          - name: classification-engine
+            image: localhost:8888/supriadi/classification-engine:latest
+            imagePullPolicy: "Always"
+            ports:
+              - containerPort: 3000
+            env:
+              - name: TRACE_URL
+                value: "http:/hello"
+            resources:
+              requests:
+                cpu: '0'
+                memory: '0'
+              limits:
+                cpu: '256'
+                memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: classification-engine
+    namespace: supriadi
+spec:
+    type: LoadBalancer
+    ports:
+      - targetPort: 3000
+        name: aihttp
+        port: 5003
+    selector:
+      app: classification-engine

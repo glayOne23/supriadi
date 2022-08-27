@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: twitter-worker
+    namespace: supriadi
+spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: twitter-worker
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+    template:
+      metadata:
+        labels:
+          app: twitter-worker
+      spec:
+        containers:
+          - name: twitter-worker
+            image: localhost:8888/supriadi/twitter-worker:latest
+            imagePullPolicy: "Always"
+            ports:
+              - containerPort: 3000
+            env:
+              - name: TRACE_URL
+                value: "http:/hello"
+            resources:
+              requests:
+                cpu: '0'
+                memory: '0'
+              limits:
+                cpu: '256'
+                memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: twitter-worker
+    namespace: supriadi
+spec:
+    type: LoadBalancer
+    ports:
+      - targetPort: 3000
+        name: twitter-worker
+        port: 5002
+    selector:
+      app: twitter-worker

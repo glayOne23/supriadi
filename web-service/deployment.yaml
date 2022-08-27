@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: web-api
+    namespace: supriadi
+spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: web-api
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+    template:
+      metadata:
+        labels:
+          app: web-api
+      spec:
+        containers:
+          - name: web-api
+            image: localhost:8888/supriadi/web-service:latest
+            imagePullPolicy: "Always"
+            ports:
+              - containerPort: 3000
+            env:
+              - name: TRACE_URL
+                value: "http:/hello"
+            resources:
+              requests:
+                cpu: '0'
+                memory: '0'
+              limits:
+                cpu: '256'
+                memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: web-api
+    namespace: supriadi
+spec:
+    type: LoadBalancer
+    ports:
+      - targetPort: 3000
+        name: apihttp
+        port: 5001
+    selector:
+      app: web-api

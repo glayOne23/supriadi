@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: wa-server
+    namespace: supriadi
+spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: wa-server
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+    template:
+      metadata:
+        labels:
+          app: wa-server
+      spec:
+        containers:
+          - name: wa-server
+            image: localhost:8888/supriadi/wa-service:latest
+            imagePullPolicy: "Always"
+            ports:
+              - containerPort: 5000
+            env:
+              - name: TRACE_URL
+                value: "http:/hello"
+            resources:
+              requests:
+                cpu: '0'
+                memory: '0'
+              limits:
+                cpu: '256'
+                memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: wa-server
+    namespace: supriadi
+spec:
+    type: LoadBalancer
+    ports:
+      - targetPort: 5000
+        name: apihttp
+        port: 5000
+    selector:
+      app: wa-server
