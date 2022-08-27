@@ -33,13 +33,11 @@ def prediction(data: list) -> bool:
     with open('/app/suicide_engine/ai_resources/tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
-    test_text_seq=tokenizer.texts_to_sequences(cleaned_text)
-    test_text_pad=pad_sequences(test_text_seq,maxlen=40)
+    test_text_seq = tokenizer.texts_to_sequences(cleaned_text)
+    test_text_pad = pad_sequences(test_text_seq,maxlen=40)
 
-
-    predict_x=model.predict(test_text_pad)
+    predict_x = model.predict(test_text_pad)
     if predict_x[0][0] > 0.2: # threshold
         return True
     else:
         return False
-
