@@ -78,7 +78,7 @@ func main() {
 				}
 
 				tweetLink := fmt.Sprintf("https://twitter.com/%s/status/%s", result.Includes.Users[0].Username, result.Data.ID)
-				pnMessage := fmt.Sprintf("⚠️ *Suicidal Tweet Detected*\nLokasi: %s\nTweet:%s", loc.Name, tweetLink)
+				pnMessage := fmt.Sprintf("⚠️ *Suicidal Tweet Detected*\nLokasi: %s\nTweet: %s", loc.Name, tweetLink)
 
 				go pnSvc.CreateNotificationByLocationID(ctx, loc.ID, pnMessage)
 
