@@ -35,17 +35,13 @@ func (s *twitterService) GetTwitterToken(ctx context.Context) (token string, err
 	return
 }
 
-func (s *twitterService) GetTwitterStreamApi(ctx context.Context, token string) stream.IStream {
-	return twitterstream.NewTwitterStream(token).Stream
-}
-
-func (s *twitterService) FetchTweets(ctx context.Context) stream.IStream {
+func (s *twitterService) FetchTweets(ctx context.Context) (api stream.IStream, err error) {
 	tok, err := s.GetTwitterToken(ctx)
 	if err != nil {
-		panic(err)
+		return
 	}
 
-	api := s.GetTwitterStreamApi(ctx, tok)
+	api = twitterstream.NewTwitterStream(tok).Stream
 	api.SetUnmarshalHook(func(bytes []byte) (interface{}, error) {
 		data := StreamResponse{}
 		if err := json.Unmarshal(bytes, &data); err != nil {
@@ -60,24 +56,19 @@ func (s *twitterService) FetchTweets(ctx context.Context) stream.IStream {
 		Build()
 
 	err = api.StartStream(streamExpansions)
-	if err != nil {
-		panic(err)
-	}
-
-	return api
+	return
 }
 
 func (s *twitterService) CreateTwitterStreamRule(ctx context.Context, rule string, tag string) (res *rules.TwitterRuleResponse, err error) {
 	tok, err := s.GetTwitterToken(ctx)
 	if err != nil {
-		panic(err)
+		return
 	}
 
 	api := twitterstream.NewTwitterStream(tok)
 	rules := twitterstream.NewRuleBuilder().AddRule(rule, tag).Build()
 
 	res, err = api.Rules.Create(rules, false)
-
 	if err != nil {
 		return
 	}

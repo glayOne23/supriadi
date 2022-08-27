@@ -36,7 +36,12 @@ func main() {
 	pnSvc := pushnotif.NewNotificationService(userRepo, pnRepo)
 	translatorSvc := translator.NewTranslatorService()
 
-	api := twitterSvc.FetchTweets(ctx)
+	api, err := twitterSvc.FetchTweets(ctx)
+	if err != nil {
+		fmt.Printf("got error from twitter: %v", err.Error())
+		return
+	}
+
 	for tweet := range api.GetMessages() {
 		if tweet.Err != nil {
 			fmt.Printf("got error from twitter: %v", tweet.Err)
