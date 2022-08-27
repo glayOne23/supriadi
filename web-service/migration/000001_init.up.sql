@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS suicidals (
     "twitter_username" VARCHAR NOT NULL,
     "twitter_text" VARCHAR NOT NULL,
     "twitter_created_at" TIMESTAMP NOT NULL,
+    "twitter_link" VARCHAR NOT NULL,
     "location_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP NOT NULL,
     "updated_at" TIMESTAMP NOT NULL,
