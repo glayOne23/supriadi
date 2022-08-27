@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: web-api
+    name: web-fe
     namespace: supriadi
 spec:
     replicas: 2
     selector:
       matchLabels:
-        app: web-api
+        app: web-fe
     strategy:
         type: RollingUpdate
         rollingUpdate:
@@ -16,11 +16,11 @@ spec:
     template:
       metadata:
         labels:
-          app: web-api
+          app: web-fe
       spec:
         containers:
-          - name: web-api
-            image: localhost:8888/supriadi/web-service:latest
+          - name: web-fe
+            image: localhost:8888/supriadi/web-fe:latest
             imagePullPolicy: "Always"
             ports:
               - containerPort: 3000
@@ -38,13 +38,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: web-api
+    name: web-fe
     namespace: supriadi
 spec:
     type: LoadBalancer
     ports:
       - targetPort: 3000
-        name: apihttp
-        port: 5001
+        name: webhttp
+        port: 5005
     selector:
-      app: web-api
+      app: web-fe

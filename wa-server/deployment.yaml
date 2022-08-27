@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: web-api
+    name: wa-server
     namespace: supriadi
 spec:
-    replicas: 2
+    replicas: 1
     selector:
       matchLabels:
-        app: web-api
+        app: wa-server
     strategy:
         type: RollingUpdate
         rollingUpdate:
@@ -16,14 +16,14 @@ spec:
     template:
       metadata:
         labels:
-          app: web-api
+          app: wa-server
       spec:
         containers:
-          - name: web-api
-            image: localhost:8888/supriadi/web-service:latest
+          - name: wa-server
+            image: localhost:8888/supriadi/wa-service:latest
             imagePullPolicy: "Always"
             ports:
-              - containerPort: 3000
+              - containerPort: 5000
             env:
               - name: TRACE_URL
                 value: "http:/hello"
@@ -38,13 +38,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: web-api
+    name: wa-server
     namespace: supriadi
 spec:
     type: LoadBalancer
     ports:
-      - targetPort: 3000
+      - targetPort: 5000
         name: apihttp
-        port: 5001
+        port: 5000
     selector:
-      app: web-api
+      app: wa-server
