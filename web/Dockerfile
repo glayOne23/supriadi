@@ -1,4 +1,4 @@
-FROM python:3.8-slim-bullseye
+FROM python:3.8-bullseye
 ENV PYTHONUNBUFFERED 1
 
 # install dependencies
@@ -13,11 +13,15 @@ RUN apt-get install -y ca-certificates gcc musl-dev \
     && pip install -U  --no-cache-dir  --no-warn-script-location pip \    
     && pip install -U  --no-cache-dir  --no-warn-script-location setuptools
 
+
 # Setup application
 WORKDIR /var/www/app
 # COPY requirements.txt /var/www/app/
 COPY . .
 COPY main_frontend/settings_docker.py main_frontend/settings.py
+RUN cd static && unzip ace4.zip
+RUN cd ..
+
 RUN chown www-data.www-data /var/www
 USER www-data
 RUN pip install  --no-cache-dir  --no-warn-script-location -r requirements.txt
