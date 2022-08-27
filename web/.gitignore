@@ -5,10 +5,10 @@ db.sqlite3
 *.pyc
 __pycache__/*
 */__pycache__/*
-settings.py
 main_frontend/settings.py
+docker-compose.yml
 .idea/*
 media/*
-# static/ace4
+static/ace4
 !media/index.html
 main_frontend/media/*
