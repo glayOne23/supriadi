@@ -8,7 +8,7 @@
 
 <div class="row">
     <!-- chart -->
-    <div class="col-12 col-lg-12">
+    <!-- <div class="col-12 col-lg-12">
       <div class="bcard card h-100">
         <div class="card-header border-b-1 brc-grey-l3 pb-2">
           <h5 class="card-title font-normal text-120 text-dark-m1 pl-1">
@@ -22,8 +22,8 @@
           <canvas id="sales-chart" class="mx-n1 mx-md-0 mw-100" style="height: 280px;"></canvas>
         </div>
         {% endif %}
-      </div><!-- /.card -->
-    </div>
+      </div>
+    </div> -->
 
     <!-- tabel -->
               <!-- orders table -->
@@ -48,6 +48,7 @@
                               <th class="pl-2 pl-lg-4">Akun Twitter</th>
                               <th>Cuitan</th>
                               <th>Waktu Cuitan</th>
+                              <th>Link Twitter</th>
                             </tr>
                           </thead>
 
@@ -56,7 +57,9 @@
                               <tr class="bgc-h-secondary-l4">
                                 <td class="pl-2 pl-lg-4">{{analitic.twitter_username}}</td>
                                 <td class="text-dark-m2 text-85">{{analitic.twitter_text}}</td>                        
-                                <td class=" text-dark-m2 text-85">{{analitic.twitter_created_at}}</td>
+                                <td class=" text-dark-m2 text-85">
+                                  <a href="{{analitic.twitter_link}}" class="btn btn-sm btn-primary m-1">Menuju Cuitan</a>                                  
+                                </td>
                               </tr>
                             {% endfor %}
 
