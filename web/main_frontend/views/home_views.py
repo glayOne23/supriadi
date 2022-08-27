@@ -10,7 +10,7 @@ from main_frontend import services
 
 class RegisterLoginAksesMixin(AccessMixin):    
     def dispatch(self, request, *args, **kwargs):                        
-        if request.session.get('api_access_token'):
+        if request.COOKIES.get('api_access_token'):
             return redirect('home.main')
         return super().dispatch(request, *args, **kwargs)        
 
@@ -58,14 +58,18 @@ class LoginView(RegisterLoginAksesMixin, View):
         }
         hasil, user = services.supriadi.post_no_auth(request, '/v1/auth/signin', data=data)        
         if hasil:
-            request.session['api_access_token'] = user['access_token']
+            url = redirect('dashboard.main')
+            # request.session['api_access_token'] = user['access_token']
+            url.set_cookie('api_access_token', user['access_token'])
             messages.success(request, 'Selamat! Anda berhasil masuk laman dashboard')
-            return redirect('dashboard.main')            
+            return url 
         return redirect('home.login')
 
 
 class LogoutView(View):
     def get(self, request):
         context = {}
-        del request.session['api_access_token']
-        return redirect('home.main')
+        # del request.session['api_access_token']
+        url = redirect('home.main')
+        url.delete_cookie('api_access_token')
+        return url

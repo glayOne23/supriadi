@@ -31,7 +31,7 @@
                         <h2>Supriadi</h2>                        
                         <p> Bersama-sama, mari lindungi sekitar kita </p>							
                         <ul class="actions special">
-                            {% if request.session.api_access_token  %}                            
+                            {% if request.COOKIES.api_access_token  %}                            
                                 <li><a href="{% url 'dashboard.main' %}" class="button primary">Dashboard</a></li>
                             {% else %}
                                 <li><a href="{% url 'home.register' %}" class="button primary">Registrasi</a></li>
