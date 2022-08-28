@@ -28,6 +28,6 @@ func (r *mysqlSuicidalRepository) Create(ctx context.Context, suicidal *entity.S
 }
 
 func (r *mysqlSuicidalRepository) FetchBy(ctx context.Context, query map[string]interface{}) (suicidals []entity.Suicidal, err error) {
-	err = r.db.WithContext(ctx).Where(query).Find(&suicidals).Order("created_at ASC").Error
+	err = r.db.WithContext(ctx).Where(query).Order("created_at ASC").Find(&suicidals).Error
 	return
 }
