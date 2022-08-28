@@ -82,8 +82,9 @@ The technology behind Supriadi is variative and lot
 * Linode
 ## About The Project
 
-<img width="1680" alt="Screen Shot 2022-08-28 at 12 40 53" src="https://user-images.githubusercontent.com/36056765/187059559-7492f296-8ebd-4487-b133-a272b0c0fcd9.png">
+<img width="1680" alt="Screen Shot 2022-08-28 at 12 40 53" src="https://user-images.githubusercontent.com/24405759/187059650-bb528312-d57a-4b3d-851b-31b365c45f2f.png">
 <img width="200" alt="Screen Shot 2022-08-28 at 10 03 16" src="https://user-images.githubusercontent.com/24405759/187056504-6a1e418d-1156-4aa9-9c85-54318153e01b.jpg">
+
 
 
 
