@@ -33,7 +33,7 @@ func (s *locationService) Create(c context.Context, location *entity.Location) (
 	ctx, cancel := context.WithTimeout(c, s.contextTimeout)
 	defer cancel()
 
-	rule := fmt.Sprintf("bio_location:%s", strings.ToLower(location.Name))
+	rule := fmt.Sprintf("bio_location:%s -has:mentions", strings.ToLower(location.Name))
 	r, err := s.twitterSvc.CreateTwitterStreamRule(ctx, rule, location.Name)
 	if err != nil {
 		return
