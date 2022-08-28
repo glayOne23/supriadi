@@ -32,6 +32,6 @@ func (r *mysqlLocationRepository) GetBy(ctx context.Context, query map[string]in
 }
 
 func (r *mysqlLocationRepository) Fetch(ctx context.Context) (locations []entity.Location, err error) {
-	err = r.db.WithContext(ctx).Find(&locations).Error
+	err = r.db.WithContext(ctx).Find(&locations).Order("created_at ASC").Error
 	return
 }
