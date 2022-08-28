@@ -22,6 +22,27 @@
 ![MIT License][license-shield]
 
 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+
+
+  <h3 align="center">SUPRIADI</h3>
+
+  <p align="center">
+    Suicide Prevention for Indonesians
+    <br />
+    <a href="https://github.com/supriadi/README.md"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://supriadi.xyz">View Demo</a>
+  </p>
+</div>
+
+
+
+
+
 
 
 <!-- ABOUT THE PROJECT -->
@@ -60,6 +81,25 @@ The technology behind Supriadi is variative and lot
 * Docker
 * Nodejs
 * Linode
+## About The Project
+
+<img width="1278" alt="Screen Shot 2022-08-28 at 09 03 16" src="https://user-images.githubusercontent.com/40946917/187054605-a8df2686-27da-478e-bfbe-c32090c89731.png">
+
+
+
+
+## Built With
+- TensorFlow
+- Django
+- FLask
+- Go
+- Javascript
+- Twilio (whatsapp channel)
+- .xyz domain
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -83,9 +123,18 @@ Thanks :D
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+<!-- ROADMAP -->
+## Roadmap
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+
+<!-- CONTRIBUTING -->
+## Contributing
 
 
 <!-- LICENSE -->
@@ -138,3 +187,16 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
+## Contact
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
