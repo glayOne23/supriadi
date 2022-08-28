@@ -32,7 +32,7 @@
   <p align="center">
     Suicide Prevention for Indonesians
     <br />
-    <a href="https://github.com/supriadi/README.md"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/glayOne23/supriadi/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://supriadi.xyz">View Demo</a>
