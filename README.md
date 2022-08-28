@@ -84,6 +84,7 @@ The technology behind Supriadi is variative and lot
 ## About The Project
 
 <img width="1278" alt="Screen Shot 2022-08-28 at 09 03 16" src="https://user-images.githubusercontent.com/40946917/187054605-a8df2686-27da-478e-bfbe-c32090c89731.png">
+![telegram-cloud-photo-size-5-6077741915320725550-y](https://user-images.githubusercontent.com/24405759/187056489-6fee3f84-fcb2-4ab1-91d2-c8984f5e8bd5.jpg)
 
 
 
