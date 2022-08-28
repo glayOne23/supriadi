@@ -8,7 +8,7 @@
   <h3 align="center">SUPRIADI</h3>
 
   <p align="center">
-    Suicide Prevention
+    Suicide Prevention for Indonesians
     <br />
     <a href="https://github.com/supriadi/README.md"><strong>Explore the docs »</strong></a>
     <br />
@@ -31,17 +31,17 @@
 
 
 
-### Built With
-
+## Built With
+- TensorFlow
+- Django
+- FLask
+- Go
+- Javascript
+- Twilio (whatsapp channel)
+- .xyz domain
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
 
 
 
