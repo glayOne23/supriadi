@@ -80,30 +80,19 @@ The technology behind Supriadi is variative and lot
 * Docker
 * Nodejs
 * Linode
-## About The Project
-
-<img width="1680" alt="Screen Shot 2022-08-28 at 12 40 53" src="https://user-images.githubusercontent.com/24405759/187059650-bb528312-d57a-4b3d-851b-31b365c45f2f.png">
-<img width="200" alt="Screen Shot 2022-08-28 at 10 03 16" src="https://user-images.githubusercontent.com/24405759/187056504-6a1e418d-1156-4aa9-9c85-54318153e01b.jpg">
+* .xyz domain
+* Twitter API
 
 
-
-
-
-## Built With
-- TensorFlow
-- Django
-- FLask
-- Go
-- Javascript
-- Twilio (whatsapp channel)
-- .xyz domain
-
+### Architecture
+![arsi](https://user-images.githubusercontent.com/36056765/187060642-dcce5365-16be-4fc7-b168-ecf58d183d3e.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
+<img width="1680" alt="Screen Shot 2022-08-28 at 12 40 53" src="https://user-images.githubusercontent.com/24405759/187059650-bb528312-d57a-4b3d-851b-31b365c45f2f.png">
+<img width="200" alt="Screen Shot 2022-08-28 at 10 03 16" src="https://user-images.githubusercontent.com/24405759/187056504-6a1e418d-1156-4aa9-9c85-54318153e01b.jpg">
 
 You can visit at supradi.xyz and register your number that has whatsapp account and add the location, then just wait you will get the notification on your whatsapp
 <br>
